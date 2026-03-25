@@ -1,0 +1,146 @@
+1295 void* sendhwevent(void *)
+1296 {
+1297           XXPRINT(1, "Rushi void* sendhwevent(void *) start successfully.\n");
+1298      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1299      /**
+1300       * All other availabe feature events will be snet before sending this event.
+1301       */
+1302      sendStatusEvent(NULL);
+1303           XXPRINT(1, "Rushi sendStatusEvent(NULL); start successfully.\nIf installed software list -> define SOFTWARELIST_FILE              '/opt/MicroWorld/etc/softwares.list'  is not sent to the server before, it creates a list of all installed software and sent these information in events. Number of 10800 events will be sent, each for one software installed.\n");
+1304      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1305 
+1306      /**
+1307       * If installed software list is not sent to the server before, it creates a list of all installed software and sent these information in events. Number of 10800 events will be sent, each for one software installed.
+1308       */          XXPRINT(1, "Rushi struct node \n     char *name;\n     char status;\n     char date[30];\n     struct node *next;\nstruct node* getPackageStatus();.\n");
+1309      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1310 
+1311      if ( access( SOFTWARELIST_FILE, F_OK ) != 0 )
+1312      {
+1313           struct node *header = NULL;
+1314           if( ( header = getPackageStatus( ) ) == NULL )
+1315           {
+1316                XXPRINT(1,"Failed to fetch present software list.\n");
+1317                XXPRINT(1, "Rushi getPackageStatus( ) Failed to fetch present software list.\n");
+1318      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1319           }
+1320           else
+1321           {
+1322                XXPRINT(1, "Rushi getPackageStatus( ) Sucessfully fetch present software list.\n");
+1323      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1324                struct node *iter, *temp;
+1325                string description;
+1326 
+1327                for( iter = header; iter != NULL;  iter = iter->next)
+1328                {
+1329                     if( strlen( iter->date) != 0 && iter->name != NULL )
+1330                     {
+1331                          description = "Software Already Present ";
+1332                XXPRINT(1, "Rushi 'Software Already Present ' list.\n");
+1333      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1334                          description += iter->date;
+1335                          description += " {Ver:";
+1336                          description += iter->version;
+1337                          description += "}";
+1338                          if((strstr(iter->name, "eScan administrator") != NULL && strstr(iter->name, "eScan administrator (root)") == NULL) || strstr(iter->name, "eScan command-line"))
+1339                          {
+1340                               //Skip multiple escan packages, allow ony "eScan administrator (root)"
+1341                               continue;
+1342                          }
+1343                          //eventsender( GENERAL_ESCAN_NEWLYINSTSOFTWARES, INFO_SEVERITY,(char *)description.c_str(), (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+1344                          eventsender( GENERAL_ESCAN_PRESENTSOFTWARES, INFO_SEVERITY,(char *)description.c_str(), (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+1345                XXPRINT(1, "Rushi 'Software Install/Uninstall Statust.\n");
+1346      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1347                          sleep(1);
+1348                     }
+1349                }
+1350 
+1351                deletePackageList();
+1352                XXPRINT(1, "Rushi deletePackageList().\n");
+1353      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1354           }
+1355      }
+1356      /**
+1357       * It keeps track of all installed softwares and list of software names sent to the server.
+1358       */
+1359      //Here monitor software/hardware changes
+1360                XXPRINT(1, "Rushi It keeps track of all installed softwares and list of software names sent to the server..\n /Here monitor software/hardware changes \n");
+1361      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1362      do
+1363      {
+1364 
+1365 
+1366           struct node *header = NULL;
+1367                XXPRINT(1, "Rushi link list struct node *header = NULL;s \nIf any new list of installed or deleted softwares found, it sends those names to the server in event 10800.\n");
+1368      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1369 
+1370           /**
+1371            * If any new list of installed or deleted softwares found, it sends those names to the server in event 10800.
+1372            */
+1373           if( ( header = getPackageStatus( ) )  != NULL  )
+1374           {
+1375                struct node *iter, *temp;
+1376                string description;
+1377                for( iter = header; iter != NULL; iter = iter->next )
+1378                {
+1379                     description = "New Software Installed "; // 0 --> new s/w installed 1 --> s/w uninstalled
+1380 
+1381                     if( iter->status == 0 )
+1382                     {
+1383                          description += iter->date;
+1384                          description += " {Ver:";
+1385                          description += iter->version;
+1386                          description += "}";
+1387 
+1388                          eventsender( GENERAL_ESCAN_NEWLYINSTSOFTWARES, INFO_SEVERITY,(char *)description.c_str(), (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+1389                XXPRINT(1, "Rushi eventsender New Software Installed .\n");
+1390      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1391                          sleep(1);
+1392                     }
+1393                     else
+1394                     {
+1395                          eventsender( GENERAL_ESCAN_NEWLYUNINSTSOFTWARES, INFO_SEVERITY,(char *)"Existing Software Uninstalled", (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+1396                XXPRINT(1, "Rushi eventsender Existing Software Uninstalled .\n");
+1397      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1398                     }
+1399                }
+1400           }
+1401 
+1402           deletePackageList(); ///Deletes all existing nodes in software list. i.e free(node);
+
+
+
+
+
+1403                XXPRINT(1, "Rushi deletePackageList().\n");
+1404      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1405 
+1406           string SwHwInfo;
+1407           /**
+1408            * It checks for change in hardware information. If any hardware will be changed, hardware information event will be sent.
+1409            */
+1410           MW_HW_INFO(SwHwInfo);
+1411                XXPRINT(1, "Rushi MW_HW_INFO(SwHwInfo); it is in libmwshare make hardware log. It checks for change in hardware information. If any hardware will be changed, hardware information event will be sent.\n");
+1412      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1413 
+1414           int result = checknupdateHWevent( SwHwInfo.c_str() );
+1415           switch ( result )
+1416           {
+1417                case -1:
+1418                     XXPRINT(1,"Error occured while dealing with hardware event.\n");
+1419                XXPRINT(1, "Rushi checknupdateHWevent( SwHwInfo.c_str() ); Error occured while dealing with hardware event.\n");
+1420      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1421                     break;
+1422                case  1:
+1423                     XXPRINT(1, "Hardware event successfully submitted.\n");
+1424                XXPRINT(1, "Rushi checknupdateHWevent( SwHwInfo.c_str() ); Hardware event successfully submitted.\n");
+1425      XXPRINT(1, "[%s:%d %s] --> %s .\n\n", __FILE__, __LINE__, __FUNCTION__,SwHwInfo.c_str());
+1426                     break;
+1427           }
+1428                XXPRINT(1, "Rushi #define HWEVENTINFO_FILE   '/opt/MicroWorld/etc/hweventinfo.info'.\n");
+1429      XXPRINT(1, "[%s:%d %s] .\n\n", __FILE__, __LINE__, __FUNCTION__);
+1430 
+1431           sleep( 180 ); //sleeps for 180 secs
+1432 
+1433      } while ( TermExitSignal != 1 );
+1434 }
+

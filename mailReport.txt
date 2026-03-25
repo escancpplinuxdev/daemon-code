@@ -1,0 +1,889 @@
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Message Header
+
+Subject : Work Report – WinClient Software List Handling & dpkg Install Trigger Update
+
+
+Dear Sir,
+
+Today I worked on the WinClient module regarding the issue of newly installed software entries being repeatedly added to the software.list file.
+
+1] Issue Observed:
+
+Whenever a new package is installed, it gets appended to the software.list file.
+
+The linked list structure:
+
+struct node* softwarelist = NULL;
+
+keeps increasing in size.
+
+This update process is currently running every 3 minutes.
+
+As a result:
+
+Duplicate or repeated entries are being added.
+
+The linked list size continuously grows.
+
+This increases memory usage and adds unnecessary load on the software and server communication.
+   
+
+
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+05/03/2026
+From:	"Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:	Report of 05/03/2026
+Date:	Thu, 05 Mar 2026 20:45:08 +0530
+To:	divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Message Header
+
+Undecoded Message
+Subject Daily Work Report – dpkg Install Monitoring & GABlocker Debugging
+
+Dear Sir,
+
+Please find today’s work update below:
+
+1. dpkg Install Monitoring Implementation
+
+Implemented code to monitor the dpkg install list using inotify.
+
+The objective is to detect new application install/uninstall events so that newly installed software can be added to the software.list file.
+
+Tested the implementation on the test machine to verify detection of install events.
+
+2. GABlocker Attachment Blocker – Log Mismatch Issue
+
+Observed a mismatch of IP address and URL values in gablocker.log.
+
+Issue Details:
+
+Firefox monitoring process
+
+IP = 127.0.0.1
+
+URL = "" (blank)
+
+Google Chrome monitoring process
+
+IP = 34.81.162.2 (incorrect)
+
+URL = "smallpdf.in"
+
+Expected Behavior:
+
+IP = 127.0.0.1
+
+Correct URL corresponding to the blocked request.
+
+Debugging Work:
+
+Added debugger/logging in the relevant code sections to trace where the IP and URL values are being captured and written to the log.
+
+Running and testing the updated build on the test machine to identify the root cause.
+
+Please let me know if any further investigation or modifications are required.
+
+
+
+
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+06/03/202
+
+Subject Daily Work Report – WinClient Software List Code Analysis
+
+Dear Sir, 
+
+1] Winclient software List load Analysis
+
+Todat i analyzed the software inventory handling mechanism in the winclient module. The implementation uses a linked list:
+        struct node * softwareList = NULL;
+
+The following files are involved in maintaining the software list:
+1) software.list - sorted software list file
+2) software.list_tmp_1 - temporary unsorted dile
+
+Curren code flow:
+
+1) The sendhwevent() function first checks whether the software.list file is present.
+2) If the file in not present, it proceeds with linked list creation.
+3) The function getPackageStatus() retrieves software information from the  /usr/share/applications/ directory by executing dpkg commands to obtain:
+        . Package Name
+        . Application Name
+        . Software Version
+4)The collected data is written to the unsorted file (software.list_tmp_1).
+5)This entire process runs inside a do while loop with:
+        sleep(180);
+which means repeats every 180 sec (3 minutes).
+
+Problem identified:
+
+Because this process runs cntinuously in do-while loop every 180 sec , it repeatedly performs file check, command executions, read , compare operations even there are no new software installations.This leads to unnecessary processing and increase load on the application.
+The main problem statement is to determine how to reduce this periodic load while still ensuring that newly installed software entries are correctly updated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+
+07/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Message Header
+
+
+
+Subject : Daily Work Report – WinClient Logging Implementation and Code Flow Analysis
+
+Dear Sir,
+
+
+1. Logging Implementation for Code Flow Analysis
+
+Today I added logging in the WinClient binary to better understand the code flow and function execution. Logging was implemented in the following source files:
+
+winclient.cpp
+
+softwarelist_linux.cpp
+
+GetPackageNameIfAppName.cpp
+
+Additionally, I created two files for logging support:
+
+log1.cpp
+
+log1.h
+
+The following logging code was added to track file name, line number, and function name at the start and end of functions:
+
+char buffer[256];
+sprintf(buffer,"[ %s %d %s ]\n\n", __FILE__, __LINE__, __FUNCTION__);
+log1(1,"%s", buffer);
+
+This helps in tracing the execution flow and identifying how functions are being called during runtime.
+
+2. WinClient Thread and Software Detection Flow
+
+The function sendhwevent(void *) runs as a separate thread created using:
+
+pthread_create(&hwThreadID, NULL, sendhwevent, (void *)NULL);
+
+This thread runs continuously and executes every 3 minutes.
+
+The process flow is as follows:
+
+The thread checks for any new *.desktop file entry in the directory:
+
+/usr/share/applications/
+
+If a new application entry is detected, the following command is executed to obtain the package name:
+
+dpkg --search /usr/share/applications/*.desktop 2> /dev/null
+
+If the package name is identified, the following command is used to obtain the version information:
+
+dpkg -s <pkg-name> | grep Version | awk -F ' ' '{print $2}'
+
+The installation date is also retrieved. If the installation date is not available, the .desktop file creation date is used as the installation date.
+
+3. Software List Handling
+
+The detected software details are compared with entries present in the software.list file.
+
+In the software.list
+
+
+All software entries are first stored in an unsorted temporary file.
+
+Then the following command is executed to generate the sorted file:
+
+sort -u -o sorted_file unsorted_file
+
+After sorting:
+
+The temporary unsorted file is removed using rm -f.
+
+The linked list buffer struct node* software_list is released.
+
+The final data is written into software.list.
+
+The detection of newly installed or uninstalled software depends on checking the directory:
+
+/usr/share/applications/
+
+If a new *.desktop file is detected, the linked list buffer is compared with the existing software.list file to identify newly installed or removed applications.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+07/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Message Header
+
+
+Subject Daily Work Report – Directory Monitoring Program and VM Setup
+
+Dear Sir,
+
+1. C++ Program for Directory Monitoring
+
+Today I developed a C++ program to monitor the directory /usr/share/applications/ without using inotify.
+The objective was to detect application installation and uninstallation based on the creation and deletion of .desktop files.
+
+Testing Performed:
+
+Installed applications using:
+
+sudo apt install vlc gedit gimp
+
+During installation, corresponding .desktop files were created in the monitoring directory:
+
+/usr/share/applications/
+
+Then uninstalled the applications using:
+
+sudo apt purge vlc gedit gimp
+
+After uninstallation, the respective .desktop files were deleted from the directory.
+
+The monitoring program successfully detected both file creation and deletion events during installation and removal of applications.
+All testing was performed on the test machine, and the program worked as expected.
+
+Next, I will verify whether this directory monitoring approach conflicts with the real-time scanner’s directory watch mechanism or if both can run simultaneously without issues.
+
+2. Red Hat Virtual Machine Setup
+
+I also attempted to build a Red Hat virtual machine for testing purposes.
+However, the setup failed during the ISO extraction stage while installing the inbuilt libraries.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+10/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Message Header
+
+Subject Daily work report - inotify limits study and alternative /usr/share/applications/ directory monitoring apporach
+
+Dear sir,
+
+1. Study to inotify limits and kernel parametes
+
+Today I studied the inotify mechanism used for directory monitoring in linux and analyzed its limitations.
+
+	.The limit for directory watches per user is 8192 watches per user in /proc/sys/fs/inotify/max_user_watches
+
+	.The kernel parameter can be incresed to 524288
+fs.inotify.max_user_waches = 524288
+
+This defines how many files or directories can be monitoried simulaneously using inotify.
+	Another limitation is inotify event queue size if toomany events occur rapidly, the queue may overflow and generate IN_Q_OVERFLOW . This indicated some events were lost because of queue full. 
+	.For solution Increse kernel queue limits which increase load. 
+	.rescan entire directory which is not right.
+	One workaround is creating multiple threads with separate inotify instance.but this approach is not scalable when monitoring a very large number of directory.
+
+2] Alertnative Monitoring apporach without inotify
+
+	This implementation uses:
+	.dirent.h for directory operations
+	.STL container set<string> for storing file names
+
+Diectory operation Used:
+	.opendir() -> open directory
+	.readdir() -> read directory entries
+	.closedir() -> close directory
+Working logic :
+	1. Read current directory file list.
+	2. Store filenames in set<string>
+	3. Wait for a few seconds.
+	4. Read directory contents again.
+	5. Compare the previous snapshot with the current snapshot.
+Because set<string>:
+	. Stores unique elements
+	. Maintains automatic sorting
+	. Allow fast comparison
+Because of this program can effciently detect:
+	> Newly created files.
+	> Deleted files.
+
+By periodically scanning the directory and comparing snapshots, the program can monitor filesytem changes even without using inotify.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+11/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Subject Daily Work report - Directory Monitoring Analysis using dirent.h
+
+Dear Sir,
+
+1] Analysis of dirent.h Directory Operations
+
+Today I analyzed the direct.h header file functions to understand whether the directory operation run in user space or kernel space.
+The functions studied include:
+.opendir()
+.readdir()
+.closedir()
+
+These functions are used for directory traversal and reading directory entries. From the analysis, The monitoring logic implemented using these functions works in user space.
+
+The logic being tested is to monitor the directory:
+
+/usr/share/applications/
+
+Application installation or uninstallation can be detected by observing the creation or deletion of corresponding .desktop files in this directory. By scannig this directory amd comparing file sets, the program can determine whether an application has been installed or uninstalled.
+
+
+2. Handling System Interruptions During File Comparison
+
+During testing, a possible edge case was identified. While comparing the previous file set (previousset1) with the current file set (currentset1) stored in STL set<string>, a situation may occur where the system reboots or shuts down in between the comparison process (for example, during a command like apt purge google-*).
+
+To prevent data loss in such scenarios, a solution was proposed:
+
+Create a file named previousset1.txt.
+
+Store the sorted list of filenames from the directory in this file.
+
+On program restart (after reboot or interruption), the program can reload this file and reconstruct the previous snapshot.
+
+This approach ensures that the comparison process remains consistent even after reboot, shutdown, or unexpected interruptions.
+
+Using a .txt file for snapshot storage is best because:
+
+.The directory size is relatively small (< 10,000 files)
+
+.The dataset is small
+
+.Low memory usage 
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+12/03/2026
+From: 	"eScanHR" <escanhr@escanav.com>
+Subject: 	Updation of details
+Date: 	Wed, 11 Mar 2026 12:28:56 +0530
+To: 	<escanhr@escanav.com>
+Kindly provide your address details in the format mentioned below so that we can update in our records.
+Subject 	: Address Details Submission
+Dear Sir,
+
+Please find my address details below:
+Full Name 	: Rushikesh Sunil Gajmal
+Mobile No.	: 9702808352
+Communication Address: Room No.4, Ramraj Singh Chawl, Datta Madir Road, Vakola Bridge, Santacruz (E), Mumbai 400055.
+Flat No.	: Room No.4
+Premises	: Ramraj Singh Chawl
+Road		: Datta Mandir Road
+Area		: Vakola Bridge
+Town		: Santacruz (E)
+City		: Mumbai
+State		: Maharashtra
+Pincode		: 400055
+
+
+
+12/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+
+Dear Sir,
+
+1. Study of System Serial Retrieval in libmwshare.so
+
+Today I analyzed the function:
+
+void MW_HW_INFO(string &SwHwInfo)
+
+present in libmwshare.so, which is responsible for collecting hardware and software information.
+
+During log verification, it was observed that the system serial value was appearing blank in eventHistory.log.
+
+2. Debugging and Code Flow Verification
+
+To investigate the issue, I reviewed the code flow related to retrieving the system serial number using the function:
+
+getSystemSerial(systemSerial);
+
+Since the value was not appearing correctly in the logs, I added debugging logs in the code to trace the execution flow and check whether the systemSerial value is being retrieved correctly or becoming empty during processing.
+
+The added logs help in:
+
+    Tracking function execution
+
+    Verifying whether the serial number is being fetched correctly
+
+    Identifying where the value becomes blank before writing to eventHistory.log
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+13/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir, 
+
+1. Integration of Application Install/Uninstall Detection logic
+
+Today I worked on integrating the application install/Uninstall detection mechanism within the winclient binary.
+
+Current Approach Implemented:
+	.In the do while loop, during the first execution, the function getPackageStatus() will run to generate the initial software.list file containing the list of installed applications.
+	.During the subsequent iterations of the loop, the program will check whether any new application is installed or uninstalled.
+	.This detection is handled through a separate thread implemented in:
+checkInstallUninstalled.cpp
+	.Only if this thread detects an application install or uninstall event, the function getPackageStatus() will be triggered again to regenerate the updated software.list file.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+16/03/2026
+Subject : Daily Work Report – VM Setup for DLP WinClient Testing
+Dear sir,
+
+1. Virtual Machine Setup for Testing
+
+Today I created a virtual machine for Ubuntu 25 (U25) to perform testing related to the DLP WinClient event sender binary.
+
+This VM environment is being used to test the new polling directory monitoring approach implemented for detecting application installation and uninstallation.
+
+For The testing focuses on monitoring the directory:
+
+/usr/share/applications/
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+17/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Subject: Daily Work Report – Ubuntu 25 VM Setup and RDP Configuration
+
+Dear Sir,
+
+1. Ubuntu 25 VM installation
+
+I started installing the Ubuntu 25 ISO (5.4 GB) on a virtual machine for testing purpose.
+	.Allocated resources:
+		. RAM - 5048 MB
+		. Disk - 49 GB
+These configurations were set to ensure smooth performance of vm.
+
+2. Network Configuration 
+
+During setup, I faced an issue while switching the network from NAT to Bridged Adapter.
+To resolve conectivity, I configured manual IP setup.
+Post network configuration, I installed and configured required packages:
+	. ssh-server
+	. ssh-client
+	. apt-get update
+	. vim
+
+3. Remote Desktop Setup
+
+It was observed that RDP desktop session is not available by default in Ubuntu 25.
+To enable remote access, I installed and configured FreeRDP by installing lightdm 
+against gnome, X11 session.
+
+The following command was use to connect:
+
+	xfreerdp /v:192.168.2.220:33220 /u:rushi /p:rushi@123 /cert:ignore /bpp:16 /gdi:sw
+
+This setup used for winclient by polling directory method.
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+18/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Subject : Daily Work Report – Integration of Directory Monitoring with WinClient
+
+
+Dear Sir,
+
+
+1. Integration of Directory Monitoring with WinClient
+
+Today I worked on integrating the directory monitoring (polling-based approach) for:
+
+/usr/share/applications/
+
+with the existing WinClient sendhwevent() thread logic.
+
+    Implemented Thread T1 for polling the directory to detect .desktop file changes (install/uninstall events).
+
+    Integrated it with Thread T2, which executes the sendhwevent() function.
+
+2. Thread Synchronization
+
+To safely share data between both threads, I implemented:
+
+    Mutex for protecting critical section
+
+    Condition Variable for signaling between threads
+
+This ensures:
+
+    Proper synchronization between monitoring and event-sending threads
+
+    Avoidance of race conditions
+
+    Efficient communication when a new install/uninstall event is detected
+
+3. Testing
+
+    The integrated code is currently being started testing on the Ubuntu 25 (U25) testing machine.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+19/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+
+Subject Daily Work Report – Event-Driven Monitoring for WinClient
+
+Dear Sir,
+
+Please find today’s work update below:
+
+1. Event-Driven Directory Monitoring Implementation
+
+Today I implemented logic in the WinClient module to monitor the directory:
+
+/usr/share/applications/
+
+    The system now places a watch on the directory to detect:
+
+        Creation of .desktop files (application install)
+
+        Deletion of .desktop files (application uninstall)
+
+2. Optimization of dpkg Query Execution
+
+    Modified the existing behavior where dpkg-query --search was executed every 3 minutes.
+
+    Now, the command is triggered only when an actual event (file creation/deletion) is detected.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+20/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Subject : Daily Work Report – Directory Watch Implementation and DLP Build Testing
+
+Dear Sir,
+
+
+1. Directory Monitoring Implementation
+
+Today I test C++ code to initialize a directory descriptor and set up monitoring on:
+
+/usr/share/applications/
+
+Added watch on the directory to detect:
+
+Creation of new *.desktop files (application install)
+
+Deletion of existing *.desktop files (application uninstall)
+
+Implemented logic to:
+
+Compare detected files with cached data
+
+Ignore/omit unnecessary or cached entries from monitoring
+
+2. DLP Build Testing
+
+Uninstalled the old DLP build and installed a new build.
+
+Performed fresh testing using:
+
+apt install vlc gedit gimp && apt purge vlc gedit gimp
+
+3. Test Results
+
+Successfully detected:
+
+Install events → .desktop file creation
+
+Uninstall events → .desktop file deletion
+
+Verified that logs are generated correctly and in real-time.
+
+Monitoring and logging behavior is working as expected.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+21/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+
+Dear Sir,
+
+
+1. Optimization of Software Detection Logic
+
+Today I implemented an improved logic in the WinClient module to optimize the software detection process.
+
+    Previously, the system executed the process every 3 minutes, triggering dpkg-query --search repeatedly for all applications.
+
+    This resulted in unnecessary processing and increased system load.
+
+2. New Event-Driven Approach
+
+    Modified the implementation so that:
+
+        The process is no longer dependent on the 3-minute loop.
+
+        dpkg-query --search is triggered only on new application when a new application is installed or an existing application is uninstalled.
+
+        The query is executed only for the specific .desktop file that is created or deleted.
+
+
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+23/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+
+Dear Sir,
+
+
+1. Implementation of Event-Driven File Monitoring
+
+Today I designed and implemented a new event-driven file monitoring logic in the WinClient module.
+
+    Previously, the system used a polling mechanism, where the directory was checked every 3 minutes in a loop.
+
+    This approach caused unnecessary processing even when no changes occurred.
+
+2. New Approach
+
+    Replaced the polling mechanism with an event-driven monitoring approach.
+
+    The program now registers with the Linux kernel to receive notifications.
+
+    The application is triggered only when a .desktop file is created or deleted in:
+
+    /usr/share/applications/
+
+    This ensures the program wakes up only on actual events, instead of continuous checking.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+24/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+1. Linked List Update Logic for Install/Uninstall Handling
+
+Today I worked on improving the linked list management logic in the WinClient module for handling application install and uninstall events.
+
+Currently, the linked list is initialized as:
+
+struct node *header = NULL;
+
+if ((header = getPackageStatus()) == NULL)
+
+This creates the initial software list containing application name, version, and installation date.
+
+Issue Identified:
+
+    The linked list was initialized only once and not updated dynamically.
+
+    During new application installation, the linked list was not updated.
+
+    As a result, during uninstall operations, the system was using stale data, causing incorrect or incomplete removal from:
+
+        Linked list
+
+        software.list 
+file
+2. Implemented Solution
+
+To resolve this, I implemented a live linked list update mechanism:
+
+a) On Application Install:
+
+    After detecting a new install:
+
+        Add a new node to the linked list using addNode()
+
+        Update the software.list file
+
+b) On Application Uninstall:
+
+    On detecting .desktop file deletion:
+
+        Remove the corresponding node from the linked list using removeNode()
+
+        Remove the entry from software.list
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

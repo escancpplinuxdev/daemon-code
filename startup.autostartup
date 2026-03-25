@@ -1,0 +1,26 @@
+App	: Startup Application
+
+path 	: cd /root/.config/autostart
+	  cd ~/.config/autostart/
+
+working : gnome-terminal --working-directory="/tmpdata/Rushikesh_27022026"
+
+	: google-chrome
+	
+	: firefox
+
+	: gnome-terminal -- bash -c "sudo -S bash -c 'cd /tmpdata/Rushikesh_27022026 && xdg-open command.odt; exec bash'"
+
+
+Test	:
+	
+libreoffice --writer "/tmpdata/Rushikesh_27022026/command.odt"
+gnome-terminal -- bash -c "echo 'ketan$123' | sudo -S bash -c 'cd /tmpdata/Rushikesh_27022026 && xdg-open command.odt; exec bash'
+"
+
+gnome-terminal -- bash -c "sudo -S bash -c 'cd /tmpdata/Rushikesh_27022026 && xdg-open command.odt; exec bash'"  // working rushi
+
+
+gnome-terminal -- bash -c "echo 'ketan$321' | sudo -S bash -c 'cd /tmpdata/Rushikesh_27022026 && exec bash'"
+
+gnome-terminal

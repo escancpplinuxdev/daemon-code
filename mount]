@@ -1,0 +1,28 @@
+For virtual box VM //rushi 
+
+mount /dev/sdb1 /media/sdb1 ---> for vm machine
+
+mount /dev/sdb2 /media/sdb2 ---> for iso  file
+
+mount /dev/sdb2 /media/sdb3
+
+mount /dev/sda3 /media/sda3
+mount /dev/sda4 /media/sda4
+mount /dev/sda5 /media/sda5
+
+
+sudo mkdir /mnt/iso
+sudo mount -o loop /path/to/your.iso /mnt/iso
+sudo nano /etc/yum.repos.d/iso.repo
+[iso]
+name=Red Hat ISO
+baseurl=file:///mnt/iso
+enabled=1
+gpgcheck=0
+
+sudo yum clean all
+sudo yum repolist
+sudo yum install <package-name>
+sudo umount /mnt/iso
+sudo nano /etc/fstab
+/path/to/your.iso  /mnt/iso  iso9660  loop  0  0

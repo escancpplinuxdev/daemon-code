@@ -1,0 +1,232 @@
+]
+	192.168.2.58 :		root passwd --> su 	--> ketan$321
+						sudo su --> ketan$123
+
+1]	scp  -P 8623 -r detectNew* 192.168.2.58:/tmpdata/Rushikesh_27022026/detectNewApp
+	root@192.168.2.58's password: 
+
+2]	grep -irn "File Attached => path =" source/ --include="*.cpp" --include="*.h" --exclude="*.cpp_*" --exclude="*.txt" --color	
+
+	grep → search text
+
+	-i → ignore case
+
+	-r → recursive search in directories
+
+	-n → show line number
+
+	"File Attached => path =" → text pattern to search
+
+	source/ → directory to search in
+
+	--include="*.cpp" → search only .cpp files
+
+	--include="*.h" → search only .h files
+
+	--exclude="*.cpp_*" → ignore files like file.cpp_08_01_2024
+
+	--exclude="*.txt" → ignore .txt files
+
+	--color → highlight matched text
+
+
+3]	unlink() is a system call used to delete a file name from the filesystem. It comes from the POSIX API.
+
+1️⃣ What unlink() Does
+
+unlink() removes a file from a directory.
+
+4]	grep -Rin "unlink" *.cpp *.h
+	
+	grep = Global Regular Expression Print
+
+	It searches text inside files.
+	
+	Option	Meaning
+-R	recursive search in folders
+-i	ignore case
+-n	show line numbers
+	
+	grep -Rin --include=\*.{cpp,h} "unlink" .
+grep -rin --include=\*.{cpp,h} "unlink" .
+Difference Between -R and -r in grep
+Option	Meaning	Symbolic Links Behavior	Example Situation
+-r	Recursive search in directories	Does NOT follow symbolic links	Searches only real directories
+-R	Recursive search in directories	Follows symbolic links	Also searches linked directories
+
+5]	grep -Rin "unlink" *.cpp *.h
+
+6]	XXPRINT(1, "Rushi %s:%d %s() deletePackageList().\n", __FILE__, __LINE__, __FUNCTION__);
+
+7] 	eScan selfprotection 
+	/opt/MicroWorld/sbin/commonutil writeconfig /opt/MicroWorld/etc/customprocesslist.conf SelfProtection:Status "0"
+
+8]	find . -type f | wc -l 
+	ls -1          | wc -l      -> count no. of files in current directory
+	ls -1 /path    | wc -l
+
+
+9]
+	:set number 
+
+		show number of line in vim editior linux.
+
+	:set nonumber
+		remove number on vim
+
+10] 	/opt/MicroWorld/sbin/commonutil writeconfig /opt/MicroWorld/etc/customprocesslist.conf "SelfProtection:Status" 0
+
+	/opt/MicroWorld/sbin/commonutil writeconfig  /opt/MicroWorld/etc/GAblocker.conf "GAblocker:Status" 0
+
+11]	vbox cli command
+
+	start vbox using cli
+
+	omkar@PTLD-3:/tmp$ vboxmanage startvm "Centos-7_Developement-217" -type headless
+
+	vboxmanage list vms
+
+	vboxmanage controlvm "Centos-7_Developement-217”  poweroff
+
+12]  	echo $? check pervious command execute right ya wrong.
+	
+	o/p - >  0 	sucess
+		 1	failed
+		 127	wrong command
+13]	ssh -o HostKeyAlgorithms=ssh-rsa root@192.168.1.226	
+
+14] 	du -sh / du -h
+	df -h
+	free -h 
+	lsblk
+
+No, 1st in do while loop at start 1st getPackageStatus() has to create software.list txt file .
+in 2nd time loop check any new app install/uninstall said by checkappInstallUninstalled.cpp thread then only then run getPackageStatus() and create new software.list txt file.
+this is checkappInstallUninstalled.cpp c++ code 
+
+
+
+
+
+Generating software.list
+send event
+
+Monitoring directory: /usr/share/applications/
+
+File Created: vlc.desktop
+App install/uninstall detected
+
+Generating software.list
+send event
+
+Monitoring directory: /usr/share/applications/
+
+File Created: gedit.desktop
+App install/uninstall detected
+
+Generating software.list
+send event
+
+Monitoring directory: /usr/share/applications/
+
+File Deleted: vlc.desktop
+App install/uninstall detected
+
+Generating software.list
+send event
+
+Monitoring directory: /usr/share/applications/
+
+File Created: vlc.desktop
+App install/uninstall detected
+
+Generating software.list
+send event
+
+
+15 ] 
+	sudo sed -i 's/port=3389/port=33220/g' /etc/xrdp/xrdp.ini  --> replace port=3389 to port=33220 on cli
+
+16] Freerdp form host 192.168.2.58 to 192.168.2.220 vm connection command
+
+	xfreerdp /v:192.168.2.220:33220 /u:rushi /p:rushi@123 /cert:ignore /bpp:16 /gdi:sw
+
+17] 	du -sh /media/sda4/*   --> to show total size of each directory inside /media/sda4/*
+	du -sh /media/sda4/*  | sort -h  --> sort in assending order
+
+18] 	Download escan build 
+
+	1. 64 co-operate  -> wget http://www.microworldsystems.com/download/wmclmclient/deb/escan-antivirus.amd64.deb
+
+	2. dlp 		  -> wget http://www.microworldsystems.com/download/wmclmclient/deb/dlp/escan-dlp.amd64.deb
+
+19]   find / -type f -iname "mwlogdaemon" -exec ls -lrtha {} \; 2>/dev/null
+-> {} acts as a placeholder for the file that find discovers. It needs a space before it so it's treated as a distinct argument by ls.
+
+\; tells find that the -exec command has finished. It must have a space before it, otherwise find doesn't know where the execution string ends. 
+
+13] scp file form server/host pc to cilent, form client computer w/o going to server terminal.
+
+root@rushi-VB-220:/tmpdata# scp -P 8623 root@192.168.2.58:/tmpdata/Rushikesh_27022026/edr.sh .
+root@192.168.2.58's password: 
+edr.sh                                                                                   100%   19KB  12.0MB/s   00:00 
+
+14]	grep -iErn --color "dlp|edr|xdr|ultra|corpo" .
+
+grep
+
+👉 search tool
+
+-i
+
+👉 ignore case (DLP = dlp = Dlp)
+
+-E
+
+👉 enable extended regex → allows | (OR)
+
+-r
+
+👉 recursive → search all files + subdirectories
+
+-n
+
+👉 show line number
+
+--color
+
+👉 highlight matched words
+
+"dlp|edr|xdr|ultra|corpo"
+
+👉 search any of these words (OR condition)
+
+.
+
+👉 current directory
+
+Search ALL files in current directory and subdirectories
+→ find lines containing:
+dlp OR edr OR xdr OR ultra OR corpo
+
+15]	xdg-open command.odt & xdg-open program.odt &	
+
+16]
+	gnome-terminal -- bash -c "sudo -S bash -c 'cd /tmpdata/Rushikesh_27022026 ; xdg-open command.odt & xdg-open program.odt; exec bash'" &
+
+17]	dpkg-query --search /usr/share/applications/com.google.Chrome.desktop
+google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
+
+18]	
+	dpkg -P escan-dlp
+	rm -rf /opt/MicroWorld/ /var/MicroWorld/ /etc/escandet.dat /etc/microworld.keys /etc/.p*.e*
+
+19] 	grep -lE "Exec=.*(eog|evince)" /usr/share/applications/*.desktop
+	
+	grep -lE "Exec=.*(eog|evince)" /usr/share/applications/*.desktop
+
+    -l: Only shows the filenames, not the matching lines.
+
+    Exec=.*: Specifically looks for the line that tells Linux how to "Execute" the app.	
+
+

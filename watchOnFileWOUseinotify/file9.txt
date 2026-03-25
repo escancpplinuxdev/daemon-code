@@ -1,0 +1,97 @@
+#include <iostream>
+#include <dirent.h>
+#include <set>
+#include <string>
+#include <unistd.h>
+#include <ctime>
+
+
+using namespace std;
+
+
+void printTime()
+{
+   time_t now = time(NULL);
+   cout << ctime(&now);
+}
+
+
+set<string> readDirectory(const string &path)
+{
+   set<string> files;
+   DIR *dir = opendir(path.c_str());
+
+
+   if (!dir)
+       return files;
+
+
+   struct dirent *entry;
+
+
+   while ((entry = readdir(dir)) != NULL)
+   {
+       string name = entry->d_name;
+
+
+       if (name != "." && name != "..")
+           files.insert(name);
+   }
+
+
+   closedir(dir);
+   return files;
+}
+
+
+int main()
+{
+   string directory = "/tmpdata";
+
+
+   set<string> previousFiles = readDirectory(directory);
+
+
+   cout << "Monitoring directory: " << directory << endl;
+
+
+   while (1)
+   {
+       sleep(5);
+
+
+       set<string> currentFiles = readDirectory(directory);
+
+
+       set<string>::iterator it;
+
+
+       // Check for newly created files
+       for (it = currentFiles.begin(); it != currentFiles.end(); ++it)
+       {
+           if (previousFiles.find(*it) == previousFiles.end())
+           {
+               cout << "File Created: " << *it << " | Time: ";
+               printTime();
+           }
+       }
+
+
+       // Check for deleted files
+       for (it = previousFiles.begin(); it != previousFiles.end(); ++it)
+       {
+           if (currentFiles.find(*it) == currentFiles.end())
+           {
+               cout << "File Deleted: " << *it << " | Time: ";
+               printTime();
+           }
+       }
+
+
+       previousFiles = currentFiles;
+   }
+
+
+   return 0;
+}
+

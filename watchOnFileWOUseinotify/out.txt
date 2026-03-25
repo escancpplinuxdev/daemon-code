@@ -1,0 +1,109 @@
+ void* sendhwevent(void *)
+ {
+      /**
+       * All other availabe feature events will be snet before sending this event.
+       */
+      sendStatusEvent(NULL);
+ 
+      /**
+       * If installed software list is not sent to the server before, it creates a list of all installed software and sent these information in events. Number of 10800 events will be sent, each for one software installed.
+ 
+      if ( access( SOFTWARELIST_FILE, F_OK ) != 0 )
+      {
+           struct node *header = NULL;
+           if( ( header = getPackageStatus( ) ) == NULL )
+           {
+           }
+           else
+           {
+                struct node *iter, *temp;
+                string description;
+ 
+                for( iter = header; iter != NULL;  iter = iter->next)
+                {
+                     if( strlen( iter->date) != 0 && iter->name != NULL )
+                     {
+                          description = "Software Already Present ";
+                          description += iter->date;
+                          description += " {Ver:";
+                          description += iter->version;
+                          description += "}";
+                          if((strstr(iter->name, "eScan administrator") != NULL && strstr(iter->name, "eScan administrator (root)") == NULL) || strstr(iter->name, "eScan command-line"))
+                          {
+                               //Skip multiple escan packages, allow ony "eScan administrator (root)"
+                               continue;
+                          }
+                          //eventsender( GENERAL_ESCAN_NEWLYINSTSOFTWARES, INFO_SEVERITY,(char *)description.c_str(), (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+                          eventsender( GENERAL_ESCAN_PRESENTSOFTWARES, INFO_SEVERITY,(char *)description.c_str(), (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+                          sleep(1);
+                     }
+                }
+ 
+                deletePackageList();
+           }
+      }
+      /**
+       * It keeps track of all installed softwares and list of software names sent to the server.
+       */
+      //Here monitor software/hardware changes
+      do
+      {
+ 
+ 
+           struct node *header = NULL;
+ 
+           /**
+            * If any new list of installed or deleted softwares found, it sends those names to the server in event 10800.
+            */
+           if( ( header = getPackageStatus( ) )  != NULL  )
+           {
+                struct node *iter, *temp;
+                string description;
+                for( iter = header; iter != NULL; iter = iter->next )
+                {
+                     description = "New Software Installed "; // 0 --> new s/w installed 1 --> s/w uninstalled
+ 
+                     if( iter->status == 0 )
+                     {
+                          description += iter->date;
+                          description += " {Ver:";
+                          description += iter->version;
+                          description += "}";
+ 
+                          eventsender( GENERAL_ESCAN_NEWLYINSTSOFTWARES, INFO_SEVERITY,(char *)description.c_str(), (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+                          sleep(1);
+                     }
+                     else
+                     {
+                          eventsender( GENERAL_ESCAN_NEWLYUNINSTSOFTWARES, INFO_SEVERITY,(char *)"Existing Software Uninstalled", (char *)"Software Install/Uninstall Status", (char *)iter->name, (char *)"winclient" );
+                     }
+                }
+           }
+ 
+           deletePackageList(); ///Deletes all existing nodes in software list. i.e free(node);
+
+
+
+
+
+ 
+           string SwHwInfo;
+           /**
+            * It checks for change in hardware information. If any hardware will be changed, hardware information event will be sent.
+            */
+           MW_HW_INFO(SwHwInfo);
+ 
+           int result = checknupdateHWevent( SwHwInfo.c_str() );
+           switch ( result )
+           {
+                case -1:
+                     break;
+                case  1:
+                     break;
+           }
+ 
+           sleep( 180 ); //sleeps for 180 secs
+ 
+      } while ( TermExitSignal != 1 );
+ }
+

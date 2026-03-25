@@ -1,0 +1,2 @@
+This is checking for inotify file 
+where inotify limitation is check -> read document. if rtscanner run then inotify take realtimescanner event + this file creation and deletation event combine.

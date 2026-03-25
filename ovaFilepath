@@ -1,0 +1,42 @@
+root@PTLD-2 14:58:11 ~ > find / -type f -iname "*.ova" -exec ls -lrtha {} \; 2>/dev/null
+-rwxrwxrwx 1 root root 5.3G Jun 13  2023 '/media/sdc/ovaFile/CentOS 2.208 x64_centos_new.ova'
+-rw------- 1 root root 2.8G Jun  2  2023 /media/sdc/backup/0.198_selfProtection_Appblocker/tmpdata/u16_212.ova
+-rwxr-xr-x 1 root root 17G Jun  7  2023 /media/sdc/backup/1.253_vikas_mac_machine/mediasda5/snowleopard-macosx.ova
+-rwxr-xr-x 1 root root 858M Jun  7  2023 /media/sdc/backup/1.253_vikas_mac_machine/mediasda5/vm_60/u14_212.ova
+-rw------- 1 root root 20G Jun  3  2023 '/media/sdc/backup/windows_shubham_ova_file/Windows Server @2.201.ova'
+-rwxr-xr-x 1 root root 20G Jun  6  2023 /media/sdc/backup/2.196_Main_Machine/tmpdata/macOS1.253.ova
+-rw------- 1 root root 5.3G May 30  2024 '/media/sdc/omkar/workspace/code/escan_work/samar_ova_and_vdi_file/Dev- 1.228- SOHO32-BIT.ova'
+-rw------- 1 root root 7.3G May 30  2024 '/media/sdc/omkar/workspace/code/escan_work/samar_ova_and_vdi_file/Dev- 1.227-SOHO64-BIT.ova'
+-rw------- 1 root root 13G Dec 28  2023 /media/sdc/omkar/workspace/code/escan_work/all_ova/newOva/Dev_ubuntu32_cop.ova
+-rw------- 1 root root 12G Dec 27  2023 /media/sdc/omkar/workspace/code/escan_work/all_ova/oldOva/Dev_ubuntu64_cop.ova
+-rw------- 1 root root 5.3G Feb  2  2024 '/media/sdc/omkar/workspace/code/escan_work/ISO_for_developmenet_machines/Dev- 1.228- SOHO32-BIT.ova'
+-rw------- 1 root root 5.5G Feb  2  2024 '/media/sdc/omkar/workspace/code/escan_work/ISO_for_developmenet_machines/Dev- 1.227-SOHO64-BIT.ova'
+-rw------- 1 omkar omkar 779M Feb  6 16:09 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/centos64-243.ova
+-rw------- 1 omkar omkar 9.6G Nov 11 13:54 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/1.251/1.251.ova
+-rw------- 1 omkar omkar 4.1G Feb  6 16:24 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/rhet_1-218.ova
+-rw------- 1 omkar omkar 32G Nov 11 16:09 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/2.216/ubuntu_Developement_64_2.216.ova
+-rw------- 1 omkar omkar 3.8G Feb  6 16:17 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/rhet_1-215.ova
+-rw------- 1 omkar omkar 7.4G Nov 11 13:06 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/2.217/centos7_Developement_2.ova
+-rw------- 1 omkar omkar 3.9G Nov 11 14:08 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/2.198/ubuntu_14_self_pfinder_rmm_2.198.ova
+-rw------- 1 root root 1.6G Oct  9  2023 /media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/1.227/ooova/DEV-1.227-SOHO64BIT.ova
+-rw------- 1 root root 9.0G Nov 12 16:31 '/media/sdc/omkar/workspace/code/Ketan/Developement_Machines_Bakup/1.227/Dev- 1.227-SOHO64-BIT.ova'
+-rw------- 1 omkar omkar 11G Aug 21  2024 /media/sdc/omkar/workspace/code/ova/centos7_32_nmcli_2.246.ova
+-rw------- 1 omkar omkar 3.5G Aug 21  2024 /media/sdc/omkar/workspace/code/ova/centos7_64_nmcli_2.247.ova
+-rw------- 1 omkar omkar 7.2G Aug 21  2024 /media/sdc/omkar/workspace/code/ova/ubuntu18_64_nmcli_1.216.ova
+-rw------- 1 omkar omkar 11G Aug 21  2024 /media/sdc/omkar/workspace/code/ova/ubuntu18_32_nmcli_2.245.ova
+-rw------- 1 omkar omkar 3.3G Aug 21  2024 /media/sdc/omkar/workspace/code/ova/ubuntu_14_selfprotection_pfinder_rmm_2-53.ova
+-rw------- 1 omkar omkar 20G Aug 21  2024 /media/sdc/omkar/workspace/code/ova/1.253_macos.ova
+-rw------- 1 omkar omkar 9.4G Aug 21  2024 /media/sdc/omkar/workspace/code/ova/1.251.ova
+-rwxr-xr-x 1 root root 17G Jun 26  2023 /media/sdc/omkar/workspace/escan_work/macos_ova_file/snowleopard-macosx.ova
+-rw------- 1 root root 5.3G Oct 20  2023 /media/sdc/rushikesh/Ova/DEV-1.228-SOHO32BIT.ova
+-rwxrwxrwx 1 root root 13G Jul 20  2023 /media/sdc/rushikesh/Ova/Dev_ubuntu32_cop.ova
+-rwxr-xr-x 1 root root 17G Oct 20  2023 /media/sdc/rushikesh/Ova/snowleopard-macosx.ova
+-rwxrwxrwx 1 root root 12G Jul 20  2023 /media/sdc/rushikesh/Ova/Dev_ubuntu64_cop.ova
+-rw------- 1 root root 5.5G Oct 20  2023 /media/sdc/rushikesh/Ova/DEV-1.227-SOHO64BIT.ova
+-rwxrwxrwx 1 root root 13G Jul 21  2023 /media/sdc/rushikesh/Ova/NewOva/Dev_ubuntu32_cop.ova
+-rwxrwxrwx 1 root root 12G Aug  3  2023 /media/sdc/rushikesh/Ova/NewOva/Dev_ubuntu64_cop.ova
+-rw------- 1 omkar omkar 18G Nov 13 12:16 /media/sdc/vikas/macos_vikas_1.ova
+-rwxr-xr-x 1 root root 858M Jun 15  2023 /media/sdc/LIVE_VMS/u14_212.ova
+root@PTLD-2 15:25:25 ~ > logout
+Connection to 192.168.2.138 closed.
+

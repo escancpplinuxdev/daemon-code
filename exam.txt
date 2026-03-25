@@ -1,0 +1,857 @@
+i am  B.E. computer engineer from Mumbai university right now i have 3 year experience in  c++ Linux program of 27 year age 
+give me list, link of exam which should i have to give. every  exam list with registration form link  with form  start date, age limit, how many attempt in tabular from
+
+1] google 
+
+i am obc  2020 B.E. computer engineer from Mumbai university right now i have 3 year experience in  c++ Linux program of 27 year age 
+give me list, link of exam which should i have to give. every  exam list with registration form link  with form  start date, age limit, how many attempt in tabular from
+As a 27-year-old Computer Engineer with an OBC (Non-Creamy Layer) certificate and 3 years of experience, you benefit from
+3 years of age relaxation beyond the General category limit for most government exams. This extends your eligibility for several "Scientist" and "Officer" level positions that typically cap at 30 years for General candidates. 
+Below is the list of technical and research-oriented exams for which you are currently eligible.
+National Competitive Exams for Computer Engineers (OBC Category) 
+Exam Name 	Registration Link	Start Date (Tentative)	Age Limit (OBC)	Max Attempts
+GATE 2027	gate.iitm.ac.in	August 2026	No Limit	Unlimited
+ISRO Scientist 'SC'	isro.gov.in/Careers	Early 2027	33 Years	Unlimited
+NIC Scientist 'B'	calicut.nielit.in/nic21	March 2026 / 2027	33 Years	Unlimited
+BARC OCES 2027	barcocesexam.in	Dec 2026 / Jan 2027	29 Years	Unlimited
+UPSC ESE (IES)	upsconline.nic.in	September 2026	33 Years	Unlimited
+UPSC CSE (IAS)	upsconline.nic.in	February 2027	35 Years	9 Attempts
+CDAC C-CAT	cdac.in	Oct 2026 / Apr 2027	No Limit	Unlimited
+Key Eligibility Details for Your Profile
+
+    BARC OCES: Since you are 27, you have about 2 years left to apply for BARC, as the OBC age limit is 29 years. This is one of the most prestigious research roles in Mumbai (Trombay).
+    ISRO Scientist: Your 3 years of C++ and Linux experience is highly relevant for the Scientist/Engineer 'SC' post. You have 6 years of eligibility remaining.
+    NIC/NIELIT: These recruitments for Scientist 'B' roles are specifically for IT/Computer Science graduates. You are well within the 33-year OBC limit.
+    GATE 2027: This is your gateway to PSUs (like ONGC, GAIL, IOCL) and M.Tech programs. While there is no age limit for the exam itself, most PSUs cap recruitment at 30 years for OBC. 
+
+Preparation Recommendation
+Since you already have a B.E. and industry experience, focusing on GATE or ISRO is often the most rewarding path. The ISRO exam syllabus aligns closely with GATE but emphasizes core engineering fundamentals.
+Would you like a detailed syllabus for the ISRO Computer Science exam or a list of Public Sector Undertakings (PSUs) that recruit directly based on your current age?
+
+    UPSC Age Limit 2026, Eligibility, Qualification, Attempts
+    2 Mar 2026 — Table_title: UPSC Eligibility Criteria 2026 Table_content: header: | UPSC CSE Eligibility Criteria 2026 | | row: | UPSC CSE Eligib...
+    Vajiram & Ravi
+    BARC OCES Eligibility Criteria 2026, Check Age Limit ...
+    3 Mar 2026 — BARC OCES Eligibility Criteria 2026, Check Age Limit, Educational Qualification. ... The Bhabha Atomic Research Center is India's ...
+    Testbook
+    BARC OCES Recruitment 2026, Notification Out, Exam Date, Apply ...
+    3 Mar 2026 — Age Limit. The upper age limit for BARC OCES 2026 varies by category. The age of the candidate is considered as on 1st August 2026...
+    Testbook
+
+Show all
+give any other suggestion
+Beyond the standard technical exams, your C++ and Linux background makes you a strong candidate for several specialized research, defense, and management-oriented roles. As an
+OBC candidate, you qualify for a 3-year age relaxation in most cases, extending your eligibility for several "Scientist" and "Officer" level positions.
+Additional Specialized & Technical Exams
+The following table lists high-value opportunities for a Computer Engineer with your specific experience profile:
+Exam Name 	Registration Link	Expected Start Date	Age Limit (OBC)	Attempts
+DRDO Scientist 'B'	rac.gov.in	May – June 2026/27	31–38 Years*	Unlimited
+UPSC Engineering Services (ESE)	upsconline.nic.in	September 2026	33 Years	Unlimited
+RBI Grade B (DEPR/DSIM)	rbi.org.in	June – July 2026/27	33 Years	9
+TIFR GS (Computer Science)	tifr.res.in	October 2026	No Limit	Unlimited
+MAH MCA CET	cetcell.mahacet.org	January 2027	No Limit	Unlimited
+SBI SO (Specialist Officer)	sbi.co.in/careers	Varies (Multiple)	33–38 Years**	Unlimited
+*Note: Recent DRDO notifications have seen the upper age limit for Scientist 'B' (OBC) increased to 38 years, though some departmental posts still use 31. Always check the specific notification.
+**Note: SBI SO age limits vary significantly based on the specific grade (JMGS I, MMGS II, etc.) of the IT role. 
+Strategic Suggestions for Your Profile
+
+    Leverage your C++/Linux Experience (DRDO/ISRO): Your 3 years of professional experience are highly valued in defense and space research. DRDO Scientist 'B' often shortlists candidates via GATE scores, but some posts may have separate written tests or weightage for relevant industry experience.
+    Specialist Officer (SO) Roles in Banks: Since you have >2 years of experience, you can skip "Entry Level" exams and apply for MMGS-II (Middle Management) roles in banks like SBI or IBPS SO. These roles specifically look for experienced IT professionals and often have higher age limits for lateral entry.
+    Advanced Computing (C-DAC): Given your technical stack, a PG Diploma from C-DAC (via the C-CAT exam) can bridge the gap to high-end R&D roles in private and semi-government sectors if you feel your current Mu-degree needs a "top-tier" boost.
+    Mumbai-Specific Opportunities: Since you are from Mumbai University, keep a close watch on BARC (Bhabha Atomic Research Centre). They are headquartered in Trombay and offer one of the most prestigious scientific careers for computer engineers in the city. 
+
+Would you like me to find the specific previous year cut-off scores for the DRDO Scientist 'B' (Computer Science) or Syllabus details for the RBI Grade B IT officer exam?
+
+    DRDO Scientist B Eligibility 2025: Age Limit & Qualification
+    12 Jan 2026 — Table_title: DRDO Scientist Eligibility 2025 Table_content: header: | RDO RAC Scientist B Eligibility Requirements | Details | row...
+    Testbook
+    Top Competitive Exams After B.Tech CSE – Government & Private
+    Government roles offer job security, good compensation, and strong career growth. * 1.1 GATE (Graduate Aptitude Test in Engineerin...
+    Shobhit University
+    DRDO RAC Scientist 'B' Recruitment 2026 - Delhi Govt Jobs
+    14 Sept 2025 — Table_title: DRDO RAC Scientist 'B' Recruitment 2026: Upcoming Notification Table_content: header: | Name of Organization | Defenc...
+    Sarkarijobs.com
+
+Show all
+yes, give cutoff for above all exam
+For a Computer Engineer in the
+OBC-NCL category, the qualifying cutoffs vary between general "pass" marks and the higher "selection" marks required for interviews at top institutes or organizations. 
+Below are the most recent available cutoff scores for the exams mentioned earlier.
+Cutoff Scores for Computer Science (OBC Category)
+Exam Name 	Cutoff Type	Recent OBC Cutoff	Year/Reference
+GATE (CS)	Qualifying Marks	26.2 / 100	2025
+ISRO Scientist 'SC'	Written Test (Avg)	60 - 64 / 100	2024
+NIC Scientist 'B'	Written (Normalized)	59.66 / 120	2024
+BARC OCES	Online Exam (CBT)	107 / 300	2024
+BARC OCES	GATE Score Route	812	2024
+DRDO Scientist 'B'	Final Selection	824 / 1000	2022
+RBI Grade B (IT)	Phase 1 (Prelims)	~60 - 65 / 200	2024
+SBI SO (IT)	Online Exam	58 - 61 / 100	2026 Exp.
+Key Insights for Your Profile
+
+    BARC (Mumbai): Since you are based in Mumbai, note that the BARC OCES written test cutoff is often lower than the GATE score route. For 2024, a score of 107 out of 300 in their own exam was sufficient for an interview call.
+    GATE Stability: The qualifying marks for OBC in GATE CS typically fluctuate between 24 and 29 marks. However, to get into an IIT or a PSU, you generally need a GATE score above 700+.
+    NIC/NIELIT: The minimum qualifying percentage is strictly 40% for OBC, but the actual competitive cutoff for an interview shortlist was roughly 50% (59.66/120) in the last cycle.
+    ISRO: For the Scientist 'SC' post, you must score at least 40% in each part of the written test to be considered, but the final interview call usually requires a higher aggregate depending on the vacancy. 
+
+Important: For ISRO and NIC, there is no limit on the number of attempts as long as you are under the age of 33 (for OBC). 
+Would you like to see a comparison of the exam patterns (e.g., number of questions, negative marking) for these specific tests?
+
+
+2] claude.ai 
+
+i am obc 2020 B.E. computer engineer from Mumbai university right now i have 3 year experience in c++ Linux program of 27 year age give me list, link of exam which should i have to give. every exam list with registration form link with form start date, age limit, how many attempt in tabular from
+5:05 pm
+Marshaled exam resources and tabular compilation strategy
+
+
+
+Now I have enough data to build a comprehensive table. Let me compile everything clearly.
+
+
+
+
+
+
+
+
+
+# 	Exam & Conducting Body 	Registration Form Link 	Form Start Date
+(2026–27 cycle) 	Age Limit
+General → OBC (+3 yrs) 	Your Status
+(Age 27, OBC) 	Attempts
+OBC 	Type
+CORE TECHNICAL — HIGHEST RELEVANCE FOR CS/IT ENGINEER
+1 	
+GATE CSE 2027
+Graduate Aptitude Test — IIT Madras
+Gateway to DRDO, NIC, PSU, ISRO, M.Tech IIT/NIT
+	gate2027.iitm.ac.in
+(GOAPS portal) 	Aug 2026
+Closes ~Sep 2026 	No age limit
+Any age eligible 	✓ Fully eligible 	Unlimited
+No cap ever 	CENTRAL
+2 	
+DRDO Scientist B (via GATE/RAC)
+Defence R&D Org — rac.gov.in
+B.E. CS + GATE score required · Pay ₹56,100–1,77,500
+	rac.gov.in 	~Jun–Jul 2026
+Expected. Check site 	28 (Gen) → 31 (OBC)
+As on closing date 	✓ Eligible (27 < 31) 	Unlimited
+Till age 31 (OBC) 	DEFENCE R&D
+3 	
+NIC Scientist B
+National Informatics Centre — nic.in
+Pure CS exam · CBT + Interview · Pay ₹56,100–1,77,500
+	nic.in/recruitment
+(Also via NIC portal) 	No fixed annual date
+Check site / Employment News 	30 (Gen) → 33 (OBC)
+As on closing date 	✓ Eligible (27 < 33) 	Unlimited
+Till age 33 (OBC) 	CENTRAL GOV
+4 	
+ISRO Scientist/Engineer SC (CS)
+ICRB — isro.gov.in
+Written Test + Interview · Pay ₹56,100–1,77,500
+	isro.gov.in/Careers 	No fixed date
+Notified irregularly 	35 (Gen) → 38 (OBC)
+As on closing date 	✓ Eligible (27 < 38) 	Unlimited
+Till age 38 (OBC) 	SPACE R&D
+PSU RECRUITMENT THROUGH GATE — APPLY WITH GATE SCORE
+5 	
+BPCL / HPCL / ONGC / NTPC / IOCL via GATE
+Multiple PSUs — CS/IT discipline
+Apply separately after GATE result (Mar 2026) · Pay ₹60,000–1,80,000
+	bpclindia.com · hpcl.co.in
+ongcindia.com · ntpc.co.in 	~Apr–Aug 2026
+After GATE 2026 result 	26–28 (Gen) → 29–31 (OBC)
+Varies by PSU 	✓ Eligible
+Check each PSU age 	Unlimited
+Age-based 	PSU
+6 	
+BEL / BHEL Engineer Trainee (via GATE)
+Bharat Electronics / Heavy Electricals
+CS/IT stream · GATE + Interview · Pay ₹40,000–1,40,000
+	bel-india.in
+careers.bhel.in 	~May–Jul 2026
+After GATE result 	25–28 (Gen) → 28–31 (OBC) 	✓ Eligible 	Unlimited
+Age-based 	PSU
+CIVIL SERVICES — OPEN TO ALL GRADUATES
+7 	
+UPSC Civil Services (IAS/IPS/IFS)
+Union Public Service Commission — upsc.gov.in
+Open to any graduate · Prelims → Mains → Interview
+	upsc.gov.in 	~Feb 2027
+Notification Feb, Form closes Mar 	21–32 (Gen) → 35 (OBC) 	✓ Eligible (27 < 35) 	9 attempts
+OBC (vs 6 for Gen) 	CENTRAL GOV
+8 	
+SSC CGL (Inspector / Tax Asst / Stat Inv)
+Staff Selection Commission — ssc.gov.in
+Graduate-level · Many posts suit CS background
+	ssc.gov.in 	~Apr–May 2026
+As per SSC Calendar 2026 	18–32 (Gen) → 35 (OBC)
+Varies post-wise 	✓ Eligible 	Unlimited
+Age-based 	CENTRAL GOV
+MAHARASHTRA STATE LEVEL — MUMBAI BASED
+9 	
+MPSC State Services (Group A/B)
+Maharashtra Public Service Commission
+Prelims → Mains → Interview · Open to any graduate
+	mpsc.gov.in 	~Mar–Apr 2026
+Check MPSC calendar 	19–38 (OBC open category)
+Maharashtra OBC very favourable 	✓ Easily eligible 	Unlimited
+Age-based 	MH STATE
+10 	
+MPSC Technical Services / IT Officer
+Maharashtra PSC — CS/IT specific posts
+B.E. CS/IT required directly relevant to your profile
+	mpsc.gov.in 	Irregular notification
+Watch mpsc.gov.in 	18–38 (OBC)
+Maharashtra OBC relaxation 	✓ Eligible 	Unlimited
+Age-based 	MH STATE
+Recommended priority order for your profile
+Do THIS first (Aug 2026)
+Register for GATE CSE 2027. Your C++/Linux experience maps perfectly to the CS syllabus. A good GATE score unlocks DRDO, NIC, all PSUs, and IIT M.Tech in one shot.
+Watch these sites regularly
+NIC and ISRO don't follow a fixed calendar. Bookmark nic.in, isro.gov.in, and subscribe to Employment News / Sarkari Result alerts so you don't miss irregular notifications.
+Age deadline awareness
+DRDO OBC age limit is 31. You have ~4 years. For UPSC CSE OBC, you have 8 more attempts up to age 35. Start UPSC if you want administration + tech policy roles.
+OBC Certificate check
+Ensure your OBC (NCL) certificate is not older than 1 year for Central govt exams. Many candidates are rejected at document verification for an expired certificate.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Important notes specific to your profile
+
+Why UPSC ESE (IES) and SSC JE are excluded: These two very popular exams do NOT have a Computer Science branch. They only accept Civil, Mechanical, Electrical, and Electronics & Telecom engineers. Many CS students waste months preparing for these without knowing this.
+
+Your biggest advantage — 3 years C++ Linux experience: This directly maps to GATE CS, DRDO, NIC, and ISRO syllabi (Operating Systems, System Programming, Data Structures, Algorithms). You are not starting from zero — you already live these topics daily.
+
+DRDO age alert: OBC limit is 31 years. You are 27 now, so you have roughly 3–4 application cycles left. Do not delay DRDO applications. Register for GATE first since DRDO uses GATE scores.
+
+OBC NCL Certificate validity: For all Central Government exams, your OBC Non-Creamy Layer certificate must be issued within the last 1 year (some exams say last 3 years — always read the specific notification). Get a fresh one before applying.
+
+Exam to watch in Maharashtra specifically: MPSC has been expanding IT Officer and Technical posts since the Digital Maharashtra push. Being from Mumbai University gives you local preference in MPSC and Maharashtra government IT departments.
+
+give any other suggestion
+5:16 pm
+Synthesized private sector and skill development pathways for technical profile
+
+Based on your specific profile — B.E. CS, 3 years C++/Linux, Mumbai — here are suggestions across different directions:
+Technical Career Upgrades (leverage your C++/Linux strength)
+
+Embedded & Systems Programming roles — your C++/Linux background is rare and highly paid. Companies like Qualcomm, Texas Instruments, Bosch, Continental, and L&T Technology Services in Pune/Bangalore actively hire for this. Most freshers can't do what you already do. Update your resume to highlight: kernel-level work, thread synchronization, inotify, socket programming.
+
+Linux Kernel / Open Source contribution — contributing to the Linux kernel or projects like GNOME, systemd, or any C++ open source repo makes your GitHub look exceptional. Even 2–3 merged pull requests carry more weight than certifications in systems programming interviews.
+
+Certifications worth doing for your stack:
+
+    Red Hat RHCSA / RHCE — highly respected for Linux professionals, directly maps to your daily work. Exam fee ~₹20,000. Many MNC contracts require RHCE.
+    CKA (Certified Kubernetes Administrator) — DevOps/Cloud companies pay heavily for Linux + containers combo. Your Linux foundation makes this easier than for most.
+    AWS Solutions Architect Associate — ₹15,000 exam fee, opens cloud + systems roles at ₹15–25 LPA range.
+
+Higher Education (opens PSU + academia doors)
+
+M.Tech via GATE — IIT Bombay is in Mumbai itself. With a good GATE score, OBC candidates get fee waivers and stipend of ₹12,400/month. An IIT M.Tech stamp transforms your resume for DRDO, NIC, ISRO, and senior industry roles.
+
+M.Tech DIRECT admission (without GATE) at VJTI Mumbai, COEP Pune, SPIT Mumbai — for working professionals, part-time M.Tech programs exist so you don't have to leave your job.
+Private Sector — Your C++/Linux Profile Is Premium
+
+These specific domains are currently underhired for C++/Linux engineers in India:
+Domain	Companies Hiring in Mumbai/Remote	Expected CTC
+Automotive software (AUTOSAR)	Tata Elxsi, Bosch, Continental	₹12–22 LPA
+Telecom / 5G stack	Ericsson, Nokia, Samsung R&D	₹14–25 LPA
+Trading systems / HFT	Citadel, Jane Street, Tower Research	₹30–80 LPA
+Network security products	Palo Alto, Check Point, Quick Heal	₹12–20 LPA
+Storage / OS products	NetApp, Western Digital, Seagate	₹14–22 LPA
+
+High Frequency Trading (HFT) is worth special mention — C++ low-latency programming is their core skill requirement. Mumbai has a growing HFT cluster (BSE/NSE ecosystem). Your exact skill set is what they look for. Companies like Tower Research Capital, Graviton, and Optiver hire B.E. freshers/3-year-exp engineers at packages that beat IIT campus placements.
+Freelance / Side Income
+
+Toptal / Upwork for C++ contracts — Systems C++ freelancers charge $40–80/hour on international platforms. With 3 years experience you qualify. Even 10 hours/month = ₹40,000–80,000 extra.
+
+Teaching on Unacademy / YouTube — C++ and Linux system programming content is extremely thin in Hindi/Marathi. You already understand inotify, pthreads, condition variables — that's niche content that 10,000+ GATE/DRDO aspirants need. Many educators in this niche earn ₹50,000–2,00,000/month passively.
+Startup / Entrepreneurship Angle
+
+Mumbai has a strong deeptech startup ecosystem — Kstart, IAN, and Nasscom DeepTech Club fund systems-level startups. IoT firmware, industrial automation, cybersecurity products all need exactly your skill. Consider building a product on the side before committing fully.
+One Honest Piece of Advice
+
+Your C++/Linux experience is your moat — most software engineers in India do web/mobile. Systems programmers are rare. Before chasing government exams which take 2–4 years to result in a job, evaluate whether a targeted private sector switch (especially HFT, telecom, or automotive embedded) could get you to ₹20+ LPA within 6–12 months. Government exams make more sense if job stability, pension (NPS), and work-life balance matter more to you than salary — which is a completely valid choice. Know which you're optimizing for before you invest preparation time.
+
+
+3] Gemini
+
+ i am obc 2020 B.E. computer engineer from Mumbai university right now i have 3 year experience in c++ Linux program of 27 year age
+
+give me list, link of exam which should i have to give. every exam list with registration form link with form start date, age limit, how many attempt in tabular from
+Gemini said
+
+As a 2020 B.E. Computer Engineering graduate from Mumbai University with 3 years of experience in C++ and Linux, you are in a strong position for several high-level technical roles in the Indian government and Public Sector Undertakings (PSUs). At 27 years old with OBC (Non-Creamy Layer) status, you benefit from a 3-year age relaxation, extending your upper limit for most "Scientist" or "Engineer" roles to 33 years.
+
+Here is a targeted list of exams for a professional with your background.
+📋 Upcoming Government Exams for Computer Engineers (2026)
+Exam Name	Registration Link	Form Start Date	Age Limit (OBC)	Max Attempts
+GATE 2026 (For PSUs/M.Tech)	gate.iitg.ac.in	Aug 2025	No Limit	Unlimited
+ISRO Scientist/Engineer	isro.gov.in/Careers	Jan 2026	33 Years	Unlimited
+BARC OCES/DGFS	barcocesexam.in	Dec 2025	29 Years*	Unlimited
+NIC Scientist 'B'	calicut.nielit.in/nic	Mar 2026 (Exp)	33 Years	Unlimited
+SSC Selection Post (Ph XIV)	ssc.gov.in	31 Mar 2026	33-38 Years**	Unlimited
+AAI Junior Executive (IT)	aai.aero/careers	TBA (Mid 2026)	30 Years	Unlimited
+UPSC CSE (IAS/IPS)*	upsconline.nic.in	Feb 2026	35 Years	9 Attempts
+
+*BARC has a stricter age limit; usually 26 for General, 29 for OBC.
+**SSC age limits vary by specific post code; technical JE roles usually cap at 30+3 (OBC).
+🔍 Strategic Advice for Your Profile
+
+    The GATE Path: Since many PSUs (IOCL, ONGC, GAIL) now recruit directly via GATE scores, this is your most important exam. Given your C++ and Linux background, you should focus on the Computer Science (CS) paper.
+
+    ISRO & BARC: These are the most prestigious for a Linux/C++ specialist. They value core system knowledge. Your 3 years of experience will be a massive advantage during the interview stage, which carries 50–100% weightage.
+
+    NIC (National Informatics Centre): This department handles government e-infrastructure. They frequently look for "Scientist B" roles where Linux expertise is highly valued.
+
+    Experience Advantage: For many "Assistant Engineer" or "Scientific Officer" roles, your 3 years of experience may qualify you for Lateral Entry or higher-grade scales (Scientist 'C') in some organizations, though most entry-level exams only require the degree.
+
+💡 Preparation Tips
+
+    Brush up on OS Fundamentals: Since you work on Linux, ensure you are theoretically sound in Process Management, Memory Management (paging/segmentation), and File Systems for the written tests.
+
+    C++ Standards: Competitive exams often stick to C++11/14 concepts. Make sure you are comfortable with pointers, virtual functions, and memory allocation.
+
+    Aptitude: Most of these exams (especially AAI and SSC) have a 25–50% weightage on General Aptitude and English.
+
+Would you like me to find the specific syllabus for the ISRO Scientist 'SC' Computer Science exam so you can see how much your Linux experience overlaps?
+
+Computer Science Engineering Government Exams Preparation
+
+This video provides a comprehensive overview of various government job opportunities specifically for Computer Science engineers in India, which aligns with your goal of finding suitable exams to take.
+You said
+
+give any other suggestion  
+Gemini said
+
+Given your 3 years of experience with C++ and Linux and your OBC status, you have a significant advantage for "Lateral Entry" or "Project Engineer" roles. These positions often value your practical industry experience over just a written test score.
+
+Here are additional high-value suggestions for your career path in India.
+🚀 Technical Public Sector & R&D Opportunities
+
+Beyond the standard exams, you should look at direct recruitment for experienced engineers. These often involve a "Screening + Interview" model rather than a massive multi-stage exam.
+Organization	Best Role for You	Eligibility (OBC)	Registration / Link
+C-DAC	Project Engineer	33–56 Years*	cdac.in/careers
+BEL	Project Engineer - I	35 Years	bel-india.in/careers
+NIELIT	Resource Person (Software)	33 Years	nielit.gov.in/recruitments
+DRDO	Scientist 'B'	31 Years	rac.gov.in
+NPCIL	Scientific Assistant	33 Years	npcilcareers.co.in
+
+*C-DAC age limits vary by the specific seniority of the Project Engineer level (PE-I, PE-II).
+🔍 Why these fit your "C++ & Linux" background:
+
+    C-DAC (Centre for Development of Advanced Computing): They are the pioneers of Supercomputing in India. Your Linux internals and C++ threading knowledge are exactly what they need for high-performance computing (HPC) projects. They currently have over 800+ vacancies across India.
+
+    BEL (Bharat Electronics Limited): They have a strong unit in Navi Mumbai (your home city!). They frequently hire Project Engineers for defense communication systems that run on Linux-based embedded platforms.
+
+    DRDO (Scientific Officer): While competitive, your 3 years of experience makes you an ideal candidate for the Scientist B role. They heavily use C++ for missile guidance and simulation software.
+
+💡 Strategic Career Suggestions
+
+    Target "Experience Required" Posts: Instead of competing with freshers in general exams, focus on "Project Engineer" or "Scientist B" notifications that ask for 2+ years of experience. The competition is much lower because most freshers are ineligible.
+
+    Mumbai-Specific PSUs: Look into BARC (Anushaktinagar) and Mazagon Dock (MDL). Since you are in Mumbai, MDL frequently hires for technical officer roles where Linux system administration is required for ship-based computer systems.
+
+    Certification Boost: Since you are a Linux user, consider getting the RHCSA (Red Hat Certified System Administrator). This certificate is highly respected in both Indian PSUs and global tech firms like Google or Oracle.
+
+Would you like me to help you draft a technical resume that highlights your 3 years of C++ and Linux experience specifically for a C-DAC or BEL application?
+
+Government Job Opportunities for Computer Science Engineers
+
+This video provides a detailed breakdown of various technical government roles and the specific preparation strategies needed for Computer Science engineers in India.
+
+4] chatgpt
+
+i am2020 B.B. computer engineer from Mumbai university right now i have 3 year experience in  c++ Linux program of 27 year age 
+give me list, link of exam which should i have to give every exam list which registration form link
+
+You’re in a very good position (3 yrs C++ Linux, age 27) 👍
+Now the key is: choose exams that actually boost your career (not random ones).
+
+I’ll give you:
+
+✅ Best exams for your profile
+✅ Direct registration links
+✅ Priority order (VERY IMPORTANT)
+🚀 🎯 1️⃣ MOST IMPORTANT (Core Career Exams)
+1. GATE
+
+👉 Best if you want:
+
+    PSU jobs (IOCL, BHEL, etc.)
+
+    M.Tech (IIT, IISc)
+
+    Higher salary opportunities
+
+📌 Official Registration:
+👉 Apply for GATE Exam
+
+📊 Info:
+
+    Once per year
+
+    Valid for 3 years
+
+2. UPSC Civil Services Examination
+
+👉 If you want:
+
+    IAS / IPS / Govt job
+
+📌 Registration:
+👉 https://upsconline.nic.in
+
+⚠️ Only choose if you are serious about government career.
+🚀 🎯 2️⃣ HIGH VALUE IT CERTIFICATIONS (BEST FOR YOU)
+
+👉 Based on your C++ + Linux background
+3. AWS Certification Exams
+
+👉 BEST for:
+
+    DevOps
+
+    Cloud Engineer
+
+    Backend roles
+
+📌 Register here:
+👉 AWS Exam Registration
+
+💡 Start with:
+
+    AWS Cloud Practitioner
+
+    AWS Solutions Architect
+
+4. Google Cloud Certification
+
+📌 Registration:
+👉 https://cloud.google.com/certification
+
+💡 Good for:
+
+    Backend + distributed systems
+
+5. Microsoft Azure Certification
+
+📌 Registration:
+👉 https://learn.microsoft.com/en-us/certifications/
+
+💡 Start:
+
+    AZ-900 → beginner
+
+    AZ-104 → admin/dev
+
+🔐 3️⃣ SECURITY / SYSTEM LEVEL (VERY POWERFUL FOR YOU)
+6. Certified Ethical Hacker (CEH)
+
+📌 Registration:
+👉 https://www.eccouncil.org/programs/certified-ethical-hacker-ceh/
+
+👉 Best for:
+
+    Security engineer
+
+    Malware analysis (VERY relevant to your work)
+
+7. CompTIA Security+
+
+📌 Registration:
+👉 https://www.comptia.org/certifications/security
+
+👉 Covers:
+
+    threats
+
+    vulnerabilities
+
+    security systems
+
+⚙️ 4️⃣ DEVOPS / SYSTEM ENGINEER (VERY IMPORTANT FOR YOU)
+8. Kubernetes Certification (CKA)
+
+📌 Register:
+👉 https://www.cncf.io/certification/cka/
+
+👉 High demand for:
+
+    Linux + containers
+
+9. Docker Certification
+
+📌 Register:
+👉 https://www.docker.com/certification/
+🧠 5️⃣ PROGRAMMING / SOFTWARE LEVEL
+10. Oracle Certified Professional Java
+
+📌 Register:
+👉 https://education.oracle.com
+
+👉 Optional (less useful than cloud)
+11. Python Professional Certification
+
+📌 Register:
+👉 https://pythoninstitute.org
+
+👉 Useful for automation/dev tools
+📊 🎯 WHAT YOU SHOULD DO (IMPORTANT)
+
+Based on your profile:
+
+C++ + Linux + 3 years experience
+
+✅ BEST PATH (HIGH SALARY)
+
+👉 Follow this order:
+
+1. AWS Certification  ⭐⭐⭐⭐⭐
+2. Kubernetes (CKA)   ⭐⭐⭐⭐⭐
+3. Security+ / CEH    ⭐⭐⭐⭐
+4. GATE (optional)
+
+❌ AVOID WASTING TIME
+
+❌ Too many random certifications
+❌ Only theory exams (no practical)
+❌ Low-value certificates
+
+💡 REAL INDUSTRY ADVICE (VERY IMPORTANT)
+
+From real dev experience:
+
+Certifications ≠ Job
+Skills + Projects = Job
+
+👉 Use exams to:
+
+    Structure learning
+
+    Add credibility
+
+🚀 BONUS (FOR YOU)
+
+If you want, I can create:
+
+✅ Full roadmap (0 → 20 LPA+)
+✅ Which companies to target (based on your profile)
+✅ Resume upgrade for your current job
+
+Just tell me 👍
+
+i am obc  2020 B.E. computer engineer from Mumbai university right now i have 3 year experience in  c++ Linux program of 27 year age 
+give me list, link of exam which should i have to give. every  exam list with registration form link  with form  start date, age limit, how many attempt in tabular from
+
+Great 👍 — based on your profile:
+
+✔ 27 years old
+✔ OBC category
+✔ B.E. Computer (2020)
+✔ 3 years experience (C++ Linux)
+
+👉 You are eligible for MANY top exams right now (very good position).
+🚀 🎯 COMPLETE EXAM LIST (WITH DETAILS)
+
+Below is a clean table (important exams only) with:
+
+    Registration link
+
+    Form dates
+
+    Age limit (OBC)
+
+    Attempts
+
+🏆 1️⃣ TOP GOVERNMENT EXAMS (HIGH VALUE)
+Exam	Registration Link	Form Date (2026 approx)	Age Limit (OBC)	Attempts
+UPSC Civil Services Examination	https://upsconline.nic.in
+	Feb–Mar	21–35 yrs	9 attempts
+GATE Exam	https://gate2026.iit.ac.in
+	Aug–Sept	No age limit	Unlimited
+Engineering Services Exam (ESE)	https://upsconline.nic.in
+	Sept–Oct	up to 33 yrs	No limit
+SSC CGL	https://ssc.nic.in
+	Mar–Apr	up to ~35 yrs	No fixed limit
+IBPS PO	https://ibps.in
+	Aug	20–33 yrs	No limit
+RRB JE	https://indianrailways.gov.in
+	Jan–Feb	up to 33 yrs	No limit
+📊 Important Verified Data
+UPSC (Most Important for you)
+
+    Age: 21–35 for OBC
+
+    Attempts: 9 attempts for OBC
+
+SSC CGL
+
+    Age: 18–32 (varies by post)
+
+    OBC relaxation → ~35 years
+
+General Govt Exams
+
+    Most exams: 18–32 range
+
+🧠 2️⃣ BEST EXAMS FOR YOUR PROFILE (VERY IMPORTANT)
+
+Since you are:
+
+C++ + Linux + 3 yrs experience
+
+👉 THESE ARE BEST (HIGH ROI):
+💰 HIGH SALARY + TECH FIELD
+Exam	Why
+GATE	PSU + M.Tech
+ESE	Engineering Govt Jobs
+SSC CGL	Stable govt job
+IBPS PO	Bank officer
+🧠 OPTIONAL (ONLY IF INTERESTED)
+Exam	Note
+UPSC	Very tough (2–3 years prep)
+State PSC (MPSC)	Maharashtra govt jobs
+🏆 3️⃣ STATE LEVEL (MUMBAI – IMPORTANT FOR YOU)
+Exam	Link	Age Limit
+MPSC Exam	https://mpsc.gov.in
+	up to 38 (OBC)
+Maharashtra Engineering Services	https://mpsc.gov.in
+	~38
+📅 4️⃣ YEARLY EXAM CALENDAR (IMPORTANT)
+Month	Exams
+Jan–Feb	RRB, PSU
+Mar–Apr	SSC CGL
+May–June	UPSC Prelims
+Aug–Sept	GATE, IBPS
+Oct–Dec	ESE
+🔥 🎯 FINAL RECOMMENDATION (VERY IMPORTANT)
+
+👉 Based on your current job:
+BEST PATH:
+
+1. GATE  ⭐⭐⭐⭐⭐
+2. SSC CGL ⭐⭐⭐⭐
+3. IBPS PO ⭐⭐⭐
+
+❌ AVOID (unless serious)
+
+UPSC (time-consuming)
+Too many exams together
+
+🚀 REALITY CHECK (IMPORTANT)
+
+At your age (27 OBC):
+
+✔ UPSC → 8 years still possible
+✔ SSC → safe option
+✔ GATE → BEST ROI
+
+💡 If you want (VERY HELPFUL)
+
+I can create:
+
+✅ Personalized roadmap (job switch → 20 LPA+)
+✅ Govt vs Private career comparison
+✅ Exact exam strategy (daily plan)
+
+Just tell me 👍
+
+give any other suggestion  
+
+Good — this is the right question at the right time 👍
+You already have 3 years C++ + Linux, so instead of blindly chasing exams, let’s look at smart career moves.
+
+I’ll give you practical suggestions (high ROI) — not generic advice.
+🚀 🎯 1️⃣ BEST REALITY CHECK (IMPORTANT)
+
+At your stage:
+
+27 age + 3 yrs experience
+
+👉 You are at a critical turning point:
+Path	Outcome
+Govt exams	Stable but slow growth
+IT skill upgrade	High salary (10–30 LPA+)
+💰 2️⃣ BEST PATH FOR YOU (HIGH SALARY)
+🔥 Option A: Switch to Product-Based Companies
+
+👉 Your current skills are already valuable:
+
+    C++
+
+    Linux
+
+    System-level programming
+
+Target roles:
+
+System Engineer
+Backend Developer
+Platform Engineer
+
+Companies:
+
+    Product companies (better pay)
+
+    Cybersecurity companies (VERY relevant to your work)
+
+⚙️ 3️⃣ Upgrade Skills (GAME CHANGER)
+
+Add these → your salary can double:
+✅ Must Learn
+1. Data Structures & Algorithms (DSA)
+
+👉 For interviews
+
+    Arrays, Hashmap
+
+    Trees, Graphs
+
+    Sliding window
+
+2. Advanced Linux
+
+👉 You already started:
+
+    inotify (good 👍)
+
+    processes, threads
+
+    memory management
+
+3. Networking (VERY IMPORTANT)
+
+Learn:
+
+TCP/IP
+Sockets
+HTTP/HTTPS
+
+4. Multithreading (Deep)
+
+You already use:
+
+pthread
+mutex
+condition_variable
+
+👉 Go deeper:
+
+    race conditions
+
+    deadlocks
+
+    thread pools
+
+🔐 4️⃣ BEST NICHE FOR YOU (HIGH DEMAND)
+
+👉 Based on your work:
+💣 Cybersecurity / Endpoint Security
+
+You are already working on:
+
+software monitoring
+hardware info
+events
+
+👉 This is exactly what antivirus / EDR / XDR companies do.
+Target roles:
+
+Security Engineer
+Endpoint Detection Engineer
+Malware Analyst
+
+💡 5️⃣ SIDE PROJECTS (VERY IMPORTANT)
+
+👉 This is what gets you high salary jobs.
+
+Build:
+🔹 Project 1
+
+Linux Software Monitor (you already have this!)
+
+Improve:
+
+    use inotify (done 👍)
+
+    reduce CPU usage
+
+    log events
+
+🔹 Project 2
+
+Process Monitor (like task manager)
+
+    detect process start/stop
+
+    log suspicious activity
+
+🔹 Project 3
+
+Mini Antivirus (basic)
+
+    scan files
+
+    detect patterns
+
+📊 6️⃣ IF YOU STILL WANT EXAMS
+
+👉 Only consider:
+
+✔ GATE (for PSU)
+✔ SSC (backup)
+
+👉 But don’t depend fully on them.
+⚠️ 7️⃣ BIGGEST MISTAKE (AVOID THIS)
+
+❌ Preparing for too many exams
+❌ Ignoring real skills
+❌ Staying in same job without growth
+
+🚀 🎯 BEST STRATEGY (FOR YOU)
+
+1. Continue current job
+2. Upgrade skills (DSA + Linux + Networking)
+3. Build 2–3 strong projects
+4. Apply for product companies
+
+💰 REALISTIC SALARY PATH
+
+Current → X LPA
+After 6–12 months → 10–18 LPA
+After 2–3 years → 20–30+ LPA
+
+🧠 FINAL HONEST ADVICE
+
+👉 You are already in a very strong domain:
+
+C++ + Linux + Security-type work
+
+This is rare and high-paying.
+
+👉 Don’t waste it only on exams.
+

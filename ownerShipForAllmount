@@ -1,0 +1,11 @@
+1. Fix Ownership for all Mounts
+
+Run this single block to make yourself the owner of all the drives you just added to fstab:
+Bash
+
+sudo chown -R omkar:omkar /media/sdb1
+sudo chown -R omkar:omkar /media/sdb2
+sudo chown -R omkar:omkar /media/sdb3
+sudo chown -R omkar:omkar /media/sda3
+sudo chown -R omkar:omkar /media/sda4
+sudo chown -R omkar:omkar /media/sda5

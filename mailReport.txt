@@ -1,3 +1,5 @@
+make mail report of this which i can send to c++, linux programing manager
+
 04/03/2026
 
 From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
@@ -880,6 +882,283 @@ b) On Application Uninstall:
         Remove the corresponding node from the linked list using removeNode()
 
         Remove the entry from software.list
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+25/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+1. Linked List Management and File Handling
+
+    Implemented:
+
+        addNode() → add new software to linked list
+
+        removeNodeByFile() → remove software on uninstall
+
+        sortList() → maintain sorted order
+
+        writeFile() → update software.list file
+
+    Ensured synchronization between:
+
+        In-memory linked list
+
+        Persistent file (software.list)
+
+2. Event Handling in sendhwevent()
+
+    Initialized inotify and added watch for:
+
+        IN_CREATE, IN_DELETE, IN_MOVED_TO, IN_MOVED_FROM
+
+    On install event:
+
+        Detect .desktop file creation
+
+        Fetch package details
+
+        Add to linked list and update file
+
+    On uninstall event:
+
+        Detect .desktop file deletion
+
+        Remove from linked list and update file
+
+3. Issue Identified in Install Flow
+
+During testing, the install condition was failing intermittently.
+
+Root Causes Identified:
+
+    char *name in struct caused invalid memory access during copy operations
+
+    Incorrect use of sleep(1.5) (only integer seconds supported), leading to insufficient delay before dpkg-query execution
+
+    dpkg-query being triggered before package metadata was fully available
+
+    Incorrect logging in uninstall block using uninitialized data
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+26/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+1. Initial Software List Population (Baseline Scan)
+
+Today I implemented a new logic to perform an initial load (baseline scan) of all existing applications before starting the monitoring process.
+
+Scans the directory:
+
+/usr/share/applications/
+
+For each valid .desktop file:
+
+Retrieves package name and version using dpkg-query
+
+Adds entries into the linked list (head)
+
+After scanning:
+
+Sorts the linked list
+
+Writes the data once into software.list
+
+This ensures that the system starts with a complete and accurate list of installed applications.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+27/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1. Problem Identified and Fix
+
+Issue:
+
+Initially, head = NULL cause danging pointer error,  meory lost issue occur.
+No preloaded data in the linked list
+During uninstall events:
+removeNode() caused the file to become empty due to missing baseline data
+
+Fix Implemented:
+
+Introduced initialLoad() function to populate the linked list before monitoring starts
+Ensured that uninstall operations now work on a fully populated dataset, preventing data loss
+
+2. Monitoring Flow Enhancement
+
+Updated execution flow:
+
+Startup:
+Call initialLoad()
+Populate linked list with all installed applications
+Generate initial software.list
+Runtime Monitoring (inotify):
+On install → addNode() updates linked list and file
+On uninstall → removeNode() updates linked list and file
+This ensures that the system starts with a complete and accurate list of installed/uninstalled applications.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+30/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+Manual .desktop File Creation Analysis
+
+Tested scenario where .desktop file is created manually using:
+
+echo "[Desktop Entry]
+Name=VLC media player
+Exec=vlc
+Icon=vlc
+Type=Application" > /usr/share/applications/vlc.desktop
+
+Observations:
+
+    IN_CREATE event is detected by monitoring system.
+
+    However, dpkg-query fails because:
+
+        File is not owned by any package
+
+        No package metadata is available
+
+Result:
+
+    getPackageDetails() fails after retries
+
+    Application is not added to softwares.list
+
+Multiple Event Handling
+
+    During install/uninstall, multiple events may occur:
+
+        Additional .desktop files (e.g., vlc-qt.desktop)
+
+        Temporary files (.dpkg-new, .dpkg-old)
+
+    Filtering logic ensures:
+
+        Only valid .desktop files are processed
+
+        Duplicate or irrelevant events are ignored
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+31/03/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1. EDR Build Creation
+
+    Successfully generated EDR package using:
+
+        dpkg --build buildroot escan-edr.amd64.deb
+
+    Integrated libmwshare library into the build.
+
+    Objective:
+
+        Ensure MW_HW_INFO() function provides system serial number directly in HWSW_info string.
+
+        Avoid dependency on configuration file reading for serial number retrieval.
+
+2. WinClient Monitoring – Edge Case Testing
+
+Performed testing on new monitoring logic for /usr/share/applications/ directory.
+Test Scenario Executed:
+
+    Installed VLC application.
+
+    Manually moved .desktop file:
+
+        mv /usr/share/applications/vlc.desktop /tmp
+
+    Executed:
+
+        apt purge vlc -y
+
+    Reinstalled:
+
+        apt install vlc -y
+
+    Again executed:
+
+        apt purge vlc -y
+
+3. Observations
+
+    During first uninstall (apt purge vlc after manual move):
+
+        No inotify event received
+
+        Reason: .desktop file was already moved out of monitored directory.
+
+    During reinstall (apt install vlc):
+
+        No event captured
+
+        Likely due to monitoring disruption or process restart.
+
+    During final uninstall:
+
+        Monitoring restarted automatically and logs observed:
+
+    Monitoring started...
+    [-] Removed (CONFIRMED): [vlc.desktop]
+    [WARN] Uninstall confirmed but app not found in list: vlc.desktop
 
 
 Thanks Regards,

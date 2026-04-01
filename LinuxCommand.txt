@@ -229,4 +229,45 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 
     Exec=.*: Specifically looks for the line that tells Linux how to "Execute" the app.	
 
+20]  vim slipt screen 
+	Horizontal 	-> vim -o a1.cpp b2.cpp -> 'o' small o
+	vertical	-> vim -O a1.cpp b2.cpp -> 'O' capital 
 
+21]  vim paste one-file to another-file 
+	vim -O a1.cpp b2.cpp -> file open vertically -> v 'visual mode' -> select -> yy -> paste -> ctrl + w + w -> switch tab / file -> go to line where to paste ':100' -> p -> paste -> w: -> save.
+
+22] klavaro --> type master comman
+
+23] gnome-terminal -- bash -c "sudo -S bash -c 'cd /tmpdata/Rushikesh_27022026 ; xdg-open command.odt & xdg-open program.odt; exec bash'" &
+
+   gnome-terminal --working-directory=/tmpdata/Rushikesh_27022026 -- bash -c "xdg-open command.odt && xdg-open program.odt; exec bash"
+
+   gnome-terminal -- bash -c "cd /tmpdata/Rushikesh_27022026 && sudo xdg-open command.odt & sudo xdg-open program.odt; exec bash"
+
+   gnome-terminal -- bash -c "cd /tmpdata/Rushikesh_27022026 && xdg-open program.odt && xdg-open command.odt; exec bash"	
+25] find file own by user "omkar"
+
+	sudo find / -user omkar 2>/dev/null
+
+26] 
+   {char s[5000];sprintf(s, "echo 'motherboardModel %s' >> /tmp/shubhamPC.Log", motherboardModel.c_str());system(s);}
+
+Performance	Con	Calling system() is expensive. It has to start a whole new shell process just to write one line.
+Security	Con	Command Injection Risk. If motherboardModel contains a semicolon (e.g., "; rm -rf /"), the system will execute that command too.
+Buffer Safety	Con	sprintf doesn't check limits. If the model name is somehow huge, it could cause a Buffer Overflow.
+
+27]
+
+	If you have a...				Use this Tool
+	Segmentation Fault (Crash)			GDB (to find the line that crashed)
+	Memory Leak / Slow RAM usage			Valgrind
+	Permission / File Not Found error		strace
+	General Logic / Flow check			Your XXPRINT macro 
+
+28]  command history with time and date
+
+	vim ~/.bashrc
+	paste -> export HISTTIMEFORMAT="%d/%m/%y %H:%M:%S -> "  #date time -> commandHistory
+	close -> :wq
+	source ~/.bashrc
+	history

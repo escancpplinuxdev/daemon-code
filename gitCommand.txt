@@ -1,0 +1,68 @@
+
+192.168.2.111  -> cvslinux--> root123
+
+a /home/git/linux_source
+
+#// ----------  local  ---------//
+
+1. git clone root@192.168.2.111:/path
+	-> op source -> source
+
+2. git add file-name
+   git add * 	-> add all file
+
+3. git commit -m "message"
+	-> make local repo record
+
+4. git push 
+	-> make push origin master
+
+5. git log
+
+6. git status
+
+7. git diff file-name 
+	-> difference
+
+8. git checkout file-name
+	-> revert unwanted changes
+
+9. git rm -rf file-name
+
+10. git pull
+
+11. git log
+
+12. git status
+
+
+# // --------- Server --------//
+
+1. mkdir [DIR]
+
+2. git init --bare
+
+3. git log
+
+
+
+1. git init
+
+2. git add *
+
+3. git commit -m "initial commit"
+
+4. scp
+
+
+# // --------- changes ---------//
+
+1. git add *
+
+2.git commit -m "Rm"
+
+3. git push
+
+4. git log
+
+5. git status

@@ -58,6 +58,8 @@ int main()
 	cout<<"sizeof(arr) = "<<sizeof(arr)<<endl;
 	cout<<"sizeof(arr[0]) = "<<sizeof(arr[0])<<endl;
 	int n = sizeof(arr) / sizeof(arr[0]);
+	cout << "UnSorted array: ";
+	printArray(arr, n);
 
 	cout<<"n = "<<n<<endl;
 	heapSort(arr, n);

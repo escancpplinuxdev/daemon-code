@@ -1166,3 +1166,231 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+01/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1. Package Install/Uninstall Event Handling (Without .desktop File)
+
+    Analyzed scenarios where application install/uninstall occurs without presence of .desktop file in /usr/share/applications/.
+
+    Objective:
+
+        To verify whether monitoring system can still detect package changes.
+
+Observations:
+
+    Current monitoring logic is dependent on .desktop file events.
+
+    If .desktop file is:
+
+        Not created during install, or
+
+        Removed/moved before uninstall,
+
+    then:
+
+        No inotify event is generated
+
+        Install/Uninstall activity is not detected
+
+Conclusion:
+
+    .desktop file acts as the primary trigger point in current implementation.
+
+    Absence of this file leads to missed events.
+
+Next Step (Suggested):
+
+    Explore alternative detection methods:
+
+        Using dpkg database changes
+
+        Periodic sync or fallback scan mechanism
+
+2. EDR Build Testing with libmwshare
+
+    Performed testing of EDR build with integrated libmwshare library.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+02/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+
+1. Chrome Policy Directory (+i) Attribute Handling
+
+Developed and tested C++ code snippets to handle immutable (+i) attribute on the following directories:
+
+/etc/opt/chrome/policies/
+
+/etc/opt/chrome/policies/managed/
+
+Work Done:
+
+Checked whether the directory has immutable (+i) attribute set.
+
+Implemented logic to:
+
+Remove (-i) attribute temporarily
+
+Perform required operations (read/write/update)
+
+Restore (+i) attribute back to original state
+
+Testing:
+
+Tested across multiple scenarios:
+
+Directory with +i enabled
+
+Directory without +i
+
+Partial permission cases
+
+Handled errors and edge cases:
+
+Permission issues
+
+Attribute not set
+
+Restoration failures
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+02/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+
+1. Chrome Policy Directory (+i) Attribute Handling
+
+Work Done:
+
+Checked whether the directory has immutable (+i) attribute set.
+
+Implemented logic to:
+
+Remove (-i) attribute temporarily
+
+Perform required operations (read/write/update)
+
+Restore (+i) attribute back to original state
+
+Testing:
+
+Tested across multiple scenarios:
+
+Directory with +i enabled
+
+Directory without +i
+
+Partial permission cases
+
+Handled errors and edge cases:
+
+Permission issues
+
+Attribute not set
+
+Restoration failures
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+04/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1. NFDaemon – Immutable JSON Policy Handling
+
+    Worked on implementing logic for handling immutable (+i) policy directories used by multiple browsers.
+
+Target Browsers:
+
+    Google Chrome
+
+    Microsoft Edge
+
+    Brave Browser
+
+    Chromium
+
+Work Done:
+
+    Identified policy directories (e.g., /etc/opt/<browser>/policies/).
+    or 		      directories (e.g., /etc/opt/<browser>/policies/managed/).
+
+    Implemented workflow to safely update JSON policy files under immutable directories.
+
+Implemented Flow:
+
+    Check if directory has immutable (+i) attribute.
+
+    Temporarily remove immutable flag (chattr -i).
+
+    Set directory to mutable state.
+
+    Write/update required JSON policy file.
+
+    Validate successful write operation.
+
+    Restore directory to original state by applying immutable flag (chattr +i).
+
+2. Testing & Validation
+
+    Tested across multiple browsers:
+
+        Chrome, Edge, Brave, Chromium
+
+    Verified:
+
+        JSON policy file creation and updates
+
+        Proper handling when directory is already mutable
+
+        Correct restoration of immutable (+i) state after operation
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

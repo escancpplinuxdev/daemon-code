@@ -1,0 +1,2 @@
+1] firefox security - bookmark not save 
+				->  https://support.mozilla.org/en-US/kb/fix-bookmarks-and-history-will-not-be-functional?as=u&utm_source=inproduct&redirectslug=The+bookmarks+and+history+system+will+not+be+functional&redirectlocale=en-US

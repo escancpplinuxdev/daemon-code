@@ -31,6 +31,7 @@ OBJS = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRCS))
 
 all: $(BIN)
 # default target is all
+
 $(BIN): $(OBJS)
 	$(CXX) $(OBJS) -o $(BIN)
 # To build a.out → need all object files
@@ -43,7 +44,14 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 
-
+#	g++ -g -Wall -Wextra -Iheader -c $< -o $@
+#	-c  -> Compile ONLY -> Purpose -> create .o file → do NOT link  -> Generates object file (.o) ->source/a.cpp  ──▶ obj/a.o 
+#	Does NOT create executable
+#	Does NOT link other files
+#
+#	-o  -> Specify output file name -> output file -> define output name
+#
+#
 #---------- $< symbol -> 	input file (source/a.cpp)
 #---------- $@ symbol -> 	output file (obj/a.o)
 
@@ -51,10 +59,25 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 # @mkdir -p obj
 # Create obj folder if not exists
 # 
-#	$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+#		    $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+#	Meaning -- >"To create obj/X.o, use source/X.cpp"
 #This is a pattern rule that tells make how to generate object files
 #from source files automatically using pattern matching.
 #
+#
+#	@mkdir -p obj
+#	Create obj folder if not exists
+#	-p → no error if already exists
+#	@ → hides command output
+#
+#	g++ -g -Wall -Wextra -Iheader -c $< -o $@
+#
+#	#Important Concept
+
+#Compilation = .cpp → .o
+#Linking     = .o → executable
+
+
 # ---------------- CLEAN ----------------
 clean:
 	rm -rf $(OBJ_DIR) $(BIN)

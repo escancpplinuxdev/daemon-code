@@ -1394,3 +1394,104 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+04/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1. NFDaemon JSON Policy Testing (Immutable Directories)
+
+    Verified JSON policy handling for immutable (+i) directories across multiple browsers:
+
+        Brave / Brave Browser
+
+        Chromium / Chromium Browser
+
+        Microsoft Edge
+
+        Google Chrome
+
+Work Done:
+
+    Installed respective browser applications.
+
+    Executed NFDaemon and validated policy application behavior.
+
+    Checked whether JSON policies are correctly written and enforced when directory is immutable.
+
+Observation:
+
+    Confirmed correct behavior of NFDaemon after applying mutable → write → immutable restore flow.
+
+    Ensured compatibility across different browser policy directory structures.
+
+2. Code Refactoring – Common Immutable Handling
+
+    Replaced duplicated logic in multiple appPolicy.cpp files with shared implementation:
+
+        Introduced forImmutable.cpp and forImmutable.h in common-share module.
+
+Focus Areas:
+
+    Reduced usage of static functions inside individual files.
+
+    Evaluated usage of:
+
+        static (file scope limitation)
+
+        extern (shared linkage)
+
+        inline (optimization and header usage)
+
+Outcome:
+
+    Centralized immutable handling logic.
+
+    Improved maintainability and code reusability.
+
+3. NFDaemon – processQueue.cpp Analysis
+
+    Studied processQueue.cpp implementation in detail.
+
+Key Focus:
+
+    Buffer handling mechanism.
+
+    Investigated error:
+
+        "No buffer space available"
+
+Observation:
+
+    Issue likely related to:
+
+        Kernel queue overflow
+
+        High event rate vs buffer processing speed
+
+4. WinClient Issue – Install → Reboot → Uninstall Flow
+
+    Analyzed failure scenario:
+
+        Application installed
+
+        System reboot occurs
+
+        Application uninstalled after reboot
+
+        eventsender fails to trigger correctly
+
+Work Done:
+
+    Studied read/write flow of binary handling file in WinClient. and Implement do solution for that.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

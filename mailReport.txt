@@ -1495,3 +1495,72 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+07/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1] nfdaemon run non-daemonize where buffer space error -> Error while reading Queue : No buffer Space available 
+
+it's happen due to EAGAIN error -> errno = 11 -> Resource tempararily unavailable. 
+i.e Requested operation can't be completed immediatletly and should be tried again.
+Operation can't be completed right now, but  it might work it you try again. buffer resource get free to reads the file.
+the sockect descriptor set for recv() on non-blocking mode  give EAGAIN error -> there is no data to read or output buffer is full, rather than waiting (blocking)
+
+NFDaemon – Buffer Space Error Analysis
+
+Executed NFDaemon in non-daemonize mode and observed the following error:
+
+Error while reading Queue : No buffer Space available
+Root Cause Analysis:
+Error corresponds to:
+EAGAIN (errno = 11) → Resource temporarily unavailable
+Occurs when:
+Socket descriptor is set to non-blocking mode
+recv() does not find data available to read OR
+Output buffer is full
+Understanding:
+Operation cannot complete immediately but may succeed on retry.
+Indicates:
+Buffer/resource temporarily unavailable
+High event rate or insufficient buffer handling
+Conclusion:
+Requires retry mechanism or better buffer management handling in queue processing logic.
+2. Firefox Testing (Snap Installation)
+Installed Firefox using:
+snap install firefox
+Test Performed:
+Uploaded very large files repeatedly to Google Drive to generate heavy activity.
+Repeated test multiple times to stress the system.
+Observations:
+System resource consumption increased significantly:
+High memory and storage usage
+System became unresponsive:
+Firefox crashed
+Cleanup performed:
+Uninstalled Firefox (snap)
+Removed snapd and snap packages
+Restarted snap service:
+systemctl restart snapd.service
+3. Firefox Testing (APT Installation)
+Installed Firefox using:
+apt install firefox
+Test Performed:
+Repeated large file upload activity to Google Drive.
+Monitored logs in:
+nfdaemon.log
+Observations:
+Successfully reproduced:
+Buffer overflow / queue-related errors
+Error appears under high load conditions.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

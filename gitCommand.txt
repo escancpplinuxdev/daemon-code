@@ -17,6 +17,9 @@ a /home/git/linux_source
 4. git push 
 	-> make push origin master
 
+	Username        :- escancpplinuxdev
+			:- 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
+
 5. git log
 
 6. git status

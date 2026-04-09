@@ -19,6 +19,9 @@ a /home/git/linux_source
 
 	Username        :- escancpplinuxdev
 			:- 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
+			:- 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
+			:- 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
+			:- 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
 
 5. git log
 

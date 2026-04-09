@@ -15,3 +15,28 @@ int main() {
     f(3);
     return 0;
 }
+
+/*
+ * push n=3 -> n-1=2
+ *	push n=2 -> n-1=1
+ *		   push n=1 -> 
+ *		   Remove   n=1 
+ *
+ *           n=2 ->  n-1=1 
+ *           	    push n=1 -> 
+ *           	    Remove  n=1
+ *
+ *	Remove	n=2 
+ *	n=3 -> n-1=2
+ *	push n=2 -> n-1=1
+ *		   push n=1 -> 
+ *		   Remove   n=1 
+ *
+ *           n=2 ->  n-1=1 
+ *           	    push n=1 -> 
+ *           	    Remove  n=1
+ *
+ *      Remove  n=2
+ *Remove n=3	
+ *
+ *

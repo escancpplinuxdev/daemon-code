@@ -270,4 +270,32 @@ Buffer Safety	Con	sprintf doesn't check limits. If the model name is somehow hug
 	paste -> export HISTTIMEFORMAT="%d/%m/%y %H:%M:%S -> "  #date time -> commandHistory
 	close -> :wq
 	source ~/.bashrc
-	history
+	histor
+
+29] Vim maintains a "Jumplist" of locations you have visited.
+
+    Ctrl + o: Moves backward through your jump history (Go to "Older" location).
+
+    Ctrl + i: Moves forward through your jump history (Go to "Inward/Newer" location).
+
+30]  Open with LibreOffice Calc:
+bash
+
+libreoffice --calc interview_roadmap.csv
+
+When the import dialog appears, choose:
+
+    Separator options: Comma (,)
+
+    Character set: Unicode (UTF-8)
+
+    First line as header: Yes
+
+31] Copy all the text above.
+
+Open terminal and run:
+bash
+
+cat > interview_roadmap.csv
+
+then paste the content and press Ctrl+D.

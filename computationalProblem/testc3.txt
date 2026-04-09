@@ -1,0 +1,9 @@
+Enter -1 to close the loop
+Enter the number : 
+45 In the words 	 : FORTY FIVE 
+Enter the number : 
+-2 In the words 	 : MINUS TWO 
+Enter the number : 
+2 In the words 	 : TWO 
+Enter the number : 
+0 ZERO

@@ -1564,3 +1564,65 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+07/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1] in nfdaemon.log there is error 
+tail -f /var/MicroWorld/var/log/nfdaemon.log
+[08-Apr-2026@17:56:53] Error while reading queue : No buffer space available
+[08-Apr-2026@17:57:04] netfilter kmodule unload successfully.
+
+i try on zippyShare.com,ggogle-drive,weshare.com,zippy.com 
+
+
+
+2] Do changes in /opt/MicroWorld/.netfilter_kmodule/source/escanpfmodule.c file , add printk log with print at /var/log/syslog then make/run by them by script /opt/MicroWorld/sbin/prepareWebFilter.sh to load kernal module. 
+
+where we got 2 ip of google- LLC data center/ Transit -> mumbai maharashtra as 
+put the to get 
+
+//                      if(strcmp(source, "127.0.0.1") == 0 || strcmp(dest, "127.0.0.1") == 0 || strcmp(source, "192.168.0.50") == 0 || strcmp(dest, "192.168.0.50") == 0 ||  strcmp(source, "192.168.0.150") == 0 || strcmp(dest, "192.168.0.150") == 0 ||  strcmp(source, "192.168.0.16") == 0 || strcmp(dest, "192.168.0.16") == 0 ||  strcmp(source, "142.251.222.78") == 0 || strcmp(dest, "142.251.222.78"))
+Ya
+//                      if(strcmp(source, "127.0.0.1") == 0 || strcmp(dest, "127.0.0.1") == 0 || strcmp(source, "192.168.0.50") == 0 || strcmp(dest, "192.168.0.50") == 0 ||  strcmp(source, "192.168.0.150") == 0 || strcmp(dest, "192.168.0.150") == 0 ||  strcmp(source, "192.168.0.16") == 0 || strcmp(dest, "192.168.0.16") == 0 ||  strcmp(source, "216.58.203.14") == 0 || strcmp(dest, "216.58.203.14"))
+192.168.0.16") == 0 || strcmp(dest, "192.168.0.16") == 0 )
+                        {
+                                printk(KERN_INFO "Local host request matched\n");
+                                return NF_ACCEPT;
+                        }
+
+but this stop nfdaemon at 
+tail -f /var/MicroWorld/var/log/nfdaemon.log 
+
+[08-Apr-2026@17:31:49] Allowing all domains, except blacklisted domains.
+[08-Apr-2026@17:31:49] Allowing referred domains by whitelisted domains.
+[08-Apr-2026@17:31:50] Escan Chrome Policy Created Successfully.
+[08-Apr-2026@17:31:50] Escan Edge Policy Created Successfully.
+[08-Apr-2026@17:31:50] Escan brave-browser Policy Created Successfully.
+[08-Apr-2026@17:31:50] monitorIpv4prioritystatus thred started
+[08-Apr-2026@17:31:54] adding entry to map:[playboy.com](33)
+[08-Apr-2026@17:31:54] adding entry to map:[apple.c](10002)
+[08-Apr-2026@17:31:58] netfilter is not loaded
+[08-Apr-2026@17:31:59] Netfilter kmodule loaded successfully
+[08-Apr-2026@17:31:59] The daemon started successfully
+
+and syslog goes as 
+
+tail -f /var/log/syslog
+
+.kernel : Local host request matched
+kernel : message repeated 14 times:[Local host request matched]
+
+and this log repeated again and again.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

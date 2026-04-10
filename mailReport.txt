@@ -1626,3 +1626,132 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+07/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+
+1. nfdaemon – Buffer Space Error Handling (ENOBUFS)
+
+    Observed error in nfdaemon.log:
+
+    Error while reading queue: No buffer space available
+
+    Root Cause:
+
+        This occurs when the netfilter queue buffer is full
+
+        System is unable to process incoming packets immediately
+
+        Corresponds to:
+
+        errno == ENOBUFS
+
+    Fix Implemented:
+
+    if (errno == ENOBUFS)
+    {
+        usleep(300);
+        continue;
+    }
+
+    Behavior After Fix:
+
+        Instead of treating it as a failure, the process:
+
+            Waits briefly (usleep)
+
+            Retries reading from the queue
+
+        Allows:
+
+            Netfilter queue buffer (nf_queue) to free up
+
+            Smooth continuation of packet processing
+
+2. winclient – Log Optimization & Event File Handling
+a) Debug Log Cleanup
+
+    Removed unnecessary debugger logs from.
+b) hweventinfo.info File Handling
+
+    Verified logic for:
+
+    /opt/MicroWorld/etc/hweventinfo.info
+
+    Activities performed:
+
+        Checked write operations
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+07/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1. Hardware Event Monitoring Thread Enhancement
+Implemented a new dedicated thread for sendhwevent() with periodic monitoring.
+Functionality:
+The thread checks:
+Hardware changes
+
+Presence and updates of:
+
+/opt/MicroWorld/etc/hweventinfo.info
+Execution interval:
+Every 3 minutes
+Logic Implemented:
+If the file does not exist:
+Create the file
+Trigger hardware event to server
+If the file exists:
+Compare hardware state
+If any change is detected:
+Update file
+Send hardware event
+
+2. libmwshare.so Enhancement – System Serial Number Integration
+
+    Created/updated libmwshare.so to modify hardware information handling.
+
+    Change Implemented:
+
+        Replaced UUID-based identification with System Serial Number
+
+    Previous Behavior:
+
+        Value was read from:
+
+        /opt/MicroWorld/etc/commonsettings.conf
+
+        using:
+
+        readConfiguration("Config:ShowSystemSerial", cVal)
+
+    New Behavior:
+
+        Directly fetch and assign System Serial Number in HWinfo() function
+
+        Removed dependency on configuration file for this value
+
+3] testing above binary for the combine values and there value condition suitable for all possible condition.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

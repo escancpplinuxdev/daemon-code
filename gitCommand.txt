@@ -13,6 +13,9 @@ a /home/git/linux_source
 
 3. git commit -m "message"
 	-> make local repo record
+	
+	-> Run this command in your terminal so Git stores your token in a file on your disk:
+	-> git config --global credential.helper store
 
 4. git push 
 	-> make push origin master

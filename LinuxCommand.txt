@@ -160,7 +160,7 @@ send event
 
 	2. dlp 		  -> wget http://www.microworldsystems.com/download/wmclmclient/deb/dlp/escan-dlp.amd64.deb
 
-19]   find / -type f -iname "mwlogdaemon" -exec ls -lrtha {} \; 2>/dev/null
+19]   find / -type f -iname "mwlogdaemon.cpp" -exec ls -lrtha {} \; 2>/dev/null
 -> {} acts as a placeholder for the file that find discovers. It needs a space before it so it's treated as a distinct argument by ls.
 
 \; tells find that the -exec command has finished. It must have a space before it, otherwise find doesn't know where the execution string ends. 

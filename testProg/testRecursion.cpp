@@ -27,6 +27,7 @@ int main() {
  *           	    Remove  n=1
  *
  *	Remove	n=2 
+ *
  *	n=3 -> n-1=2
  *	push n=2 -> n-1=1
  *		   push n=1 -> 
@@ -39,4 +40,22 @@ int main() {
  *      Remove  n=2
  *Remove n=3	
  *
+[root@PTLD-3:/tmpdata/Rushikesh_27022026/testProg]# ./testRecursion 
+F(3)'s Stack Frame Pushed
+F(2)'s Stack Frame Pushed
+F(1)'s Stack Frame Pushed
+F(1)'s Stack Frame Removed
+F(1)'s Stack Frame Pushed
+F(1)'s Stack Frame Removed
+F(2)'s Stack Frame Removed
+F(2)'s Stack Frame Pushed
+F(1)'s Stack Frame Pushed
+F(1)'s Stack Frame Removed
+F(1)'s Stack Frame Pushed
+F(1)'s Stack Frame Removed
+F(2)'s Stack Frame Removed
+F(3)'s Stack Frame Removed
+
  *
+ *
+ */

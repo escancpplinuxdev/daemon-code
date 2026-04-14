@@ -1755,3 +1755,86 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+07/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+1. EDR Build Creation & Integration Testing
+
+    Successfully created EDR package:
+
+    escan-edr.amd64.deb
+
+    including:
+
+        winclient
+
+        libmwshare.so.0.4
+
+    Key Enhancement:
+
+        System Serial Number is now directly integrated
+
+        Removed dependency on configuration file:
+
+        /opt/MicroWorld/etc/commonsettings.conf
+
+        Eliminated usage of:
+
+        readConfiguration("Config:ShowSystemSerial", cVal)
+
+    Verification:
+
+        Validated logs in:
+
+        /var/MicroWorld/var/log/eventHistory.log
+
+        using:
+
+        tail -f eventHistory.log
+
+	and 
+
+	/var/MicroWorld/var/log/winclient.log at winclient.log
+
+2. Event Integration (Software + Hardware)
+Integrated events from:
+sendswevent() (Software events)
+sendhwevent() (Hardware events thread)
+Behavior:
+
+Unified event logging in:
+
+eventHistory.log
+Hardware monitoring:
+checkupdatehw() runs every 3 minutes
+Log Validation:
+Verified hardware update logs with IDs:
+737
+738
+739
+
+3. Multi-Level Logging Validation
+Tested across log levels:
+Level 1 to Level 4
+Scenarios covered:
+Application Install
+Application Uninstall
+System Reboot
+Application Deletion
+File Removal
+File Move
+File Add in location :
+
+/usr/share/applications/*.desktop
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

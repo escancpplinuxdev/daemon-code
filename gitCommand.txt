@@ -21,11 +21,9 @@ a /home/git/linux_source
 	-> make push origin master
 
 	Username        :- escancpplinuxdev
-			:- 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
-			:- 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
-			:- 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
-			:- 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
-			:- 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
+	token		:- genrate all repo no expeir token from github.
+
+
 
 5. git log
 

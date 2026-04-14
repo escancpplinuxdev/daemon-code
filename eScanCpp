@@ -47,8 +47,6 @@ leetCode
 			
 github.com
 	Username	:- escancpplinuxdev 
-			:-	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	
-			:-	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
-			:- 	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
+	token           :- genrate all repo no expeir token from github.
 
-			
+		

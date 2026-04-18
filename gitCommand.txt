@@ -19,7 +19,8 @@ a /home/git/linux_source
 
 4. git push 
 	-> make push origin master
-
+	
+	
 	Username        :- escancpplinuxdev
 	token		:- genrate all repo no expeir token from github.
 

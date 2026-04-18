@@ -6,8 +6,11 @@ From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
 Subject:        Report of 05/03/2026
 Date:   Thu, 05 Mar 2026 20:45:08 +0530
 To:     divesh@escanav.com
+Cc:     raja@escanav.com
 Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
-Message Header
+
+Dear sir,
+
 
 Subject : Work Report – WinClient Software List Handling & dpkg Install Trigger Update
 
@@ -1832,6 +1835,493 @@ File Move
 File Add in location :
 
 /usr/share/applications/*.desktop
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+07/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+Dear Sir,
+
+
+1. Initiation of escan-ultra & DLP Build
+
+    Started work on creating:
+
+    escan-ultra.deb
+    escan-dlp.deb
+
+    Objective:
+
+        Extend existing EDR build process to Ultra and DLP modules
+
+        Ensure compatibility with existing components:
+
+            winclient
+
+            libmwshare
+
+2. winclient Porting – Debian to RPM (RHEL/CentOS)
+
+    Objective:
+
+        Make winclient compatible across both:
+
+            Debian-based systems (dpkg)
+
+            RPM-based systems (rpm)
+
+    Implemented Logic:
+
+    char cmd[512];
+
+    if(access("/usr/bin/dpkg", F_OK) == 0 || access("/bin/dpkg", F_OK) == 0)
+    {
+        // Debian/Ubuntu
+        sprintf(cmd, "dpkg-query -S \"%s\" 2>/dev/null", filepath);
+    }
+    else if(access("/usr/bin/rpm", F_OK) == 0 || access("/bin/rpm", F_OK) == 0)
+    {
+        // RHEL/Fedora/CentOS
+        sprintf(cmd, "rpm -qf \"%s\" 2>/dev/null", filepath);
+    }
+
+
+     // 3. Version
+     if (access("/usr/bin/dpkg", F_OK) == 0 || access("/bin/dpkg", F_OK) == 0)
+     {
+          sprintf(cmd, "dpkg -s %s 2>/dev/null | grep Version | awk '{print $2}'", pkg.c_str());
+     }
+     else if(access("/usr/bin/rpm", F_OK) == 0 || access("/bin/rpm", F_OK) == 0)
+     {
+          // For RPM: get version of the package
+          sprintf(cmd, "rpm -qi %s | grep Version | awk '{print $3}' 2>/dev/null", pkg.c_str());
+     }
+
+
+3. RPM Build Issues (Linking Errors)
+a) Missing Static Library
+
+g++: error: /opt/MicroWorld/lib/libproc2.a: No such file or directory
+	building linking 
+
+b) Missing Crypt Library
+/usr/bin/ld: cannot find -lgcrypt
+Cause:
+libgcrypt development package not installed
+Action Required:
+
+Install dependency:
+
+yum install libgcrypt-devel
+
+4. Compiler Compatibility Issues (C++ Standard)
+Environment Difference:
+
+RPM system:
+
+g++ 4.8.5 (C++98 default)
+
+Debian system:
+
+g++ 7.5.0 (supports C++11)
+
+give Errors like :
+
+    nullptr not supported
+
+error: ‘nullptr’ was not declared in this scope
+
+    Nested template parsing issue
+
+error: ‘>>’ should be ‘> >’
+
+    auto keyword not supported
+
+error: ISO C++ forbids declaration of ‘it’ with no type
+
+    Range-based for loop not supported
+
+error: range-based ‘for’ loops are not allowed in C++98 mode
+
+5. Resolution Approach
+
+    Option 1 (Recommended):
+
+        Compile using C++11 standard:
+
+        g++ -std=gnu++11
+
+    Option 2:
+
+        Modify code for C++98 compatibility:
+
+            Replace:
+
+                nullptr → NULL
+
+                auto → explicit types
+
+                range-based loops → traditional loops
+
+                >> → > >
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+15/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Code Review – USB Encryption Module
+
+    Performed detailed code reading and analysis of:
+
+        usbencrypt module
+
+        escanmbr.c source file
+
+        Shell script:
+
+        installkernelModule() in Install.sh
+
+    Focus Areas:
+
+        Understanding USB encryption workflow
+
+        Kernel module interaction and loading mechanism
+
+        Boot sector (MBR) level handling in escanmbr.c
+
+        Script-based kernel module installation process
+
+2. Documentation Review
+Studied and analyzed the following documents:
+USB_encryption_project.odt
+usbencrypt_Reference_Guide.docx
+Ketan_usb_encryption_kernal_Doc.odt
+Focus Areas:
+Architecture and design of USB encryption system
+Kernel-level implementation details
+Data flow and security mechanisms
+Integration points with existing system components
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+15/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:	raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] make encryption_modules.zip for uname -r kernel version 6.17.0-20-generic of escanmbr.ko_6.17.0-20-generic ->  escanmbr.ko form Path where versioned modules are stored MODULE_SOURCE_PATH="/opt/MicroWorld/etc/.modules/encryption_modules.zip" to Destination path for the module MODULE_DEST_PATH="/opt/MicroWorld/etc/encr" 
+2] on console 192.168.1.223:10443 check all policy working on escan-edr.amd64.deb build by policy rushi_16042026_AllPolicyCheck 
+3] in console add web Protection allow -> pronographic block section add sites ->
+facebook.com
+housing.mhada.gov.in
+housing.mhada.gov.in
+jav.guru
+ngame.com
+snapchat.com
+xhamster.com
+xhamster.desi
+xhamster.desi1
+xhamster.desi44
+xhamster44.desi
+xhamster45.desi
+xvideo.com
+xxx.com
+
+to check in tail -f /var/MicroWorld/var/log/nfdaemon.log 
+
+[16-Apr-2026@19:42:19] map domain comparing:jav.guru :: jav.guru:: category = 33
+[16-Apr-2026@19:42:19] Blocked Domain : jav.guru
+[16-Apr-2026@19:42:19] p.banned set for : jav.guru
+[16-Apr-2026@19:42:19] Blocked domain : jav.guru
+
+tail -f /var/MicroWorld/var/log/eventHistory.log 
+
+16 Apr 2026;19:42:18;RUSHI-VB-220_[0-16969e40-ac97-c741-b83c-6040ae45ed46];192.168.2.220;root;10251;eScan Web-Protection;3;eScan for Linux;Restricted URL;Blocked;jav.guru
+16 Apr 2026;19:42:19;RUSHI-VB-220_[0-16969e40-ac97-c741-b83c-6040ae45ed46];192.168.2.220;root;10251;eScan Web-Protection;3;eScan for Linux;Restricted URL;Blocked;jav.guru
+
+by apply rushi_16042026_Policy on pc rushi_pc_220 of nfdaemon binary in  websitefilter.conf   
+
+1. Escanmbr (escanmbr.ko) Module Packaging (Kernel-Specific)
+
+    Prepared encryption module package:
+
+    encryption_modules.zip
+
+    Target Kernel Version:
+
+    6.17.0-20-generic 
+
+    Module Included:
+
+    escanmbr.ko_6.17.0-20-generic
+
+    Source Path:
+
+    /opt/MicroWorld/etc/.modules/encryption_modules.zip
+
+    Destination Path:
+
+    /opt/MicroWorld/etc/encr
+
+    Activity Performed:
+
+        Extracted and verified kernel-specific module placement
+
+        Ensured correct mapping between system kernel (uname -r) and module version
+
+2. web protection Policy Validation on EDR Build
+
+    Tested on console:
+
+    192.168.1.223:10443
+
+    Applied Policy:
+
+    rushi_16042026_AllPolicyCheck
+
+    Target Build:
+
+    escan-edr.amd64.deb
+
+    Verification:
+
+        Checked all policy modules functionality
+
+        Ensured correct policy application on endpoint system and nfdaemon service get well start not restart at 
+
+        "Error While reading queue : No buffer space available" log error  
+3. Web Protection Policy Testing (nfdaemon)
+
+    Configured Web Protection policy:
+
+        Added domains under Restricted / Blocked Category
+
+    Sample domains tested:
+
+facebook.com
+housing.mhada.gov.in
+housing.mhada.gov.in
+jav.guru
+ngame.com
+snapchat.com
+xhamster.com
+xhamster.desi
+xhamster.desi1
+xhamster.desi44
+xhamster44.desi
+xhamster45.desi
+xvideo.com
+xxx.com
+
+a) nfdaemon Log Verification
+
+Monitored logs:
+
+tail -f /var/MicroWorld/var/log/nfdaemon.log
+[16-Apr-2026@19:42:19] map domain comparing:jav.guru :: jav.guru:: category = 33
+[16-Apr-2026@19:42:19] Blocked Domain : jav.guru
+[16-Apr-2026@19:42:19] p.banned set for : jav.guru
+[16-Apr-2026@19:42:19] Blocked domain : jav.guru
+
+    Sample Output:
+
+    map domain comparing: jav.guru :: jav.guru :: category = 33
+    Blocked Domain : jav.guru
+    p.banned set for : jav.guru
+
+b) Event History Log Verification
+
+Monitored logs:
+
+tail -f /var/MicroWorld/var/log/eventHistory.log
+16 Apr 2026;19:42:18;RUSHI-VB-220_[0-16969e40-ac97-c741-b83c-6040ae45ed46];192.168.2.220;root;10251;eScan Web-Protection;3;eScan for Linux;Restricted URL;Blocked;jav.guru
+16 Apr 2026;19:42:19;RUSHI-VB-220_[0-16969e40-ac97-c741-b83c-6040ae45ed46];192.168.2.220;root;10251;eScan Web-Protection;3;eScan for Linux;Restricted URL;Blocked;jav.guru
+
+
+    Sample Output:
+
+    Restricted URL; Blocked; jav.guru
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. EDR Build Installation & Service Validation
+
+    Installed and tested:
+
+    escan-edr.deb
+
+    Verified services:
+
+    nfdaemon.service
+    winclient.service
+
+2. Web Protection Policy Testing (Pornographic Category)
+
+    Deployed policy from console and validated enforcement.
+
+    Tested blocked domains:
+
+    jav.guru
+    xhamster.desi
+    snapchat.com
+    xhamster45.desi
+    facebook.com
+    xxx.com
+    xvideo.com
+
+    Validation Points:
+
+        Domains were successfully categorized under Restricted / Pornographic
+
+        Access to these sites was blocked
+
+        Browser displayed block/banner page as expected
+
+    Log Verification:
+
+        nfdaemon.log confirmed domain matching and blocking
+
+        eventHistory.log recorded restricted URL events correctly
+
+
+3. USB Encryption Policy Testing
+
+    Tested USB encryption on laptop:
+
+    192.168.1.230
+
+    Activities performed:
+
+        Deployed USB encryption policy from console
+
+        Inserted pendrive and observed behavior
+
+Additional Work:
+
+    Studied:
+
+    usbencrypt_Reference_Guide.docx
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. USB Encryption Policy Testing (Console Deployment)
+
+    Console Server:
+
+    192.168.1.223:10443
+
+    Client System:
+
+    192.168.1.230 (Small Laptop)
+
+    Activity Performed:
+
+        Deployed USB Encryption Policy from console to client system
+
+        Verified policy application using escanmbr_usbencrypt
+
+        Observed behavior of USB device on insertion
+
+        Policy successfully pushed from console to endpoint
+
+2. Live Pendrive Formatting Process (escanmbr Interaction)
+
+    Objective:
+
+        Understand and validate formatting flow of pendrive along with encryption module interaction
+
+    Steps Performed:
+
+    lsblk                          # Identify device (e.g., /dev/sdb)
+    umount /dev/sdb               # Unmount device
+
+    fdisk /dev/sdb
+    m                              # Help menu
+    p                              # Print partition table
+    d                              # Delete partitions
+    n                              # Create new partition
+    w                              # Write changes
+
+    lsblk                          # Verify partition changes
+
+    tune2fs -t ext4 /dev/sdb       # Set filesystem type
+    mkfs.ext4 /dev/sdb             # Format filesystem
+
+    mount /dev/sdb /media/sdb1     # Mount device
+    cd /media/sdb1/
+    ls -lrtha                      # Verify contents
+
+3. Log Verification During Process
+
+    Checked configuration and logs:
+
+    /opt/MicroWorld/etc/epsdaemon.conf
+    /var/MicroWorld/var/log/rc4.log
+
 
 Thanks Regards,
 Rushikesh Gajmal

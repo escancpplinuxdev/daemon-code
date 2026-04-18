@@ -19,4 +19,5 @@ log1.o: log1.cpp log1.h
 clean:
 	rm -f *.o $(TARGET)
 
+# this command fire as --> make rebuild
 rebuild:clean all

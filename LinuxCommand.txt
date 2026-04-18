@@ -221,6 +221,10 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 	dpkg -P escan-dlp
 	rm -rf /opt/MicroWorld/ /var/MicroWorld/ /etc/escandet.dat /etc/microworld.keys /etc/.p*.e*
 
+	/opt/MicroWorld/usr/bin/updatenow_avs --force
+	rm /opt/MicroWorld/var/backavsupd/dirlist.txt /opt/MicroWorld/var/avsupd/dirlist.txt /var/MicroWorld/var/updinfo/*
+
+
 19] 	grep -lE "Exec=.*(eog|evince)" /usr/share/applications/*.desktop
 	
 	grep -lE "Exec=.*(eog|evince)" /usr/share/applications/*.desktop
@@ -299,3 +303,9 @@ bash
 cat > interview_roadmap.csv
 
 then paste the content and press Ctrl+D.
+
+32] # Correct syntax: unzip <archive> -d <destination>
+		unzip MyWorkDcoumentations.zip -d documentation/
+
+33] # Correct syntax: zip -r <name_of_zip> <folder_to_zip>
+		 zip -r MyWorkBackup.zip documentation/

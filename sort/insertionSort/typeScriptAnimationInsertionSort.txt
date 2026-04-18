@@ -1,0 +1,166 @@
+import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+
+/* ================= TYPES ================= */
+type Step = {
+  array: number[];
+  i: number;
+  j: number;
+  key: number;
+  line: number;
+  text: string;
+};
+
+const INITIAL_ARRAY = [5,8,6,3,9,1,7,2,4,0];
+
+/* ================= STEP GENERATOR ================= */
+function generateSteps(input: number[]): Step[] {
+  const arr = [...input];
+  const steps: Step[] = [];
+
+  const cap = (s: Partial<Step>) => {
+    steps.push({
+      array: [...arr],
+      i: s.i ?? 0,
+      j: s.j ?? 0,
+      key: s.key ?? 0,
+      line: s.line ?? 0,
+      text: s.text ?? ""
+    });
+  };
+
+  for (let i = 1; i < arr.length; i++) {
+    let key = arr[i];
+    let j = i - 1;
+
+    cap({ i, j, key, line:1, text:`i = ${i}` });
+    cap({ i, j, key, line:2, text:`key = ${key}` });
+    cap({ i, j, key, line:3, text:`j = ${j}` });
+
+    while (j >= 0 && arr[j] > key) {
+      cap({ i, j, key, line:4, text:`for(; ${j}>=0 && ${arr[j]} > ${key}; ${j}--) TRUE` });
+
+      arr[j+1] = arr[j];
+      cap({ i, j, key, line:6, text:`a[${j+1}] = ${arr[j]}` });
+
+      j--;
+      cap({ i, j, key, line:4, text:`j-- → ${j}` });
+    }
+
+    cap({ i, j, key, line:4, text:`Condition FALSE` });
+
+    arr[j+1] = key;
+    cap({ i, j, key, line:9, text:`Insert ${key} at ${j+1}` });
+  }
+
+  return steps;
+}
+
+/* ================= CODE VIEW ================= */
+function CodeView({ line }: { line: number }) {
+  const code = [
+    "for(int i=1;i<n;i++)",
+    "{",
+    "    int key = a[i];",
+    "    int j= i-1;",
+    "    for( ;j>=0 && a[j]>key ; j--)",
+    "    {",
+    "        a[j+1] = a[j];",
+    "    }",
+    "    a[j+1]=key;",
+    "}"
+  ];
+
+  return (
+    <div className="bg-gray-100 p-4 font-mono text-sm">
+      {code.map((c, idx) => (
+        <div key={idx} className="flex">
+          <div className="w-6">
+            {line === idx ? "➡️" : ""}
+          </div>
+          <div>{c}</div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ================= VARIABLE PANEL ================= */
+function VariablePanel({ step }: { step: Step }) {
+  const get = (idx: number) =>
+    idx >= 0 && idx < step.array.length ? step.array[idx] : "-";
+
+  return (
+    <div className="bg-white border p-4 text-sm space-y-2">
+      <div><b>i</b> = {step.i}</div>
+      <div><b>a[i]</b> = {get(step.i)}</div>
+
+      <div><b>j</b> = {step.j}</div>
+      <div><b>a[j]</b> = {get(step.j)}</div>
+
+      <div><b>key</b> = {step.key}</div>
+
+      <div><b>j+1</b> = {step.j + 1}</div>
+      <div><b>a[j+1]</b> = {get(step.j + 1)}</div>
+    </div>
+  );
+}
+
+/* ================= MAIN ================= */
+export default function App() {
+  const steps = useMemo(() => generateSteps(INITIAL_ARRAY), []);
+  const [idx, setIdx] = useState(0);
+
+  const step = steps[Math.min(idx, steps.length - 1)];
+
+  return (
+    <div className="h-screen grid grid-cols-3 gap-4 p-4 bg-white text-black">
+
+      <div className="flex flex-col gap-2">
+        <CodeView line={step.line} />
+        <VariablePanel step={step} />
+      </div>
+
+      {/* CONTROLS */}
+      <div className="flex flex-col justify-center items-center">
+        <div className="flex gap-4 mb-4">
+          <button className="bg-red-500 text-white px-4 py-2" onClick={() => setIdx(0)}>Reset</button>
+          <button className="bg-blue-500 text-white px-4 py-2" onClick={() => setIdx(p => Math.max(p-1,0))}>Prev</button>
+          <button className="bg-green-500 text-white px-4 py-2" onClick={() => setIdx(p => Math.min(p+1,steps.length-1))}>Next</button>
+        </div>
+        <div>Step {idx+1} / {steps.length}</div>
+        <div className="mt-2 text-sm">{step.text}</div>
+      </div>
+
+      {/* GRAPH */}
+      <div className="flex flex-col">
+        <div className="flex items-end h-full gap-2">
+          {step.array.map((v, i) => {
+            let color = "#d1d5db";
+            if (i === step.i) color = "#3b82f6";
+            else if (i === step.j) color = "#ef4444";
+            else if (i === step.j+1) color = "#22c55e";
+
+            return (
+              <motion.div key={i}
+                className="flex-1 rounded"
+                style={{ backgroundColor: color }}
+                animate={{ height: `${(v/10)*100}%` }}
+              />
+            );
+          })}
+        </div>
+
+        <div className="flex justify-between text-sm mt-2">
+          {step.array.map((v, i) => (
+            <div key={i}>
+              <div>{v}</div>
+              <div>(i={i})</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+

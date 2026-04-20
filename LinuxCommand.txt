@@ -85,6 +85,12 @@ Option	Meaning	Symbolic Links Behavior	Example Situation
 	omkar@PTLD-3:/tmp$ vboxmanage startvm "Centos-7_Developement-217" -type headless
 
 	vboxmanage list vms
+	
+	vboxmanage startvm "u25-Testing" -type headless
+
+	vboxmanage list runningvms
+
+	vboxmanage controlvm "u25-Testing”  poweroff
 
 	vboxmanage controlvm "Centos-7_Developement-217”  poweroff
 

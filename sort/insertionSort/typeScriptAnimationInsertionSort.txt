@@ -9,6 +9,7 @@ type Step = {
   key: number;
   line: number;
   text: string;
+  detail: string;
 };
 
 const INITIAL_ARRAY = [5,8,6,3,9,1,7,2,4,0];
@@ -25,7 +26,8 @@ function generateSteps(input: number[]): Step[] {
       j: s.j ?? 0,
       key: s.key ?? 0,
       line: s.line ?? 0,
-      text: s.text ?? ""
+      text: s.text ?? "",
+      detail: s.detail ?? ""
     });
   };
 
@@ -38,19 +40,42 @@ function generateSteps(input: number[]): Step[] {
     cap({ i, j, key, line:3, text:`j = ${j}` });
 
     while (j >= 0 && arr[j] > key) {
-      cap({ i, j, key, line:4, text:`for(; ${j}>=0 && ${arr[j]} > ${key}; ${j}--) TRUE` });
+      cap({
+        i, j, key, line:4,
+        text:`for(; ${j}>=0 && ${arr[j]} > ${key}; ${j}--)`,
+        detail:`Condition: (${j}>=0 && ${arr[j]} > ${key}) → TRUE`
+      });
 
       arr[j+1] = arr[j];
-      cap({ i, j, key, line:6, text:`a[${j+1}] = ${arr[j]}` });
+      cap({
+        i, j, key, line:6,
+        text:`a[${j+1}] = a[${j}]`,
+        detail:`Shift: a[${j+1}] = ${arr[j]}`
+      });
 
       j--;
-      cap({ i, j, key, line:4, text:`j-- → ${j}` });
+      cap({ i, j, key, line:4, text:`j--`, detail:`j becomes ${j}` });
     }
 
-    cap({ i, j, key, line:4, text:`Condition FALSE` });
+    // FALSE condition step
+    let condText = j >= 0
+      ? `(${j}>=0 && ${arr[j]} > ${key})`
+      : `(${j}>=0)`;
+
+    cap({
+      i, j, key, line:4,
+      text:`for(; j>=0 && a[j]>key ; j--)`,
+      detail:`Condition: ${condText} → FALSE`
+    });
 
     arr[j+1] = key;
-    cap({ i, j, key, line:9, text:`Insert ${key} at ${j+1}` });
+
+    // INSERT step with detailed breakdown
+    cap({
+      i, j, key, line:9,
+      text:`a[${j+1}] = key`,
+      detail:`Insert: key=${key} → position ${j+1}\nArray[${j+1}] = ${key}`
+    });
   }
 
   return steps;
@@ -121,7 +146,7 @@ export default function App() {
         <VariablePanel step={step} />
       </div>
 
-      {/* CONTROLS */}
+      {/* CONTROLS + DETAIL */}
       <div className="flex flex-col justify-center items-center">
         <div className="flex gap-4 mb-4">
           <button className="bg-red-500 text-white px-4 py-2" onClick={() => setIdx(0)}>Reset</button>
@@ -129,7 +154,8 @@ export default function App() {
           <button className="bg-green-500 text-white px-4 py-2" onClick={() => setIdx(p => Math.min(p+1,steps.length-1))}>Next</button>
         </div>
         <div>Step {idx+1} / {steps.length}</div>
-        <div className="mt-2 text-sm">{step.text}</div>
+        <div className="mt-3 text-sm font-semibold">{step.text}</div>
+        <div className="mt-2 text-sm text-gray-700 whitespace-pre-line">{step.detail}</div>
       </div>
 
       {/* GRAPH */}

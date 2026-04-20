@@ -2328,3 +2328,69 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+20/04/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Live Pendrive Formatting Process (escanmbr Interaction)
+
+    Objective:
+
+        To understand and validate the pendrive formatting workflow along with encryption module interaction
+
+    Steps are:
+
+
+Sr. No.	Command as typed	Right command (if different)	Explanation
+1	lsblk	–	List all block devices (disks and partitions) with their mount points.
+2	umount /dev/sdb	–	Unmount the USB drive /dev/sdb so it can be repartitioned.
+3	fdisk /dev/sdb	–	Start interactive partition editor for /dev/sdb.
+4	(inside fdisk) m	–	Display the help menu inside fdisk.
+5	(inside fdisk) p	–	Print the current partition table.
+6	(inside fdisk) d (then default partition 4)	–	Delete partition 4 (the Empty partition).
+7	(inside fdisk) d (then default partition 2)	–	Try to delete partition 2 – fails because it’s invalid.
+8	(inside fdisk) d (then 1)	–	Delete partition 1.
+9	(inside fdisk) p	–	Print partition table again – only partition 2 remains (corrupt).
+10	(inside fdisk) m	–	Show help again.
+11	(inside fdisk) n	–	Create a new partition.
+12	(inside fdisk) p (primary)	–	Choose primary partition type.
+13	(inside fdisk) accept default partition number 1	–	Use partition number 1.
+14	(inside fdisk) accept default first sector 2048	–	Start at the first available sector.
+15	(inside fdisk) accept default last sector (whole disk)	–	Use the remaining space for the partition.
+16	(inside fdisk) p	–	Print the new partition table (now has /dev/sdb1 and the leftover /dev/sdb2).
+17	(inside fdisk) w	–	Write the new partition table to disk and exit.
+18	lsblk	–	Verify that the new partition is visible (still no filesystem, just the disk).
+20	mkf (then Tab to see completions)	–	Partial command – shows available mkfs variants (not an actual command).
+21	mkf (again)	–	Same as above.
+22	mkfs.ext /dev/sdb (then Tab)	–	Partial command – Tab shows mkfs.ext2, mkfs.ext3, mkfs.ext4.
+23	mkfs.ext4 /dev/sdb	–	Create an ext4 filesystem on the whole disk /dev/sdb (not just a partition).
+24	lsblk	–	Confirm that the disk now has a filesystem but is still not mounted.
+25	mount /dev/sdb /media/ (then Tab)	–	Partial mount command – Tab shows possible mount points under /media/.
+26	mount /dev/sdb /media/sdb1	–	Mount the USB drive (with its new ext4 filesystem) at /media/sdb1.
+27	cd /media/sd (then Tab)	–	Partial cd – Tab shows available directories (sdb1, sdb2, …).
+28	cd /media/sdb1/	–	Change into the mounted directory.
+29	a (alias for ls -la)	–	List all files (including hidden) with details – shows lost+found directory.
+30	cd lost+found/	–	Enter the lost+found directory (used by fsck).
+31	a	–	List contents of lost+found – it is empty (only . and ..).
+32	cd ..	–	Go back to the parent directory (/media/sdb1).
+33	a	–	List again – shows the same lost+found directory.
+
+Outcome:
+
+    Successfully understand complete formatting lifecycle
+
+    Verified interaction between filesystem operations and encryption module.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

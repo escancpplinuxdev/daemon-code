@@ -32,8 +32,6 @@ void insertionSort(int a[], int n)
 			j--;			//							  -> update	
 		}
 		a[j+1]=key;
-		printArray(a,n);
-		cout<<endl;
 	}
 }
 

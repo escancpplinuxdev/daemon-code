@@ -2394,3 +2394,97 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+21/04/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Escanmbr Policy Deployment Analysis
+
+    Reviewed all possible ways for escanmbr policy deployment.
+
+    Checked configuration file:
+
+    /opt/MicroWorld/etc/epsdaemon.conf
+
+    Relevant Configuration:
+
+    [rc4]
+        status = "1"
+        corpId = "1112"
+        encryptValue = "1"
+        decryptValue = "1"
+
+    [usb]
+        Status = "1"
+
+2. Pendrive Data Preparation & Formatting
+
+    Added data/ folder into pendrive before testing
+
+    Performed formatting process to validate encryption behavior
+
+    Ensured clean filesystem state before applying policies
+
+3. Encryption Policy Testing (Cross-Platform)
+	
+File: /opt/MicroWorld/etc/epsdaemon.conf
+
+Observed parameters:
+
+    rc4 status = enabled (1)
+
+    corpId = 1112
+
+    encryptValue = enabled (1)
+
+    decryptValue = enabled (1)
+
+    usb status = enabled (1)
+
+    Deployed encryption policy on small laptop
+
+    Tested encrypted pendrive across:
+
+        Windows machine
+
+        macOS machine
+
+        Linux machine
+
+    Checking On Points:
+
+        Whether encrypted pendrive is accessible or restricted
+
+        Behavior consistency across different operating systems
+
+4. Decryption Policy Testing
+
+    Deployed decryption policy on the same setup
+
+    Tested pendrive again across:
+
+        Windows
+
+        macOS
+
+        Linux
+
+    Checking on  Points:
+
+        Whether previously encrypted data becomes accessible
+
+        Policy  behavior
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -30,22 +30,23 @@ class Solution
 			// Separate sorted part from the rest
 			sorted->next = nullptr;
 
-			while (curr) 
+			while (curr) // 								for(i=1;i<n;i++)
 			{
-				ListNode* nextNode = curr->next; // store next node before breaking
+				ListNode* nextNode = curr->next; // store next node before breaking ;
 
 				// Find the insertion point in the sorted list
 				ListNode* prev = dummy;
-				ListNode* temp = dummy->next;
-				while (temp && temp->val < curr->val) 
+				ListNode* temp = dummy->next;						// key=a[i];
+	//                             								 while (j>=0 && a[j] > key)
+				while (temp && curr->val > temp->val) 
 				{
-					prev = temp;
-					temp = temp->next;
+					prev = temp;							 // a[j+1]=a[j];
+					temp = temp->next;						 // j--;
 				}
 
 				// Insert curr between prev and temp
 				prev->next = curr;
-				curr->next = temp;
+				curr->next = temp; 							// a[j+1]=key;
 
 				// Move to the next unsorted node
 				curr = nextNode;
@@ -70,14 +71,14 @@ void printList(ListNode* head)
 }
 
 // Helper function to create a list from an array
-ListNode* createList(int arr[], int n) 
+ListNode* createList(int a[], int n) 
 {
 	if (n == 0) return nullptr;
-	ListNode* head = new ListNode(arr[0]);
+	ListNode* head = new ListNode(a[0]);
 	ListNode* curr = head;
 	for (int i = 1; i < n; i++) 
 	{
-		curr->next = new ListNode(arr[i]);
+		curr->next = new ListNode(a[i]);
 		curr = curr->next;
 	}
 	return head;
@@ -86,10 +87,10 @@ ListNode* createList(int arr[], int n)
 int main() 
 {
 	// Example: unsorted list 5 -> 8 -> 6 -> 3 -> 9 -> 1 -> 7 -> 2 -> 4 -> 0
-	int arr[] = {5, 8, 6, 3, 9, 1, 7, 2, 4, 0};
-	int n = sizeof(arr) / sizeof(arr[0]);
+	int a[] = {5, 8, 6, 3, 9, 1, 7, 2, 4, 0};
+	int n = sizeof(a) / sizeof(a[0]);
 
-	ListNode* head = createList(arr, n);
+	ListNode* head = createList(a, n);
 
 	cout << "Original list: ";
 	printList(head);

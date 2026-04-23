@@ -1,0 +1,59 @@
+
+
+Google.com
+	First name 	:- eScanCppLiunx
+	Last name  	:- dev
+	DOB  	   	:- 7/2/1988
+	Gender     	:- Rather not say
+	Email Address 	:- escancpplinuxdev@gmail.com
+	passwd	  	:- 88eScancpplinuxdev@gmail.com
+	Account info 	:- eScanCppLinux dev
+			escancpplinuxdev@gmail.com
+
+Firefox
+	Display name 	:- eScanCppLinux dev
+	passwd		:- 88escancppdev
+	Primary email	:- escancpplinuxdev@gmail.com
+
+	Profile name	:- eScanCppLinuxdev
+	Account recovery key :- ASNM EAKK B7QV 39EY XWKG NT8H AWYY 8ARS
+
+eScan mail3
+	Divesh sir 	:- divesh@escanav.com
+	raja Sir	:- raja@escanav.com
+	eScan hr	:- 
+	Link		:- https://192.168.0.8:8289/Session/239-9lveOKkZMJxqde2ol0L3/Hello.wssp?messageCode=MessageSent
+	Login Name	:- rushikeshg@escanav.com	
+	Passwd		:- @dmin@02March2026 ,  •••••••••••  , asdfghjkl;'
+
+
+esayPAY Attendance:-
+	Link		:- https://easypay.escanav.com
+
+	Login User Name	:- 2173
+	Login password	:- rushikesh1 
+
+Anydesk 
+	ID		:- 1 485 189 313
+	Passwd		:- asdfghjkl;'
+
+Chatgpt 
+	Display name	:- eScanCppLinux dev
+	Username	:- escancpplinuxdev
+
+leetCode		:- escancpplinuxdev
+			:- 88escancpplinuxdev
+			:- 88escancpplinuxdev
+			:- escancpplinuxdev@gmail.com
+
+leetCode
+			:- cpplinuxdev
+			:- cpplinuxdev@123
+			:- cpplinuxdev@123
+			:- rushikershoffice@gmail.com
+			
+github.com
+	Username	:- escancpplinuxdev 
+	token           :- genrate all repo no expeir token from github.
+	gmail		:- escancpplinuxdev@gmail.com
+		

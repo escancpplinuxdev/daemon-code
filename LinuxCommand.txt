@@ -326,4 +326,8 @@ You can also pipe the output to another grep command that explicitly excludes th
 	
 	go to ctrl + Home then ctrl + End then == -> all page get indentend
 
-36]	
+36]    lsmod 
+
+	lsmod | grep -i 'escanmbr' && echo "Loaded" || echo "Not Loaded"
+
+37]	

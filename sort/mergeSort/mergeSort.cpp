@@ -3,81 +3,88 @@
 
 using namespace std;
 
-void merge(int a[], int low, int mid, int high)
+void merge(int a[], int left, int mid, int right)
 {
-	int size = high -low +1;
-	int * temp = new int[size];
+	int n1= mid - left +1; // size of left half
+	int n2=right - mid;    // size of right half
 
-	int left = low;
-	int right= mid+1;
-	int k = 0;
+	// Create temporary arrays
+	int L[n1], R[n2];
 
-	while ( left <= mid && right <= high)
+	// copy data to temporary array
+	for(int i =0; i<n1; i++)
+			L[i]=a[left + i];
+	for(int j=0; j<n2; j++)
+			R[j]=a[mid+1+j];
+
+	// Merge the temporary arrays back into a[left .. right] into a[k] array
+	int i=0, j=0, k=left;
+	while(i<n1 && j<n2)
 	{
-		if(a[left] <= a[right])
+		if(L[i] <= R[j])
 		{
-			temp[k++] = a[left++];
+			a[k]= L[i];
+			i++;
 		}
 		else
 		{
-			temp[k++] = a[right++];
+			a[k]=R[j];
+			j++;
 		}
-	}
-	
-	while(left<=mid)
-	{
-		temp[k++] = a[left++];
+		k++;
 	}
 
-	while(right <= high)
+	// Copy remaining elements of L[] to a[k] if any
+	while (i<n1)
 	{
-		temp[k++] = a[right++];
+		a[k]=L[i];
+		i++;
+		k++;
 	}
 
-	for(int i= 0; i< size; i++)
+	//Copy remaining elements of R[] to a[k] if any
+	while (j<n2)
 	{
-		a[low + i] = temp[i];
-
+		a[k]=R[j];
+		j++;
+		k++;
 	}
-	delete[] temp;
 }
 
-void mergeSort(int a[],int low,int high)
+void mergeSort(int a[], int left, int right)
 {
-	if( low >= high ) return; // Best case
+	if(left < right)
+	{
+		int mid= left + (right - left) / 2; // avoid overflow 
+		// sort first and second halves
+		mergeSort(a,left,mid);
+		mergeSort(a,mid+1,right);
 
-	int mid = low + (high - low)/2; // pervents overflow
-
-	mergeSort(a, low, mid);
-	mergeSort(a, mid+1, high);
-	merge(a, low, mid, high);
-
+		// Merge the sorted halves
+		merge(a, left, mid, right);
+	}
 }
-
 
 void printArray(int a[], int n)
 {
-        for(int i=0;i<n;i++)
-        {
-                cout<<a[i]<<" ";
-        }
-        cout<<endl;
+	for (int i=0; i<n; i++)
+		cout<<a[i]<<" ";
+	cout<<endl;
 }
+
 
 int main()
 {
+	int a[] = {5,8,6,3,9,1,7,2,4,0};
+	int n = sizeof(a)/sizeof(a[0]);
 
-        int a[] = {5,8,6,4,3,9,1,7,5,3,4};
+	cout<<"Original array : ";
+	printArray(a,n);
 
-        int n = sizeof(a)/sizeof(a[0]);
+	mergeSort(a,0,n-1);
 
-        cout<<"UnSorted array : ";
-        printArray(a,n);
-
-        mergeSort(a,0,n-1);
-
-        cout<<"Sorted array   : ";
-        printArray(a,n);
+	cout<<"Sorted array   : ";
+	printArray(a,n);
 
 	return 0;
 }

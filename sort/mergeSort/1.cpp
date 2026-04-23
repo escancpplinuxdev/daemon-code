@@ -11,13 +11,13 @@ void merge(int a[], int left, int mid, int right)
 	// Create temporary arrays
 	int L[n1], R[n2];
 
-	// copy data to temp array
+	// copy data to temporary array
 	for(int i =0; i<n1; i++)
 			L[i]=a[left + i];
 	for(int j=0; j<n2; j++)
 			R[j]=a[mid+1+j];
 
-	// Merge the temp arrays back into arr [left .. right]
+	// Merge the temporary arrays back into a[left .. right] by a[k] array
 	int i=0, j=0, k=left;
 	while(i<n1 && j<n2)
 	{
@@ -34,7 +34,7 @@ void merge(int a[], int left, int mid, int right)
 		k++;
 	}
 
-	// Copy remaining elements of L[] if any
+	// Copy remaining elements of L[] to a[k] if any
 	while (i<n1)
 	{
 		a[k]=L[i];
@@ -42,7 +42,7 @@ void merge(int a[], int left, int mid, int right)
 		k++;
 	}
 
-	//Copy remaining elements of R[] if any
+	//Copy remaining elements of R[] to a[k] if any
 	while (j<n2)
 	{
 		a[k]=R[j];

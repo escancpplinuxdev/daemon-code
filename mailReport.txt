@@ -2488,3 +2488,110 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+
+
+22/04/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Policy Cycle Testing (eScanMBR Configuration)
+
+    Evaluated behavior of eScanMBR under different policy cycles by modifying key parameters:
+
+        status (tested values: 0,1, 2)
+
+        corpId
+
+        encryptValue
+
+        decryptValue
+
+    Testing included both policy-driven changes and manual configuration updates in:
+
+        /opt/MicroWorld/etc/epsdaemon.conf
+
+2. Test Environment
+
+    Conducted testing on the following machines:
+
+        Small Laptop: 192.168.1.230
+
+        ASUS Laptop: 192.168.1.231
+
+        Vaibhav B Windows Machine
+
+3. Kernel-Level Testing (eScanMBR)
+
+    Performed testing on eScanMBR kernel-level functionality using:
+
+        Different policy combinations (status, encryption, decryption toggles)
+
+        Manual configuration edits followed by execution of usbencrypt
+
+4. Encryption/Decryption Behavior Across Machines
+
+    Verified USB encryption on one machine and tested access on another machine.
+
+    confirms that encryption is tied to organization-specific identifiers (corpId).
+
+5. Additional File Usage with DevencClilist.dat file
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+23/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Instant Encryption Policy Verification
+
+    Verified policy configuration for Instant Encryption (with data write/delete on device).
+
+    Configuration detail:
+
+        status = "2" (Instant Encryption mode)
+
+    Completed code review and understood the relevant code flow for this policy.
+
+    Successfully deployed and validated setup on:
+
+        ASUS Laptop (192.168.1.231)
+
+        Small Laptop (192.168.1.230)
+
+2. Functional Testing – USB (eScan MBR)
+
+    Conducted testing with pendrive (eScan MBR enabled) across multiple logical scenarios, including:
+
+        Data write operations on USB
+
+        Data delete operations on USB
+
+        Repeated read/write/delete cycles
+
+    Verified behavior when connecting the same pendrive to different laptops with applied policy.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

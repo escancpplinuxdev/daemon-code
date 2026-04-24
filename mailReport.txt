@@ -2595,3 +2595,68 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+23/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. eScan MBR Policy Deployment Analysis (RC4 Status = "1")
+
+    Reviewed all possible deployment approaches for eScan MBR policy.
+
+    As per configuration, status = "1" is expected to trigger encryption of pendrive during format operation.
+
+Configuration File Checked:
+/opt/MicroWorld/etc/epsdaemon.conf
+
+Relevant Configuration:
+
+[rc4]
+    status = "1"
+    corpId = "0x36865"
+    encryptValue = "1"
+    decryptValue = "1"
+
+[usb]
+    Status = "1"
+
+2. Observed Issue
+
+    Policy is not working as expected.
+
+    During pendrive format operation:
+
+        Logs in rc4.log indicate that the pendrive is encrypted.
+
+        However, actual encryption is not taking place on the device.
+
+    This suggests a mismatch between logging and real execution.
+
+3. Deployment & Testing Setup
+
+    Policy deployed and tested on the following systems:
+
+        Acer Small Laptop: 192.168.1.230
+
+        ASUS Laptop: 192.168.1.231
+
+    Performed cross-testing:
+
+        Deployment on one system and testing on the other
+
+        Reversed deployment/testing order
+
+    Result: Issue persists in all scenarios
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

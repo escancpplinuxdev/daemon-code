@@ -330,4 +330,16 @@ You can also pipe the output to another grep command that explicitly excludes th
 
 	lsmod | grep -i 'escanmbr' && echo "Loaded" || echo "Not Loaded"
 
-37]	
+37]	 copy paste in vim 
+	1. Go to line  click 'v' -> visual mode 
+	2. select line then  'y' -> copy -> single 'y'
+	3. p -> paste 
+
+38]     tree ->  tree -L 3 -sh -D -p -f  
+			-L  -> level -> max display depth 
+			-sh -> size human readable
+			-D  -> print date of last modification
+			-p  -> print file permission
+			-f  -> full path
+			
+	

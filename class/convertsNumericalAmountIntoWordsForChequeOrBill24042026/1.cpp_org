@@ -1,0 +1,155 @@
+#include <iostream>
+#include <string>
+#include <cmath>
+#include <iomanip>
+using namespace std;
+
+// Convert 1 to 19
+string oneToNineteen(int n) 
+{
+	const char* words[] = {"", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN",
+		"EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
+		"FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN", "NINETEEN"};
+	if (n >= 1 && n <= 19)
+		return words[n];
+	return "";
+}
+
+// Convert tens (20-90)
+string tens(int n) 
+{
+	const char* tensWords[] = {"", "", "TWENTY", "THIRTY", "FORTY", "FIFTY",
+		"SIXTY", "SEVENTY", "EIGHTY", "NINETY"};
+	if (n >= 20 && n <= 99) 
+	{
+		int t = n / 10;
+		int r = n % 10;
+		if (r == 0)
+			return tensWords[t];
+		else
+			return string(tensWords[t]) + " " + oneToNineteen(r);
+	}
+	return "";
+}
+
+// Convert 1 to 999
+string belowThousand(int n) 
+{
+	if (n == 0) return "";
+	string result;
+	if (n >= 100) 
+	{
+		result += oneToNineteen(n / 100) + " HUNDRED";
+		n %= 100;
+		if (n > 0) result += " ";
+	}
+	if (n >= 20) 
+	{
+		result += tens(n);
+	} else if (n > 0) 
+	{
+		result += oneToNineteen(n);
+	}
+	return result;
+}
+
+// Convert integer part (rupees) using Indian numbering
+string convertRupees(long long n) 
+{
+	if (n == 0) return "ZERO";
+	string result;
+
+	// Crore (10^7)
+	if (n >= 10000000)
+       	{
+		long long crorePart = n / 10000000;
+		result += belowThousand(crorePart) + " CRORE";
+		n %= 10000000;
+		if (n > 0) result += " ";
+	}
+	// Lakh (10^5)
+	if (n >= 100000) 
+	{
+		long long lakhPart = n / 100000;
+		result += belowThousand(lakhPart) + " LAKH";
+		n %= 100000;
+		if (n > 0) result += " ";
+	}
+	// Thousand (10^3)
+	if (n >= 1000) 
+	{
+		long long thousandPart = n / 1000;
+		result += belowThousand(thousandPart) + " THOUSAND";
+		n %= 1000;
+		if (n > 0) result += " ";
+	}
+	// Remaining (hundreds and below)
+	if (n > 0) {
+		result += belowThousand(n);
+	}
+	return result;
+}
+
+// Convert paise (0-99)
+string convertPaise(int p) 
+{
+	if (p == 0) return "";
+	if (p >= 1 && p <= 19) return oneToNineteen(p);
+	else return tens(p);
+}
+
+// Main function: amount to words
+string amountToWords(double amount) 
+{
+	if (amount < 0) return "MINUS " + amountToWords(-amount);
+	if (amount == 0) return "ZERO RUPEE ONLY";
+
+	// Separate integer and fractional parts
+	long long rupees = (long long)amount;
+	int paise = round((amount - rupees) * 100);
+	cout<<"round((amount-rupees))  ->  "<<round(amount-rupees)<<endl;
+	cout<<"round((amount-rupees)*100)  ->  "<<round((amount-rupees)*100)<<endl;
+	cout<<__LINE__<<"  rupees  ->  "<<rupees<<endl;
+	cout<<__LINE__<<"  paise  ->  "<<paise<<endl;
+	// Fix floating point precision
+	if (paise >= 100) 
+	{
+		rupees += paise / 100;
+		paise = paise % 100;
+	cout<<__LINE__<<"  rupees  ->  "<<rupees<<endl;
+	cout<<__LINE__<<"  paise  ->  "<<paise<<endl;
+	}
+
+	string result;
+	// Rupees part
+	result += convertRupees(rupees) + " RUPEE";
+	cout<<__LINE__<<"  result  ->  "<<result<<endl;
+	if (rupees > 1) 
+	{
+		result += "S";
+	cout<<__LINE__<<"  result  ->  "<<result<<endl;
+	}
+
+	// Paise part
+	if (paise > 0) 
+	{
+		result += " AND " + convertPaise(paise) + " PAISE";
+	cout<<__LINE__<<"  result  ->  "<<result<<endl;
+	}
+	result += " ONLY";
+	cout<<__LINE__<<"  result  ->  "<<result<<endl;
+	return result;
+}
+
+int main() 
+{
+	double amount=1;
+	cout<<"Enter 0 Zero to end the loop\n";
+	while(amount != 0)
+	{
+		cout << "Enter amount (e.g., 1234.56): ";
+		cin >> amount;
+		cout << amountToWords(amount) << endl;
+	}
+	return 0;
+}

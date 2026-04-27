@@ -2660,3 +2660,43 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+27/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. New Deployment Approach Implemented
+
+Uninstalled existing build from both systems:
+Acer Small Laptop (192.168.1.230)
+ASUS Laptop (192.168.1.231)
+Installed new EDR build on both machines.
+Applied required patch.
+Manually created escanmbr.ko module and copied it to:
+/opt/MicroWorld/etc/encr/escanmbr.ko
+
+2. Policy Deployment & Testing
+
+Deployed policies after setup.
+Verified logs for correct policy application.
+Performed pendrive format operation with status = "1".
+
+3. Validation Results
+
+Executed test on Acer laptop (192.168.1.230).
+Verified behavior on:
+Vaibhav B Windows PC
+ASUS Laptop (192.168.1.231)
+	
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

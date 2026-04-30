@@ -174,29 +174,19 @@ string amountToWords(double amount)
 
 int main() 
 {
-/*
+
 	long double amount=1;
 	cout<<"Enter 0 Zero to end the loop\n";
 	while(amount != 0)
 	{
 		cout << "Enter amount (e.g., 1234.56): ";
 		cin >> amount;
-		cout <<amount<<"  :  "<<amountToWords(amount) << endl<<endl<<endl;
-	}
-*/
+		
+		string input = to_string(amount);
+//                cout<<"input -> "<<input<<endl;
+//                cout<<"amount-> "<<amount<<endl;
 
-	string input="1" ;
-	cout<< "Enter 0 zero to end the loop\n";
-	while(!(input=="0"))
-	{
-		cout<<"Enter amount (e.g., 1234.56)  :  ";
-		cin>>input;
-		
-		long double amount = stold(input);
-		cout<<"input -> "<<input<<endl;
-		cout<<"amount-> "<<amount<<endl;
-		cout<<"\n"<<input<<"  :  "<<amountToWords(amount)<<endl<<endl;
-		
+		cout <<input<<"  :  "<<amountToWords(amount) << endl<<endl<<endl;
 	}
 
 

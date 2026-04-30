@@ -2700,3 +2700,158 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+28/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. New Deployment of escanmbr.ko usb encryotion from new server 192.168.1.204 console server 
+
+Acer Small Laptop (192.168.1.230)
+ASUS Laptop (192.168.1.231)
+Applied required policy
+Manually created escanmbr.ko module and copied it to:
+/opt/MicroWorld/etc/encr/escanmbr.ko and also in usb_encryption.zip and /lib/modules/kernel_version/escanmbr.ko
+
+2. Policy Deployment & Testing
+
+Deployed policies after setup.
+Verified logs for correct policy application.
+Performed pendrive format operation with status = "1".
+Performed pendrive format operation with status = "2".
+
+3. Validation Results
+
+Executed test on Asus laptop (192.168.1.231).
+Verified behavior on:
+Vaibhav B Windows PC
+Aces Laptop (192.168.1.230)
+	
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+29/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Timestamp Mismatch Clarification
+
+Observed timestamp differences in:
+/var/MicroWorld/var/log/rc4.log
+Root cause identified:
+Kernel module (escanmbr.ko) logs in UTC
+Userspace application (usbencrypt) logs in IST (local time)
+System configuration verified:
+RTC is set to UTC
+Timezone configured as Asia/Kolkata
+
+2. escanmbr.ko Build & Deployment
+
+Implemented required changes in kernel module code (C/C++ level).
+Built and validated module using encryption_modules.zip.
+Deployment executed from console server: 192.168.1.204
+
+Target Systems:
+
+Acer Small Laptop (192.168.1.230)
+ASUS Laptop (192.168.1.231)
+
+Deployment Steps:
+
+Ran updatenow_avs --force to generate and deploy module.
+escanmbr.ko successfully placed in:
+/opt/MicroWorld/etc/encr/escanmbr.ko
+/lib/modules/<kernel_version>/extra/escanmbr.ko
+Verified module copy operation:
+Example:
+Copying module from /opt/MicroWorld/etc/encr/escanmbr.ko to /lib/modules/6.8.0-106-generic/extra/escanmbr.ko
+
+Verification:
+
+Confirmed module load using:
+lsmod | grep -i escanmbr
+Module is successfully loaded and active.
+
+3. Policy Deployment & USB Encryption Testing
+
+Applied required policies after deployment.
+Verified logs for correct policy application.
+Executed pendrive format operation with status = "1".
+
+
+	
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+30/04/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. perform format operation on pendrive for 
+
+Format-Based Encryption Testing
+Performed pendrive format operations under the following policy configurations:
+
+Case 1:
+status = 1, encryptValue = 1, decryptValue = 1
+Case 2:
+status = 1, encryptValue = 1, decryptValue = 0
+
+Tested File System Formats:
+
+fdisk (partitioning)
+mkfs.ext2
+mkfs.ext3
+mkfs.ext4
+mkfs.fat
+mkfs.ntfs
+mkfs.vfat
+
+
+2. Kernel-Level Debugging (escanmbr.ko)
+
+Added debug logs in kernel module to trace execution flow:
+RC4_LOG_CRITICAL("start -> of program escanmbr");
+RC4_LOG_CRITICAL("End -> of program escanmbr");
+
+
+To verify module execution during USB operations.
+To track entry and exit points of encryption logic.
+
+Executed on testing machine with deployed policies.
+To Verified logs to ensure debug statements are triggered correctly during operations.
+test on testing machine 
+
+
+	
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

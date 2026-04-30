@@ -313,9 +313,11 @@ then paste the content and press Ctrl+D.
 
 32] # Correct syntax: unzip <archive> -d <destination>
 		unzip MyWorkDcoumentations.zip -d documentation/
+		unzip encryption_modules.zip -d modules/
 
 33] # Correct syntax: rip -r <name_of_zip> <folder_to_zip>
-		 zip -r MyWorkBackup.zip documentation/
+		zip -r MyWorkBackup.zip documentation/
+		zip -r encryption_modules.zip modules/
 
 34] watch -n 2 'ps aux | grep -i /opt/MicroWorld/bin/usbencrypt | grep -v grep' 
 
@@ -358,4 +360,36 @@ You can also pipe the output to another grep command that explicitly excludes th
 		--append-verify: This is the safer option. It performs a checksum on the existing part of the file before appending. If the existing part is corrupted, it restarts the whole transfer.
 
 40]	
+	find "[L1]" in all *.cpp , *.c file
 
+	1. grep -rnF "[L1]" --include=\*.{c,cpp} /home/workspace/source/rc4
+
+Breakdown of the flags:
+
+    -r: Recursive search (goes into all subfolders).
+
+    -n: Prints the line number where the match was found (essential for debugging).
+
+    -F: Fixed string. This tells grep to treat [L1] as literal text rather than a regular expression pattern.
+
+    --include=\*.{c,cpp}: Limits the search to only files ending in .c or .cpp.
+
+	2. find /home/workspace/source/rc4 -type f \( -name "*.cpp" -o -name "*.c" \) -exec grep -HnF "[L1]" {} +
+		
+	   find /home/workspace/source/rc4 -type f \( -name "*.cpp" -o -name "*.c" \) -exec grep -HnF "[L1]" {} \;
+
+
+    \( -name "*.cpp" -o -name "*.c" \): Finds files ending in .cpp OR .c.
+
+    -exec ... {} +: Runs grep on the discovered files efficiently.
+
+    -H: Ensures the filename is printed even if only one match is found.
+
+	3. grep -rnFiC 2 "[L1]" --include=\*.{c,cpp} /home/workspace/source/rc4
+
+	To ignore case (find [l1] as well as [L1]): Add the -i flag.
+
+To see context: Add -C 2 to see 2 lines before and after the match. This is helpful if you are looking for the logic surrounding the [L1] tag in your rc4 source code.
+
+41]	
+	

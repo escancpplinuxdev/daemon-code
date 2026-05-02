@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-// ---------- Word conversion functions (exact same as before) ----------
+// ---------- Conversion functions (unchanged) ----------
 string oneToNineteen(int n) {
     const char* words[] = {"", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN",
                            "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
@@ -79,7 +79,7 @@ string convertPaise(int p) {
     else return tens(p);
 }
 
-// ---------- Main function: exact string parsing with rounding ----------
+// ---------- Main function with exact string splitting ----------
 int main() {
     string input;
     cout << "Enter 0 (Zero) to end the loop\n";
@@ -91,63 +91,50 @@ int main() {
             break;
         }
 
-        // Split at decimal point
-        size_t dot = input.find('.');
-        string rupees_str, frac_str;
-        if (dot == string::npos) {
-            rupees_str = input;
-            frac_str = "";
+        // ----- Split at decimal point -----
+        size_t dotPos = input.find('.');
+        string rupeesStr, paiseStr;
+
+        if (dotPos == string::npos) {
+            rupeesStr = input;
+            paiseStr = "0";
         } else {
-            rupees_str = input.substr(0, dot);
-            frac_str = input.substr(dot + 1);
+            rupeesStr = input.substr(0, dotPos);
+            string frac = input.substr(dotPos + 1);
+            // Take exactly two digits for paise – NO rounding
+            if (frac.length() >= 2)
+                paiseStr = frac.substr(0, 2);
+            else if (frac.length() == 1)
+                paiseStr = frac + "0";
+            else
+                paiseStr = "00";
         }
 
-        // Handle negative sign
+        // ----- Handle negative sign -----
         bool negative = false;
-        if (!rupees_str.empty() && rupees_str[0] == '-') {
+        if (!rupeesStr.empty() && rupeesStr[0] == '-') {
             negative = true;
-            rupees_str = rupees_str.substr(1);
-        }
-        // Remove leading zeros
-        size_t nonZero = rupees_str.find_first_not_of('0');
-        if (nonZero != string::npos) rupees_str = rupees_str.substr(nonZero);
-        else rupees_str = "0";
-
-        long long rupees = stoll(rupees_str);
-
-        // ----- Process fractional part with rounding -----
-        int paise = 0;
-        int rounding_extra = 0;
-        if (!frac_str.empty()) {
-            // Extract first three digits (if exist) – third digit decides rounding
-            int first_two = 0, third_digit = 5; // default round up if third digit absent? Actually no.
-            if (frac_str.size() >= 2) {
-                first_two = stoi(frac_str.substr(0, 2));
-                if (frac_str.size() >= 3) {
-                    third_digit = frac_str[2] - '0';
-                } else {
-                    third_digit = 0; // no third digit → no rounding
-                }
-            } else if (frac_str.size() == 1) {
-                first_two = stoi(frac_str.substr(0, 1)) * 10;
-                third_digit = 0;
-            } else {
-                first_two = 0;
-                third_digit = 0;
-            }
-            paise = first_two;
-            if (third_digit >= 5) {
-                paise++;   // round up paise
-            }
+            rupeesStr = rupeesStr.substr(1);
         }
 
-        // Handle paise overflow (e.g., 99 + 1 = 100)
+        // ----- Remove leading zeros from rupees part -----
+        size_t nonZero = rupeesStr.find_first_not_of('0');
+        if (nonZero != string::npos)
+            rupeesStr = rupeesStr.substr(nonZero);
+        else
+            rupeesStr = "0";
+
+        // ----- Convert to integers -----
+        long long rupees = stoll(rupeesStr);
+        int paise = stoi(paiseStr);
+
+        // ----- Fix possible overflow from paise (e.g., if user typed 100 or more) -----
         if (paise >= 100) {
-            rupees++;
-            paise -= 100;
+            rupees += paise / 100;
+            paise = paise % 100;
         }
 
-        // Build words
+        // ----- Build the word representation -----
         string result;
         if (negative) result = "MINUS ";
 
@@ -160,6 +147,7 @@ int main() {
             } else {
                 result += "ZERO RUPEE";
             }
+
             if (paise > 0) {
                 if (rupees > 0) result += " AND ";
                 result += convertPaise(paise) + " PAISE";

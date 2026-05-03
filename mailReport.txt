@@ -2855,3 +2855,117 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+02/05/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+Code reading of following code :- 
+
+1. ContentScanner – Code Flow Analysis
+
+Main Entry:
+
+File: main.cpp → int main()
+Log monitoring:
+tail -f /var/MicroWorld/var/log/contentScanner.log
+
+Execution Flow:
+
+daemonize() → Runs service as daemon:
+/opt/MicroWorld/sbin/contentScanner
+PID file created at:
+/opt/MicroWorld/var/run/contentScanner.pid
+
+Configuration Read:
+
+File: /opt/MicroWorld/etc/contentScanner.conf
+Key: ContentScanner:Status
+
+Modes:
+
+status = 1 → Monitoring Mode
+status = 2 → Blocking Mode
+Initialization Steps:
+initializeReadableFiletypes()
+Pattern loading:
+extractPatterns(..., "patterns")
+Regex initialization:
+initializeRegexes(..., "customRegex")
+File Scanning Thread:
+pthread_create(&threadFileScan, NULL, FileScan, NULL)
+Clipboard Monitoring Trigger:
+Reads: ContentScanner:clipBoardMonitor
+Condition:
+If clipBoardMonitor = 1 OR status = 2
+→ Executes:
+/opt/MicroWorld/sbin/clipboardWatcher &
+Thread Synchronization:
+pthread_join(threadFileScan, NULL)
+
+2. Screenshot Monitoring – Code Flow Analysis
+
+Key Components:
+
+Policy Check:
+Function: SetFirefoxScreenshotPolicy
+Returns: success / failure
+Log File:
+/var/MicroWorld/var/log/screenCapture.log
+Configuration Read:
+File: /opt/MicroWorld/etc/epsdaemon.conf
+Key: screenCapture:Status
+
+ScreenshotPrevention Workflow:
+
+Initialization:
+monitor.init()
+
+Security Layers:
+
+Binary Execution Blocking
+blockBinaryExecution()
+X11 Keyboard Control
+initX11()
+disableScreenshotKeys()
+File Monitoring (Cleanup)
+setupFileMonitoring()
+GNOME Shortcut Blocking
+disableGnomeShortcuts()
+
+Monitoring Start:
+monitor.start()
+
+Threads Created:
+
+Permission Monitoring Thread:
+monitorPermissions
+Clipboard Monitoring Thread:
+clipboardMonitor
+
+3. Clipboard Monitoring Configuration
+
+Configuration File:
+/opt/MicroWorld/etc/contentScanner.conf
+
+Key:
+ContentScanner:clipBoardMonitor = "1"
+
+Modes:
+
+0 → Block
+1 → Monitor
+2 → Display
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -1,10 +1,9 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <cctype>
 using namespace std;
 
-// ---------- Word conversion functions (unchanged) ----------
+// ---------- Conversion functions (unchanged) ----------
 string oneToNineteen(int n) {
     const char* words[] = {"", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN",
                            "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
@@ -80,102 +79,62 @@ string convertPaise(int p) {
     else return tens(p);
 }
 
-// ---------- Validation function ----------
-bool isValidAmount(const string& s) {
-    if (s.empty()) return false;
-    size_t i = 0;
-    // optional leading minus
-    if (s[0] == '-') i++;
-    bool hasDigit = false;
-    int dotCount = 0;
-    for (; i < s.size(); i++) {
-        if (isdigit(s[i])) {
-            hasDigit = true;
-        } else if (s[i] == '.') {
-            dotCount++;
-            if (dotCount > 1) return false;
-        } else {
-            return false;
-        }
-    }
-    return hasDigit;
-}
-
-// ---------- Main function with validation and rounding ----------
+// ---------- Main function with exact string splitting ----------
 int main() {
     string input;
     cout << "Enter 0 (Zero) to end the loop\n";
     while (true) {
         cout << "Enter amount (e.g., 1234.56): ";
         cin >> input;
-
-        // Input validation
-        if (!isValidAmount(input)) {
-            cout << "Wrong input. Enter numerical amount.\n\n";
-            continue;
-        }
-
-        // Exit condition
         if (input == "0") {
             cout << "ZERO RUPEE ONLY\nExiting loop. Goodbye!\n";
             break;
         }
 
-        // Split at decimal
-        size_t dot = input.find('.');
-        string rupees_str, frac_str;
-        if (dot == string::npos) {
-            rupees_str = input;
-            frac_str = "";
+        // ----- Split at decimal point -----
+        size_t dotPos = input.find('.');
+        string rupeesStr, paiseStr;
+
+        if (dotPos == string::npos) {
+            rupeesStr = input;
+            paiseStr = "0";
         } else {
-            rupees_str = input.substr(0, dot);
-            frac_str = input.substr(dot + 1);
+            rupeesStr = input.substr(0, dotPos);
+            string frac = input.substr(dotPos + 1);
+            // Take exactly two digits for paise – NO rounding
+            if (frac.length() >= 2)
+                paiseStr = frac.substr(0, 2);
+            else if (frac.length() == 1)
+                paiseStr = frac + "0";
+            else
+                paiseStr = "00";
         }
 
-        // Handle negative sign
+        // ----- Handle negative sign -----
         bool negative = false;
-        if (!rupees_str.empty() && rupees_str[0] == '-') {
+        if (!rupeesStr.empty() && rupeesStr[0] == '-') {
             negative = true;
-            rupees_str = rupees_str.substr(1);
-        }
-        // Remove leading zeros (but keep at least one zero)
-        size_t nonZero = rupees_str.find_first_not_of('0');
-        if (nonZero != string::npos) rupees_str = rupees_str.substr(nonZero);
-        else rupees_str = "0";
-
-        // Convert rupees to integer
-        long long rupees = stoll(rupees_str);
-
-        // Process fractional part with rounding
-        int paise = 0;
-        if (!frac_str.empty()) {
-            // First two digits (pad if needed)
-            int first_two = 0;
-            if (frac_str.size() >= 2) {
-                first_two = stoi(frac_str.substr(0, 2));
-            } else if (frac_str.size() == 1) {
-                first_two = stoi(frac_str.substr(0, 1)) * 10;
-            } else {
-                first_two = 0;
-            }
-            // Third digit (if exists) for rounding
-            int third_digit = 0;
-            if (frac_str.size() >= 3) {
-                third_digit = frac_str[2] - '0';
-            }
-            paise = first_two;
-            if (third_digit >= 5) {
-                paise++;
-            }
+            rupeesStr = rupeesStr.substr(1);
         }
 
-        // Handle paise overflow (e.g., 99 -> 100)
+        // ----- Remove leading zeros from rupees part -----
+        size_t nonZero = rupeesStr.find_first_not_of('0');
+        if (nonZero != string::npos)
+            rupeesStr = rupeesStr.substr(nonZero);
+        else
+            rupeesStr = "0";
+
+        // ----- Convert to integers -----
+        long long rupees = stoll(rupeesStr);
+        int paise = stoi(paiseStr);
+
+        // ----- Fix possible overflow from paise (e.g., if user typed 100 or more) -----
         if (paise >= 100) {
-            rupees++;
-            paise -= 100;
+            rupees += paise / 100;
+            paise = paise % 100;
         }
 
-        // Build words
+        // ----- Build the word representation -----
         string result;
         if (negative) result = "MINUS ";
 
@@ -188,6 +147,7 @@ int main() {
             } else {
                 result += "ZERO RUPEE";
             }
+
             if (paise > 0) {
                 if (rupees > 0) result += " AND ";
                 result += convertPaise(paise) + " PAISE";

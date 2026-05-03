@@ -1,11 +1,11 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include <cctype>
 using namespace std;
 
-// ---------- Word conversion functions (unchanged) ----------
-string oneToNineteen(int n) {
+// ---------- Word conversion functions (exact same as before) ----------
+string oneToNineteen(int n) 
+{
     const char* words[] = {"", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN",
                            "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
                            "FOURTEEN", "FIFTEEN", "SIXTEEN", "SEVENTEEN", "EIGHTEEN", "NINETEEN"};
@@ -13,7 +13,8 @@ string oneToNineteen(int n) {
     return "";
 }
 
-string tens(int n) {
+string tens(int n) 
+{
     const char* tensWords[] = {"", "", "TWENTY", "THIRTY", "FORTY", "FIFTY",
                                "SIXTY", "SEVENTY", "EIGHTY", "NINETY"};
     if (n >= 20 && n <= 99) {
@@ -25,7 +26,8 @@ string tens(int n) {
     return "";
 }
 
-string belowThousand(int n) {
+string belowThousand(int n) 
+{
     if (n == 0) return "";
     string result;
     if (n >= 100) {
@@ -40,7 +42,8 @@ string belowThousand(int n) {
 
 string convertRupees(long long n); // forward declaration
 
-string aboveCrores(long long n) {
+string aboveCrores(long long n) 
+{
     if (n < 10000000) return convertRupees(n);
     long long crorePart = n / 10000000;
     long long remainder = n % 10000000;
@@ -49,7 +52,8 @@ string aboveCrores(long long n) {
     return result;
 }
 
-string convertRupees(long long n) {
+string convertRupees(long long n) 
+{
     if (n == 0) return "ZERO";
     string result;
     if (n >= 10000000) {
@@ -74,54 +78,27 @@ string convertRupees(long long n) {
     return result;
 }
 
-string convertPaise(int p) {
+string convertPaise(int p) 
+{
     if (p == 0) return "";
     if (p >= 1 && p <= 19) return oneToNineteen(p);
     else return tens(p);
 }
 
-// ---------- Validation function ----------
-bool isValidAmount(const string& s) {
-    if (s.empty()) return false;
-    size_t i = 0;
-    // optional leading minus
-    if (s[0] == '-') i++;
-    bool hasDigit = false;
-    int dotCount = 0;
-    for (; i < s.size(); i++) {
-        if (isdigit(s[i])) {
-            hasDigit = true;
-        } else if (s[i] == '.') {
-            dotCount++;
-            if (dotCount > 1) return false;
-        } else {
-            return false;
-        }
-    }
-    return hasDigit;
-}
-
-// ---------- Main function with validation and rounding ----------
-int main() {
+// ---------- Main function: exact string parsing with rounding ----------
+int main() 
+{
     string input;
     cout << "Enter 0 (Zero) to end the loop\n";
     while (true) {
         cout << "Enter amount (e.g., 1234.56): ";
         cin >> input;
-
-        // Input validation
-        if (!isValidAmount(input)) {
-            cout << "Wrong input. Enter numerical amount.\n\n";
-            continue;
-        }
-
-        // Exit condition
         if (input == "0") {
             cout << "ZERO RUPEE ONLY\nExiting loop. Goodbye!\n";
             break;
         }
 
-        // Split at decimal
+        // Split at decimal point
         size_t dot = input.find('.');
         string rupees_str, frac_str;
         if (dot == string::npos) {
@@ -138,38 +115,40 @@ int main() {
             negative = true;
             rupees_str = rupees_str.substr(1);
         }
-        // Remove leading zeros (but keep at least one zero)
+        // Remove leading zeros
         size_t nonZero = rupees_str.find_first_not_of('0');
         if (nonZero != string::npos) rupees_str = rupees_str.substr(nonZero);
         else rupees_str = "0";
 
-        // Convert rupees to integer
         long long rupees = stoll(rupees_str);
 
-        // Process fractional part with rounding
+        // ----- Process fractional part with rounding -----
         int paise = 0;
+        int rounding_extra = 0;
         if (!frac_str.empty()) {
-            // First two digits (pad if needed)
-            int first_two = 0;
+            // Extract first three digits (if exist) – third digit decides rounding
+            int first_two = 0, third_digit = 5; // default round up if third digit absent? Actually no.
             if (frac_str.size() >= 2) {
                 first_two = stoi(frac_str.substr(0, 2));
+                if (frac_str.size() >= 3) {
+                    third_digit = frac_str[2] - '0';
+                } else {
+                    third_digit = 0; // no third digit → no rounding
+                }
             } else if (frac_str.size() == 1) {
                 first_two = stoi(frac_str.substr(0, 1)) * 10;
+                third_digit = 0;
             } else {
                 first_two = 0;
-            }
-            // Third digit (if exists) for rounding
-            int third_digit = 0;
-            if (frac_str.size() >= 3) {
-                third_digit = frac_str[2] - '0';
+                third_digit = 0;
             }
             paise = first_two;
             if (third_digit >= 5) {
-                paise++;
+                paise++;   // round up paise
             }
         }
 
-        // Handle paise overflow (e.g., 99 -> 100)
+        // Handle paise overflow (e.g., 99 + 1 = 100)
         if (paise >= 100) {
             rupees++;
             paise -= 100;

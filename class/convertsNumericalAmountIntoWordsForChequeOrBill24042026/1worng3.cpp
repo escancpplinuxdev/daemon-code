@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
+#include <cmath>      // for powl, but we avoid floating point; use integer math
 #include <algorithm>
-#include <cctype>
 using namespace std;
 
-// ---------- Word conversion functions (unchanged) ----------
+// ---------- Word conversion functions (same as before) ----------
 string oneToNineteen(int n) {
     const char* words[] = {"", "ONE", "TWO", "THREE", "FOUR", "FIVE", "SIX", "SEVEN",
                            "EIGHT", "NINE", "TEN", "ELEVEN", "TWELVE", "THIRTEEN",
@@ -38,7 +38,7 @@ string belowThousand(int n) {
     return result;
 }
 
-string convertRupees(long long n); // forward declaration
+string convertRupees(long long n); // forward decl
 
 string aboveCrores(long long n) {
     if (n < 10000000) return convertRupees(n);
@@ -80,102 +80,69 @@ string convertPaise(int p) {
     else return tens(p);
 }
 
-// ---------- Validation function ----------
-bool isValidAmount(const string& s) {
-    if (s.empty()) return false;
-    size_t i = 0;
-    // optional leading minus
-    if (s[0] == '-') i++;
-    bool hasDigit = false;
-    int dotCount = 0;
-    for (; i < s.size(); i++) {
-        if (isdigit(s[i])) {
-            hasDigit = true;
-        } else if (s[i] == '.') {
-            dotCount++;
-            if (dotCount > 1) return false;
-        } else {
-            return false;
-        }
-    }
-    return hasDigit;
-}
-
-// ---------- Main function with validation and rounding ----------
+// ---------- Exact conversion using integer arithmetic on fractional part ----------
 int main() {
     string input;
     cout << "Enter 0 (Zero) to end the loop\n";
     while (true) {
         cout << "Enter amount (e.g., 1234.56): ";
         cin >> input;
-
-        // Input validation
-        if (!isValidAmount(input)) {
-            cout << "Wrong input. Enter numerical amount.\n\n";
-            continue;
-        }
-
-        // Exit condition
         if (input == "0") {
             cout << "ZERO RUPEE ONLY\nExiting loop. Goodbye!\n";
             break;
         }
 
-        // Split at decimal
+        // Split at decimal point
         size_t dot = input.find('.');
-        string rupees_str, frac_str;
+        string rupees_str, fractional_str;
         if (dot == string::npos) {
             rupees_str = input;
-            frac_str = "";
+            fractional_str = "";
         } else {
             rupees_str = input.substr(0, dot);
-            frac_str = input.substr(dot + 1);
+            fractional_str = input.substr(dot + 1);
         }
 
-        // Handle negative sign
+        // Remove leading zeros from rupees
         bool negative = false;
         if (!rupees_str.empty() && rupees_str[0] == '-') {
             negative = true;
             rupees_str = rupees_str.substr(1);
         }
-        // Remove leading zeros (but keep at least one zero)
         size_t nonZero = rupees_str.find_first_not_of('0');
-        if (nonZero != string::npos) rupees_str = rupees_str.substr(nonZero);
-        else rupees_str = "0";
+        if (nonZero != string::npos)
+            rupees_str = rupees_str.substr(nonZero);
+        else
+            rupees_str = "0";
 
         // Convert rupees to integer
         long long rupees = stoll(rupees_str);
 
-        // Process fractional part with rounding
+        // --- Handle fractional part exactly ---
         int paise = 0;
-        if (!frac_str.empty()) {
-            // First two digits (pad if needed)
-            int first_two = 0;
-            if (frac_str.size() >= 2) {
-                first_two = stoi(frac_str.substr(0, 2));
-            } else if (frac_str.size() == 1) {
-                first_two = stoi(frac_str.substr(0, 1)) * 10;
-            } else {
-                first_two = 0;
-            }
-            // Third digit (if exists) for rounding
-            int third_digit = 0;
-            if (frac_str.size() >= 3) {
-                third_digit = frac_str[2] - '0';
-            }
-            paise = first_two;
-            if (third_digit >= 5) {
-                paise++;
-            }
+        if (!fractional_str.empty()) {
+            // Remove trailing zeros? Actually we need all digits for exact fraction.
+            // Convert fractional string to a big integer (using unsigned long long; assume fits).
+            // Let D = number of digits.
+            unsigned long long frac_val = stoull(fractional_str);  // might overflow if > 2^64-1 digits? unlikely.
+            size_t d = fractional_str.length();
+            // Compute 10^d as unsigned long long; if d > 19, overflow – but input is limited by the user.
+            unsigned long long pow10 = 1;
+            for (size_t i = 0; i < d; ++i) pow10 *= 10;
+            // paise = floor( (frac_val * 100) / pow10 )
+            unsigned long long paise_ull = (frac_val * 100) / pow10;
+            paise = (int)(paise_ull % 100);   // ensure within 0-99
+            // No carry to rupees because frac_val < pow10, so paise_ull < 100.
         }
-
-        // Handle paise overflow (e.g., 99 -> 100)
+	cout <<"\nrupees -> "<<rupees<<endl;
+	cout <<"paise -> "<<paise<<endl;
+        // Additional safety: if paise >= 100 (should not happen, but just in case)
         if (paise >= 100) {
-            rupees++;
-            paise -= 100;
+            rupees += paise / 100;
+            paise = paise % 100;
         }
 
-        // Build words
+        // Build the word representation
         string result;
         if (negative) result = "MINUS ";
 
@@ -188,6 +155,7 @@ int main() {
             } else {
                 result += "ZERO RUPEE";
             }
+
             if (paise > 0) {
                 if (rupees > 0) result += " AND ";
                 result += convertPaise(paise) + " PAISE";

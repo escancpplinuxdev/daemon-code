@@ -56,6 +56,8 @@ github.com
 	Username	:- escancpplinuxdev 
 	token           :- genrate all repo no expeir token from github.
 	gmail		:- escancpplinuxdev@gmail.com
+	passwd		:- ff
+			:- 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
 	
 
 accounts.google.com/ Gmail.com	

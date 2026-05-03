@@ -29,12 +29,12 @@ void log1 (int currentLogLevel,const char *format,...)
 
     if(currentLogLevel <= debugLevel)
     {
-        FILE *fp = fopen("/var/MicroWorld/var/log/Rushi.log","a");
+        FILE *fp = fopen("/var/MicroWorld/var/log/calculator.log","a");
 
         if(fp == NULL)
         {
             system("mkdir -p /var/MicroWorld/var/log/");
-            fp = fopen("/var/MicroWorld/var/log/Rushi.log","a");
+            fp = fopen("/var/MicroWorld/var/log/calculator.log","a");
             if(fp == NULL)
                 return;
         }

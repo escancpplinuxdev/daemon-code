@@ -79,9 +79,9 @@ a /home/git/linux_source
 
 # //-----------------------------------moving between a laptop and a VirtualBox/Server (PTLD-3)-------------------------//
 
-1. git pull https://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@github.com/escancpplinuxdev/daemon-code.git main
+1. git pull https://YOUR_GIT_TOKEN@github.com/escancpplinuxdev/daemon-code.git main
 
-2. git push https://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@github.com/escancpplinuxdev/daemon-code.git main
+2. git push https://YOUR_GIT_TOKEN@github.com/escancpplinuxdev/daemon-code.git main
 
 #// ------------------------------Ignore swap file -----------------------------------------------------//
 

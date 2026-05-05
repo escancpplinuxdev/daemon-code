@@ -2969,3 +2969,73 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+02/05/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Code Reading & Execution Trigger
+
+    Completed code walkthrough of screenshot_monitor.cpp.
+
+    Identified that the module is triggered via epsdaemon service.
+
+Configuration Verified:
+
+    File: /opt/MicroWorld/etc/epsdaemon.conf
+
+[screenCapture]
+Status = "1"
+
+    Status = "1" enables screenshot monitoring.
+
+2. Firefox Policy Verification
+
+    Checked Firefox screenshot restriction policy:
+
+    File: /etc/firefox/policies/policies.json
+
+{
+  "policies": {
+    "DisableFirefoxScreenshots": true
+  }
+}
+
+4. Screenshot Monitoring Testing
+
+Test Locations Monitor:
+
+Desktop
+Pictures
+Downloads
+/tmp directory
+
+Tools & Methods Used:
+
+Installed screenshot tool:
+sudo apt install scrot
+Executed commands:
+scrot -d 5 screenshot.png
+Tested formats: .png, .jpg, .jpeg
+Keyboard shortcuts tested:
+PrtScn
+Shift + PrtScn
+Alt + PrtScn
+
+5. Log Verification
+
+    Monitored logs during operations:
+    tail -f /var/MicroWorld/var/log/screenCapture.log
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

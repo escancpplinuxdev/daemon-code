@@ -3039,3 +3039,65 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+02/05/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1. C++ Development (TLS Flag Injection)
+
+    Implemented C++ code to add TLS flags to every Exec= line in .desktop files (not limited to the first occurrence).
+
+    Code is written following standard brace style (opening brace on a new line for functions and loops).
+
+    Ensured compatibility with C++11 standard.
+
+2. Functional Testing
+
+    Tested the implementation under multiple conditions, including:
+
+        .desktop files with single and multiple Exec= entries
+
+        Existing flags present vs no flags present
+
+        Different application launch formats
+
+    Verified that TLS flags are correctly appended in all applicable cases.
+
+3. Browser-Specific Handling
+
+    Implemented detection for Chromium-based browsers:
+
+        Chrome
+
+        Chromium
+
+        Brave
+
+        Edge
+
+    Logic added to:
+
+        Apply TLS flag modification during execution
+
+        Restore original .desktop file from backup on process termination (SIGTERM / normal exit)
+
+4. Backup & Restore Mechanism
+
+    Backup of original .desktop file is created before modification.
+
+    On application stop (signal/termination), original file is restored to ensure system consistency.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

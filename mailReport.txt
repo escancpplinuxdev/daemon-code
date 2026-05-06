@@ -3101,3 +3101,71 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+02/05/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. C++ Development (Source Implementation)
+
+    Implemented C++ code in:
+
+        source/main.cpp
+
+        source/term_signal_handle.cpp
+
+    Functionality developed to:
+
+        Detect installation type of Chromium-based browsers:
+
+            Chrome
+
+            Chromium
+
+            Brave
+
+            Edge
+
+        Modify corresponding .desktop files by adding TLS1.2 flags to all Exec= entries.
+
+2. Backup & Restore Mechanism
+
+    Implemented restoreBackup() functionality to revert .desktop changes.
+
+    Restore is triggered on:
+
+        Ctrl + C (SIGINT)
+
+        systemctl stop nfdaemon
+
+        systemctl restart nfdaemon
+
+    Ensures system stability by restoring original .desktop files after process termination.
+
+3. Testing Environment & Validation
+
+    Test Machine:
+
+        Ubuntu 25 system (IP: 192.168.2.220)
+
+    Tested with browser versions (v147):
+
+        Chrome
+
+        Chromium
+
+        Brave
+
+        Edge
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

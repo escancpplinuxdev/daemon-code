@@ -46,9 +46,9 @@ if grep -Fxq "$DAY" "$HOLIDAY_FILE"; then
     "Tomorrow [$FULLDAY] is a company holiday. Take a leave."
 
 else
-    echo "$TDAY is a regular work day."
+    echo "$TDAY is a regular working day."
 
     send_notification_loop2 \
     "Good morning ....." \
-    "Today [$TDAY] is a work day."
+    "Today [$TDAY] is a regular working day."
 fi

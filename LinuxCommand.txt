@@ -245,7 +245,18 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 	vertical	-> vim -O a1.cpp b2.cpp -> 'O' capital 
 
 21]  vim paste one-file to another-file 
-	vim -O a1.cpp b2.cpp -> file open vertically -> v 'visual mode' -> select -> yy -> paste -> ctrl + w + w -> switch tab / file -> go to line where to paste ':100' -> p -> paste -> w: -> save.
+
+1.	vim -O a1.cpp b2.cpp -> file open vertically -> v 'visual mode' -> select -> yy -> paste -> ctrl + w + w -> switch tab / file -> go to line where to paste ':100' -> p -> paste -> w: -> save.
+
+
+2.	Open main.cpp, select in Visual mode and yank as usual (e.g., "Y" to yank into register a).
+
+	open term_signal_handle.cpp (:e source/term_signal_handle.cpp).
+
+	Paste with "p" (paste from register a).
+
+
+
 
 22] klavaro --> type master comman
 
@@ -392,4 +403,11 @@ Breakdown of the flags:
 To see context: Add -C 2 to see 2 lines before and after the match. This is helpful if you are looking for the logic surrounding the [L1] tag in your rc4 source code.
 
 41]	
-	
+	script debugg
+
+	Add on top of the script 
+
+		exec 2>debug.log
+		set -x	
+
+	then run script, it create debug.log

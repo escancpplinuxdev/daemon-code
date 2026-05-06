@@ -1,7 +1,5 @@
-# This line runs your script at 11:55 AM every day
-# vim  /etc/cron.d/eScanHolidayNotified_cron
-# -rw-r--r-- 1 root root 286 May  4 17:09 /etc/cron.d/eScanHolidayNotified_cron
-
-
+# This line runs your script at 10:55 AM every day
 55 11 * * * root export DISPLAY=:0 && /tmpdata/Rushikesh_27022026/eScanHolidayNotifiedScripts/check-holiday.sh
+55 10 * * * root export DISPLAY=:0 && /tmpdata/Rushikesh_27022026/eScanHolidayNotifiedScripts/check-holiday.sh
+30 20 * * * root export DISPLAY=:0 && /tmpdata/Rushikesh_27022026/eScanHolidayNotifiedScripts/check-holiday.sh
 #08 17 * * * root export DISPLAY=:0 && /tmpdata/Rushikesh_27022026/eScanHolidayNotifiedScripts/check-holiday.sh # -> working

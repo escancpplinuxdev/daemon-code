@@ -100,6 +100,8 @@ Option	Meaning	Symbolic Links Behavior	Example Situation
 		 1	failed
 		 127	wrong command
 13]	ssh -o HostKeyAlgorithms=ssh-rsa root@192.168.1.226	
+	1.226 scp to 192.168.2.216 
+i.e     u 10 	  to  u 18   -> scp
 
 14] 	du -sh / du -h
 	df -h
@@ -411,3 +413,46 @@ To see context: Add -C 2 to see 2 lines before and after the match. This is help
 		set -x	
 
 	then run script, it create debug.log
+
+42] 
+	script comment
+	
+	single comment 
+	1.   # write comment
+
+	multiple comment -> not print/ echo in script o/p
+	1.  	#
+		# this 
+		# is 
+		# how 
+		# multiple comment
+		# section is done.
+
+
+	multiple comment -> print/ echo in script o/p  show comment only in work exec 2>debug.log
+                                                                                 set -x
+
+	2. 	: '
+
+		multiple 
+		comment 
+		where 
+		comment 
+		print/echo 
+		on 
+		script
+
+	 	'
+
+
+		# Ensure the single quote starts immediately on the next line or right after the colon
+		# colon space single quote i.    : 'test
+						    is nice'	 -> show comment only in work exec 2>debug.log
+										     	      set -x			   
+: '
+This is your 
+multi-line 
+comment section.
+'
+43]		
+		

@@ -3169,3 +3169,86 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Shell Script Analysis
+
+    Performed detailed study of force-tls-1.2_new.sh.
+
+    Added debugging support for analysis using:
+
+        exec 2>debug.log
+
+        set -x for command-level tracing
+
+    Verified execution flow and behavior of all commands through generated debug logs.
+
+2. C++ Replication for Chromium-Based Browsers
+
+    Replicated shell-script logic in C++ for:
+
+        Chrome
+
+        Chromium
+
+        Brave
+
+        Edge
+
+    Implemented handling for browser versions:
+
+        version >= 146
+
+    Added logic in chromium_based_browser() flow to:
+
+        Detect browser installation
+
+        Modify .desktop Exec= entries
+
+        Apply TLS1.2 related flags
+
+        Maintain backup and restore handling
+
+3. Testing Performed
+
+    Successfully tested implementation on:
+
+        192.168.2.220
+
+        192.168.1.234 testing machine
+
+Validation Included:
+
+    Browser detection
+
+    TLS flag injection
+
+    Execution behavior after modification
+
+    Stability during multiple restart cycles
+
+4. Corporate Build 23 Compatibility
+
+    192.168.1.226 (Ubuntu 10 development machine)
+
+    Analyzed dependency requirements for Corporate Build 23.
+
+    Focused on using lower/stable dependencies for improved compatibility and compilation stability.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

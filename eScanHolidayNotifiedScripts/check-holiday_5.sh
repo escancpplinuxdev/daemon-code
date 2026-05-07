@@ -8,8 +8,8 @@ export DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/$USER_ID/bus
 
 HOLIDAY_FILE="/tmpdata/Rushikesh_27022026/eScanHolidayNotifiedScripts/holidays.list"
 DAY=$(date +%d-%m-%Y)
-TODAY=$(date +"%d-%b-%Y %A")
-HOLIDAY=$(date -d "+1 days" +"%d-%b-%Y %A")
+TDAY=$(date +"%d-%b-%Y %A")
+FULLDAY=$(date -d "+1 days" +"%d-%b-%Y %A")
 
 # Function to send notification 10 times
 send_notification_loop1() {
@@ -21,7 +21,7 @@ send_notification_loop1() {
         sudo -u $USER_NAME DISPLAY=$DISPLAY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
         notify-send -u normal "$TITLE" "$MESSAGE"
 
-        sleep 15   # wait 15 seconds before next popup
+        sleep 10   # wait 10 seconds before next popup
     done
 }
 
@@ -34,24 +34,21 @@ send_notification_loop2() {
         sudo -u $USER_NAME DISPLAY=$DISPLAY DBUS_SESSION_BUS_ADDRESS=$DBUS_SESSION_BUS_ADDRESS \
         notify-send -u normal "$TITLE" "$MESSAGE"
 
-        sleep 15   # wait 15 seconds before next popup
+        sleep 30   # wait 30 seconds before next popup
     done
 }
 
-TODAYMSG="Today [$TODAY] is a regular working day."
-HOLIDAYMSG="Tomorrow [$HOLIDAY] is a company holiday. Take a leave."
-
 if grep -Fxq "$DAY" "$HOLIDAY_FILE"; then
-    echo "$HOLIDAYMSG"			
+    echo "Tomorrow $FULLDAY is a company holiday. Take a leave."
 
     send_notification_loop1 \
     "Holiday Reminder !!!!!" \
-    "$HOLIDAYMSG"
+    "Tomorrow [$FULLDAY] is a company holiday. Take a leave."
 
 else
-    echo "$TODAYMSG"
+    echo "$TDAY is a regular working day."
 
     send_notification_loop2 \
     "Good morning ....." \
-    "$TODAYMSG"
+    "Today [$TDAY] is a regular working day."
 fi

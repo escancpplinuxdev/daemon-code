@@ -3252,3 +3252,33 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1.    Worked on making nfdaemon compatible for Corporate Build 23 version using nfdaemon from Ubuntu 10 devlopement machine (192.168.1.226).
+
+2.    As per requirement, removed all newly added logs from nfdaemon module.
+
+3.    Built and tested the updated nfdaemon package after all log removal changes.
+
+4.    Sent the tested build to the testing .
+
+5.    Checked the issue in updatenow_avs where product name is displayed as “escan-edr” in escan-dlp build.
+
+6.    Verified the related product name in c++ code handling/configuration file.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

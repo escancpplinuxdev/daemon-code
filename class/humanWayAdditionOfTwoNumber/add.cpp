@@ -1,6 +1,10 @@
 
+#include <vector>
 #include <iostream>
 #include <string>
+#include <iostream>
+#include <string>
+#include <algorithm>
 using namespace std;
 
 void initilizeArrayToZero(int a[],int n)
@@ -10,80 +14,112 @@ void initilizeArrayToZero(int a[],int n)
 		a[i]=0;
 	}
 }
-void stringToArray(string aa, int a[],int n)
+void stringToArray(string num, int arr[],int n)
 {
-	for(int i =0;i<=n;i++)
+	int length=num.length();
+	for(int i =length-1 , j =n ;i>=0;i--, j--)
 	{
-		a[i]=aa[n]-'0';
+		arr[j]=num[i]-'0';
 	}
 
 }
 void printArray(int s[],int n)
 {
-	for(int i=0;i<n;i++)
+	for(int i=0;i<=n;i++)
 	{
 		cout<<s[i];
 	}
-
+	cout<<endl;
 }
 
 int main()
 {
-	int n,sa,sb;
-
-	string aa,bb;
-	cout<<"Enter number a"<<endl;
-	cin>>aa;
-
-	cout<<"Enter number b"<<endl;
-	cin>>bb;
-
-	
-	sa=aa.length();
-	sb=bb.length();
-
-	cout<<sa<<endl;
-	cout<<sb<<endl;
-
-
-	if (sa>=sb)
+	int count;
+	vector <string >numbers;
+	cout<<"Enter total number of addition elements : ";
+	cin>>count;
+	cout<<"Enter number for element \n";
+	for(int i=0;i<count;i++)
 	{
-		n=sa;
+		string num;
+		cout<<"num["<<i+1<<"] : ";
+		cin>>num;
+		numbers.push_back(num);
 	}
-	else
+
+
+	int maxlen = 0;
+	for (const auto& num : numbers)
 	{
-		n=sb;
-	}
-	
-
-
-	int a[n+1],b[n+1],c[n+1],s[n+1];
-
-	initilizeArrayToZero(a,n);
-	initilizeArrayToZero(b,n);
-	initilizeArrayToZero(c,n);
-	initilizeArrayToZero(s,n);
-
-
-	stringToArray("0"+aa,a,n);
-	printArray(a,n);
-	stringToArray(bb,b,n);
-	printArray(b,n);
-	c[n-1]=0;
-	for(int i = n-1;i>=0;i++)
-	{
-		s[i]=a[i]+b[i]+c[i];
-
-		if(s[i]>=10)
+		int len=num.length();
+		if (len>maxlen)
 		{
-			c[i-1]=c[i-1]+1;
+			maxlen = len;
 		}
 	}
 
-	cout<<"sum -> ";
-	
-	printArray(s,n);
 
+	cout<<"size of array size = "<<maxlen<<endl;
+	int size = maxlen +2 ; //extra space for carry
+	int a[size];
+	//	cout<<"size of array size = "<<size<<endl;
+
+	int carry[size]={0},sum[size]={0};
+
+	initilizeArrayToZero(carry,size);
+	initilizeArrayToZero(sum,size);
+
+	for(int j = 0; j<count;j++)
+	{
+
+		string x="0",y="0",result;
+		
+	       
+		initilizeArrayToZero(a,size);
+		stringToArray(numbers[j],a,maxlen);
+		cout<<"print array :";
+	        printArray(a,maxlen);
+
+
+		for(int i = maxlen;i>0;--i)
+		{
+			cout<<"sum["<<i<<"] = '"<<sum[i]<<"'"<<endl;
+			cout<<"carry["<<i<<"] = '"<<carry[i]<<"'"<<endl;
+			cout<<"a["<<i<<"] = '"<<a[i]<<"'"<<endl;
+			x=to_string(a[i]+carry[i]+sum[i]);
+			cout<<"x = '"<<x<<"'"<<endl;	
+			if(x.length() > 1)
+			{
+				if(i != 0)
+				{
+					initilizeArrayToZero(carry,size);
+					carry[i-1]=stoi(x.substr(0,x.length()-1));
+				}
+			
+			}
+
+//			y += string(1, x.back());
+			y +=  x;
+		cout<<"y = "<<y<<endl;
+//		std::reverse(y.begin(), y.end());
+		cout<<endl; 
+		
+		cout<<"y = "<<y<<endl;
+		cout<<"End of 1st addition \n\n \n";
+
+		for(int i =0; i<=y.length()-1;i++)
+		{
+			cout<<y[i];
+
+			initilizeArrayToZero(sum,size);
+			string digitStr = string(1, y[i]);   // Convert char to string (1 character)
+			sum[i] = stoi(digitStr);  
+			cout<<"sum["<<i<<"]"<<sum[i]<<endl;
+
+		}
+		}
+		cout<<endl; 
+	}
 	return 0;
 
 }

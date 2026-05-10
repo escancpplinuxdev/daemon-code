@@ -69,7 +69,7 @@ int main()
 	initilizeArrayToZero(carry,size);
 	initilizeArrayToZero(sum,size);
 
-	for(int j = 0; j<count;j++)
+	for(int j = 0; j<count-1;j++)
 	{
 
 		string x="0",y="0",result;

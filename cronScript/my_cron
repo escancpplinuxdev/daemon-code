@@ -1,0 +1,9 @@
+#*/ shutdown -c Cancel shutdown 
+# put this on file location /etc/cron.d/my_cron
+# [root@PTLD-3:/tmpdata/Rushikesh_27022026]# a /etc/cron.d/my_cron 
+# -rw-r--r-- 1 root root 253 Apr 17 21:19 /etc/cron.d/my_cron
+
+45 21 * * * root shutdown -h now # shutdown at 9:45 pm
+#10 20 * * * root shutdown -r now # reboot  at 8:10 pm
+
+* * * * * root /usr/bin/date >> /tmp/cron_test.log # test cron quickly if timestamp appear cron is working

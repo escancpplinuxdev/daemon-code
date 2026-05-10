@@ -75,3 +75,29 @@ a /home/git/linux_source
 4. git log
 
 5. git status
+
+
+# //-----------------------------------moving between a laptop and a VirtualBox/Server (PTLD-3)-------------------------//
+
+If you get "Rejected (non-fast-forward)"
+
+If it fails again with a message about "remote contains work you do not have locally," it means you made changes on your laptop that aren't here yet. Just run:
+Bash
+
+		-> git pull origin main --no-rebase
+# Then press Esc, type :wq to save the merge message
+		-> git push
+
+
+
+1. git pull https://YOUR_GIT_TOKEN@github.com/escancpplinuxdev/daemon-code.git main
+
+2. git push https://YOUR_GIT_TOKEN@github.com/escancpplinuxdev/daemon-code.git main
+
+#// ------------------------------Ignore swap file -----------------------------------------------------//
+
+echo "*.swp" >> .gitignore
+git add .gitignoreSwap
+git commit -m "Add gitignoreSwap to ignore vim swap files"
+
+#//--------------//

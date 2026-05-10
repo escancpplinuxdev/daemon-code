@@ -1,0 +1,3287 @@
++ TARGET_MAJOR=147
++ FLAGS='--ssl-version-min=tls1.2 --ssl-version-max=tls1.2 --disable-features=PostQuantumKyber'
+++ date +%Y%m%d_%H%M%S
++ TIMESTAMP=20260506_193804
++ echo 'Detecting Chromium/Brave installation type...'
++ ALL_DIRS=("/usr/share/applications3" "/usr/local/share/applications3" "/var/lib/snapd/desktop/applications3")
++ for dir in "${ALL_DIRS[@]}"
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/apport-gtk.desktop ']'
+++ get_exec_binary /usr/share/applications3/apport-gtk.desktop
+++ grep -E '^Exec=' /usr/share/applications3/apport-gtk.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=apport-gtk
++ '[' -z apport-gtk ']'
++ command -v apport-gtk
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/bluetooth-sendto.desktop ']'
+++ get_exec_binary /usr/share/applications3/bluetooth-sendto.desktop
+++ grep -E '^Exec=' /usr/share/applications3/bluetooth-sendto.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=bluetooth-sendto
++ '[' -z bluetooth-sendto ']'
++ command -v bluetooth-sendto
++ echo 'Runnig: bluetooth-sendto --version'
+++ bluetooth-sendto --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/brave-browser.desktop ']'
+++ get_exec_binary /usr/share/applications3/brave-browser.desktop
+++ grep -E '^Exec=' /usr/share/applications3/brave-browser.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=brave-browser-stable
++ '[' -z brave-browser-stable ']'
++ command -v brave-browser-stable
++ echo 'Runnig: brave-browser-stable --version'
+++ brave-browser-stable --version
++ VERSION_OUTPUT='Brave Browser 146.1.88.138 '
++ echo 'Version output: Brave Browser 146.1.88.138 '
++ is_chromium_based 'Brave Browser 146.1.88.138 '
++ echo 'Brave Browser 146.1.88.138 '
++ grep -qiE 'chrome|chromium|brave|edge'
+++ get_version brave-browser-stable
+++ brave-browser-stable --version
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ head -n1
++ VERSION=146.1.88.138
+++ cut -d. -f1
+++ echo 146.1.88.138
++ MAJOR=146
++ echo --------------------------------------
++ echo 'Desktop : /usr/share/applications3/brave-browser.desktop'
++ echo 'Binary  : brave-browser-stable'
++ echo 'Version : 146.1.88.138'
++ '[' 146 == 147 ']'
++ echo '→ Skipped (not version 147)'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/chromium-browser.desktop ']'
+++ get_exec_binary /usr/share/applications3/chromium-browser.desktop
+++ grep -E '^Exec=' /usr/share/applications3/chromium-browser.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=chromium-browser
++ '[' -z chromium-browser ']'
++ command -v chromium-browser
++ echo 'Runnig: chromium-browser --version'
+++ chromium-browser --version
++ VERSION_OUTPUT='Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ echo 'Version output: Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ is_chromium_based 'Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ echo 'Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ grep -qiE 'chrome|chromium|brave|edge'
+++ get_version chromium-browser
+++ chromium-browser --version
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ head -n1
++ VERSION=147.0.7727.116
+++ echo 147.0.7727.116
+++ cut -d. -f1
++ MAJOR=147
++ echo --------------------------------------
++ echo 'Desktop : /usr/share/applications3/chromium-browser.desktop'
++ echo 'Binary  : chromium-browser'
++ echo 'Version : 147.0.7727.116'
++ '[' 147 == 147 ']'
++ echo '→ MATCH (147). Applying flags...'
++ update_file /usr/share/applications3/chromium-browser.desktop
++ local FILE=/usr/share/applications3/chromium-browser.desktop
++ '[' '!' -f /usr/share/applications3/chromium-browser.desktop ']'
++ grep -q ssl-version-min /usr/share/applications3/chromium-browser.desktop
++ echo 'Already updated → /usr/share/applications3/chromium-browser.desktop'
++ return
+++ basename /usr/share/applications3/chromium-browser.desktop
++ BASENAME=chromium-browser.desktop
++ is_snap_app chromium-browser
++ local bin=chromium-browser
++ snap list
++ awk '{print $1}'
++ grep -qi '^chromium-browser$'
++ for user_home in /home/*
++ LOCAL_FILE=/home/rushi/.local/share/applications/chromium-browser.desktop
++ update_file /home/rushi/.local/share/applications/chromium-browser.desktop
++ local FILE=/home/rushi/.local/share/applications/chromium-browser.desktop
++ '[' '!' -f /home/rushi/.local/share/applications/chromium-browser.desktop ']'
++ return
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/com.brave.Browser.desktop ']'
+++ get_exec_binary /usr/share/applications3/com.brave.Browser.desktop
+++ grep -E '^Exec=' /usr/share/applications3/com.brave.Browser.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=brave-browser-stable
++ '[' -z brave-browser-stable ']'
++ command -v brave-browser-stable
++ echo 'Runnig: brave-browser-stable --version'
+++ brave-browser-stable --version
++ VERSION_OUTPUT='Brave Browser 146.1.88.138 '
++ echo 'Version output: Brave Browser 146.1.88.138 '
++ is_chromium_based 'Brave Browser 146.1.88.138 '
++ echo 'Brave Browser 146.1.88.138 '
++ grep -qiE 'chrome|chromium|brave|edge'
+++ get_version brave-browser-stable
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ brave-browser-stable --version
+++ head -n1
++ VERSION=146.1.88.138
+++ echo 146.1.88.138
+++ cut -d. -f1
++ MAJOR=146
++ echo --------------------------------------
++ echo 'Desktop : /usr/share/applications3/com.brave.Browser.desktop'
++ echo 'Binary  : brave-browser-stable'
++ echo 'Version : 146.1.88.138'
++ '[' 146 == 147 ']'
++ echo '→ Skipped (not version 147)'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/com.google.Chrome.desktop ']'
+++ get_exec_binary /usr/share/applications3/com.google.Chrome.desktop
+++ grep -E '^Exec=' /usr/share/applications3/com.google.Chrome.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=google-chrome-stable
++ '[' -z google-chrome-stable ']'
++ command -v google-chrome-stable
++ echo 'Runnig: google-chrome-stable --version'
+++ google-chrome-stable --version
++ VERSION_OUTPUT='Google Chrome 146.0.7680.153 '
++ echo 'Version output: Google Chrome 146.0.7680.153 '
++ is_chromium_based 'Google Chrome 146.0.7680.153 '
++ echo 'Google Chrome 146.0.7680.153 '
++ grep -qiE 'chrome|chromium|brave|edge'
+++ get_version google-chrome-stable
+++ google-chrome-stable --version
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ head -n1
++ VERSION=146.0.7680.153
+++ echo 146.0.7680.153
+++ cut -d. -f1
++ MAJOR=146
++ echo --------------------------------------
++ echo 'Desktop : /usr/share/applications3/com.google.Chrome.desktop'
++ echo 'Binary  : google-chrome-stable'
++ echo 'Version : 146.0.7680.153'
++ '[' 146 == 147 ']'
++ echo '→ Skipped (not version 147)'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/com.microsoft.Edge.desktop ']'
+++ get_exec_binary /usr/share/applications3/com.microsoft.Edge.desktop
+++ grep -E '^Exec=' /usr/share/applications3/com.microsoft.Edge.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=microsoft-edge-stable
++ '[' -z microsoft-edge-stable ']'
++ command -v microsoft-edge-stable
++ echo 'Runnig: microsoft-edge-stable --version'
+++ microsoft-edge-stable --version
++ VERSION_OUTPUT='Microsoft Edge 146.0.3856.97 '
++ echo 'Version output: Microsoft Edge 146.0.3856.97 '
++ is_chromium_based 'Microsoft Edge 146.0.3856.97 '
++ echo 'Microsoft Edge 146.0.3856.97 '
++ grep -qiE 'chrome|chromium|brave|edge'
+++ get_version microsoft-edge-stable
+++ microsoft-edge-stable --version
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ head -n1
++ VERSION=146.0.3856.97
+++ echo 146.0.3856.97
+++ cut -d. -f1
++ MAJOR=146
++ echo --------------------------------------
++ echo 'Desktop : /usr/share/applications3/com.microsoft.Edge.desktop'
++ echo 'Binary  : microsoft-edge-stable'
++ echo 'Version : 146.0.3856.97'
++ '[' 146 == 147 ']'
++ echo '→ Skipped (not version 147)'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/display-im7.q16.desktop ']'
+++ get_exec_binary /usr/share/applications3/display-im7.q16.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ grep -E '^Exec=' /usr/share/applications3/display-im7.q16.desktop
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=display-im7.q16
++ '[' -z display-im7.q16 ']'
++ command -v display-im7.q16
++ echo 'Runnig: display-im7.q16 --version'
+++ display-im7.q16 --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/escan-gui.desktop ']'
+++ get_exec_binary /usr/share/applications3/escan-gui.desktop
+++ grep -E '^Exec=' /usr/share/applications3/escan-gui.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=escangui
++ '[' -z escangui ']'
++ command -v escangui
++ echo 'Runnig: escangui --version'
+++ escangui --version
++ VERSION_OUTPUT='escangui 1.0-2'
++ echo 'Version output: escangui 1.0-2'
++ is_chromium_based 'escangui 1.0-2'
++ echo 'escangui 1.0-2'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/escan-gui-root.desktop ']'
+++ get_exec_binary /usr/share/applications3/escan-gui-root.desktop
+++ grep -E '^Exec=' /usr/share/applications3/escan-gui-root.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=escangui.sh
++ '[' -z escangui.sh ']'
++ command -v escangui.sh
++ echo 'Runnig: escangui.sh --version'
+++ escangui.sh --version
++ VERSION_OUTPUT='escangui 1.0-2'
++ echo 'Version output: escangui 1.0-2'
++ is_chromium_based 'escangui 1.0-2'
++ echo 'escangui 1.0-2'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/escan-help.desktop ']'
+++ get_exec_binary /usr/share/applications3/escan-help.desktop
+++ grep -E '^Exec=' /usr/share/applications3/escan-help.desktop
+++ awk '{print $1}'
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=gnome-terminal
++ '[' -z gnome-terminal ']'
++ command -v gnome-terminal
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gcr-prompter.desktop ']'
+++ get_exec_binary /usr/share/applications3/gcr-prompter.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gcr-prompter.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gcr-prompter
++ '[' -z gcr-prompter ']'
++ command -v gcr-prompter
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gcr-viewer.desktop ']'
+++ get_exec_binary /usr/share/applications3/gcr-viewer.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gcr-viewer.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gcr-viewer
++ '[' -z gcr-viewer ']'
++ command -v gcr-viewer
++ echo 'Runnig: gcr-viewer --version'
+++ gcr-viewer --version
++ VERSION_OUTPUT='GCR Certificate and Key Viewer -- 3.41.2'
++ echo 'Version output: GCR Certificate and Key Viewer -- 3.41.2'
++ is_chromium_based 'GCR Certificate and Key Viewer -- 3.41.2'
++ echo 'GCR Certificate and Key Viewer -- 3.41.2'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/geoclue-demo-agent.desktop ']'
+++ get_exec_binary /usr/share/applications3/geoclue-demo-agent.desktop
+++ grep -E '^Exec=' /usr/share/applications3/geoclue-demo-agent.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=agent
++ '[' -z agent ']'
++ command -v agent
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-about-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-about-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-about-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-applications-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-applications-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-applications-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-background-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-background-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-background-panel.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-bluetooth-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-bluetooth-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-bluetooth-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-color-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-color-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-color-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-datetime-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-datetime-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-datetime-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-disk-image-mounter.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-disk-image-mounter.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-disk-image-mounter.desktop
+++ sed -E 's/^Exec=//'
+++ head -n1
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-disk-image-mounter
++ '[' -z gnome-disk-image-mounter ']'
++ command -v gnome-disk-image-mounter
++ echo 'Runnig: gnome-disk-image-mounter --version'
+++ gnome-disk-image-mounter --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-disk-image-writer.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-disk-image-writer.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-disk-image-writer.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
++ BIN=gnome-disks
++ '[' -z gnome-disks ']'
++ command -v gnome-disks
++ echo 'Runnig: gnome-disks --version'
+++ gnome-disks --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-display-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-display-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-display-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-initial-setup.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-initial-setup.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-initial-setup.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=gnome-initial-setup
++ '[' -z gnome-initial-setup ']'
++ command -v gnome-initial-setup
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-keyboard-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-keyboard-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-keyboard-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-language-selector.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-language-selector.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-language-selector.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
++ BIN=gnome-language-selector
++ '[' -z gnome-language-selector ']'
++ command -v gnome-language-selector
++ echo 'Runnig: gnome-language-selector --version'
+++ gnome-language-selector --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-mouse-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-mouse-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-mouse-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-multitasking-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-multitasking-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-multitasking-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-network-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-network-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-network-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo 'Local options gnome-control-center 49.0'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-notifications-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-notifications-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-notifications-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-online-accounts-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-online-accounts-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-online-accounts-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-power-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-power-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-power-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-printers-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-printers-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-printers-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-privacy-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-privacy-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-privacy-panel.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-region-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-region-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-region-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-search-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-search-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-search-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-sharing-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-sharing-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-sharing-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-sound-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-sound-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-sound-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-system-monitor-kde.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-system-monitor-kde.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-system-monitor-kde.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-system-monitor
++ '[' -z gnome-system-monitor ']'
++ command -v gnome-system-monitor
++ echo 'Runnig: gnome-system-monitor --version'
+++ gnome-system-monitor --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-system-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-system-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-system-panel.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-ubuntu-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-ubuntu-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-ubuntu-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-universal-access-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-universal-access-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-universal-access-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-users-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-users-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-users-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-wacom-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-wacom-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-wacom-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-wellbeing-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-wellbeing-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-wellbeing-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-wifi-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-wifi-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-wifi-panel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo 'Local options gnome-control-center 49.0'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/gnome-wwan-panel.desktop ']'
+++ get_exec_binary /usr/share/applications3/gnome-wwan-panel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/gnome-wwan-panel.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/google-chrome.desktop ']'
+++ get_exec_binary /usr/share/applications3/google-chrome.desktop
+++ grep -E '^Exec=' /usr/share/applications3/google-chrome.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=google-chrome-stable
++ '[' -z google-chrome-stable ']'
++ command -v google-chrome-stable
++ echo 'Runnig: google-chrome-stable --version'
+++ google-chrome-stable --version
++ VERSION_OUTPUT='Google Chrome 146.0.7680.153 '
++ echo 'Version output: Google Chrome 146.0.7680.153 '
++ is_chromium_based 'Google Chrome 146.0.7680.153 '
++ echo 'Google Chrome 146.0.7680.153 '
++ grep -qiE 'chrome|chromium|brave|edge'
+++ get_version google-chrome-stable
+++ google-chrome-stable --version
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ head -n1
++ VERSION=146.0.7680.153
+++ echo 146.0.7680.153
+++ cut -d. -f1
++ MAJOR=146
++ echo --------------------------------------
++ echo 'Desktop : /usr/share/applications3/google-chrome.desktop'
++ echo 'Binary  : google-chrome-stable'
++ echo 'Version : 146.0.7680.153'
++ '[' 146 == 147 ']'
++ echo '→ Skipped (not version 147)'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/hplj1020.desktop ']'
+++ get_exec_binary /usr/share/applications3/hplj1020.desktop
+++ grep -E '^Exec=' /usr/share/applications3/hplj1020.desktop
+++ sed 's|^.*/||'
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
++ BIN=hplj10xx_gui.tcl
++ '[' -z hplj10xx_gui.tcl ']'
++ command -v hplj10xx_gui.tcl
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/htop.desktop ']'
+++ get_exec_binary /usr/share/applications3/htop.desktop
+++ grep -E '^Exec=' /usr/share/applications3/htop.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=htop
++ '[' -z htop ']'
++ command -v htop
++ echo 'Runnig: htop --version'
+++ htop --version
++ VERSION_OUTPUT='htop 3.4.1'
++ echo 'Version output: htop 3.4.1'
++ is_chromium_based 'htop 3.4.1'
++ echo 'htop 3.4.1'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/ibus-setup-table.desktop ']'
+++ get_exec_binary /usr/share/applications3/ibus-setup-table.desktop
+++ grep -E '^Exec=' /usr/share/applications3/ibus-setup-table.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=ibus-setup-table
++ '[' -z ibus-setup-table ']'
++ command -v ibus-setup-table
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/im-config.desktop ']'
+++ get_exec_binary /usr/share/applications3/im-config.desktop
+++ grep -E '^Exec=' /usr/share/applications3/im-config.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=im-config
++ '[' -z im-config ']'
++ command -v im-config
++ echo 'Runnig: im-config --version'
+++ im-config --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/info.desktop ']'
+++ get_exec_binary /usr/share/applications3/info.desktop
+++ grep -E '^Exec=' /usr/share/applications3/info.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=info
++ '[' -z info ']'
++ command -v info
++ echo 'Runnig: info --version'
+++ info --version
++ VERSION_OUTPUT='info (GNU texinfo) 7.1.1
+
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
++ echo 'Version output: info (GNU texinfo) 7.1.1
+
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
++ is_chromium_based 'info (GNU texinfo) 7.1.1
+
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
++ echo 'info (GNU texinfo) 7.1.1
+
+Copyright (C) 2024 Free Software Foundation, Inc.
+License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/io.snapcraft.SessionAgent.desktop ']'
+++ get_exec_binary /usr/share/applications3/io.snapcraft.SessionAgent.desktop
+++ grep -E '^Exec=' /usr/share/applications3/io.snapcraft.SessionAgent.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=false
++ '[' -z false ']'
++ command -v false
++ echo 'Runnig: false --version'
+++ false --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/microsoft-edge.desktop ']'
+++ get_exec_binary /usr/share/applications3/microsoft-edge.desktop
+++ grep -E '^Exec=' /usr/share/applications3/microsoft-edge.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=microsoft-edge-stable
++ '[' -z microsoft-edge-stable ']'
++ command -v microsoft-edge-stable
++ echo 'Runnig: microsoft-edge-stable --version'
+++ microsoft-edge-stable --version
++ VERSION_OUTPUT='Microsoft Edge 146.0.3856.97 '
++ echo 'Version output: Microsoft Edge 146.0.3856.97 '
++ is_chromium_based 'Microsoft Edge 146.0.3856.97 '
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo 'Microsoft Edge 146.0.3856.97 '
+++ get_version microsoft-edge-stable
+++ microsoft-edge-stable --version
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ head -n1
++ VERSION=146.0.3856.97
+++ echo 146.0.3856.97
+++ cut -d. -f1
++ MAJOR=146
++ echo --------------------------------------
++ echo 'Desktop : /usr/share/applications3/microsoft-edge.desktop'
++ echo 'Binary  : microsoft-edge-stable'
++ echo 'Version : 146.0.3856.97'
++ '[' 146 == 147 ']'
++ echo '→ Skipped (not version 147)'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/nautilus-autorun-software.desktop ']'
+++ get_exec_binary /usr/share/applications3/nautilus-autorun-software.desktop
+++ grep -E '^Exec=' /usr/share/applications3/nautilus-autorun-software.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=nautilus-autorun-software
++ '[' -z nautilus-autorun-software ']'
++ command -v nautilus-autorun-software
++ echo 'Runnig: nautilus-autorun-software --version'
+++ nautilus-autorun-software --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/nm-connection-editor.desktop ']'
+++ get_exec_binary /usr/share/applications3/nm-connection-editor.desktop
+++ grep -E '^Exec=' /usr/share/applications3/nm-connection-editor.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=nm-connection-editor
++ '[' -z nm-connection-editor ']'
++ command -v nm-connection-editor
++ echo 'Runnig: nm-connection-editor --version'
+++ nm-connection-editor --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.flameshot.Flameshot.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.flameshot.Flameshot.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.flameshot.Flameshot.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=flameshot
++ '[' -z flameshot ']'
++ command -v flameshot
++ echo 'Runnig: flameshot --version'
+++ flameshot --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.freedesktop.IBus.Panel.Emojier.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.freedesktop.IBus.Panel.Emojier.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.freedesktop.IBus.Panel.Emojier.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=ibus
++ '[' -z ibus ']'
++ command -v ibus
++ echo 'Runnig: ibus --version'
+++ ibus --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.freedesktop.IBus.Panel.Extension.Gtk3.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.freedesktop.IBus.Panel.Extension.Gtk3.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.freedesktop.IBus.Panel.Extension.Gtk3.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=ibus-extension-gtk3
++ '[' -z ibus-extension-gtk3 ']'
++ command -v ibus-extension-gtk3
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop
+++ awk '{print $1}'
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=ibus-ui-gtk3
++ '[' -z ibus-ui-gtk3 ']'
++ command -v ibus-ui-gtk3
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.freedesktop.IBus.Setup.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.freedesktop.IBus.Setup.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.freedesktop.IBus.Setup.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=ibus-setup
++ '[' -z ibus-setup ']'
++ command -v ibus-setup
++ echo 'Runnig: ibus-setup --version'
+++ ibus-setup --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.freedesktop.Xwayland.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.freedesktop.Xwayland.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.freedesktop.Xwayland.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=Xwayland
++ '[' -z Xwayland ']'
++ command -v Xwayland
++ echo 'Runnig: Xwayland --version'
+++ Xwayland --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.baobab.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.baobab.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.baobab.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=baobab
++ '[' -z baobab ']'
++ command -v baobab
++ echo 'Runnig: baobab --version'
+++ baobab --version
++ VERSION_OUTPUT='baobab 48.0'
++ echo 'Version output: baobab 48.0'
++ is_chromium_based 'baobab 48.0'
++ echo 'baobab 48.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Characters.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Characters.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Characters.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-characters
++ '[' -z gnome-characters ']'
++ command -v gnome-characters
++ echo 'Runnig: gnome-characters --version'
+++ gnome-characters --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo ''
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.clocks.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.clocks.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.clocks.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=gnome-clocks
++ '[' -z gnome-clocks ']'
++ command -v gnome-clocks
++ echo 'Runnig: gnome-clocks --version'
+++ gnome-clocks --version
++ VERSION_OUTPUT='Clocks 48.0'
++ echo 'Version output: Clocks 48.0'
++ is_chromium_based 'Clocks 48.0'
++ echo 'Clocks 48.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.DiskUtility.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.DiskUtility.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.DiskUtility.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-disks
++ '[' -z gnome-disks ']'
++ command -v gnome-disks
++ echo 'Runnig: gnome-disks --version'
+++ gnome-disks --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Evolution-alarm-notify.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Evolution-alarm-notify.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Evolution-alarm-notify.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=evolution-alarm-notify
++ '[' -z evolution-alarm-notify ']'
++ command -v evolution-alarm-notify
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.evolution-data-server.OAuth2-handler.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.evolution-data-server.OAuth2-handler.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.evolution-data-server.OAuth2-handler.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=evolution-oauth2-handler
++ '[' -z evolution-oauth2-handler ']'
++ command -v evolution-oauth2-handler
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.font-viewer.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.font-viewer.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.font-viewer.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-font-viewer
++ '[' -z gnome-font-viewer ']'
++ command -v gnome-font-viewer
++ echo 'Runnig: gnome-font-viewer --version'
+++ gnome-font-viewer --version
++ VERSION_OUTPUT='GNOME Fonts 48.0'
++ echo 'Version output: GNOME Fonts 48.0'
++ is_chromium_based 'GNOME Fonts 48.0'
++ echo 'GNOME Fonts 48.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Logs.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Logs.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Logs.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-logs
++ '[' -z gnome-logs ']'
++ command -v gnome-logs
++ echo 'Runnig: gnome-logs --version'
+++ gnome-logs --version
++ VERSION_OUTPUT='gnome-logs - Version 45.0'
++ echo 'Version output: gnome-logs - Version 45.0'
++ is_chromium_based 'gnome-logs - Version 45.0'
++ echo 'gnome-logs - Version 45.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Loupe.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Loupe.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Loupe.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=loupe
++ '[' -z loupe ']'
++ command -v loupe
++ echo 'Runnig: loupe --version'
+++ loupe --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Nautilus.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Nautilus.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Nautilus.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=nautilus
++ '[' -z nautilus ']'
++ command -v nautilus
++ echo 'Runnig: nautilus --version'
+++ nautilus --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.OnlineAccounts.OAuth2.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.OnlineAccounts.OAuth2.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.OnlineAccounts.OAuth2.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=goa-oauth2-handler
++ '[' -z goa-oauth2-handler ']'
++ command -v goa-oauth2-handler
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Papers.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Papers.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Papers.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=papers
++ '[' -z papers ']'
++ command -v papers
++ echo 'Runnig: papers --version'
+++ papers --version
++ VERSION_OUTPUT='Papers 48.0'
++ echo 'Version output: Papers 48.0'
++ is_chromium_based 'Papers 48.0'
++ echo 'Papers 48.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Papers-previewer.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Papers-previewer.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Papers-previewer.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=papers-previewer
++ '[' -z papers-previewer ']'
++ command -v papers-previewer
++ echo 'Runnig: papers-previewer --version'
+++ papers-previewer --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.PowerStats.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.PowerStats.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.PowerStats.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-power-statistics
++ '[' -z gnome-power-statistics ']'
++ command -v gnome-power-statistics
++ echo 'Runnig: gnome-power-statistics --version'
+++ gnome-power-statistics --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Ptyxis.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Ptyxis.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Ptyxis.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=ptyxis
++ '[' -z ptyxis ']'
++ command -v ptyxis
++ echo 'Runnig: ptyxis --version'
+++ ptyxis --version
++ VERSION_OUTPUT='Ptyxis 49.1
+
+  GTK: 4.20.1 (Compiled against 4.20.1)
+  VTE: 0.80.3 (Compiled against 0.80.3)
+
+Copyright 2020-2024 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ echo 'Version output: Ptyxis 49.1
+
+  GTK: 4.20.1 (Compiled against 4.20.1)
+  VTE: 0.80.3 (Compiled against 0.80.3)
+
+Copyright 2020-2024 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ is_chromium_based 'Ptyxis 49.1
+
+  GTK: 4.20.1 (Compiled against 4.20.1)
+  VTE: 0.80.3 (Compiled against 0.80.3)
+
+Copyright 2020-2024 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ echo 'Ptyxis 49.1
+
+  GTK: 4.20.1 (Compiled against 4.20.1)
+  VTE: 0.80.3 (Compiled against 0.80.3)
+
+Copyright 2020-2024 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.RemoteDesktop.Handover.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.RemoteDesktop.Handover.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.RemoteDesktop.Handover.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=gnome-remote-desktop-daemon
++ '[' -z gnome-remote-desktop-daemon ']'
++ command -v gnome-remote-desktop-daemon
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Screenshot.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Screenshot.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Screenshot.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-screenshot
++ '[' -z gnome-screenshot ']'
++ command -v gnome-screenshot
++ echo 'Runnig: gnome-screenshot --version'
+++ gnome-screenshot --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo ''
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.seahorse.Application.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.seahorse.Application.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.seahorse.Application.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=seahorse
++ '[' -z seahorse ']'
++ command -v seahorse
++ echo 'Runnig: seahorse --version'
+++ seahorse --version
++ VERSION_OUTPUT='seahorse 47.0.1
+GNUPG: /usr/bin/gpg (2.4.4)'
++ echo 'Version output: seahorse 47.0.1
+GNUPG: /usr/bin/gpg (2.4.4)'
++ is_chromium_based 'seahorse 47.0.1
+GNUPG: /usr/bin/gpg (2.4.4)'
++ echo 'seahorse 47.0.1
+GNUPG: /usr/bin/gpg (2.4.4)'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=gnome-control-center
++ '[' -z gnome-control-center ']'
++ command -v gnome-control-center
++ echo 'Runnig: gnome-control-center --version'
+++ gnome-control-center --version
++ VERSION_OUTPUT='Local options gnome-control-center 49.0'
++ echo 'Version output: Local options gnome-control-center 49.0'
++ is_chromium_based 'Local options gnome-control-center 49.0'
++ echo 'Local options gnome-control-center 49.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Shell.Extensions.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Shell.Extensions.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Shell.Extensions.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=false
++ '[' -z false ']'
++ command -v false
++ echo 'Runnig: false --version'
+++ false --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Sysprof.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Sysprof.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Sysprof.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=sysprof
++ '[' -z sysprof ']'
++ command -v sysprof
++ echo 'Runnig: sysprof --version'
+++ sysprof --version
++ VERSION_OUTPUT='Sysprof version 48.0'
++ echo 'Version output: Sysprof version 48.0'
++ is_chromium_based 'Sysprof version 48.0'
++ echo 'Sysprof version 48.0'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.SystemMonitor.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.SystemMonitor.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.SystemMonitor.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=gnome-system-monitor
++ '[' -z gnome-system-monitor ']'
++ command -v gnome-system-monitor
++ echo 'Runnig: gnome-system-monitor --version'
+++ gnome-system-monitor --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Tecla.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Tecla.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Tecla.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=tecla
++ '[' -z tecla ']'
++ command -v tecla
++ echo 'Runnig: tecla --version'
+++ tecla --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.TextEditor.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.TextEditor.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.TextEditor.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=gnome-text-editor
++ '[' -z gnome-text-editor ']'
++ command -v gnome-text-editor
++ echo 'Runnig: gnome-text-editor --version'
+++ gnome-text-editor --version
++ VERSION_OUTPUT='Text Editor 48.3 (48.3)
+
+            GTK: 4.20.1 (Compiled against 4.20.0)
+  GtkSourceView: 5.16.0 (Compiled against 5.16.0)
+
+Copyright 2020-2025 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ echo 'Version output: Text Editor 48.3 (48.3)
+
+            GTK: 4.20.1 (Compiled against 4.20.0)
+  GtkSourceView: 5.16.0 (Compiled against 5.16.0)
+
+Copyright 2020-2025 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ is_chromium_based 'Text Editor 48.3 (48.3)
+
+            GTK: 4.20.1 (Compiled against 4.20.0)
+  GtkSourceView: 5.16.0 (Compiled against 5.16.0)
+
+Copyright 2020-2025 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ echo 'Text Editor 48.3 (48.3)
+
+            GTK: 4.20.1 (Compiled against 4.20.0)
+  GtkSourceView: 5.16.0 (Compiled against 5.16.0)
+
+Copyright 2020-2025 Christian Hergert, et al.
+This is free software; see the source for copying conditions. There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Yelp.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Yelp.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Yelp.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=yelp
++ '[' -z yelp ']'
++ command -v yelp
++ echo 'Runnig: yelp --version'
+++ yelp --version
++ VERSION_OUTPUT='yelp 42.3'
++ echo 'Version output: yelp 42.3'
++ is_chromium_based 'yelp 42.3'
++ echo 'yelp 42.3'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.gnome.Zenity.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.gnome.Zenity.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.gnome.Zenity.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=zenity
++ '[' -z zenity ']'
++ command -v zenity
++ echo 'Runnig: zenity --version'
+++ zenity --version
++ VERSION_OUTPUT=4.1.99
++ echo 'Version output: 4.1.99'
++ is_chromium_based 4.1.99
++ echo 4.1.99
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.ksnip.ksnip.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.ksnip.ksnip.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.ksnip.ksnip.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=ksnip
++ '[' -z ksnip ']'
++ command -v ksnip
++ echo 'Runnig: ksnip --version'
+++ ksnip --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.pulseaudio.pavucontrol.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.pulseaudio.pavucontrol.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.pulseaudio.pavucontrol.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=pavucontrol
++ '[' -z pavucontrol ']'
++ command -v pavucontrol
++ echo 'Runnig: pavucontrol --version'
+++ pavucontrol --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.xfce.mousepad.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.xfce.mousepad.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.xfce.mousepad.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
++ BIN=mousepad
++ '[' -z mousepad ']'
++ command -v mousepad
++ echo 'Runnig: mousepad --version'
+++ mousepad --version
++ VERSION_OUTPUT='Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ echo 'Version output: Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ is_chromium_based 'Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ echo 'Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.xfce.mousepad-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.xfce.mousepad-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.xfce.mousepad-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=mousepad
++ '[' -z mousepad ']'
++ command -v mousepad
++ echo 'Runnig: mousepad --version'
+++ mousepad --version
++ VERSION_OUTPUT='Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ echo 'Version output: Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ is_chromium_based 'Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ echo 'Mousepad 0.6.3
+
+Copyright (C) 2005-2024
+	The Mousepad developers. All rights reserved.
+
+Please report bugs to <https://gitlab.xfce.org/apps/mousepad>.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/org.xfce.ristretto.desktop ']'
+++ get_exec_binary /usr/share/applications3/org.xfce.ristretto.desktop
+++ grep -E '^Exec=' /usr/share/applications3/org.xfce.ristretto.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=ristretto
++ '[' -z ristretto ']'
++ command -v ristretto
++ echo 'Runnig: ristretto --version'
+++ ristretto --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/panel-desktop-handler.desktop ']'
+++ get_exec_binary /usr/share/applications3/panel-desktop-handler.desktop
+++ grep -E '^Exec=' /usr/share/applications3/panel-desktop-handler.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=xfce4-panel
++ '[' -z xfce4-panel ']'
++ command -v xfce4-panel
++ echo 'Runnig: xfce4-panel --version'
+++ xfce4-panel --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/panel-preferences.desktop ']'
+++ get_exec_binary /usr/share/applications3/panel-preferences.desktop
+++ grep -E '^Exec=' /usr/share/applications3/panel-preferences.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-panel
++ '[' -z xfce4-panel ']'
++ command -v xfce4-panel
++ echo 'Runnig: xfce4-panel --version'
+++ xfce4-panel --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/python3.13.desktop ']'
+++ get_exec_binary /usr/share/applications3/python3.13.desktop
+++ grep -E '^Exec=' /usr/share/applications3/python3.13.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=python3.13
++ '[' -z python3.13 ']'
++ command -v python3.13
++ echo 'Runnig: python3.13 --version'
+++ python3.13 --version
++ VERSION_OUTPUT='Python 3.13.7'
++ echo 'Version output: Python 3.13.7'
++ is_chromium_based 'Python 3.13.7'
++ echo 'Python 3.13.7'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/qwerty.desktop ']'
+++ get_exec_binary /usr/share/applications3/qwerty.desktop
+++ grep -E '^Exec=' /usr/share/applications3/qwerty.desktop
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ head -n1
++ BIN=vlc
++ '[' -z vlc ']'
++ command -v vlc
++ echo 'Runnig: vlc --version'
+++ vlc --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/rygel.desktop ']'
+++ get_exec_binary /usr/share/applications3/rygel.desktop
+++ grep -E '^Exec=' /usr/share/applications3/rygel.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=rygel
++ '[' -z rygel ']'
++ command -v rygel
++ echo 'Runnig: rygel --version'
+++ rygel --version
++ VERSION_OUTPUT='Rygel 0.44.2'
++ echo 'Version output: Rygel 0.44.2'
++ is_chromium_based 'Rygel 0.44.2'
++ echo 'Rygel 0.44.2'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/snap-handle-link.desktop ']'
+++ get_exec_binary /usr/share/applications3/snap-handle-link.desktop
+++ grep -E '^Exec=' /usr/share/applications3/snap-handle-link.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=snap
++ '[' -z snap ']'
++ command -v snap
++ echo 'Runnig: snap --version'
+++ snap --version
++ VERSION_OUTPUT='snap          2.75.2
+snapd         2.75.2
+series        16
+ubuntu        25.10
+kernel        6.17.0-22-generic
+architecture  amd64'
++ echo 'Version output: snap          2.75.2
+snapd         2.75.2
+series        16
+ubuntu        25.10
+kernel        6.17.0-22-generic
+architecture  amd64'
++ is_chromium_based 'snap          2.75.2
+snapd         2.75.2
+series        16
+ubuntu        25.10
+kernel        6.17.0-22-generic
+architecture  amd64'
++ echo 'snap          2.75.2
+snapd         2.75.2
+series        16
+ubuntu        25.10
+kernel        6.17.0-22-generic
+architecture  amd64'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/software-properties-drivers.desktop ']'
+++ get_exec_binary /usr/share/applications3/software-properties-drivers.desktop
+++ grep -E '^Exec=' /usr/share/applications3/software-properties-drivers.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=software-properties-gtk
++ '[' -z software-properties-gtk ']'
++ command -v software-properties-gtk
++ echo 'Runnig: software-properties-gtk --version'
+++ software-properties-gtk --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/software-properties-gtk.desktop ']'
+++ get_exec_binary /usr/share/applications3/software-properties-gtk.desktop
+++ grep -E '^Exec=' /usr/share/applications3/software-properties-gtk.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=software-properties-gtk
++ '[' -z software-properties-gtk ']'
++ command -v software-properties-gtk
++ echo 'Runnig: software-properties-gtk --version'
+++ software-properties-gtk --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/software-properties-livepatch.desktop ']'
+++ get_exec_binary /usr/share/applications3/software-properties-livepatch.desktop
+++ grep -E '^Exec=' /usr/share/applications3/software-properties-livepatch.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=software-properties-gtk
++ '[' -z software-properties-gtk ']'
++ command -v software-properties-gtk
++ echo 'Runnig: software-properties-gtk --version'
+++ software-properties-gtk --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/thunar-bulk-rename.desktop ']'
+++ get_exec_binary /usr/share/applications3/thunar-bulk-rename.desktop
+++ grep -E '^Exec=' /usr/share/applications3/thunar-bulk-rename.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=thunar
++ '[' -z thunar ']'
++ command -v thunar
++ echo 'Runnig: thunar --version'
+++ thunar --version
++ VERSION_OUTPUT='thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ echo 'Version output: thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ is_chromium_based 'thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ echo 'thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/thunar.desktop ']'
+++ get_exec_binary /usr/share/applications3/thunar.desktop
+++ grep -E '^Exec=' /usr/share/applications3/thunar.desktop
+++ sed -E 's/^Exec=//'
+++ head -n1
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=thunar
++ '[' -z thunar ']'
++ command -v thunar
++ echo 'Runnig: thunar --version'
+++ thunar --version
++ VERSION_OUTPUT='thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ echo 'Version output: thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ is_chromium_based 'thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ echo 'thunar 4.20.4 (Xfce 4.20)
+
+Copyright (c) 2004-2024
+	The Thunar development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/thunar>.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/thunar-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/thunar-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/thunar-settings.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=thunar-settings
++ '[' -z thunar-settings ']'
++ command -v thunar-settings
++ echo 'Runnig: thunar-settings --version'
+++ thunar-settings --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/thunar-volman-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/thunar-volman-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/thunar-volman-settings.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=thunar-volman-settings
++ '[' -z thunar-volman-settings ']'
++ command -v thunar-volman-settings
++ echo 'Runnig: thunar-volman-settings --version'
+++ thunar-volman-settings --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/update-manager.desktop ']'
+++ get_exec_binary /usr/share/applications3/update-manager.desktop
+++ grep -E '^Exec=' /usr/share/applications3/update-manager.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=update-manager
++ '[' -z update-manager ']'
++ command -v update-manager
++ echo 'Runnig: update-manager --version'
+++ update-manager --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/user-dirs-update-gtk.desktop ']'
+++ get_exec_binary /usr/share/applications3/user-dirs-update-gtk.desktop
+++ grep -E '^Exec=' /usr/share/applications3/user-dirs-update-gtk.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xdg-user-dirs-gtk-update
++ '[' -z xdg-user-dirs-gtk-update ']'
++ command -v xdg-user-dirs-gtk-update
++ echo 'Runnig: xdg-user-dirs-gtk-update --version'
+++ xdg-user-dirs-gtk-update --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/vim.desktop ']'
+++ get_exec_binary /usr/share/applications3/vim.desktop
+++ grep -E '^Exec=' /usr/share/applications3/vim.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=vim
++ '[' -z vim ']'
++ command -v vim
++ echo 'Runnig: vim --version'
+++ vim --version
++ VERSION_OUTPUT='VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Apr 21 2026 19:38:35)
+Included patches: 1-948, 950-967
+Modified by team+vim@tracker.debian.org
+Compiled by team+vim@tracker.debian.org
+Huge version without GUI.  Features included (+) or not (-):
++acl               +file_in_path      +mouse_urxvt       -tag_any_white
++arabic            +find_in_path      +mouse_xterm       -tcl
++autocmd           +float             +multi_byte        +termguicolors
++autochdir         +folding           +multi_lang        +terminal
+-autoservername    -footer            -mzscheme          +terminfo
+-balloon_eval      +fork()            +netbeans_intg     +termresponse
++balloon_eval_term +gettext           +num64             +textobjects
+-browse            -hangul_input      +packages          +textprop
+++builtin_terms    +iconv             +path_extra        +timers
++byte_offset       +insert_expand     -perl              +title
++channel           +ipv6              +persistent_undo   -toolbar
++cindent           +job               +popupwin          +user_commands
+-clientserver      +jumplist          +postscript        +vartabs
+-clipboard         +keymap            +printer           +vertsplit
++cmdline_compl     +lambda            +profile           +vim9script
++cmdline_hist      +langmap           -python            +viminfo
++cmdline_info      +libcall           +python3           +virtualedit
++comments          +linebreak         +quickfix          +visual
++conceal           +lispindent        +reltime           +visualextra
++cryptv            +listcmds          +rightleft         +vreplace
++cscope            +localmap          -ruby              +wildignore
++cursorbind        -lua               +scrollbind        +wildmenu
++cursorshape       +menu              +signs             +windows
++dialog_con        +mksession         +smartindent       +writebackup
++diff              +modify_fname      +sodium            -X11
++digraphs          +mouse             -sound             +xattr
+-dnd               -mouseshape        +spell             -xfontset
+-ebcdic            +mouse_dec         +startuptime       -xim
++emacs_tags        +mouse_gpm         +statusline        -xpm
++eval              -mouse_jsbterm     -sun_workshop      -xsmp
++ex_extra          +mouse_netterm     +syntax            -xterm_clipboard
++extra_search      +mouse_sgr         +tag_binary        -xterm_save
+-farsi             -mouse_sysmouse    -tag_old_static    
+   system vimrc file: "/etc/vim/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+ 3rd user vimrc file: "~/.config/vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+       defaults file: "$VIMRUNTIME/defaults.vim"
+  fall-back for $VIM: "/usr/share/vim"
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -Wdate-time -g -O2 -Werror=implicit-function-declaration -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -fdebug-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=/usr/src/vim-2:9.1.0967-1ubuntu6.3 -DSYS_VIMRC_FILE=\"/etc/vim/vimrc\" -DSYS_GVIMRC_FILE=\"/etc/vim/gvimrc\" -D_REENTRANT -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 
+Linking: gcc -Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -o vim -lm -ltinfo -lselinux -lsodium -lacl -lattr -lgpm -L/usr/lib/python3.13/config-3.13-x86_64-linux-gnu -lpython3.13 -ldl -lm '
++ echo 'Version output: VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Apr 21 2026 19:38:35)
+Included patches: 1-948, 950-967
+Modified by team+vim@tracker.debian.org
+Compiled by team+vim@tracker.debian.org
+Huge version without GUI.  Features included (+) or not (-):
++acl               +file_in_path      +mouse_urxvt       -tag_any_white
++arabic            +find_in_path      +mouse_xterm       -tcl
++autocmd           +float             +multi_byte        +termguicolors
++autochdir         +folding           +multi_lang        +terminal
+-autoservername    -footer            -mzscheme          +terminfo
+-balloon_eval      +fork()            +netbeans_intg     +termresponse
++balloon_eval_term +gettext           +num64             +textobjects
+-browse            -hangul_input      +packages          +textprop
+++builtin_terms    +iconv             +path_extra        +timers
++byte_offset       +insert_expand     -perl              +title
++channel           +ipv6              +persistent_undo   -toolbar
++cindent           +job               +popupwin          +user_commands
+-clientserver      +jumplist          +postscript        +vartabs
+-clipboard         +keymap            +printer           +vertsplit
++cmdline_compl     +lambda            +profile           +vim9script
++cmdline_hist      +langmap           -python            +viminfo
++cmdline_info      +libcall           +python3           +virtualedit
++comments          +linebreak         +quickfix          +visual
++conceal           +lispindent        +reltime           +visualextra
++cryptv            +listcmds          +rightleft         +vreplace
++cscope            +localmap          -ruby              +wildignore
++cursorbind        -lua               +scrollbind        +wildmenu
++cursorshape       +menu              +signs             +windows
++dialog_con        +mksession         +smartindent       +writebackup
++diff              +modify_fname      +sodium            -X11
++digraphs          +mouse             -sound             +xattr
+-dnd               -mouseshape        +spell             -xfontset
+-ebcdic            +mouse_dec         +startuptime       -xim
++emacs_tags        +mouse_gpm         +statusline        -xpm
++eval              -mouse_jsbterm     -sun_workshop      -xsmp
++ex_extra          +mouse_netterm     +syntax            -xterm_clipboard
++extra_search      +mouse_sgr         +tag_binary        -xterm_save
+-farsi             -mouse_sysmouse    -tag_old_static    
+   system vimrc file: "/etc/vim/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+ 3rd user vimrc file: "~/.config/vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+       defaults file: "$VIMRUNTIME/defaults.vim"
+  fall-back for $VIM: "/usr/share/vim"
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -Wdate-time -g -O2 -Werror=implicit-function-declaration -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -fdebug-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=/usr/src/vim-2:9.1.0967-1ubuntu6.3 -DSYS_VIMRC_FILE=\"/etc/vim/vimrc\" -DSYS_GVIMRC_FILE=\"/etc/vim/gvimrc\" -D_REENTRANT -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 
+Linking: gcc -Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -o vim -lm -ltinfo -lselinux -lsodium -lacl -lattr -lgpm -L/usr/lib/python3.13/config-3.13-x86_64-linux-gnu -lpython3.13 -ldl -lm '
++ is_chromium_based 'VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Apr 21 2026 19:38:35)
+Included patches: 1-948, 950-967
+Modified by team+vim@tracker.debian.org
+Compiled by team+vim@tracker.debian.org
+Huge version without GUI.  Features included (+) or not (-):
++acl               +file_in_path      +mouse_urxvt       -tag_any_white
++arabic            +find_in_path      +mouse_xterm       -tcl
++autocmd           +float             +multi_byte        +termguicolors
++autochdir         +folding           +multi_lang        +terminal
+-autoservername    -footer            -mzscheme          +terminfo
+-balloon_eval      +fork()            +netbeans_intg     +termresponse
++balloon_eval_term +gettext           +num64             +textobjects
+-browse            -hangul_input      +packages          +textprop
+++builtin_terms    +iconv             +path_extra        +timers
++byte_offset       +insert_expand     -perl              +title
++channel           +ipv6              +persistent_undo   -toolbar
++cindent           +job               +popupwin          +user_commands
+-clientserver      +jumplist          +postscript        +vartabs
+-clipboard         +keymap            +printer           +vertsplit
++cmdline_compl     +lambda            +profile           +vim9script
++cmdline_hist      +langmap           -python            +viminfo
++cmdline_info      +libcall           +python3           +virtualedit
++comments          +linebreak         +quickfix          +visual
++conceal           +lispindent        +reltime           +visualextra
++cryptv            +listcmds          +rightleft         +vreplace
++cscope            +localmap          -ruby              +wildignore
++cursorbind        -lua               +scrollbind        +wildmenu
++cursorshape       +menu              +signs             +windows
++dialog_con        +mksession         +smartindent       +writebackup
++diff              +modify_fname      +sodium            -X11
++digraphs          +mouse             -sound             +xattr
+-dnd               -mouseshape        +spell             -xfontset
+-ebcdic            +mouse_dec         +startuptime       -xim
++emacs_tags        +mouse_gpm         +statusline        -xpm
++eval              -mouse_jsbterm     -sun_workshop      -xsmp
++ex_extra          +mouse_netterm     +syntax            -xterm_clipboard
++extra_search      +mouse_sgr         +tag_binary        -xterm_save
+-farsi             -mouse_sysmouse    -tag_old_static    
+   system vimrc file: "/etc/vim/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+ 3rd user vimrc file: "~/.config/vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+       defaults file: "$VIMRUNTIME/defaults.vim"
+  fall-back for $VIM: "/usr/share/vim"
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -Wdate-time -g -O2 -Werror=implicit-function-declaration -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -fdebug-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=/usr/src/vim-2:9.1.0967-1ubuntu6.3 -DSYS_VIMRC_FILE=\"/etc/vim/vimrc\" -DSYS_GVIMRC_FILE=\"/etc/vim/gvimrc\" -D_REENTRANT -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 
+Linking: gcc -Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -o vim -lm -ltinfo -lselinux -lsodium -lacl -lattr -lgpm -L/usr/lib/python3.13/config-3.13-x86_64-linux-gnu -lpython3.13 -ldl -lm '
++ echo 'VIM - Vi IMproved 9.1 (2024 Jan 02, compiled Apr 21 2026 19:38:35)
+Included patches: 1-948, 950-967
+Modified by team+vim@tracker.debian.org
+Compiled by team+vim@tracker.debian.org
+Huge version without GUI.  Features included (+) or not (-):
++acl               +file_in_path      +mouse_urxvt       -tag_any_white
++arabic            +find_in_path      +mouse_xterm       -tcl
++autocmd           +float             +multi_byte        +termguicolors
++autochdir         +folding           +multi_lang        +terminal
+-autoservername    -footer            -mzscheme          +terminfo
+-balloon_eval      +fork()            +netbeans_intg     +termresponse
++balloon_eval_term +gettext           +num64             +textobjects
+-browse            -hangul_input      +packages          +textprop
+++builtin_terms    +iconv             +path_extra        +timers
++byte_offset       +insert_expand     -perl              +title
++channel           +ipv6              +persistent_undo   -toolbar
++cindent           +job               +popupwin          +user_commands
+-clientserver      +jumplist          +postscript        +vartabs
+-clipboard         +keymap            +printer           +vertsplit
++cmdline_compl     +lambda            +profile           +vim9script
++cmdline_hist      +langmap           -python            +viminfo
++cmdline_info      +libcall           +python3           +virtualedit
++comments          +linebreak         +quickfix          +visual
++conceal           +lispindent        +reltime           +visualextra
++cryptv            +listcmds          +rightleft         +vreplace
++cscope            +localmap          -ruby              +wildignore
++cursorbind        -lua               +scrollbind        +wildmenu
++cursorshape       +menu              +signs             +windows
++dialog_con        +mksession         +smartindent       +writebackup
++diff              +modify_fname      +sodium            -X11
++digraphs          +mouse             -sound             +xattr
+-dnd               -mouseshape        +spell             -xfontset
+-ebcdic            +mouse_dec         +startuptime       -xim
++emacs_tags        +mouse_gpm         +statusline        -xpm
++eval              -mouse_jsbterm     -sun_workshop      -xsmp
++ex_extra          +mouse_netterm     +syntax            -xterm_clipboard
++extra_search      +mouse_sgr         +tag_binary        -xterm_save
+-farsi             -mouse_sysmouse    -tag_old_static    
+   system vimrc file: "/etc/vim/vimrc"
+     user vimrc file: "$HOME/.vimrc"
+ 2nd user vimrc file: "~/.vim/vimrc"
+ 3rd user vimrc file: "~/.config/vim/vimrc"
+      user exrc file: "$HOME/.exrc"
+       defaults file: "$VIMRUNTIME/defaults.vim"
+  fall-back for $VIM: "/usr/share/vim"
+Compilation: gcc -c -I. -Iproto -DHAVE_CONFIG_H -Wdate-time -g -O2 -Werror=implicit-function-declaration -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -fdebug-prefix-map=/build/vim-AQiRUN/vim-9.1.0967=/usr/src/vim-2:9.1.0967-1ubuntu6.3 -DSYS_VIMRC_FILE=\"/etc/vim/vimrc\" -DSYS_GVIMRC_FILE=\"/etc/vim/gvimrc\" -D_REENTRANT -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=1 
+Linking: gcc -Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -o vim -lm -ltinfo -lselinux -lsodium -lacl -lattr -lgpm -L/usr/lib/python3.13/config-3.13-x86_64-linux-gnu -lpython3.13 -ldl -lm '
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xarchiver.desktop ']'
+++ get_exec_binary /usr/share/applications3/xarchiver.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xarchiver.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xarchiver
++ '[' -z xarchiver ']'
++ command -v xarchiver
++ echo 'Runnig: xarchiver --version'
+++ xarchiver --version
++ VERSION_OUTPUT='xarchiver: Cannot open display: 
+Try xarchiver --help to see a full list of available command-line options.'
++ echo 'Version output: xarchiver: Cannot open display: 
+Try xarchiver --help to see a full list of available command-line options.'
++ is_chromium_based 'xarchiver: Cannot open display: 
+Try xarchiver --help to see a full list of available command-line options.'
++ echo 'xarchiver: Cannot open display: 
+Try xarchiver --help to see a full list of available command-line options.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xdg-desktop-portal-gnome.desktop ']'
+++ get_exec_binary /usr/share/applications3/xdg-desktop-portal-gnome.desktop
+++ head -n1
+++ grep -E '^Exec=' /usr/share/applications3/xdg-desktop-portal-gnome.desktop
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=xdg-desktop-portal-gnome
++ '[' -z xdg-desktop-portal-gnome ']'
++ command -v xdg-desktop-portal-gnome
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xdg-desktop-portal-gtk.desktop ']'
+++ get_exec_binary /usr/share/applications3/xdg-desktop-portal-gtk.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xdg-desktop-portal-gtk.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xdg-desktop-portal-gtk
++ '[' -z xdg-desktop-portal-gtk ']'
++ command -v xdg-desktop-portal-gtk
++ continue
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfburn.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfburn.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfburn.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfburn
++ '[' -z xfburn ']'
++ command -v xfburn
++ echo 'Runnig: xfburn --version'
+++ xfburn --version
++ VERSION_OUTPUT='xfburn: Cannot open display: 
+Try xfburn --help to see a full list of available command line options.'
++ echo 'Version output: xfburn: Cannot open display: 
+Try xfburn --help to see a full list of available command line options.'
++ is_chromium_based 'xfburn: Cannot open display: 
+Try xfburn --help to see a full list of available command line options.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo 'xfburn: Cannot open display: 
+Try xfburn --help to see a full list of available command line options.'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-about.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-about.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-about.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-about
++ '[' -z xfce4-about ']'
++ command -v xfce4-about
++ echo 'Runnig: xfce4-about --version'
+++ xfce4-about --version
++ VERSION_OUTPUT='xfce4-about: Cannot open display: .
+Type '\''xfce4-about --help'\'' for usage information.'
++ echo 'Version output: xfce4-about: Cannot open display: .
+Type '\''xfce4-about --help'\'' for usage information.'
++ is_chromium_based 'xfce4-about: Cannot open display: .
+Type '\''xfce4-about --help'\'' for usage information.'
++ echo 'xfce4-about: Cannot open display: .
+Type '\''xfce4-about --help'\'' for usage information.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-accessibility-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-accessibility-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-accessibility-settings.desktop
+++ sed -E 's/^Exec=//'
+++ head -n1
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-accessibility-settings
++ '[' -z xfce4-accessibility-settings ']'
++ command -v xfce4-accessibility-settings
++ echo 'Runnig: xfce4-accessibility-settings --version'
+++ xfce4-accessibility-settings --version
++ VERSION_OUTPUT='xfce4-accessibility-settings: Cannot open display: .
+Type '\''xfce4-accessibility-settings --help'\'' for usage.'
++ echo 'Version output: xfce4-accessibility-settings: Cannot open display: .
+Type '\''xfce4-accessibility-settings --help'\'' for usage.'
++ is_chromium_based 'xfce4-accessibility-settings: Cannot open display: .
+Type '\''xfce4-accessibility-settings --help'\'' for usage.'
++ echo 'xfce4-accessibility-settings: Cannot open display: .
+Type '\''xfce4-accessibility-settings --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-appfinder.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-appfinder.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-appfinder.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-appfinder
++ '[' -z xfce4-appfinder ']'
++ command -v xfce4-appfinder
++ echo 'Runnig: xfce4-appfinder --version'
+++ xfce4-appfinder --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-clipman.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-clipman.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-clipman.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-clipman
++ '[' -z xfce4-clipman ']'
++ command -v xfce4-clipman
++ echo 'Runnig: xfce4-clipman --version'
+++ xfce4-clipman --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-clipman-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-clipman-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-clipman-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-clipman-settings
++ '[' -z xfce4-clipman-settings ']'
++ command -v xfce4-clipman-settings
++ echo 'Runnig: xfce4-clipman-settings --version'
+++ xfce4-clipman-settings --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-color-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-color-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-color-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-color-settings
++ '[' -z xfce4-color-settings ']'
++ command -v xfce4-color-settings
++ echo 'Runnig: xfce4-color-settings --version'
+++ xfce4-color-settings --version
++ VERSION_OUTPUT='xfce4-color-settings: Cannot open display: .
+Type '\''xfce4-color-settings --help'\'' for usage.'
++ echo 'Version output: xfce4-color-settings: Cannot open display: .
+Type '\''xfce4-color-settings --help'\'' for usage.'
++ is_chromium_based 'xfce4-color-settings: Cannot open display: .
+Type '\''xfce4-color-settings --help'\'' for usage.'
++ echo 'xfce4-color-settings: Cannot open display: .
+Type '\''xfce4-color-settings --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-dict.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-dict.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-dict.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
++ BIN=xfce4-dict
++ '[' -z xfce4-dict ']'
++ command -v xfce4-dict
++ echo 'Runnig: xfce4-dict --version'
+++ xfce4-dict --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-file-manager.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-file-manager.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-file-manager.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=exo-open
++ '[' -z exo-open ']'
++ command -v exo-open
++ echo 'Runnig: exo-open --version'
+++ exo-open --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-mail-reader.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-mail-reader.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-mail-reader.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=exo-open
++ '[' -z exo-open ']'
++ command -v exo-open
++ echo 'Runnig: exo-open --version'
+++ exo-open --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-mime-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-mime-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-mime-settings.desktop
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
+++ head -n1
++ BIN=xfce4-mime-settings
++ '[' -z xfce4-mime-settings ']'
++ command -v xfce4-mime-settings
++ echo 'Runnig: xfce4-mime-settings --version'
+++ xfce4-mime-settings --version
++ VERSION_OUTPUT='xfce4-mime-settings: Cannot open display: .
+Type '\''xfce4-mime-settings --help'\'' for usage.'
++ echo 'Version output: xfce4-mime-settings: Cannot open display: .
+Type '\''xfce4-mime-settings --help'\'' for usage.'
++ is_chromium_based 'xfce4-mime-settings: Cannot open display: .
+Type '\''xfce4-mime-settings --help'\'' for usage.'
++ echo 'xfce4-mime-settings: Cannot open display: .
+Type '\''xfce4-mime-settings --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-notes.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-notes.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-notes.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=xfce4-notes
++ '[' -z xfce4-notes ']'
++ command -v xfce4-notes
++ echo 'Runnig: xfce4-notes --version'
+++ xfce4-notes --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo ''
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-notifyd-config.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-notifyd-config.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-notifyd-config.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-notifyd-config
++ '[' -z xfce4-notifyd-config ']'
++ command -v xfce4-notifyd-config
++ echo 'Runnig: xfce4-notifyd-config --version'
+++ xfce4-notifyd-config --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-power-manager-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-power-manager-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-power-manager-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-power-manager-settings
++ '[' -z xfce4-power-manager-settings ']'
++ command -v xfce4-power-manager-settings
++ echo 'Runnig: xfce4-power-manager-settings --version'
+++ xfce4-power-manager-settings --version
++ VERSION_OUTPUT='This is xfce4-power-manager version 4.20.0, running on Xfce 4.20.
+Built with GTK+ 3.24.43, linked with GTK+ 3.24.50.'
++ echo 'Version output: This is xfce4-power-manager version 4.20.0, running on Xfce 4.20.
+Built with GTK+ 3.24.43, linked with GTK+ 3.24.50.'
++ is_chromium_based 'This is xfce4-power-manager version 4.20.0, running on Xfce 4.20.
+Built with GTK+ 3.24.43, linked with GTK+ 3.24.50.'
++ echo 'This is xfce4-power-manager version 4.20.0, running on Xfce 4.20.
+Built with GTK+ 3.24.43, linked with GTK+ 3.24.50.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-run.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-run.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-run.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=xfce4-appfinder
++ '[' -z xfce4-appfinder ']'
++ command -v xfce4-appfinder
++ echo 'Runnig: xfce4-appfinder --version'
+++ xfce4-appfinder --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-screenshooter.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-screenshooter.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-screenshooter.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-screenshooter
++ '[' -z xfce4-screenshooter ']'
++ command -v xfce4-screenshooter
++ echo 'Runnig: xfce4-screenshooter --version'
+++ xfce4-screenshooter --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo ''
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-sensors.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-sensors.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-sensors.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-sensors
++ '[' -z xfce4-sensors ']'
++ command -v xfce4-sensors
++ echo 'Runnig: xfce4-sensors --version'
+++ xfce4-sensors --version
++ VERSION_OUTPUT='Xfce4 Sensors 1.4.4'
++ echo 'Version output: Xfce4 Sensors 1.4.4'
++ is_chromium_based 'Xfce4 Sensors 1.4.4'
++ echo 'Xfce4 Sensors 1.4.4'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-session-logout.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-session-logout.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-session-logout.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-session-logout
++ '[' -z xfce4-session-logout ']'
++ command -v xfce4-session-logout
++ echo 'Runnig: xfce4-session-logout --version'
+++ xfce4-session-logout --version
++ VERSION_OUTPUT='xfce4-session 4.20.2 (Xfce 4.20)
+
+Copyright (c) 2004-2025
+	The Xfce development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>
+and Brian Tarricone <kelnos@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/xfce4-session>.'
++ echo 'Version output: xfce4-session 4.20.2 (Xfce 4.20)
+
+Copyright (c) 2004-2025
+	The Xfce development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>
+and Brian Tarricone <kelnos@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/xfce4-session>.'
++ is_chromium_based 'xfce4-session 4.20.2 (Xfce 4.20)
+
+Copyright (c) 2004-2025
+	The Xfce development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>
+and Brian Tarricone <kelnos@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/xfce4-session>.'
++ echo 'xfce4-session 4.20.2 (Xfce 4.20)
+
+Copyright (c) 2004-2025
+	The Xfce development team. All rights reserved.
+
+Written by Benedikt Meurer <benny@xfce.org>
+and Brian Tarricone <kelnos@xfce.org>.
+
+Please report bugs to <https://gitlab.xfce.org/xfce/xfce4-session>.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-settings-editor.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-settings-editor.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-settings-editor.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-settings-editor
++ '[' -z xfce4-settings-editor ']'
++ command -v xfce4-settings-editor
++ echo 'Runnig: xfce4-settings-editor --version'
+++ xfce4-settings-editor --version
++ VERSION_OUTPUT='xfce4-settings-editor: Cannot open display: .
+Type '\''xfce4-settings-editor --help'\'' for usage.'
++ echo 'Version output: xfce4-settings-editor: Cannot open display: .
+Type '\''xfce4-settings-editor --help'\'' for usage.'
++ is_chromium_based 'xfce4-settings-editor: Cannot open display: .
+Type '\''xfce4-settings-editor --help'\'' for usage.'
++ echo 'xfce4-settings-editor: Cannot open display: .
+Type '\''xfce4-settings-editor --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-taskmanager.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-taskmanager.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-taskmanager.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-taskmanager
++ '[' -z xfce4-taskmanager ']'
++ command -v xfce4-taskmanager
++ echo 'Runnig: xfce4-taskmanager --version'
+++ xfce4-taskmanager --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-terminal.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-terminal.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-terminal.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=xfce4-terminal
++ '[' -z xfce4-terminal ']'
++ command -v xfce4-terminal
++ echo 'Runnig: xfce4-terminal --version'
+++ xfce4-terminal --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo ''
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-terminal-emulator.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-terminal-emulator.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-terminal-emulator.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=exo-open
++ '[' -z exo-open ']'
++ command -v exo-open
++ echo 'Runnig: exo-open --version'
+++ exo-open --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-terminal-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-terminal-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-terminal-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-terminal
++ '[' -z xfce4-terminal ']'
++ command -v xfce4-terminal
++ echo 'Runnig: xfce4-terminal --version'
+++ xfce4-terminal --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo ''
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce4-web-browser.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce4-web-browser.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce4-web-browser.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=exo-open
++ '[' -z exo-open ']'
++ command -v exo-open
++ echo 'Runnig: exo-open --version'
+++ exo-open --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-backdrop-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-backdrop-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-backdrop-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfdesktop-settings
++ '[' -z xfdesktop-settings ']'
++ command -v xfdesktop-settings
++ echo 'Runnig: xfdesktop-settings --version'
+++ xfdesktop-settings --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-display-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-display-settings.desktop
+++ head -n1
+++ grep -E '^Exec=' /usr/share/applications3/xfce-display-settings.desktop
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=xfce4-display-settings
++ '[' -z xfce4-display-settings ']'
++ command -v xfce4-display-settings
++ echo 'Runnig: xfce4-display-settings --version'
+++ xfce4-display-settings --version
++ VERSION_OUTPUT='xfce4-display-settings: Cannot open display: .
+Type '\''xfce4-display-settings --help'\'' for usage.'
++ echo 'Version output: xfce4-display-settings: Cannot open display: .
+Type '\''xfce4-display-settings --help'\'' for usage.'
++ is_chromium_based 'xfce4-display-settings: Cannot open display: .
+Type '\''xfce4-display-settings --help'\'' for usage.'
++ echo 'xfce4-display-settings: Cannot open display: .
+Type '\''xfce4-display-settings --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-keyboard-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-keyboard-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-keyboard-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-keyboard-settings
++ '[' -z xfce4-keyboard-settings ']'
++ command -v xfce4-keyboard-settings
++ echo 'Runnig: xfce4-keyboard-settings --version'
+++ xfce4-keyboard-settings --version
++ VERSION_OUTPUT='xfce4-keyboard-settings: Cannot open display: .
+Type '\''xfce4-keyboard-settings --help'\'' for usage.'
++ echo 'Version output: xfce4-keyboard-settings: Cannot open display: .
+Type '\''xfce4-keyboard-settings --help'\'' for usage.'
++ is_chromium_based 'xfce4-keyboard-settings: Cannot open display: .
+Type '\''xfce4-keyboard-settings --help'\'' for usage.'
++ echo 'xfce4-keyboard-settings: Cannot open display: .
+Type '\''xfce4-keyboard-settings --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-mouse-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-mouse-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-mouse-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=xfce4-mouse-settings
++ '[' -z xfce4-mouse-settings ']'
++ command -v xfce4-mouse-settings
++ echo 'Runnig: xfce4-mouse-settings --version'
+++ xfce4-mouse-settings --version
++ VERSION_OUTPUT='xfce4-mouse-settings: Cannot open display: .
+Type '\''xfce4-mouse-settings --help'\'' for usage.'
++ echo 'Version output: xfce4-mouse-settings: Cannot open display: .
+Type '\''xfce4-mouse-settings --help'\'' for usage.'
++ is_chromium_based 'xfce4-mouse-settings: Cannot open display: .
+Type '\''xfce4-mouse-settings --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo 'xfce4-mouse-settings: Cannot open display: .
+Type '\''xfce4-mouse-settings --help'\'' for usage.'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-session-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-session-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-session-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
+++ awk '{print $1}'
++ BIN=xfce4-session-settings
++ '[' -z xfce4-session-settings ']'
++ command -v xfce4-session-settings
++ echo 'Runnig: xfce4-session-settings --version'
+++ xfce4-session-settings --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-settings-manager.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-settings-manager.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-settings-manager.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-settings-manager
++ '[' -z xfce4-settings-manager ']'
++ command -v xfce4-settings-manager
++ echo 'Runnig: xfce4-settings-manager --version'
+++ xfce4-settings-manager --version
++ VERSION_OUTPUT='xfce4-settings-manager: Cannot open display: .
+Type '\''xfce4-settings-manager --help'\'' for usage.'
++ echo 'Version output: xfce4-settings-manager: Cannot open display: .
+Type '\''xfce4-settings-manager --help'\'' for usage.'
++ is_chromium_based 'xfce4-settings-manager: Cannot open display: .
+Type '\''xfce4-settings-manager --help'\'' for usage.'
++ echo 'xfce4-settings-manager: Cannot open display: .
+Type '\''xfce4-settings-manager --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-ui-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-ui-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-ui-settings.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfce4-appearance-settings
++ '[' -z xfce4-appearance-settings ']'
++ command -v xfce4-appearance-settings
++ echo 'Runnig: xfce4-appearance-settings --version'
+++ xfce4-appearance-settings --version
++ VERSION_OUTPUT='xfce4-appearance-settings: Cannot open display: .
+Type '\''xfce4-appearance-settings --help'\'' for usage.'
++ echo 'Version output: xfce4-appearance-settings: Cannot open display: .
+Type '\''xfce4-appearance-settings --help'\'' for usage.'
++ is_chromium_based 'xfce4-appearance-settings: Cannot open display: .
+Type '\''xfce4-appearance-settings --help'\'' for usage.'
++ echo 'xfce4-appearance-settings: Cannot open display: .
+Type '\''xfce4-appearance-settings --help'\'' for usage.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-wm-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-wm-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-wm-settings.desktop
+++ head -n1
+++ sed 's|^.*/||'
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
++ BIN=xfwm4-settings
++ '[' -z xfwm4-settings ']'
++ command -v xfwm4-settings
++ echo 'Runnig: xfwm4-settings --version'
+++ xfwm4-settings --version
++ VERSION_OUTPUT='xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ echo 'Version output: xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ is_chromium_based 'xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ echo 'xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-wmtweaks-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-wmtweaks-settings.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfce-wmtweaks-settings.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=xfwm4-tweaks-settings
++ '[' -z xfwm4-tweaks-settings ']'
++ command -v xfwm4-tweaks-settings
++ echo 'Runnig: xfwm4-tweaks-settings --version'
+++ xfwm4-tweaks-settings --version
++ VERSION_OUTPUT='xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ echo 'Version output: xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ is_chromium_based 'xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ echo 'xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfce-workspaces-settings.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfce-workspaces-settings.desktop
+++ head -n1
+++ grep -E '^Exec=' /usr/share/applications3/xfce-workspaces-settings.desktop
+++ sed 's|^.*/||'
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
++ BIN=xfwm4-workspace-settings
++ '[' -z xfwm4-workspace-settings ']'
++ command -v xfwm4-workspace-settings
++ echo 'Runnig: xfwm4-workspace-settings --version'
+++ xfwm4-workspace-settings --version
++ VERSION_OUTPUT='xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ echo 'Version output: xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ is_chromium_based 'xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ echo 'xfwm4: Cannot open display: 
+Try xfwm4 --help to see a full list of available command line options.'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfreerdp3.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfreerdp3.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfreerdp3.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfreerdp3
++ '[' -z xfreerdp3 ']'
++ command -v xfreerdp3
++ echo 'Runnig: xfreerdp3 --version'
+++ xfreerdp3 --version
++ VERSION_OUTPUT='This is FreeRDP version 3.16.0 (n/a)'
++ echo 'Version output: This is FreeRDP version 3.16.0 (n/a)'
++ is_chromium_based 'This is FreeRDP version 3.16.0 (n/a)'
++ echo 'This is FreeRDP version 3.16.0 (n/a)'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /usr/share/applications3/xfreerdp3-file.desktop ']'
+++ get_exec_binary /usr/share/applications3/xfreerdp3-file.desktop
+++ grep -E '^Exec=' /usr/share/applications3/xfreerdp3-file.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=xfreerdp3
++ '[' -z xfreerdp3 ']'
++ command -v xfreerdp3
++ echo 'Runnig: xfreerdp3 --version'
+++ xfreerdp3 --version
++ VERSION_OUTPUT='This is FreeRDP version 3.16.0 (n/a)'
++ echo 'Version output: This is FreeRDP version 3.16.0 (n/a)'
++ is_chromium_based 'This is FreeRDP version 3.16.0 (n/a)'
++ echo 'This is FreeRDP version 3.16.0 (n/a)'
++ grep -qiE 'chrome|chromium|brave|edge'
++ for dir in "${ALL_DIRS[@]}"
++ for file in "$dir"/*.desktop
++ '[' -f '/usr/local/share/applications3/*.desktop' ']'
++ continue
++ for dir in "${ALL_DIRS[@]}"
++ for file in "$dir"/*.desktop
++ '[' -f /var/lib/snapd/desktop/applications3/chromium_chromium.desktop ']'
+++ get_exec_binary /var/lib/snapd/desktop/applications3/chromium_chromium.desktop
+++ grep -E '^Exec=' /var/lib/snapd/desktop/applications3/chromium_chromium.desktop
+++ head -n1
+++ awk '{print $1}'
+++ sed -E 's/^Exec=//'
+++ sed 's|^.*/||'
++ BIN=chromium
++ '[' -z chromium ']'
++ command -v chromium
++ echo 'Runnig: chromium --version'
+++ chromium --version
++ VERSION_OUTPUT='Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ echo 'Version output: Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ is_chromium_based 'Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ echo 'Warning: existing chromium policies in /etc/chromium-browser/policies will be shadowed by new policies found in /var/snap/chromium/3423/policies
+Chromium 147.0.7727.116 snap'
++ grep -qiE 'chrome|chromium|brave|edge'
+++ get_version chromium
+++ chromium --version
+++ grep -oE '[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+'
+++ head -n1
++ VERSION=147.0.7727.116
+++ echo 147.0.7727.116
+++ cut -d. -f1
++ MAJOR=147
++ echo --------------------------------------
++ echo 'Desktop : /var/lib/snapd/desktop/applications3/chromium_chromium.desktop'
++ echo 'Binary  : chromium'
++ echo 'Version : 147.0.7727.116'
++ '[' 147 == 147 ']'
++ echo '→ MATCH (147). Applying flags...'
++ update_file /var/lib/snapd/desktop/applications3/chromium_chromium.desktop
++ local FILE=/var/lib/snapd/desktop/applications3/chromium_chromium.desktop
++ '[' '!' -f /var/lib/snapd/desktop/applications3/chromium_chromium.desktop ']'
++ grep -q ssl-version-min /var/lib/snapd/desktop/applications3/chromium_chromium.desktop
++ echo 'Already updated → /var/lib/snapd/desktop/applications3/chromium_chromium.desktop'
++ return
+++ basename /var/lib/snapd/desktop/applications3/chromium_chromium.desktop
++ BASENAME=chromium_chromium.desktop
++ is_snap_app chromium
++ local bin=chromium
++ snap list
++ grep -qi '^chromium$'
++ awk '{print $1}'
++ for file in "$dir"/*.desktop
++ '[' -f /var/lib/snapd/desktop/applications3/chromium_daemon.desktop ']'
+++ get_exec_binary /var/lib/snapd/desktop/applications3/chromium_daemon.desktop
+++ grep -E '^Exec=' /var/lib/snapd/desktop/applications3/chromium_daemon.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=false
++ '[' -z false ']'
++ command -v false
++ echo 'Runnig: false --version'
+++ false --version
++ VERSION_OUTPUT=
++ echo 'Version output: '
++ is_chromium_based ''
++ echo ''
++ grep -qiE 'chrome|chromium|brave|edge'
++ for file in "$dir"/*.desktop
++ '[' -f /var/lib/snapd/desktop/applications3/firefox_firefox.desktop ']'
+++ get_exec_binary /var/lib/snapd/desktop/applications3/firefox_firefox.desktop
+++ grep -E '^Exec=' /var/lib/snapd/desktop/applications3/firefox_firefox.desktop
+++ head -n1
+++ sed -E 's/^Exec=//'
+++ awk '{print $1}'
+++ sed 's|^.*/||'
++ BIN=firefox
++ '[' -z firefox ']'
++ command -v firefox
++ echo 'Runnig: firefox --version'
+++ firefox --version
++ VERSION_OUTPUT='Mozilla Firefox 150.0.1'
++ echo 'Version output: Mozilla Firefox 150.0.1'
++ is_chromium_based 'Mozilla Firefox 150.0.1'
++ echo 'Mozilla Firefox 150.0.1'
++ grep -qiE 'chrome|chromium|brave|edge'
++ echo Done.

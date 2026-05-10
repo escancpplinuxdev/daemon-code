@@ -2969,3 +2969,316 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+02/05/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Code Reading & Execution Trigger
+
+    Completed code walkthrough of screenshot_monitor.cpp.
+
+    Identified that the module is triggered via epsdaemon service.
+
+Configuration Verified:
+
+    File: /opt/MicroWorld/etc/epsdaemon.conf
+
+[screenCapture]
+Status = "1"
+
+    Status = "1" enables screenshot monitoring.
+
+2. Firefox Policy Verification
+
+    Checked Firefox screenshot restriction policy:
+
+    File: /etc/firefox/policies/policies.json
+
+{
+  "policies": {
+    "DisableFirefoxScreenshots": true
+  }
+}
+
+4. Screenshot Monitoring Testing
+
+Test Locations Monitor:
+
+Desktop
+Pictures
+Downloads
+/tmp directory
+
+Tools & Methods Used:
+
+Installed screenshot tool:
+sudo apt install scrot
+Executed commands:
+scrot -d 5 screenshot.png
+Tested formats: .png, .jpg, .jpeg
+Keyboard shortcuts tested:
+PrtScn
+Shift + PrtScn
+Alt + PrtScn
+
+5. Log Verification
+
+    Monitored logs during operations:
+    tail -f /var/MicroWorld/var/log/screenCapture.log
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+02/05/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1. C++ Development (TLS Flag Injection)
+
+    Implemented C++ code to add TLS flags to every Exec= line in .desktop files (not limited to the first occurrence).
+
+    Code is written following standard brace style (opening brace on a new line for functions and loops).
+
+    Ensured compatibility with C++11 standard.
+
+2. Functional Testing
+
+    Tested the implementation under multiple conditions, including:
+
+        .desktop files with single and multiple Exec= entries
+
+        Existing flags present vs no flags present
+
+        Different application launch formats
+
+    Verified that TLS flags are correctly appended in all applicable cases.
+
+3. Browser-Specific Handling
+
+    Implemented detection for Chromium-based browsers:
+
+        Chrome
+
+        Chromium
+
+        Brave
+
+        Edge
+
+    Logic added to:
+
+        Apply TLS flag modification during execution
+
+        Restore original .desktop file from backup on process termination (SIGTERM / normal exit)
+
+4. Backup & Restore Mechanism
+
+    Backup of original .desktop file is created before modification.
+
+    On application stop (signal/termination), original file is restored to ensure system consistency.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+02/05/2026
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. C++ Development (Source Implementation)
+
+    Implemented C++ code in:
+
+        source/main.cpp
+
+        source/term_signal_handle.cpp
+
+    Functionality developed to:
+
+        Detect installation type of Chromium-based browsers:
+
+            Chrome
+
+            Chromium
+
+            Brave
+
+            Edge
+
+        Modify corresponding .desktop files by adding TLS1.2 flags to all Exec= entries.
+
+2. Backup & Restore Mechanism
+
+    Implemented restoreBackup() functionality to revert .desktop changes.
+
+    Restore is triggered on:
+
+        Ctrl + C (SIGINT)
+
+        systemctl stop nfdaemon
+
+        systemctl restart nfdaemon
+
+    Ensures system stability by restoring original .desktop files after process termination.
+
+3. Testing Environment & Validation
+
+    Test Machine:
+
+        Ubuntu 25 system (IP: 192.168.2.220)
+
+    Tested with browser versions (v147):
+
+        Chrome
+
+        Chromium
+
+        Brave
+
+        Edge
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Shell Script Analysis
+
+    Performed detailed study of force-tls-1.2_new.sh.
+
+    Added debugging support for analysis using:
+
+        exec 2>debug.log
+
+        set -x for command-level tracing
+
+    Verified execution flow and behavior of all commands through generated debug logs.
+
+2. C++ Replication for Chromium-Based Browsers
+
+    Replicated shell-script logic in C++ for:
+
+        Chrome
+
+        Chromium
+
+        Brave
+
+        Edge
+
+    Implemented handling for browser versions:
+
+        version >= 146
+
+    Added logic in chromium_based_browser() flow to:
+
+        Detect browser installation
+
+        Modify .desktop Exec= entries
+
+        Apply TLS1.2 related flags
+
+        Maintain backup and restore handling
+
+3. Testing Performed
+
+    Successfully tested implementation on:
+
+        192.168.2.220
+
+        192.168.1.234 testing machine
+
+Validation Included:
+
+    Browser detection
+
+    TLS flag injection
+
+    Execution behavior after modification
+
+    Stability during multiple restart cycles
+
+4. Corporate Build 23 Compatibility
+
+    192.168.1.226 (Ubuntu 10 development machine)
+
+    Analyzed dependency requirements for Corporate Build 23.
+
+    Focused on using lower/stable dependencies for improved compatibility and compilation stability.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1.    Worked on making nfdaemon compatible for Corporate Build 23 version using nfdaemon from Ubuntu 10 devlopement machine (192.168.1.226).
+
+2.    As per requirement, removed all newly added logs from nfdaemon module.
+
+3.    Built and tested the updated nfdaemon package after all log removal changes.
+
+4.    Sent the tested build to the testing .
+
+5.    Checked the issue in updatenow_avs where product name is displayed as “escan-edr” in escan-dlp build.
+
+6.    Verified the related product name in c++ code handling/configuration file.
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

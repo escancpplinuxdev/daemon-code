@@ -3282,3 +3282,47 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+04/03/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+1.Performed command-line scanning tests using mwscanner for eAadhaarCard.jpeg on both testing machines:
+
+    192.168.1.234
+
+    192.168.2.220
+
+Testing was carried out on escan-dlp build environment.
+
+2.Observed segmentation fault issue while executing:
+./mwscanner /home/rushi/Desktop/eAadhaarCard.jpeg
+
+3.Started debugging the segmentation fault issue using gdb with below command:
+gdb --args ./mwscanner /home/rushi/Desktop/Aadhaar.jpeg
+
+4.Performed memory leak and crash analysis using valgrind:
+valgrind --leak-check=full ./mwscanner /home/rushi/Desktop/eAadhaarCard.jpeg
+
+5.After that then checked zippyshare.day upload file scanning for:
+/home/rushi/Desktop/PAN.jpeg
+
+6.Observed “Failed to load img” error during scanning and monitored related logs using:
+tail -f /var/MicroWorld/var/log/contentScanner.log
+
+7.Continued analysis of image loading and scanner crash issue in mwscanner module.
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

@@ -85,5 +85,12 @@ int main()
 
 	cout<<"\""<<endl;
 
+	cout<<"Iterating with iterator                 : \"";
+//	for (std::string::iterator it = s5.begin(); it != s5.end(); ++it)   // ++it preferred
+//		  cout << *it;
+
+	for(std::string::iterator it = s5.begin(); it != s5.end(); ++it) //C++98 / C++03 (older compilers without auto)
+		cout<<*it;
+	cout<<"\""<<endl;
 	return 0;
 }

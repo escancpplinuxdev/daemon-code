@@ -454,5 +454,55 @@ This is your
 multi-line 
 comment section.
 '
-43]		
+43]		top 
+		top -d 0.5 -> just like watch -n 0.2  		 -> q to quit top program
+
+		Option	Description
+-u [username]	Monitor processes for a specific user (e.g., top -u root).
+-p [PID]	Monitor a specific Process ID.
+-d [seconds]	Change the refresh delay (default is 3.0 seconds).
+-n [number]	Exit after a specific number of updates.
+-b	Batch Mode: Useful for sending output to a file or another script.
+
+
+h: Display the Help screen (shows all available commands).
+
+q: Quit the program.
+
+k: Kill a process (it will prompt you for the PID).
+
+M: Sort the list by Memory usage.
+
+P: Sort the list by CPU usage (default).
+
+1: Expand the CPU display to show individual cores (useful for your multi-threaded C++ work).
+
+z: Toggle Color on/off to highlight running processes.
+
+44]
+		gdb
+
+	For- >  root@rushi-VB-220:/tmpdata# ./mwscanner Aadhaar.pdf 
+	1. Run gdb with argument directly from the shell:
+
+	 	gdb --args ./mwscanner Aadhaar.pdf
+		(gdb) run / r
+	
+	2. When segmentation / segfault occurs, get abacktrace:
 		
+		(gdb) bt
+		(gdb) info registers
+		(gdb) list
+
+	3. sudo apt install valgrind -y
+	   valgrind --leak-check=full ./mwscanner Aadhaar.pdf
+
+45] 	To change the hostname to vaibhav-u25	 
+	sudo hostnamectl set-hostname vaibhav-u25
+
+	verifying the change 
+	hostnamectl
+
+46] 	To change the ownership of PAN.jpeg to the user vaibhav and the group vaibhav
+
+	chown vaibhav:vaibhav PAN.jpeg

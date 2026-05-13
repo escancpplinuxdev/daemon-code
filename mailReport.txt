@@ -3283,7 +3283,7 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
-04/03/2026
+11/05/2026
 
 From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
 Subject:        Report of 05/03/2026
@@ -3326,3 +3326,70 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+12/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1.	Recompiled and re-linked old libraries:
+
+    libpoppler.so.133
+
+    libpoppler-cpp.so
+
+    libleptonica.so.6
+
+    libtiff.so.6
+
+    mwscanner for all above library
+
+with updated libjpeg.so.8 version compatibility for mwscanner and contentscanner binaries.
+
+2.	Verified library dependency integration and rebuilt mwscanner / contentscanner binaries.
+
+3.	Performed testing of mwscanner and contentscanner binaries on below testing machines:
+
+    192.168.1.234
+
+    192.168.2.220
+
+4. 	Started directory scan testing using below command on both testing machines:
+    ./mwscanner /home/vaibhav/Desktop/Docs
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+13/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	1.Performed nfdaemon binary testing on 192.168.1.234 testing machine for console policy verification.
+
+2.Continued testing, debugging, and development work for mwscanner module.
+
+3.Added additional debugging support/log tracing in mwscanner for specific PDF scan case.
+
+4.Performed testing using below command:
+./mwscanner /home/rushi/Desktop/Docs/Attachment\ Allowed.pdf
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

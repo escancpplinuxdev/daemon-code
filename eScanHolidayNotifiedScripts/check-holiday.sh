@@ -51,7 +51,7 @@ if grep -Fxq "$DAY" "$HOLIDAY_FILE"; then
 else
     echo "$TODAYMSG"
 
-    send_notification_loop2 \
-    "Good morning ....." \
-    "$TODAYMSG"
+#    send_notification_loop2 \
+#    "Good morning ....." \
+#    "$TODAYMSG"
 fi

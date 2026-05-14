@@ -3388,6 +3388,58 @@ Dear sir,
 
 4.Performed testing using below command:
 ./mwscanner /home/rushi/Desktop/Docs/Attachment\ Allowed.pdf
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+13/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1.    Added detailed debugger/log tracing in popplerImageToPix function where PDF pages are converted into image format.
+
+2.    Analyzed the nested for-loop execution during image conversion process for:
+
+        Height = 3508
+
+        Width = 2479
+
+3.    Observed continuous iteration of loops till:
+
+        y = 3507
+
+        x = 2478
+
+4.    Added debugging traces for repeated execution flow and function checkpoints such as:
+
+        Line = 107 Function = popplerImageToPix
+
+        Line = 141 Function = popplerImageToPix
+
+        Line = 142 END of function
+
+        Line = 166 Function = extract_text_from_pdf
+
+        Format = 3
+
+        ARGB32 branch execution
+
+5.    Verified repeated log generation during pixel-level image processing while scanning:
+      /tmpdata/Attachment Allowed.pdf
+
+      that complete execution of nested for-loops during PDF-to-image conversion is taking significant processing time. 
+
 Thanks Regards,
 Rushikesh Gajmal
 Programming Dept.

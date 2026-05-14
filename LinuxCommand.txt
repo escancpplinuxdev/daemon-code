@@ -506,3 +506,20 @@ z: Toggle Color on/off to highlight running processes.
 46] 	To change the ownership of PAN.jpeg to the user vaibhav and the group vaibhav
 
 	chown vaibhav:vaibhav PAN.jpeg
+
+47]  number of time word "Line 142 END of function"  in file debug_mwscanner.log
+
+	grep -ic "Line 142 END of function" debug_mwscanner.log
+	-> 150 
+
+	cat debug_mwscanner.log | grep -i "Line 142 END of function" | wc
+
+	-> 150	900	12000
+
+150: This is the number of times the line appeared (the value you want).   
+
+900: Total words in those lines.   
+
+12000: Total characters in those lines.  
+
+48]  

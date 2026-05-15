@@ -522,4 +522,9 @@ z: Toggle Color on/off to highlight running processes.
 
 12000: Total characters in those lines.  
 
-48]  
+48] 	you want to quickly see the largest files first without missing anything, you can sort by size using the -S flag
+
+	ls -lhSa /home/rushi/Desktop/Docs/ | grep -E "\s[0-9]+(\.[0-9]+)?M\s" 
+
+49] 
+	

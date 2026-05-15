@@ -3445,3 +3445,66 @@ Rushikesh Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+15/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1. tested directory scanning using below command:
+./mwscanner /home/rushi/Desktop/Docs
+
+2. Verified complete scan execution and observed below output summary:
+
+Initializing Scanner...
+Scanner Start. Please Wait.
+Scan Configuration
+
+Scan Directories : 2
+Scan Files : 99
+Pattern Detected Files : 41
+Total scan duration : 32 minutes 41 seconds
+
+3. Continued validation of scanning results, detected pattern files, and overall scanner behavior during complete directory scan execution.
+
+4. Observed that full testing execution is highly time-consuming, where a single scan execution is taking more than 32 minutes.
+
+5. Monitored scanner activity logs using:
+tail -f /var/MicroWorld/var/log/contentScanner.log
+
+6. Verified extraction/scanning temporary files being created during scan process under:
+/opt/MicroWorld/var/run/tempCL/
+
+7. Observed extracted scanning content and generated temporary files/directories such as:
+
+    temp.zip
+
+    [Content_Types].xml
+
+    _rels
+
+    customXml
+
+    page_1.png
+
+    page_2.png
+
+    docProps
+
+    word
+
+
+
+
+Thanks Regards,
+Rushikesh Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

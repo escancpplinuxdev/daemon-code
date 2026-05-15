@@ -1,0 +1,118 @@
+Enter number for element :
+Dividend = 16
+Divisor = 03
+carry = 0
+i = 1
+total = digitA - digitB - carry
+3 = 6 - 3 - 0
+total = 3
+carry = 0
+i = 0
+total = digitA - digitB - carry
+1 = 1 - 0 - 0
+total = 1
+carry = 0
+Result    = 13
+Count     = 1
+
+
+
+=========================
+Final result = 13
+
+=========================
+Dividend = 13
+Divisor = 03
+carry = 0
+i = 1
+total = digitA - digitB - carry
+0 = 3 - 3 - 0
+total = 0
+carry = 0
+i = 0
+total = digitA - digitB - carry
+1 = 1 - 0 - 0
+total = 1
+carry = 0
+Result    = 10
+Count     = 2
+
+
+
+=========================
+Final result = 10
+
+=========================
+Dividend = 10
+Divisor = 03
+carry = 0
+i = 1
+total = digitA - digitB - carry
+-3 = 0 - 3 - 0
+total = -3
+carry = 1
+i = 0
+total = digitA - digitB - carry
+0 = 1 - 0 - 1
+total = 0
+carry = 0
+Result    = 07
+Count     = 3
+
+
+
+=========================
+Final result = 07
+
+=========================
+Dividend = 07
+Divisor = 03
+carry = 0
+i = 1
+total = digitA - digitB - carry
+4 = 7 - 3 - 0
+total = 4
+carry = 0
+i = 0
+total = digitA - digitB - carry
+0 = 0 - 0 - 0
+total = 0
+carry = 0
+Result    = 04
+Count     = 4
+
+
+
+=========================
+Final result = 04
+
+=========================
+Dividend = 04
+Divisor = 03
+carry = 0
+i = 1
+total = digitA - digitB - carry
+1 = 4 - 3 - 0
+total = 1
+carry = 0
+i = 0
+total = digitA - digitB - carry
+0 = 0 - 0 - 0
+total = 0
+carry = 0
+Result    = 01
+Count     = 5
+
+
+
+=========================
+Final result = 01
+
+=========================
+
+=========================
+Final result = 01
+Quotient     = 5
+Remainder    = 01
+
+=========================

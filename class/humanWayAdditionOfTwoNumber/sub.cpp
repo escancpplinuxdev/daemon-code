@@ -24,8 +24,8 @@ int main()
 
 	// Start with sum = "0"
 	string sum="0";
-
-	for(int j=0;j<count;j++)
+	string x = numbers[0];
+	for(int j=1;j<count;j++)
 	{
 		string currentNum = numbers[j];
 		string a = sum;
@@ -113,8 +113,74 @@ int main()
 
 	}
 	cout<<"\n=========================\n";
-	cout<<"Final sum = "<<sum<<endl;
+	cout<<"Final sum = "<<sum;
 	cout<<"\n=========================\n";
 
+	bool nsign = false;
+		if(stoi(x) > stoi(sum))
+		{
+			
+		}
+		else
+		{
+			nsign = true;
+			string temp = x;
+			x =sum;
+			sum=temp;
+		}
+
+	int maxLen;
+                if (x.length() > sum.length())
+                {
+                        maxLen=x.length();
+                }
+                else
+                {
+                        maxLen=sum.length();
+                }
+                while(x.length() < maxLen)
+                {
+                        x = "0" + x;  // a.length increment in this "0" + a  operation
+                }
+                while(sum.length() < maxLen)
+                {
+                        sum = "0" + sum; // b.length increment in this "0" + b  operation
+                }
+	int carry = 0;
+	cout<<"x = "<<x<<endl;
+	cout<<"sum = "<<sum<<endl;
+	cout<<"carry = "<<carry<<endl;
+	string result = "";
+	for (int i =x.length()-1; i>=0; i-- )
+	{
+			 cout<<"i = "<<i<<endl;
+                        int digitA = x[i] - '0';
+                        int digitB = sum[i] - '0';
+                        int total = digitA - digitB - carry;
+                        cout<<"total = digitA - digitB - carry"<<endl;
+                        cout<<total <<" = "<<digitA<<" - "<<digitB<<" - "<<carry<<endl;
+
+			if(total < 0)
+			{
+				total = 10 + total;
+				carry = 1;
+			}
+			else
+			{
+				carry = 0;
+			}
+
+			cout<<"total = "<<total<<endl;
+                        cout<<"carry = "<<carry<<endl;
+	
+			result = to_string(total) + result;
+	}
+	if(nsign)
+	{
+		result = "-"+result;
+	}
+	cout<<"\n=========================\n";
+	cout<<"Final result = "<<result;
+	cout<<"\n=========================\n";
 	return 0;
 }

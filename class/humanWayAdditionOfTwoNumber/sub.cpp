@@ -10,7 +10,7 @@ int main()
 	int count;
 	vector<string> numbers;
 
-	cout<<"Enter total number of addition elements : ";
+	cout<<"Enter total number of subtraction elements : ";
 	cin>>count;
 	cout<<"Enter number for element \n";
 

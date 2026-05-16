@@ -17,14 +17,14 @@ int main()
 	for(int i = 0; i<count; i++)
 	{
 		string num;
-		cout<<"num["<<i+1<<"] = ";
+		cout<<"num["<<i<<"] = ";
 		cin>>num;
 		numbers.push_back(num);
 //		numbers.push_back("5");
 	}
 
 	// Start with sum = "0"
-	string sum="0";
+	string sum=numbers[0];
 
 	for(int j=0;j<count-1;j++)
 	{
@@ -32,21 +32,22 @@ int main()
 		cout<<" count = "<<count<<endl;
 		cout<<" numbers ["<<j<<"]"<<" = "<<numbers[j]<<endl;
 		cout<<" numbers ["<<j+1<<"]"<<" = "<<numbers[j+1]<<endl;
-		cout<< "Nummber of addititon of "<<numbers[j]<<" happen "<<numbers[j+1]<<" times.";
-		if(stoi(numbers[j+1]) == 1) break;
+		cout<< "Nmmber of addititon of "<<sum<<" happen "<<numbers[j+1]<<" times.\n";
 
 		if(stoi(numbers[j+1]) == 0) {sum = "0"; break;}
 
+		string a = sum;
+		string b = a;
 
-		for(int k= 0;k<stoi(numbers[j+1]);k++)
+		for(int k= 1;k<stoi(numbers[j+1]);k++)
 		{
 			cout<<"\nk = "<<k<<endl<<endl<<endl;
 			cout<<"sum        = "<<sum<<endl;
-			string currentNum = numbers[j];
+			string currentNum = numbers[0];
 			cout<<"currentNum = "<<currentNum<<endl;
-			string a = sum;
-			string b = currentNum;
+//			string b = currentNum;
 
+			string a = sum;
 			// making both string sam length by padding with leading zeros
 
 			int maxLen;
@@ -78,6 +79,7 @@ int main()
 
 			cout<<"Adding = "<<a;
 			cout<<" number ["<<j+1<<"]"<<" = "<<numbers[j+1]<<" time."<<endl;
+			sum ="0";
 			cout<<"Current sum = "<<sum<<endl;
 
 			for(int i = a.length() - 1; i>=0; i--)
@@ -129,7 +131,7 @@ int main()
 
 		}
 
-		cout<<"loop end\n";
+		cout<<"\nloop end\n";
 	}
 	cout<<"\n=========================\n";
 	cout<<"Final sum = "<<sum<<endl;

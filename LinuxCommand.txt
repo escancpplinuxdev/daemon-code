@@ -527,4 +527,7 @@ z: Toggle Color on/off to highlight running processes.
 	ls -lhSa /home/rushi/Desktop/Docs/ | grep -E "\s[0-9]+(\.[0-9]+)?M\s" 
 
 49] 
-	
+	ps -ef | grep -v grep --color  | grep -E "vim|tail"
+
+50]	
+		

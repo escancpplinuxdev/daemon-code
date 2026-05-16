@@ -3504,7 +3504,35 @@ tail -f /var/MicroWorld/var/log/contentScanner.log
 
 
 Thanks Regards,
-Rushikesh Gajmal
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+15/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1. Studied mwscanner module by adding additional debugger/log tracing to understand complete code execution flow and runtime behavior.
+
+2. Analyzed internal scanning flow, PDF/image processing flow and debugging checkpoints in mwscanner.
+
+3. Write detailed technical case study documentation for:
+
+a. Case Study – nfdaemon TLS 1.2 Enforcement for Chromium-Based Browsers
+
+b. Case Study – mwscanner Performance Analysis and Debugging
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com

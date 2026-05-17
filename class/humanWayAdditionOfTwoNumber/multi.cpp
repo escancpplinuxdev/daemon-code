@@ -24,28 +24,27 @@ int main()
 	}
 
 	// Start with sum = "0"
-	string sum="0";
+	string sum="1";
 
-	for(int j=0;j<count-1;j++)
+	for(int j=0;j<count;j++)
 	{
 		cout<<" j = "<<j<<endl;
 		cout<<" count = "<<count<<endl;
 		cout<<" numbers ["<<j<<"]"<<" = "<<numbers[j]<<endl;
-		cout<<" numbers ["<<j+1<<"]"<<" = "<<numbers[j+1]<<endl;
-		cout<< "Nummber of addititon of "<<numbers[j]<<" happen "<<numbers[j+1]<<" times.";
-		if(stoi(numbers[j+1]) == 1) break;
-
-		if(stoi(numbers[j+1]) == 0) {sum = "0"; break;}
+//		cout<<" numbers ["<<j+1<<"]"<<" = "<<numbers[j+1]<<endl;
+//		cout<< "Nummber of addititon of "<<numbers[j]<<" happen "<<numbers[j+1]<<" times.";
 
 
-		for(int k= 0;k<stoi(numbers[j+1]);k++)
+		string newSum= "0";
+		for(int k= 0;k<stoi(numbers[j]);k++)
 		{
 			cout<<"\nk = "<<k<<endl<<endl<<endl;
 			cout<<"sum        = "<<sum<<endl;
-			string currentNum = numbers[j];
-			cout<<"currentNum = "<<currentNum<<endl;
-			string a = sum;
-			string b = currentNum;
+//			string currentNum = numbers[j];
+//			cout<<"currentNum = "<<currentNum<<endl;
+			string a = newSum;
+//			string b = currentNum;
+			string b = sum;
 
 			// making both string sam length by padding with leading zeros
 
@@ -77,12 +76,18 @@ int main()
 			int carry = 0;
 
 			cout<<"Adding = "<<a;
-			cout<<" number ["<<j+1<<"]"<<" = "<<numbers[j+1]<<" time."<<endl;
-			cout<<"Current sum = "<<sum<<endl;
+//			cout<<" number ["<<j+1<<"]"<<" = "<<numbers[j+1]<<" time."<<endl;
+//			cout<<"Current sum = "<<sum<<endl;
+		cout<<"sum ="<<sum<<endl;
+		cout<<"a ="<<a<<endl;
+		cout<<"b ="<<b<<endl;
+		cout<<"newSum ="<<newSum<<endl;
 
 			for(int i = a.length() - 1; i>=0; i--)
 			{
 				cout<<"i = "<<i<<endl;
+		cout<<"sum ="<<sum<<endl;
+		cout<<"newSum ="<<newSum<<endl;
 				int digitA = a[i] - '0';
 				int digitB = b[i] - '0';
 				int total = digitA + digitB + carry;
@@ -123,11 +128,19 @@ int main()
 			}
 			cout<<"result = "<<result<<endl;
 
-			sum = result;
+//			sum = result;
+			newSum = result;
+		cout<<"sum ="<<sum<<endl;
+		cout<<"newSum ="<<newSum<<endl;
 
-			cout<<"result of adding  = "<<currentNum<<" = "<<sum<<endl;
+//			cout<<"result of adding  = "<<currentNum<<" = "<<sum<<endl;
 
 		}
+
+		sum = newSum;
+		cout<<"sum ="<<sum<<endl;
+		cout<<"newSum ="<<newSum<<endl;
+	        cout << "Product after multiplying by " << numbers[j] << " = " << sum	<< endl;
 
 		cout<<"loop end\n";
 	}

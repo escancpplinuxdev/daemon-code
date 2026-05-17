@@ -1,0 +1,230 @@
+root@rushi-VB-105:/tmpdata/Rushikesh_01052026/daemon-code/class/humanWayAdditionOfTwoNumber# g++ -o multi1 multi1.cpp 
+root@rushi-VB-105:/tmpdata/Rushikesh_01052026/daemon-code/class/humanWayAdditionOfTwoNumber# ./multi1
+Enter total number of Mulitiplication elements : 3 
+Enter number for element 
+num[0] = 5
+num[1] = 5
+num[2] = 3
+ j = 0
+ count = 3
+ numbers [0] = 5
+ numbers [1] = 5
+Nmmber of addititon of 5 happen 5 times.
+
+k = 1
+
+
+sum        = 5
+currentNum = 5
+maxLen = 1
+a = 5
+a.length() = 1
+b = 5
+b.length() = 1
+Adding = 5 number [1] = 5 time.
+Current sum = 0
+i = 0
+total = digitA + digitB + carry
+10 = 5 + 5 + 0
+result = 
+totalStr = 10
+result = totalStr.back() + result
+result = 0 + 
+result = 0
+carry = 1
+result = 0
+carry = 1
+Here carry > 0 	 result = to_string(carry) + resultresult = 10
+result of adding  = 5 = 10
+
+k = 2
+
+
+sum        = 10
+currentNum = 5
+maxLen = 2
+a = 10
+a.length() = 2
+b = 05
+b.length() = 2
+Adding = 10 number [1] = 5 time.
+Current sum = 0
+i = 1
+total = digitA + digitB + carry
+5 = 0 + 5 + 0
+result = 
+totalStr = 5
+result = totalStr.back() + result
+result = 5 + 
+result = 5
+result = 5
+carry = 0
+i = 0
+total = digitA + digitB + carry
+1 = 1 + 0 + 0
+result = 5
+totalStr = 1
+result = totalStr.back() + result
+result = 1 + 5
+result = 15
+result = 15
+carry = 0
+result = 15
+result of adding  = 5 = 15
+
+k = 3
+
+
+sum        = 15
+currentNum = 5
+maxLen = 2
+a = 15
+a.length() = 2
+b = 05
+b.length() = 2
+Adding = 15 number [1] = 5 time.
+Current sum = 0
+i = 1
+total = digitA + digitB + carry
+10 = 5 + 5 + 0
+result = 
+totalStr = 10
+result = totalStr.back() + result
+result = 0 + 
+result = 0
+carry = 1
+result = 0
+carry = 1
+i = 0
+total = digitA + digitB + carry
+2 = 1 + 0 + 1
+result = 0
+totalStr = 2
+result = totalStr.back() + result
+result = 2 + 0
+result = 20
+result = 20
+carry = 0
+result = 20
+result of adding  = 5 = 20
+
+k = 4
+
+
+sum        = 20
+currentNum = 5
+maxLen = 2
+a = 20
+a.length() = 2
+b = 05
+b.length() = 2
+Adding = 20 number [1] = 5 time.
+Current sum = 0
+i = 1
+total = digitA + digitB + carry
+5 = 0 + 5 + 0
+result = 
+totalStr = 5
+result = totalStr.back() + result
+result = 5 + 
+result = 5
+result = 5
+carry = 0
+i = 0
+total = digitA + digitB + carry
+2 = 2 + 0 + 0
+result = 5
+totalStr = 2
+result = totalStr.back() + result
+result = 2 + 5
+result = 25
+result = 25
+carry = 0
+result = 25
+result of adding  = 5 = 25
+
+loop end
+ j = 1
+ count = 3
+ numbers [1] = 5
+ numbers [2] = 3
+Nmmber of addititon of 25 happen 3 times.
+
+k = 1
+
+
+sum        = 25
+currentNum = 5
+maxLen = 2
+a = 25
+a.length() = 2
+b = 25
+b.length() = 2
+Adding = 25 number [2] = 3 time.
+Current sum = 0
+i = 1
+total = digitA + digitB + carry
+10 = 5 + 5 + 0
+result = 
+totalStr = 10
+result = totalStr.back() + result
+result = 0 + 
+result = 0
+carry = 1
+result = 0
+carry = 1
+i = 0
+total = digitA + digitB + carry
+5 = 2 + 2 + 1
+result = 0
+totalStr = 5
+result = totalStr.back() + result
+result = 5 + 0
+result = 50
+result = 50
+carry = 0
+result = 50
+result of adding  = 5 = 50
+
+k = 2
+
+
+sum        = 50
+currentNum = 5
+maxLen = 2
+a = 50
+a.length() = 2
+b = 25
+b.length() = 2
+Adding = 50 number [2] = 3 time.
+Current sum = 0
+i = 1
+total = digitA + digitB + carry
+5 = 0 + 5 + 0
+result = 
+totalStr = 5
+result = totalStr.back() + result
+result = 5 + 
+result = 5
+result = 5
+carry = 0
+i = 0
+total = digitA + digitB + carry
+7 = 5 + 2 + 0
+result = 5
+totalStr = 7
+result = totalStr.back() + result
+result = 7 + 5
+result = 75
+result = 75
+carry = 0
+result = 75
+result of adding  = 5 = 75
+
+loop end
+
+=========================
+Final sum = 75
+
+=========================
+root@rushi-VB-105:/tmpdata/Rushikesh_01052026/daemon-code/class/humanWayAdditionOfTwoNumber# 

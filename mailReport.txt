@@ -3536,3 +3536,177 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+19/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Performed testing of rtscanner modules using server 192.168.1.223:10443 with applied rushi_rtscanner policy configuration.
+
+Verified policy configuration with:
+
+    watchdir = /home, /tmpdata
+
+    exclude = /tmp
+
+2] Performed malware event testing using eicar.com test file inside /tmpdata watch directory using multiple operations:
+
+    scp
+
+    cp
+
+    mv
+
+    wget
+
+    curl -O
+
+3] Monitored and analyzed logging behavior for:
+
+    pfinder → eventsender.log
+
+    PPID/PID related 5-log generation
+
+    Catching log generation
+
+    rtscanner → rtm.log 3-log generation
+
+4] Observed expected logging behavior during command-line/file-operation based malware test cases.
+
+5] Performed/ observed browser download testing using Firefox / Google download flow for eicar.com.
+	
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+20/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Performed testing of pfinder and rtscanner modules using eicar.com malware test file to get process tree behavior up to PPID = 1.
+
+modules using server 192.168.1.223:10443 with applied rushi_rtscanner policy configuration.
+
+Verified policy configuration with:
+
+    watchdir = /home, /tmpdata
+
+    exclude = /tmp
+
+
+
+2] Executed non-daemonized rtscanner/pfinder for detailed debugging and added debugger/log tracing to capture:
+
+    PID / PPID hierarchy till parent process = 1
+
+    File name
+
+    File path
+
+    Virus file matching match_string with pidfiles data using strstr()
+
+    PID file information
+
+    Process command line (cmdline) details
+
+3] Implemented/debugged logic to identify matching malware-related processes and recursively send events to server until PPID = 1 is reached.
+
+4] Performed validation for different file acquisition/download operations using eicar.com test file:
+
+    Firefox browser download
+
+    Google-chrome browser download
+
+    wget
+
+    curl
+
+    cp, mv operation
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+21/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Performed testing of websiteblock / nfdaemon module using escan-dlp.deb server environment (http://192.168.1.229:10443) to understand module behavior and overall testing workflow.
+2] Studied and verified website blocking testing process, policy behavior, and related nfdaemon module flow.
+3] Continued testing of epsdaemon / Endpoint Detection module for device control functionality including:
+USB Allow
+USB Block
+USB Ask Password
+4] Observed module behavior, noted issues/bugs during testing, and documented findings.
+5] Uploaded bug documentation (DLP_BUG.txt) to shared SMB location using:
+smbclient //192.168.0.8/external -U raja
+cd /temp/Vaibhav/
+get DLP_BUG.txt
+
+put DLP_BUG.txt
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+22/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+
+1] Re-tested epsdaemon module for all supported conditions and policy scenarios.
+
+2] Verified module behavior across multiple test cases and validated functionality under different operational conditions.
+
+3] Documented all executed test cases, observations, and testing conditions in:
+epsdaemonTestingAllForCondition.odt
+
+4] Identified and documented newly observed issues/bugs during testing.
+
+5] Updated bug tracking details in:
+DLP_BUGS.txt
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

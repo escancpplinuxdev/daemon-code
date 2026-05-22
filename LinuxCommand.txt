@@ -529,5 +529,54 @@ z: Toggle Color on/off to highlight running processes.
 49] 
 	ps -ef | grep -v grep --color  | grep -E "vim|tail"
 
-50]	
+50]	process monitor
 		
+		top -H -d 0.5  -p 226832,226833
+
+		watch -n 0.5 'ps -o pid,lstart,stat,%cpu,%mem,etime,cmd -p 226832,226833'
+
+		ps -o uid,pid,ppid,lstart,stat,%cpu,%mem,etime,cmd,wchan -p 226832,226833
+		shows:
+
+    UID
+
+    PID
+
+    Parent PID
+
+    Start time
+
+    State
+
+    CPU %
+
+    Memory %
+
+    Elapsed time
+
+    Command
+
+    Kernel wait channel
+		
+	 	watch -n 0.5 'ps -o uid,pid,ppid,lstart,stat,%cpu,%mem,etime,cmd,wchan,rss,vsz,nlwp -p 226832,226833'
+
+| Field  | Meaning            |
+| ------ | ------------------ |
+| `nlwp` | threads            |
+| `rss`  | RAM used (KB)      |
+| `vsz`  | virtual memory     |
+| `%cpu` | CPU utilization    |
+| `%mem` | memory utilization |
+
+
+
+51]	
+		
+	smbclient //192.168.0.8/external -U raja
+Password for [WORKGROUP\raja]:raja
+smb: \> cd /temp/Vaibhav/
+	get DLP_BUG.txt								put DLP_BUG.txt
+	ctrl + C 
+
+52]	
+	 

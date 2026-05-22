@@ -31,7 +31,7 @@ int main()
 		string a = sum;
 		string b = currentNum;
 
-		// making both string sam length by padding with leading zeros
+		// making both strings same length by padding with leading zeros
 
 		int maxLen;
 		if (a.length() > b.length())

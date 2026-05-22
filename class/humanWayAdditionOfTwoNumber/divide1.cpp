@@ -145,7 +145,6 @@ int main()
 			cout<<"Dividend = "<<Dividend<<endl;
 			cout<<"Divisior = "<<Divisior<<endl;
 			cout<<"-------------------------------------------";
-			i++;
 			if (i==9)
 			{
 				cout<<"\n=========================\n";
@@ -224,7 +223,9 @@ int main()
 
 			result = to_string(total) + result;
 		}
+		cout<<"count = "<<count<<endl;
 		count++;
+		cout<<"count++ = "<<count<<endl;
 		if(nsign)
 		{
 			result = "-"+result;

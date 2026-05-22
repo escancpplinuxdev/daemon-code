@@ -1,0 +1,53 @@
+1) Previous policy behavior remains unchanged when the new policy is applied without the required modules.
+2) Application blocking functionality is not working after applying the new policy.
+3) Corporate Outlook login feature is not functioning with the new policy configuration.
+4) Blocked website Category name is not present in eventhistory.log
+5) Unnecessary logs in updatenow_avs
+6) mwavupdate symbolic link missing
+7] In 1st time in policy we deploy Ask passwd -> Use other passwd -> eScan#Root$123 
+
+it's not get passwd promt just show direct below log in 1st time when policy is send 
+
+got epsdaemon.log 
+[22-May-2026@16:55:07] : Device is alredy added in connected device file
+[22-May-2026@16:55:08] : Device block for password asking
+[22-May-2026@16:55:08] : Device added in list
+[22-May-2026@16:55:08] : /opt/MicroWorld/bin/passPrompt.sh 4C532000020930102525 SanDisk > /dev/null 2>&1
+[22-May-2026@16:55:09] : Password is incorrect for device or device removed :SanDisk
+
+eventHistory.log
+22 May 2026;16:55:09;RUSHI-VB-220_[0-16969e40-ac97-c741-b83c-6040ae45ed46];192.168.2.220;root;10108;eScan EPS for Linux;3;eScan for Linux;User not allowed to access the USB device authentication failed [SanDisk];Blocked;4C532000020930102525
+
+
+if i direct paste 
+
+/opt/MicroWorld/bin/passPrompt.sh 4C532000020930102525 SanDisk > /dev/null 2>&1
+
+-> eScan#Root$123 
+-> echo $? 
+-> 177
+No block action is done , pendrive not get/show in lsblk
+
+But in second time we send policy of passwd promt and accept passwd -> eScan#Root$123 -> accepted .
+
+8] 1st time Block All policy work. pendrive block.
+But after above Ask passwd step we go to Block All condition, CD/DVD Settings -> Disable -> Selected.
+	  		                  			     Whitelist empty And not selected.
+
+eventHistory.log 
+22 May 2026;18:51:35;RUSHI-VB-220_[0-16969e40-ac97-c741-b83c-6040ae45ed46];192.168.2.220;root;10224; CD DVD Controller ;0;eScan for Linux; Deviced Arrived;SanDisk;epsdaemon
+
+epsdaemon.log
+[22-May-2026@18:51:34] : Enter in the Blocking Function
+[22-May-2026@18:51:35] : SanDiskDevice  IS DETECTED but block status is 0 HENCE DEVICE NOT BLOCKED
+
+pendrive block is not happend.
+
+epsdaemon Block All pendrive goes to CD DVD controller in eventHistory.log and in espdaemon.log print  SanDiskDevice IS DETECTED but block status 	is 0 HENCE DEVICE NOT BLOCKED and in 
+
+lsblk 
+sdb      8:16   1   7.5G  0 disk 
+└─sdb1   8:17   1   7.5G  0 part /media/rushi/7143-07A9
+i.e pendrive is not blocked.
+
+

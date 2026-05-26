@@ -3710,3 +3710,72 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+25/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+	1] testing further dlp End point protection modules form server 192.168.1.229:10443 
+
+	1. Appblocker -> Failed after start of 2 min
+	2. Fim -> work -> log   : rtm.log , fimReport.log, eventHistory.log
+			-> conf : rtm.conf, mwfim.conf , 
+			-> db   : run/.mwfim.db
+	3. GAblocker -> work ->  shadow copy 
+	   (Module File Activity Monitoring ) 
+	   -> make shadow copy of anything copy to pendrive
+	   -> log : cpEventTosend.log , eventHistory.log,
+	   -> conf: .shadow.conf
+	make cp /tmp/a.txt to /pendrive make shadow copy with filename_md5sum format
+	4. gblock -> Failed to block Personal Gmail Account 
+	   Block Personal Gamil Account 
+	   Allowed Co-operate Gmail Account : dypatil.edu
+	   -> log : policy.json
+	   -> conf: customprocesslist.conf 
+	   -> json file : /etc/opt/chrome/policies/managed/policies.json /etc/firefox/policies/policies.json
+	
+	
+		
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+25/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+	1. make rpm build of escan-dlp escan-dlp-22.0.1400-2990.x86_64.rpm 
+	2. test escan-dlp in modules
+			1] shadow copy -> working -> Allow Attachment /Block Attachment
+						  log -> eventHistory.log, GAblocker.log
+						  conf -> GAblcoker.conf
+			2] contentScanner -> working -> Monitor / Block
+						  log -> contentScanner.log ,eventHistory.log
+						  conf -> contentScanner.conf
+			3] clipBoardMonitor -> working -> Monitor / Block
+						   log > contentScanner.log ,eventHistory.log
+                                                   conf -> contentScanner.conf
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

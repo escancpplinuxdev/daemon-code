@@ -10,6 +10,15 @@ Google.com
 	Account info 	:- eScanCppLinux dev
 			escancpplinuxdev@gmail.com
 
+	First name 	:- test
+	Last name  	:- email
+	DOB  	   	:- 7/2/1988
+	Gender     	:- Rather not say
+	Email Address 	:- testemail07021988@gmail.com
+	passwd	  	:- #$testemail07021988@gmail.com
+	Account info 	:- 
+			testemail07021988@gmail.com
+
 Firefox
 	Display name 	:- eScanCppLinux dev
 	passwd		:- 88escancppdev
@@ -21,7 +30,8 @@ Firefox
 eScan mail3
 	Divesh sir 	:- divesh@escanav.com
 	raja Sir	:- raja@escanav.com
-	eScan hr	:- 
+	eScan hr	:- escanhr@escanav.com
+        vaibhav bhosle  :- vaibhavb@escanav.com	
 	Link		:- https://192.168.0.8:8289/Session/239-9lveOKkZMJxqde2ol0L3/Hello.wssp?messageCode=MessageSent
 	Login Name	:- rushikeshg@escanav.com	
 	Passwd		:- @dmin@02March2026 ,  •••••••••••  , asdfghjkl;'

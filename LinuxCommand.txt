@@ -101,7 +101,11 @@ Option	Meaning	Symbolic Links Behavior	Example Situation
 		 127	wrong command
 13]	ssh -o HostKeyAlgorithms=ssh-rsa root@192.168.1.226	
 	1.226 scp to 192.168.2.216 
+
 i.e     u 10 	  to  u 18   -> scp
+	
+	For ssh root@192.168.1.251 -> a
+	go to ssh -p 8623 root@192.168.2.138 then ssh root@192.168.1.251
 
 14] 	du -sh / du -h
 	df -h

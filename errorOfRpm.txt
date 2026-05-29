@@ -1,0 +1,67 @@
+1] rpm -ivh escan-dlp-22.0.1400-2990.x86_64.rpm
+
+/usr/bin/escangui: /lib64/libpthread.so.0: version `GLIBC_PRIVATE' not found (required by /opt/MicroWorld/lib/librt.so.1)
+/usr/bin/escangui: /lib64/libpthread.so.0: version `GLIBC_PRIVATE' not found (required by /opt/MicroWorld/lib/librt.so.1)
+
+
+2] usr/sbin/md5sum -> solved 
+3] usr/sbin/notify-send -> solved 
+4] sbin/clipboardWatcher -> solved 
+5] sbin/epsdaemon -> add /opt/MicroWorld/lib/libpthread.so.0 , /opt/MicroWorld/lib/libssl3.so -> solved 
+6] sbin/GAblocker -> solved
+7] sbin/mwcdmon	-> add /opt/MicroWorld/lib/libpthread.so.0 /opt/MicroWorld/lib/librt.so.1 -> solved 
+8] sbin/mwcpmon	-> add /opt/MicroWorld/lib/libpthread.so.0 /opt/MicroWorld/lib/librt.so.1 -> solved 
+9] sbin/mwfirewalld -> add /opt/MicroWorld/lib/libpthread.so.0 /opt/MicroWorld/lib/librt.so.1 -> solved
+10] sbin/mwprintd -> solved
+11]  
+
+
+ldd check  
+remian 
+/bin
+	1] autoscanpopup    
+	2] common_gui
+	3] escangui
+	4] escanusb
+	5] escanWeb
+	6] mwgethddserialhash
+	7] mwscanner		ok
+	8] passPrompt
+	9] VirusPopUp
+/sbin/
+	10] clipboardWatcher	ok
+	11] contentScanner	ok
+	12] epsdaemon		ok
+	13] GAblocker		ok
+	14] mwcdmon		ok
+	15] mwcpmon		ok
+	16] mwfirewalld		ok
+	17] mwprintd		ok
+	18] printercontrol	ok
+	19] winclient		ok
+/usr/sbin/
+	20] md5sum   		ok
+	21] notify-send		source code not found
+/sbin/
+	22] prepareWebFilter.sh 
+/usr/bin/
+	23] mwmailsend		source code not found 
+	24] pdfexport		source code not found
+
+
+not found 
+
+	1] pdfexport
+	2] mwmailsend
+	3] notify-send
+
+
+29/05/2026
+
+1] escangui 		-> change
+2] updatenow_avs   	-> update
+3] libmwshare.so.1 	-> update
+4] nfdaemon 		-> regex code not compatible for lower version -> update
+5] GAblocker		-> 
+6] mwscanner 		-> 
+7]  

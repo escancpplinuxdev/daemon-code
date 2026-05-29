@@ -3779,3 +3779,103 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+25/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+1. Performed one-by-one testing and debugging of file/binary/library linking issues in escan-dlp-22.0.1400-2990.x86_64.rpm build.
+
+2. Tested binaries under /bin path and verified linking/runtime status:
+
+    autoscanpopup
+
+    common_gui
+
+    escangui
+
+    escanusb
+
+    escanWeb
+
+    mwgethddserialhash
+
+    mwscanner → OK
+
+    passPrompt
+
+    VirusPopUp
+
+3. Tested binaries under /sbin path and verified linking/runtime status:
+
+    clipboardWatcher → OK
+
+    contentScanner → OK
+
+    epsdaemon → OK
+
+    GAblocker → OK
+
+    mwcdmon → OK
+
+    mwcpmon → OK
+
+    mwfirewalld → OK
+
+    mwprintd → OK
+
+    printercontrol → OK
+
+    winclient → OK
+
+4. Verified additional binaries/scripts:
+
+/usr/sbin/
+
+    md5sum → OK
+
+    notify-send → Source code not found
+
+/sbin/
+
+    prepareWebFilter.sh
+
+/usr/bin/
+
+    mwmailsend → Source code not found
+
+    pdfexport → Source code not found
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+25/05/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	1] solve escangui error. 
+	2] update updatenow_avs binary , libmwshare.so.1 library
+	3] nfdaemon  regex code not compatible so write c++ code w/o regex
+	4] debugging of GAblocker error.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

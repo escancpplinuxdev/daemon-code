@@ -59,7 +59,9 @@ Option	Meaning	Symbolic Links Behavior	Example Situation
 6]	XXPRINT(1, "Rushi %s:%d %s() deletePackageList().\n", __FILE__, __LINE__, __FUNCTION__);
 
 7] 	eScan selfprotection 
+
 	/opt/MicroWorld/sbin/commonutil writeconfig /opt/MicroWorld/etc/customprocesslist.conf SelfProtection:Status "0"
+	systemctl stop selfprotection mwagent
 
 8]	find . -type f | wc -l 
 	ls -1          | wc -l      -> count no. of files in current directory
@@ -163,6 +165,11 @@ send event
 
 	xfreerdp /v:192.168.2.220:33220 /u:rushi /p:rushi@123 /cert:ignore /bpp:16 /gdi:sw
 
+	for centos m/c 192.168.1.199 -> root123 -> vaibhav 
+	xfreerdp /v:192.168.1.200:33322 /u:omkar /cert:ignore /size:1920x1080 /f
+	xfreerdp /v:192.168.1.200:33322 /u:omkar /cert:ignore /size:100% /dynamic-resolution /f
+-> toggle back main m/c -> ctrl + Alt + Enter -> this return to local desktop/ main m/c 
+
 17] 	du -sh /media/sda4/*   --> to show total size of each directory inside /media/sda4/*
 	du -sh /media/sda4/*  | sort -h  --> sort in assending order
 
@@ -231,7 +238,20 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 
 18]	
 	dpkg -l | grep -i escan	
+	build debian build -> dpkg-deb --build buildroot/
+	dpkg -i escan-dlp-22.0.1400-2990.x86_64.deb
 	dpkg -P escan-dlp
+	
+	check package info -> dpkg -l escan-dlp-22.0.1400-2990.x86_64.deb
+	List package files -> dpkg -L escan
+
+	build rpm build	-> rpmbuild -bb escan-antivirus.spec
+	rpm -ivh escan-dlp-22.0.1400-2990.x86_64.rpm
+	rpm -evh escan-dlp
+	
+	check package info -> rpm -qip escan-dlp-22.0.1400-2990.x86_64.rpm 
+	List package files -> rpm -ql escan
+
 	rm -rf /opt/MicroWorld/ /var/MicroWorld/ /etc/escandet.dat /etc/microworld.keys /etc/.p*.e*
 
 	/opt/MicroWorld/usr/bin/updatenow_avs --force
@@ -583,4 +603,17 @@ smb: \> cd /temp/Vaibhav/
 	ctrl + C 
 
 52]	
-	 
+	check latest version in lib library 
+	readelf -V /opt/MicroWorld/lib/libssl.so.6 | grep OPENSSL 
+->  	 0x001c: Rev: 1  Flags: none  Index: 2  Cnt: 1  Name: OPENSSL_3.0.0
+	 0x0038: Rev: 1  Flags: none  Index: 3  Cnt: 2  Name: OPENSSL_3.2.0
+  	 0x0054: Parent 1: OPENSSL_3.0.0
+
+	readelf -V /opt/MicroWorld/lib/libcrypto.so.3 | grep OPENSSL
+-> 	  0x001c: Rev: 1  Flags: none  Index: 2  Cnt: 1  Name: OPENSSL_3.0.0
+	  0x0038: Rev: 1  Flags: none  Index: 3  Cnt: 2  Name: OPENSSL_3.0.3
+          0x0054: Parent 1: OPENSSL_3.0.0
+
+53] 
+
+	make clean && make

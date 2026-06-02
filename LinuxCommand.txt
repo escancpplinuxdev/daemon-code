@@ -238,7 +238,7 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 
 18]	
 	dpkg -l | grep -i escan	
-	build debian build -> dpkg-deb --build buildroot/
+	build debian build -> dpkg-deb --build buildroot escan-dlp.amd64.deb
 	dpkg -i escan-dlp-22.0.1400-2990.x86_64.deb
 	dpkg -P escan-dlp
 	

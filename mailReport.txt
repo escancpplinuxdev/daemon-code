@@ -3879,3 +3879,81 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+01/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	1. debugging testing and working on nfdaemon , updatenow_avs , gblock for firefox /etc/firefox/policies/policies.json policy file get blank when customprocesslist.conf 
+[GmailBlock]
+    GmailDomain = ""
+    Status = "1"
+
+GmailDomain is blank come form server.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+02/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1]    Continued development and debugging work on GBlock module in RPM / CentOS DLP build environment.
+
+2]    Performed research, development, and testing for Chromium policy handling using:
+
+    /etc/chromium/policies/managed/allowed_domains.json
+
+3]    Worked on Chromium policy features including:
+
+        Allowed domain handling
+
+        Incognito mode blocking
+
+        Extension blocking
+
+4]    Updated command execution handling by adding:
+
+    2>/dev/null
+
+    for relevant which command usage to suppress unnecessary error in updatenow_avs --force output .
+
+5]    Improved file handling robustness by adding proper NULL pointer validation:
+
+if ( fpChromium != NULL )
+{
+    // fopen(file, "w") handling
+}
+
+    Worked on eScan Corporate 1.226 nfdaemon code development to execute:
+
+    /opt/MicroWorld/bin/browser.sh
+
+    after TLS 1.2 flag insertion into browser Exec= desktop launcher entries.
+
+/usr/share/applications/*.desktop
+
+Exec= entries.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

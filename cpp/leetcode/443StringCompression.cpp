@@ -2,10 +2,47 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
+#include <cstring>
 using namespace std;
-
 class Solution
+{
+	public:
+		int compress(vector<char>& chars)
+		{
+			int idx=0;
+			for(int i =0;i<chars.size();i++)	
+			{
+				int count=0;
+				char ch = chars[i];
+				while(i<chars.size() && chars[i] == ch)
+				{
+					count ++; i++;
+				}
+
+				if(count == 1)
+				{
+					chars[idx] = ch;
+					idx=idx+1;
+				}
+				else
+				{
+					chars[idx]=ch;
+					idx=idx+1;
+					string str = to_string(count);
+					for(int j =0 ; j<str.length();j++)
+					{
+						chars[idx]=str[j];
+						idx++;
+					}
+				}
+				i--;
+			}
+			chars.resize(idx);
+			return idx;
+		}
+};
+/*
+class Solution1
 {
 	public:
 		int compress(vector<char>& chars)
@@ -43,14 +80,17 @@ class Solution
 			return idx;
 		}
 };
-
+*/
 void stringCompresion(vector<char>& chars)
 {
 
 	cout << "Input:  ";
-	for (char c : chars) cout << c << " ";
-	cout << endl;
+	//	for (char c : chars) cout << c << " ";
+	//	cout << endl;
 
+	chars.size();
+	for(int i = 0; i < chars.size(); i++)		cout<<chars[i]<<" ";
+	cout << endl;
 	Solution sol;
 	int newLength = sol.compress(chars);
 
@@ -73,6 +113,8 @@ int main()
 	stringCompresion(chars3);
 	vector<char> chars4 = {'a','b','b','b','c','c','c'};
 	stringCompresion(chars4);
-	
+	vector<char> chars5 = {'a','b','b','b','c','c','c','a','a','a','a'};
+	stringCompresion(chars5);
+
 	return 0;
 }

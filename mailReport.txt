@@ -3957,3 +3957,223 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+
+
+03/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Investigated and researched GBlock not working for Chromium browser.
+
+2] Performed testing by deploying policies from server:
+
+192.168.1.229:10443
+
+using different policy combinations to identify Chromium-specific behavior and policy handling issues.
+
+3] Developed and updated C++ code to support Chromium policy files:
+
+    CHROMIUM_POLICY1 = "/etc/chromium/policies/managed/allowed_domains.json"
+
+    CHROMIUM_DISINCOGNITO_POLICY1 = "/etc/chromium/policies/managed/disincognito.json"
+
+    CHROMIUM_EXTENSION_POLICY1 = "/etc/chromium/policies/managed/browserext.json"
+
+4] Downloaded CentOS 9 ISO for RPM build testing and validation activities.
+
+5] Worked on mwscanner compatibility issues related to regex handling.
+
+6] Modified source/initializeRegexes.cpp and replaced incompatible regex implementation with compatible C++ code to support target build environments.
+
+7] Updated :
+
+    mwagent
+
+    libmwshare
+
+8] Executed GAblocker in non-daemon mode and added additional debug logging/tracing for runtime analysis and issue identification.
+
+9] Worked on Corporate nfdaemon and investigated issue where server IP information from winclient.conf was not being considered for whitelist .
+
+10] Implemented required code changes for whitelist handling and shared the updated build/code with Vaibhav .
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+04/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1]    Worked on GAblocker module by adding /usr/sbin/getenforce to the exclusion list.
+
+2]    Verified that after applying the exclusion:
+
+        No entries are generated in /var/MicroWorld/var/log/GAblocker.log
+
+        No notifications are triggered through notify.sh for /usr/sbin/getenforce
+
+3]    Developed and integrated the required C++ code changes for the exclusion handling logic.
+
+4]    Performed testing of the implemented changes under multiple scenarios:
+
+        Policy deployment from server 192.168.1.229:10443
+
+        Non-daemonized command-line execution
+
+        Daemonized execution through server policies
+
+5]    Started RPM build for escan-edr.
+
+6]    Investigated AppBlocker issue on CentOS 9, where module functionality is not working as expected. give log /var/MicroWorld/var/log/appblocker.log  Application: 'chrome' is not Exist
+
+Started research and analysis to identify commands/mechanisms that can provide:
+
+    Executable Name (Exec Name)
+
+    Corresponding Desktop File Name
+
+7]    Performed AppBlocker testing in non-daemonized mode and added additional debugger/log tracing for runtime analysis.
+
+8]    Started verification of command outputs for command which can give Exec Name : desktop file Name.	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+05/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1]	Continued working on AppBlocker module issue where applications are reported as not present in the package list.
+
+Observed log entry in:
+
+/var/MicroWorld/var/log/appblocker.log
+
+Example:
+
+Application: 'google-chrome' is not Exist
+
+2] 	Tested and evaluated multiple RPM commands to obtain the desired output mapping between package names and desktop launcher files for AppBlocker functionality.
+
+Studied and validated behavior of the following commands on testing machines:
+
+    192.168.1.199
+
+    192.168.1.246
+
+Command 1:
+
+find /usr/share/applications -name '*.desktop' -type f -exec sh -c '
+    pkg=$(rpm -qf "$1" 2>/dev/null | sed "s/-[0-9].*//")
+    [ -n "$pkg" ] && echo "$pkg: $1"
+' _ {} \;
+
+Command 2:
+
+rpm -qa --qf '%{NAME}\n' | while read pkg; do
+    rpm -ql "$pkg" 2>/dev/null |
+    grep '^/usr/share/applications/.*\.desktop$' |
+    sed "s|^|$pkg: |"
+done
+
+3]	Verified command output behavior through:
+
+    Direct command execution
+
+    Non-daemonized AppBlocker binary execution with debugging enabled
+
+4]	Added additional debugging/log tracing LogLevl = "4" to analyze application-to-package mapping and desktop file identification flow.
+
+5]	Studied working of winclient and analyzed:
+
+/opt/MicroWorld/etc/softwares.list
+
+to understand how RPM package information is collected and how Name|Version entries are generated.	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+06/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Integrated new regex patterns received from Omkar G into:
+
+    initializeRegex.cpp
+
+    extractPatterns.cpp
+
+For:
+
+    mwscanner
+
+    printercontrol
+
+    contentScanner
+
+    clipBoardWatcher
+
+2] Performed code integration, build validation, and compatibility testing after regex updates.
+
+3] Discussed and demonstrated AppBlocker command/query changes with Omkar G.
+
+4] Implemented required AppBlocker modifications for:
+
+    RPM builds
+
+    Debian builds
+
+5] Applied nfdaemon regex-related code changes in RPM build and verified successful compilation and integration.
+
+6] Added updated prepareWebFilter.sh script that given by vaibhav b to all build variants and verified deployment packaging.
+
+7] Generated new escan-dlp RPM build with the latest module changes.
+
+8] Started testing of the newly generated RPM build
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

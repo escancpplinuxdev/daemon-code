@@ -10,11 +10,12 @@ class Solution
 		int compress(vector<char>& chars)
 		{
 			int idx=0;
-			for(int i =0;i<chars.size();i++)	
+			int n = chars.size();
+			for(int i =0;i<n;i++)	
 			{
 				int count=0;
 				char ch = chars[i];
-				while(i<chars.size() && chars[i] == ch)
+				while(i<n && chars[i] == ch)
 				{
 					count ++; i++;
 				}
@@ -88,7 +89,6 @@ void stringCompresion(vector<char>& chars)
 	//	for (char c : chars) cout << c << " ";
 	//	cout << endl;
 
-	chars.size();
 	for(int i = 0; i < chars.size(); i++)		cout<<chars[i]<<" ";
 	cout << endl;
 	Solution sol;

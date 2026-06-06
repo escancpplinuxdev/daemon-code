@@ -41,12 +41,12 @@ remian
 	19] winclient		ok
 /usr/sbin/
 	20] md5sum   		ok
-	21] notify-send		source code not found
+	21] notify-send		source code not found -> ok
 /sbin/
 	22] prepareWebFilter.sh 
 /usr/bin/
-	23] mwmailsend		source code not found 
-	24] pdfexport		source code not found
+	23] mwmailsend		source code not found -> ok
+	24] pdfexport		source code not found -> ok
 
 
 not found 
@@ -61,13 +61,49 @@ not found
 1] escangui 		-> change
 2] updatenow_avs   	-> update
 3] libmwshare.so.1 	-> update
-4] nfdaemon 		-> regex code not compatible for lower version -> update
-5] gblock 		-> Add else block for firefox, firefox-esr policy -> update
-				 PolicyLogCheck ( string ( "chromium-browser Policy Altered  ... " )  ); +  3030
-				if ( fpChromium != NULL ) +2995
-				which chromium-browser 2>/dev/null add 2>/dev/null to all which	
-				for chromium add /etc/chromium/policies/managed/allowed_domains.json -> #define CHROMIUM_POLICY1        "/etc/chromium/policies/managed/allowed_domains.json"
 
-5] GAblocker		-> 
-6] mwscanner 		-> 
-7] mwagent , libmwshare -> 
+01/06/2026
+4] nfdaemon 		-> regex code not compatible for lower version -> update
+
+02/06/2026
+5] gblock 		->      1.Add else block for firefox, firefox-esr policy -> update
+				2. PolicyLogCheck ( string ( "chromium-browser Policy Altered  ... " )  ); +  3030
+				3. if ( fpChromium != NULL ) +2995 for all chromium 
+				4. which chromium-browser 2>/dev/null add 2>/dev/null to all which	
+
+03/06/2026
+				5. for chromium add /etc/chromium/policies/managed/allowed_domains.json -> #define CHROMIUM_POLICY1        "/etc/chromium/policies/managed/allowed_domains.json"
+				6. #define CHROMIUM_DISINCOGNITO_POLICY1   "/etc/chromium/policies/managed/disincognito.json"				   			      7. #define CHROMIUM_EXTENSION_POLICY1      "/etc/chromium/policies/managed/browserext.json"
+
+6] centos-9 os iso 	-> downloaded
+7] GAblocker		-> /usr/sbin/getenforce add in exlude file list in source/main.cpp
+8] mwscanner 		-> regexes error change file source/initializeRegexes.cpp 
+9] mwagent , libmwshare -> updated
+10] appblocker 		-> failed on centos 9 . change in source/GetPkgNameIfAppName.cpp , add new command 
+
+
+
+05062026
+
+1] cp -f /opt/MicroWorld/lib/libxml2.so /opt/MicroWorld/lib/libxml2.so.16
+
+2] escangui -> /opt/MicroWorld/lib/libpthread.so.0 /opt/MicroWorld/lib/librt.so.1 error 
+	
+	-> /usr/bin/escangui: /lib64/libpthread.so.0: version `GLIBC_PRIVATE' not found (required by /opt/MicroWorld/lib/librt.so.1)
+
+3] ldd /opt/MicroWorld/sbin//epsdaemon
+/opt/MicroWorld/sbin//epsdaemon: /opt/MicroWorld/lib/libnssutil3.so: version `NSSUTIL_3.108' not found (required by /lib64/libssl3.so)
+/opt/MicroWorld/sbin//epsdaemon: /opt/MicroWorld/lib/libnss3.so: version `NSS_3.101' not found (required by /lib64/libssl3.so)
+
+-> solution -> 
+
+[root@CENTOS-9-STREAM tmpdata]# a /lib64/libnss3.so
+-rwxr-xr-x. 1 root root 1.3M Jan 23 23:43 /lib64/libnss3.so
+[root@CENTOS-9-STREAM tmpdata]# a /lib64/libnssutil3.so
+-rwxr-xr-x. 1 root root 215K Jan 23 23:43 /lib64/libnssutil3.so
+[root@CENTOS-9-STREAM tmpdata]# 
+[root@CENTOS-9-STREAM tmpdata]# mv /opt/MicroWorld/lib/libnss3.so /opt/MicroWorld/lib/libnss3.so_BAK
+[root@CENTOS-9-STREAM tmpdata]# cp -f /lib64/libnss3.so /opt/MicroWorld/lib/libnss3.so
+[root@CENTOS-9-STREAM tmpdata]# cp -f /opt/MicroWorld/lib/libnssutil3.so /opt/MicroWorld/lib/libnssutil3.so_BAK
+[root@CENTOS-9-STREAM tmpdata]# cp -f /lib64/libnssutil3.so /opt/MicroWorld/lib/libnssutil3.so
+

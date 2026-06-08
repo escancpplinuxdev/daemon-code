@@ -598,6 +598,7 @@ z: Toggle Color on/off to highlight running processes.
 		
 	smbclient //192.168.0.8/external -U raja
 Password for [WORKGROUP\raja]:raja
+For  Download : 								For Upload : 
 smb: \> cd /temp/Vaibhav/
 	get DLP_BUG.txt								put DLP_BUG.txt
 	ctrl + C 

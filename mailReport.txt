@@ -4177,3 +4177,83 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+06/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Investigated issue where ContentScanner configuration is not being read/written properly.
+
+    Verified configuration file:
+    /opt/MicroWorld/etc/contentScanner.conf
+
+    Observed issue with:
+
+    [ContentScanner]
+    Status = "2"
+
+    Analyzed update flow from:
+    /opt/MicroWorld/var/backavsupd/L0EPSecurity.ini
+
+    Worked on required C++ code changes in updatenow_avs to ensure proper configuration synchronization between policy file and contentScanner.conf.
+
+2] Installed EPEL repository and configured virtual printer environment for printer monitoring testing.
+
+    Installed and configured CUPS virtual printer.
+
+    Tested printercontrol module for PAN Card and Aadhaar Card detection in:
+
+        Allow Mode
+
+        Block Mode
+
+Test commands used:
+
+lpr -P Cups-PDF /tmpdata/org_file/test_panCard.txt
+lpr -P Cups-PDF /tmpdata/org_file/test_aadhar.txt
+
+    Verified generated PDF files using:
+
+    ls /root/*.pdf
+
+    Monitored printer activity logs:
+    /var/MicroWorld/var/log/printercontrol.log
+
+3] Performed validation and testing of nfdaemon for all supported policy conditions.
+
+    Verified Firefox policy generation and updates.
+
+    Checked policy file:
+    /etc/firefox/policies/policies.json
+
+
+4] Tested mwscanner functionality through both command-line execution and scheduled scan execution from server.
+
+    Verified schedule configuration:
+    /opt/MicroWorld/etc/escan/dschedule.conf
+
+    Checked scheduled scan execution logs:
+    /var/MicroWorld/var/log/escan/schedule_tm_date.log
+
+    Compared command-line scan behavior with scheduled scan behavior.
+
+5] Updated and validated escangui functionality for eScan Enterprise DLP.
+
+    Verified GUI behavior after updates.
+
+	
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

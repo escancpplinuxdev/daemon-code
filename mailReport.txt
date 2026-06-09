@@ -4257,3 +4257,60 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+09/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Tested /opt/MicroWorld/sbin/clipboardWatcher in both X11 and Wayland environments.
+
+    Verified session type using:
+
+    echo $XDG_SESSION_TYPE
+
+    Performed functionality testing under:
+
+        X11
+
+        Wayland
+
+    Analyzed clipboard monitoring behavior in both display server environments.
+
+2] Investigated GAblocker issue where uploads of the getenforce file through Firefox were generating repeated logs.
+
+    Observed repeated event generation for the same file upload activity.
+
+    Added the file/process to Firefox exclusion handling to prevent unnecessary log generation.
+
+    Verified/test binary logging behavior after applying exclusion .
+
+3] Tested GAblocker binary after code modifications.
+
+    Performed runtime validation and debugging.
+
+    Demonstrated updated binary and source code changes to Omkar G for verification and discussion.
+
+4] Investigated Debian DLP issue where Firefox block notifications were appearing repeatedly even when no packages/applications were configured in:
+
+/opt/MicroWorld/etc/appctrl.conf
+
+    Analyzed policy loading and notification generation flow.
+
+    Verified App Control configuration handling.
+
+    Debugged repeated notification issue and worked on resolving the Firefox block notification behavior.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

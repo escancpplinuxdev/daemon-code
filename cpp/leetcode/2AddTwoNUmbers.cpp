@@ -77,7 +77,10 @@ int main()
 	vector<int>val1={2,4,3};
 	vector<int>val2={5,6,4};
 	ListNode * l1 = createList(val1);
+	printList(l1);
+	cout<<" + ";
 	ListNode * l2 = createList(val2);
+	printList(l2);
 	ListNode * result = sol.addTwoNumbers(l1,l2);
 	cout<<"Example 1 : ";
 	printList(result);

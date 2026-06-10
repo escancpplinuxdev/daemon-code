@@ -636,5 +636,16 @@ smb: \> cd /temp/Vaibhav/
 58) SIGRTMAX-6	59) SIGRTMAX-5	60) SIGRTMAX-4	61) SIGRTMAX-3	62) SIGRTMAX-2
 63) SIGRTMAX-1	64) SIGRTMAX	
 
-55]	
+55]	vnc -> 192.168.2.220 -> remina -> vnc -> 192.168.2.58:33220 -> passwd -> secret -> user:rushi -> rushi123
+	    -> 192.168.2.219 -> remina -> vnc -> 192.168.2.219:1    -> passwd -> secret -> user:omker -> root123
+
+56]    	flush buffer ; clear caches -> sync; echo 3 > /proc/sys/vm/drop_caches	
+
+57]	ip 
+	192.168.1.234 user:vaibhav -> vaibhav  user:root -> root123 -> rdesktop -g 1920x1080  192.168.1.200:33234
+	192.168.2.219 user:omkar   -> root123 user:root  -> root123  -> vnc -> 192.168.2.219:1 
+	192.168.2.58  user:rushi   -> rushi123  user:root -> root123 -> vnc -> 192.168.2.58:33220
+
+58] 	
+
 

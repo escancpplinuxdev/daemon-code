@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Longest Substring – Algorithm Table (find, end, index, left)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: #0a0f1e;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #0f172a;
+            border-radius: 2rem;
+            padding: 1.5rem;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.5);
+        }
+        h1 {
+            font-size: 1.6rem;
+            color: #facc15;
+            margin-bottom: 0.25rem;
+        }
+        .sub {
+            color: #94a3b8;
+            margin-bottom: 1.5rem;
+            font-size: 0.85rem;
+        }
+        /* string display */
+        .string-area {
+            background: #1e293b;
+            border-radius: 1.5rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .char-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+            margin-top: 0.75rem;
+        }
+        .char-card {
+            width: 55px;
+            background: #1e293b;
+            border-radius: 10px;
+            text-align: center;
+            padding: 6px 4px;
+            border: 2px solid #334155;
+            transition: 0.2s;
+            position: relative;
+        }
+        .char-card .idx {
+            font-size: 9px;
+            color: #64748b;
+            position: absolute;
+            top: 3px;
+            left: 6px;
+        }
+        .char-card .val {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #facc15;
+            margin-top: 12px;
+        }
+        .char-card.active {
+            background: #3b82f6;
+            border-color: #60a5fa;
+            transform: scale(1.02);
+        }
+
+        /* table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.8rem;
+        }
+        th, td {
+            border: 1px solid #334155;
+            padding: 8px 10px;
+            text-align: left;
+            color: #cbd5e1;
+        }
+        th {
+            background: #0f172a;
+            color: #facc15;
+        }
+        .current-row {
+            background: #2d3a5e;
+        }
+        .condition-note {
+            background: #0f172a;
+            padding: 0.75rem;
+            border-left: 4px solid #facc15;
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            color: #94a3b8;
+        }
+
+        /* controls */
+        .controls {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        button {
+            background: #2c3e66;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #3b82f6;
+            transform: scale(1.02);
+        }
+        .speed {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #1e293b;
+            padding: 0 1rem;
+            border-radius: 2rem;
+        }
+        input[type="range"] {
+            width: 120px;
+        }
+        .step-info {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📐 Longest Substring Without Repeating Characters</h1>
+    <div class="sub">Sliding window algorithm | s = "abcabcabcdbb"</div>
+
+    <!-- string visualisation -->
+    <div class="string-area">
+        <div style="color:#cbd5e1;">🔠 Current window (active character)</div>
+        <div id="charGrid" class="char-grid"></div>
+    </div>
+
+    <!-- table with all variables -->
+    <div class="table-wrapper">
+        <table id="stepsTable">
+            <thead>
+                <tr>
+                    <th>right</th><th>char</th>
+                    <th>lastIndex.find(c) ?</th>
+                    <th>lastIndex.end()?</th>
+                    <th>lastIndex[c]</th>
+                    <th>left (before)</th>
+                    <th>left (after)</th>
+                    <th>curLen</th><th>maxLen</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr><td colspan="9">Click ▶ Play to generate steps</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="condition-note" id="conditionMsg">✨ Press Play to see each step</div>
+
+    <div class="controls">
+        <button id="resetBtn">⟳ Reset</button>
+        <button id="prevBtn">◀ Prev</button>
+        <button id="playBtn">▶ Play</button>
+        <button id="pauseBtn" style="display:none;">⏸ Pause</button>
+        <button id="nextBtn">Next ▶</button>
+        <div class="speed">
+            <span>🐢</span>
+            <input type="range" id="speedSlider" min="300" max="1500" value="800" step="50">
+            <span>🐇</span>
+        </div>
+        <div class="step-info" id="stepInfo">Step 0 / 0</div>
+    </div>
+</div>
+
+<script>
+    const inputString = "abcabcabcdbb";
+    let steps = [];            // stores each iteration's data
+    let currentStep = 0;
+    let playing = false;
+    let timer = null;
+    let speed = 800;
+
+    // ---------- generate steps with required variables ----------
+    function generateSteps() {
+        const s = inputString;
+        const stepList = [];
+        let lastIndex = {};       // map char -> last index
+        let left = 0;
+        let maxLen = 0;
+        let bestStart = 0;
+
+        for (let right = 0; right < s.length; right++) {
+            const c = s[right];
+            const found = lastIndex.hasOwnProperty(c);
+            const prevIdx = found ? lastIndex[c] : undefined;
+            const inside = found && (prevIdx >= left);
+            const leftBefore = left;
+            let leftAfter = left;
+            let conditionDetail = "";
+
+            if (inside) {
+                leftAfter = prevIdx + 1;
+                conditionDetail = `found at index ${prevIdx} >= left → left moves to ${leftAfter}`;
+            } else {
+                conditionDetail = `not found or outside window → left stays ${left}`;
+            }
+
+            // Apply algorithm changes
+            left = leftAfter;
+            lastIndex[c] = right;
+            const curLen = right - left + 1;
+            if (curLen > maxLen) {
+                maxLen = curLen;
+                bestStart = left;
+            }
+
+            // store step information
+            stepList.push({
+                right: right,
+                char: c,
+                found: found,
+                isEnd: found,          // "lastIndex.end()" concept: true if found, false if not (iterator would be end)
+                lastIdx: found ? prevIdx : "—",
+                leftBefore: leftBefore,
+                leftAfter: left,
+                curLen: curLen,
+                maxLen: maxLen,
+                conditionMsg: conditionDetail,
+                windowStart: left,
+                windowEnd: right
+            });
+        }
+
+        // final step (result)
+        stepList.push({
+            isFinal: true,
+            maxLen: maxLen,
+            bestStart: bestStart,
+            substring: inputString.substr(bestStart, maxLen),
+            message: `✅ Longest substring: "${inputString.substr(bestStart, maxLen)}" (length ${maxLen})`
+        });
+        return stepList;
+    }
+
+    steps = generateSteps();
+
+    // ---------- DOM elements ----------
+    const charGrid = document.getElementById('charGrid');
+    const tableBody = document.getElementById('tableBody');
+    const conditionMsgDiv = document.getElementById('conditionMsg');
+    const stepInfoSpan = document.getElementById('stepInfo');
+    const playBtn = document.getElementById('playBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const speedSlider = document.getElementById('speedSlider');
+
+    // render character grid with window highlight
+    function renderString(step) {
+        charGrid.innerHTML = '';
+        for (let i = 0; i < inputString.length; i++) {
+            const card = document.createElement('div');
+            card.className = 'char-card';
+            if (step && !step.isFinal && step.windowStart !== undefined && i >= step.windowStart && i <= step.windowEnd) {
+                card.classList.add('active');
+            }
+            card.innerHTML = `<div class="idx">${i}</div><div class="val">${inputString[i]}</div>`;
+            charGrid.appendChild(card);
+        }
+    }
+
+    // render table row for current step
+    function renderTable(step) {
+        if (!step || step.isFinal) {
+            if (step && step.isFinal) {
+                tableBody.innerHTML = `<tr><td colspan="9" style="text-align:center;">🎉 ${step.message} 🎉</td></tr>`;
+            } else {
+                tableBody.innerHTML = '<tr><td colspan="9">Click Play to start animation</td></tr>';
+            }
+            return;
+        }
+        // Use leftBefore and leftAfter columns
+        tableBody.innerHTML = `
+            <tr style="background:#2d3a5e;">
+                <td><strong>${step.right}</strong></td>
+                <td><strong>${step.char}</strong></td>
+                <td>${step.found ? "YES" : "NO"}</td>
+                <td>${step.isEnd ? "NOT end" : "end()"}</td>
+                <td>${step.lastIdx}</td>
+                <td>${step.leftBefore}</td>
+                <td>${step.leftAfter}</td>
+                <td>${step.curLen}</td>
+                <td>${step.maxLen}</td>
+            </tr>
+        `;
+    }
+
+    function updateUI() {
+        const step = steps[currentStep];
+        if (!step) return;
+        renderString(step);
+        renderTable(step);
+        if (step.isFinal) {
+            conditionMsgDiv.innerHTML = `✨ ${step.message}`;
+        } else {
+            conditionMsgDiv.innerHTML = `🔍 ${step.conditionMsg}<br>➡️ Window substring = "${inputString.substring(step.windowStart, step.windowEnd+1)}"`;
+        }
+        stepInfoSpan.innerText = `Step ${currentStep+1} / ${steps.length}`;
+        if (playing) {
+            playBtn.style.display = 'none';
+            pauseBtn.style.display = 'inline-block';
+        } else {
+            playBtn.style.display = 'inline-block';
+            pauseBtn.style.display = 'none';
+        }
+    }
+
+    function nextStep() {
+        if (currentStep < steps.length - 1) {
+            currentStep++;
+            updateUI();
+        } else {
+            stopPlay();
+        }
+    }
+
+    function prevStep() {
+        if (currentStep > 0) {
+            currentStep--;
+            updateUI();
+            stopPlay();
+        }
+    }
+
+    function reset() {
+        stopPlay();
+        currentStep = 0;
+        updateUI();
+    }
+
+    function startPlay() {
+        if (playing) return;
+        playing = true;
+        updateUI();
+        timer = setInterval(() => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                updateUI();
+            } else {
+                stopPlay();
+            }
+        }, speed);
+    }
+
+    function stopPlay() {
+        if (timer) clearInterval(timer);
+        playing = false;
+        updateUI();
+    }
+
+    function setSpeed(val) {
+        speed = val;
+        if (playing) {
+            stopPlay();
+            startPlay();
+        }
+    }
+
+    // event listeners
+    playBtn.onclick = startPlay;
+    pauseBtn.onclick = stopPlay;
+    nextBtn.onclick = () => { stopPlay(); nextStep(); };
+    prevBtn.onclick = () => { stopPlay(); prevStep(); };
+    resetBtn.onclick = reset;
+    speedSlider.oninput = (e) => setSpeed(parseInt(e.target.value));
+
+    // initial render
+    updateUI();
+</script>
+</body>
+</html>

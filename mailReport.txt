@@ -4314,3 +4314,79 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+09/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Investigated AppBlocker issue reported on Vaibhav's Debian testing machine.
+
+    Analyzed the reported error condition.
+
+    Attempted to replicate the same issue on my testing machine.
+
+    Studied the related C++ source code flow.
+
+    Increase log level, Added additional debugger/log tracing to identify the root cause.
+
+2] Observed undefined behavior where the following log entry was generated:
+
+Application blocked : Firefox
+
+    Even though Firefox was not configured in appctrl.conf for blocking.
+
+    Verified that no Firefox process was actually running at the time of log generation.
+
+    Started analysis of the process detection and application validation logic.
+
+3] Studied the RPM implementation of the AppBlocker code for firefox condition.
+
+    Compared Debian and RPM code behavior.
+
+    Attempted to reproduce the same issue on RPM testing machines.
+
+    Added additional debugging to compare execution flow and application detection behavior between RPM and Debian c++ code.
+
+    Continued investigation to identify the source of the incorrect Firefox block event.
+
+4] Performed debugging using:
+
+    gdb
+
+    valgrind
+
+to check for:
+
+    Memory leaks
+
+    Invalid memory access
+
+    Undefined behavior conditions
+
+5] Executed AppBlocker in non-daemonized mode for detailed runtime analysis.
+
+    Monitored execution flow and thread behavior.
+
+    Investigated whether the erroneous Firefox block log is generated from:
+
+        executionThread()
+
+        checkRunningThread()
+
+    Added additional debug traces to identify the exact code path responsible for event generation.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

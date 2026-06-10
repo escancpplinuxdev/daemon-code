@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Longest Substring – Full Map Trace (find, end, lastIndex, left, condition)</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            background: #0f172a;
+            font-family: 'Courier New', 'Fira Code', monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 100%;
+            background: #1e293b;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.4);
+        }
+        h1 {
+            font-size: 1.6rem;
+            color: #facc15;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+        }
+        .sub {
+            color: #94a3b8;
+            border-left: 4px solid #facc15;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .input-area {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .input-area label {
+            color: #cbd5e1;
+            font-weight: bold;
+        }
+        .input-area input {
+            background: #1e293b;
+            border: 1px solid #334155;
+            color: #facc15;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-family: monospace;
+            font-size: 1rem;
+            width: 300px;
+        }
+        button {
+            background: #2c3e66;
+            border: none;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover {
+            background: #3b82f6;
+            transform: scale(1.02);
+        }
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.7rem;
+            min-width: 1000px;
+        }
+        th, td {
+            border: 1px solid #334155;
+            padding: 8px 6px;
+            text-align: left;
+            vertical-align: top;
+            color: #cbd5e1;
+        }
+        th {
+            background: #0f172a;
+            color: #facc15;
+            position: sticky;
+            top: 0;
+            font-weight: bold;
+        }
+        .map-cell {
+            font-family: monospace;
+            font-size: 0.65rem;
+            white-space: pre-wrap;
+            word-break: break-word;
+        }
+        .condition-true {
+            color: #4ade80;
+            font-weight: bold;
+        }
+        .condition-false {
+            color: #f87171;
+        }
+        .footer {
+            margin-top: 1rem;
+            text-align: center;
+            color: #64748b;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>📐 Longest Substring Without Repeating Characters</h1>
+    <div class="sub">Full trace of `lastIndex` map, `find()`, `end()`, `lastIndex[c]`, left and condition</div>
+
+    <div class="input-area">
+        <label>String:</label>
+        <input type="text" id="inputStr" value="abcabcabcdbb" />
+        <button id="runBtn">▶ Run / Refresh</button>
+    </div>
+
+    <div class="table-wrapper">
+        <table id="traceTable">
+            <thead>
+                <tr>
+                    <th>Step<br>(right)</th><th>char</th><th>left<br>(before)</th><th>left<br>(after)</th>
+                    <th>lastIndex.find(c)<br>(found?)</th><th>lastIndex[c]</th>
+                    <th>Condition<br>(found && ≥ left)</th><th>Full lastIndex map<br><span style="font-weight:normal">(before update)</span></th>
+                    <th>curLen</th><th>maxLen</th><th>bestStart</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr><td colspan="11" style="text-align:center;">Click "Run / Refresh" to trace the algorithm</td></tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer">
+        💡 <strong>Legend:</strong> The table shows the state <strong>before</strong> updating `lastIndex` with the current character. <br>
+        <strong>Condition = found && lastIndex[c] ≥ left</strong> → if true, left jumps to lastIndex[c]+1.
+    </div>
+</div>
+
+<script>
+    function runAlgorithm() {
+        const s = document.getElementById('inputStr').value;
+        if (!s.trim()) {
+            document.getElementById('tableBody').innerHTML = '<tr><td colspan="11">Please enter a non‑empty string.</td></tr>';
+            return;
+        }
+
+        const steps = [];
+        let lastIndex = {};          // map: char -> last index seen
+        let left = 0;
+        let maxLen = 0;
+        let bestStart = 0;
+
+        for (let right = 0; right < s.length; right++) {
+            const c = s[right];
+
+            // snapshot of the map BEFORE updating with current character
+            const beforeMap = { ...lastIndex };
+
+            // ---- condition evaluation ----
+            const found = beforeMap.hasOwnProperty(c);
+            const lastPos = found ? beforeMap[c] : null;
+            const condition = found && lastPos >= left;
+            const leftBefore = left;
+
+            let newLeft = left;
+            if (condition) {
+                newLeft = lastPos + 1;
+                left = newLeft;
+            }
+
+            // update map with current character
+            lastIndex[c] = right;
+
+            // compute current window length
+            const curLen = right - left + 1;
+            if (curLen > maxLen) {
+                maxLen = curLen;
+                bestStart = left;
+            }
+
+            // store step data for display
+            steps.push({
+                right: right,
+                char: c,
+                leftBefore: leftBefore,
+                leftAfter: left,
+                found: found,
+                lastIndexVal: (found ? lastPos : '—'),
+                conditionResult: condition,
+                beforeMap: beforeMap,
+                curLen: curLen,
+                maxLen: maxLen,
+                bestStart: bestStart
+            });
+        }
+
+        // render table
+        renderTable(steps, s, bestStart, maxLen);
+    }
+
+    function renderTable(steps, originalString, bestStart, maxLen) {
+        const tbody = document.getElementById('tableBody');
+        if (!steps.length) return;
+
+        tbody.innerHTML = '';
+        for (const step of steps) {
+            const row = tbody.insertRow();
+            // format the map content nicely
+            const mapEntries = Object.entries(step.beforeMap);
+            let mapStr = '{}';
+            if (mapEntries.length > 0) {
+                mapStr = '{ ' + mapEntries.map(([k, v]) => `${k}: ${v}`).join(', ') + ' }';
+            }
+
+            const conditionClass = step.conditionResult ? 'condition-true' : 'condition-false';
+            const conditionText = step.conditionResult ? '✅ true' : '❌ false';
+
+            row.insertCell(0).innerText = step.right;
+            row.insertCell(1).innerText = step.char;
+            row.insertCell(2).innerText = step.leftBefore;
+            row.insertCell(3).innerText = step.leftAfter;
+            row.insertCell(4).innerText = step.found ? '✓ found' : '✗ not found';
+            row.insertCell(5).innerText = step.lastIndexVal;
+            row.insertCell(6).innerHTML = `<span class="${conditionClass}">${conditionText}</span>`;
+            row.insertCell(7).className = 'map-cell';
+            row.insertCell(7).innerText = mapStr;
+            row.insertCell(8).innerText = step.curLen;
+            row.insertCell(9).innerText = step.maxLen;
+            row.insertCell(10).innerText = step.bestStart;
+        }
+
+        // final summary row
+        const finalRow = tbody.insertRow();
+        finalRow.style.background = '#0f172a';
+        finalRow.style.borderTop = '2px solid #facc15';
+        const summaryCell = finalRow.insertCell(0);
+        summaryCell.colSpan = 11;
+        const longestSubstr = originalString.substring(bestStart, bestStart + maxLen);
+        summaryCell.innerHTML = `<strong>✅ Final result:</strong> longest substring = "${longestSubstr}" (length ${maxLen})`;
+        summaryCell.style.textAlign = 'center';
+        summaryCell.style.color = '#facc15';
+    }
+
+    // attach event and run on load
+    document.getElementById('runBtn').addEventListener('click', runAlgorithm);
+    window.addEventListener('load', runAlgorithm);
+</script>
+</body>
+</html>

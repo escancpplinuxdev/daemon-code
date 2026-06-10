@@ -1,0 +1,7 @@
+1] omkar@PTLD-3:/tmpdata/Rushikesh_27022026$ xdg-open /tmpdata/Rushikesh_27022026/cpp/leetcode/3LongestSubstringWithoutRepeatingCharacters_PrintSubstring.html 
+
+on omkar user
+
+2] standalone HTML document that shows, for all steps 
+
+3] 

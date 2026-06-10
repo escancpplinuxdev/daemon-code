@@ -43,9 +43,10 @@ int main()
 
 	string s; 
 	string longestSubstring;
+	int len;
 
 	s = "abcabcbb";
-	int len = sol.lengthOfLongestSubstring(s, longestSubstring);
+	len = sol.lengthOfLongestSubstring(s, longestSubstring);
 	cout << "Input: " << s << "\nLongest substring: \"" << longestSubstring << "\"\nLength: " << len << "\n\n";
 
 
@@ -58,6 +59,10 @@ int main()
 	cout << "Input: " << s << "\nLongest substring: \"" << longestSubstring << "\"\nLength: " << len << "\n\n";
 
 	s = "dvdf";
+	len = sol.lengthOfLongestSubstring(s, longestSubstring);
+	cout << "Input: " << s << "\nLongest substring: \"" << longestSubstring << "\"\nLength: " << len << "\n\n";
+
+	s = "abcabcabcdbb";
 	len = sol.lengthOfLongestSubstring(s, longestSubstring);
 	cout << "Input: " << s << "\nLongest substring: \"" << longestSubstring << "\"\nLength: " << len << "\n";
 

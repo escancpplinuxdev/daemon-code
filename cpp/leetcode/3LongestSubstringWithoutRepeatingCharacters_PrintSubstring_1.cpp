@@ -16,10 +16,19 @@ int lengthOfLongestSubstring(string &s, string &longestSubstr)
         char c = s[right];
 
         // Debug: show current step
+	cout << "s = '"<<s<<"'\n";
         cout << "left = '" << left << "'\n";
         cout << "right = '" << right << "'\n";
         cout << "c = '" << c << "'\n";
 
+	// print unordered_map  
+	cout<<"lastIndex = { ";
+	for(auto &p : lastIndex)
+	{
+		cout<<"'"<<p.first<<"':"<<p.second<<" ";
+	}
+	cout<<"}\n";
+	
         // Use find to check existence without inserting
         auto it = lastIndex.find(c);
         bool found = (it != lastIndex.end());
@@ -63,7 +72,8 @@ int lengthOfLongestSubstring(string &s, string &longestSubstr)
         cout << "Current lastIndex = { ";
         for (auto &p : lastIndex)
         {
-            cout << "'" << p.first << "':" << p.second << " ";
+//            cout << "'" << p.first << "':" << p.second << " ";
+            cout << "'" << p.first << "':" << (int )p.second << " ";
         }
         cout << "}\n";
 

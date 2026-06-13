@@ -4390,3 +4390,207 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+09/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Performed testing to reproduce and analyze the condition where the following sequence appears in appblocker.log:
+
+ExecEventThread 103 Blocked Application : Google Chrome
+CheckRunningProcess 204 Blocked Application : Google Chrome
+
+    Tested multiple application launch and block scenarios.
+
+    Analyzed event generation sequence and timing between both threads.
+
+2] Worked on C++ code changes to identify and resolve the issue.
+
+    Added additional debugging in:
+
+        proc_command handling
+
+        PPID traversal logic
+
+        Process identification flow
+
+        gblock Application matching logic
+
+    Traced process hierarchy and parent-child relationships involved in application detection.
+
+3] Added detailed debugger/log tracing to determine:
+
+    Which process is generating the initial block event.
+
+    Whether duplicate events are generated from different execution paths.
+
+    PPID inheritance behavior during application launch.
+
+    Process command-line matching accuracy.
+
+4] Started testing updated code after implementing debugging changes.
+
+    Executed AppBlocker in non-daemonized mode for detailed runtime observation.
+
+    Validated process detection behavior for Google Chrome launch and blocking scenarios.
+
+   Monitored/Testing logs to verify event generation sequence and identify root cause of duplicate block entries on 192.168.2.220 debain then 192.168.1.199 rpm .
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+12/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Worked on Snap-installed web browser environment analysis.
+
+    Studied Snap package architecture and runtime environment.
+
+    Analyzed Snap installation workflow and package management.
+
+    Identified default Snap installation and runtime paths.
+
+    Investigated Snap mount points and filesystem structure.
+
+    Located Snap-installed Firefox package and corresponding executable binary.
+
+    Tested installation and behavior of Snap-based browsers including:
+
+        Firefox
+
+        Brave
+
+        Other Chromium-based browsers
+
+2] Performed analysis of desktop launcher files located in:
+
+/var/lib/snapd/desktop/applications/*.desktop
+
+    Extracted and verified:
+
+        ExecName
+
+        Package Name (PkgName)
+
+        Desktop File Name
+
+        Executable Path
+
+    Studied relationship between Snap packages, launcher files, and actual browser binaries.
+
+3] Conducted R&D activities on Snap environment to understand:
+
+    Snap package deployment structure
+
+    Application launch flow
+
+    Binary execution path 
+
+    Package-to-desktop file mapping
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+12/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Attempted to install Snap Chromium browser on testing VM 192.168.2.220.
+
+    During installation, the VM encountered low disk space issues.
+
+    VM initially paused due to insufficient storage.
+
+    Installation process was aborted.
+
+    VM subsequently became inaccessible for further testing.
+
+2] Created a new virtual machine for continued testing.
+
+    Attached the existing VDI file to the new VM.
+
+    Increased virtual disk capacity to 80 GB.
+
+    Performed environment recovery and validation.
+
+3] Observed that the attached old VDI image was from a previous May backup.
+
+    Verified system state and package availability.
+
+    Continued setup activities.
+
+    Installed Snap-based browsers for testing and validation.
+
+4] Started AppBlocker C++ code development and testing for browser-related application control.
+
+    Added debugging and validation logic.
+
+    Monitored application detection behavior through:
+
+    /var/MicroWorld/var/log/appblocker.log
+
+    Verified browser process identification and logging flow.
+
+5] Started research for browser detection and package mapping of:
+
+    Firefox
+
+    Chromium
+
+    Brave
+
+Objectives included identifying:
+
+    Executable name (Exec)
+
+    Package name (PkgName)
+
+    Launch scripts
+
+    Snap/Desktop launcher relationships
+
+and finding equivalent mechanisms to:
+
+dpkg -L <PackageName>
+dpkg -S <FileName>
+
+for browser package and executable.
+
+6] Developed and tested code for multiple browser-related scenarios.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

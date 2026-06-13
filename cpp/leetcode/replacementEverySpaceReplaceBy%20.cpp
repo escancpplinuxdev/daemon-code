@@ -24,7 +24,7 @@ void replacementeveryspacereplacebyPercent20(string &s)
 	s.resize(j);
 	cout<<"j = '"<<j<<"'\n";
 	cout<<"s.length() = '"<<s.length()<<"'\n";
-	while(i > 0)
+	while(i > 0) // if i put i >= 0 then it goes to i = 0 to direct 10^16 not -1 for checking i >= 0
 	{
 		if(s[i] == ' ')
 		{
@@ -39,6 +39,7 @@ void replacementeveryspacereplacebyPercent20(string &s)
 		}
 		i--;
 		j--;
+		cout<<"i = '"<<i<<"'\n";
 	}
 }
 

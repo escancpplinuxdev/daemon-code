@@ -1,6 +1,9 @@
-]
+1] 1] full analysis 2] logic/bugs 3] overflow/ UB 4] security/ Dos 5] code quality 6] performance 7] compiler warning 8] dest practices 9] o/p correctness 10] memory 11] optimized and safe version 12] bad practices 13] summary table
+
+
+0]
 	192.168.2.58 :		root passwd --> su 	--> ketan$321
-						sudo su --> ketan$123
+				omkar 		sudo su --> ketan$123
 
 1]	scp  -P 8623 -r detectNew* 192.168.2.58:/tmpdata/Rushikesh_27022026/detectNewApp
 	root@192.168.2.58's password: 

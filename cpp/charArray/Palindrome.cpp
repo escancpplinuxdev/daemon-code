@@ -19,7 +19,7 @@ int main()
 	}
 
 	std::size_t size = s.length();
-
+	std::cout<<"size = '"<<size<<"'\n";
 	// Edge cases: empty or single char are always palindromes
 	if (size <= 1) 
 	{

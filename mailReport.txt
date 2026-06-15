@@ -4594,3 +4594,97 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+15/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Performed detailed research and analysis of the Snap ecosystem and browser deployment model.
+
+    Studied Snap architecture and Snap package lifecycle.
+
+    Analyzed interaction between Snap applications and the snapd service.
+
+    Investigated installation, execution, update, and mount mechanisms of Snap packages.
+
+    Performed detailed analysis for:
+
+        Firefox
+
+        Chromium
+
+        Brave
+
+    Studied various Snap commands and their output for application identification and package mapping.
+
+2] Investigated AppBlocker issue where:
+
+int ret2 = AddExecInBlockList(ExecName, AppName);
+
+was not functioning correctly for Snap-installed applications.
+
+    Researched commands capable of identifying Snap browser executables.
+
+    Verified executable mapping behavior for Snap browsers.
+
+    Tested outputs similar to:
+
+echo "$(basename /snap/bin/firefox): /snap/bin/firefox"
+
+to obtain executable name and binary path information. just same as dpkg --search /snap/bin/firefox
+
+3] Continued debugging of AddExecInBlockList() functionality.
+
+    Verified values of:
+
+        ExecName
+
+        AppName
+
+    Added debugging and validation logic.
+
+    Analyzed matching behavior for Snap-installed browser applications.
+
+    Studied differences between Debian package and Snap package application discovery.
+
+4] Studied the complete execution flow documented in AppblockerRunningProcess.txt.
+
+    Analyzed end-to-end AppBlocker workflow.
+
+    Reviewed process detection logic.
+
+    Studied desktop file parsing, executable discovery, package mapping, process monitoring, and block event generation.
+
+    Documented execution flow from application launch detection through enforcement and logging.
+
+5] Started extensive testing using different browser installation and removal scenarios.
+
+Tested with:
+
+/var/lib/snapd/desktop/applications/*.desktop
+
+and
+
+dpkg --search "/usr/share/applications/*.desktop" 2>/dev/null
+
+    Verified desktop file discovery.
+
+    Tested browser installation and uninstallation scenarios.
+
+    Compared behavior between Snap-installed and Debian-installed browsers.
+
+    Validated executable name extraction, package identification, and AppBlocker compatibility across multiple conditions.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

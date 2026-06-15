@@ -1,0 +1,318 @@
+
+
+1] getuid() -> appblocker daemon must be run with root privileges.
+2] daemonize() -> appblocker runs in the background.
+3] if(isBinaryRunning(PIDFILE, "appblocker")) -> Only one instance could be run at a time.
+{ cout<<"Another instance running"; }
+4] savePidFile(PIDFILE) -> /opt/MicroWorld/var/run/appblocker.pid
+5] readConfig -> /opt/MicroWorld/etc/appctrl.conf "AppControl:Status"
+6] CreateBlackList(0) -> Create Blacklist of Blocked Processes 
+-> Create BlackList of Applications which needs to kill or Deny permission to Execute 
+
+extern map<pair<string,string>,string> AppBlockList;
+extern map <string,int> UnInstalledPkgList;
+extern map <string,int> PkgList;
+
+//If SIGHUP signal is callled then Clear BlackList
+if(ReloadConf)
+{
+	if(!AppBlockList.empty())
+		AppBlockList.clear();
+
+	if(!PkgList.empty())
+		PkgList.clear();
+
+	if(!UnInstalledPkgList.empty())
+		UnInstalledPkgList.clear();
+}
+
+int count=0,index=1;
+
+readConfig -> /opt/MicroWorld/etc/appctrl.conf "BlackList:TotalPackages" 	1 = Package1 
+readConfig -> /opt/MicroWorld/etc/appctrl.conf "BlackList:Package%d",index  	Google Chrome  -> output
+
+7] if(GetPkgNameIfAppName(output,PkgName,AppName,ExecName)) -> if Application Name is given then find Pkg Name
+bool GetPkgNameIfAppName(char *Name,char *PkgName,char *AppName,char *ExecName)				    Name >> Google Chrome
+
+if /usr/bin/dpkg || /bin/dpkg
+command = dpkg --search \"/usr/share/applications/*.desktop\" 2>/dev/null
+-> google-chrome-stable: /usr/share/applications/google-chrome.desktop
+
+bool CheckifInAppList(char *Name,char *PkgName,char *AppName,char *command,char *ExecName)
+{	
+	int isFound = 0;
+	command -> PkgName:DesktopFile -> token = strtok(Appbuffer,":")
+		-> PkgName  -> google-chrome-stable
+		token=strtok(NULL,":");
+	-> DesktopFile -> /usr/share/applications/google-chrome.desktop
+
+		readConfig -> DesktopFile "Desktop Entry:Name",output					 output  -> Google Chrome
+		if(strcmp(output,Name)==0)  ->   (Google Chrome,Google Chrome)
+		{
+			isFound=1;
+			strcpy(AppName,Name); 						 		 AppName -> Google Chrome
+				isSuccess=true; 
+		}
+		else if(strcmp(PkgName,Name)==0)						         PkgName -> Google Chrome		{
+			strcpy(AppName,output);
+			isSuccess=true;
+		}
+
+
+	if(isSuccess)
+	{
+
+		readConfig -> DesktopFile  "Desktop Entry:Exec", output		 		 -> /usr/bin/google-chrome-stable
+			*token=strtok(output," ");
+		strcpy(ExecName,token);							ExecName -> /usr/bin/google-chrome-stable
+
+	}
+	if(!isFound)
+		strcpy(PkgName,Name);									 PkgName -> Google Chrome
+}
+
+
+
+int ret1=IsPackageEligible(PkgName,AppName);
+int ret2=AddExecInBlockList(ExecName,AppName);
+//ret1 = 
+8] bool IsPackageEligible(char *PkgName,char *AppName)  -> here we have PkgName, FInd AppName      PkgName ->google-chrome-stable 	//Add Packge Name into Package List
+	map<string,int>::iterator itPkgList;
+
+	//If Package already exist in Package List then Ignore.
+if(isInPkgList == 1 || CheckIfInExcludeList(PkgName,1))
+
+bool CheckIfInExcludeList(char *Name,int isPkgName)
+{
+	//Check Package Name is of Desktop Environment or not.
+	if(isPkgName)
+	{
+		if(strcasestr(Name,"gnome")!=NULL || strcasestr(Name,"kde")!=NULL || strcasestr(Name,"cinnamon")!=NULL || strcasestr(Name,"mate")!=NULL || strcasestr(Name,"unity")!=NULL || strcasestr(Name,"xfce")!=NULL || strcasestr(Name,"lxqt")!=NULL || strcasestr(Name,"pantheon")!=NULL || strcasestr(Name,"deepin")!=NULL || strcasestr(Name,"Enlightenment")!=NULL || strcasestr(Name,"control-center")!=NULL || strcasestr(Name,"nautilus")!=NULL)
+
+	}
+	else
+	{
+		if(startsWith("/sbin",Name) || startsWith("/usr/sbin",Name) || startsWith("/opt/MicroWorld",Name) || strcmp(Name,"/usr/bin/escangui") == 0 || strcmp(Name,"/usr/bin/escan") == 0 || strcmp(Name,"/bin/bash")==0 || strcmp(Name,"/usr/bin/su")==0 || strcmp(Name,"/usr/bin/bash")==0 || strcmp(Name,"/usr/sbin/cron")==0 || strcmp(Name,"/usr/sbin/sshd") == 0 || strcmp(Name,"/usr/bin/sudo")==0 )
+
+	}
+
+}
+
+//Add All binaries and Scripts into BlockList which is installed by the Package.
+if(!AddIntoBlockList(PkgName,AppName))			-> here we have PkgName, Find AppName      PkgName ->google-chrome-stable
+{
+	bool AddIntoBlockList(char *PkgName,char *AppName)
+		/usr/bin/dpkg || /bin/dpkg 	
+		{
+			command = "dpkg -L %s 2>/dev/null",PkgName    -> dpkg -L google-chrome-stable 2>/dev/null
+				if(AddIntoList(PkgName,AppName,dpkgListComm))
+				{
+					isFound=1;
+					bool AddIntoList(char *PkgName,char *AppName,char *command)
+					{			
+						if((CheckIfExecutable(Filename) || CheckIfScript(Filename)) && !CheckIfInExcludeList(Filename,0))
+						{
+							get_Md5sum(Filename,MD5sum);
+							isFound=1;
+							AppBlockList.insert(pair<pair<string, string>,string>(make_pair(string(Filename),string(MD5sum)),string(AppName)));
+
+						}	
+					}
+
+				}
+		}
+
+}
+else
+{
+	PkgList.insert(pair<string,int>(PkgName,0));
+}
+
+//ret2=
+9] AddExecInBlockList.cpp AddExecInBlockList(ExecName,AppName); -> here we have ExecName, Find AppName    
+											 ExecName ->/usr/bin/google-chrome-stable
+bool AddExecInBlockList(char *ExecName,char *AppName)
+{
+	if(ExecName == NULL)
+		return false;
+	if(GetPkgNameIfExecutableName(ExecName,PkgName))
+	{ //Fire Commands to get the package which has give binary file dpkg for .deb packages and rpm for .rpm packages
+		bool GetPkgNameIfExecutableName(char *Name,char *PkgName)
+		{
+			/usr/bin/dpkg || /bin/dpkg
+				if(CheckifInAppList(Name,PkgName,1))
+				{
+					//Get Package Name From Executable
+				command,"dpkg --search %s 2>/dev/null",Name -> dpkg --search /usr/bin/google-chrome-stable			                        		                     = google-chrome-stable: /usr/bin/google-chrome-stable
+
+						strcpy(PkgName,token);				  PkgName -> google-chrome-stable
+				}
+
+		}
+	}
+
+}
+
+10] if(!ret1 && !ret2) 
+	{cout<<"Application:'   ' don't have any executable or script file";}
+	else
+	{"passed."}
+
+it pass form else {} -> passed.
+i.e ret1 = 0 && ret2 = 0  -> if(!0 && !0) {cout <<"Application:'   ' don't have any executable or script file";} ->	   Failed
+so , just pass need only one condition 1 . to goto else block {} -> passed.
+
+11] else
+{
+
+	UnInstalledPkgList.insert(pair<string,int>(PkgName,0));
+	cout<<"Application: '	'is not Exist"
+}
+
+
+index++;
+count++;
+
+
+// Appblocking process 
+12]	 pthread_t FanotifyThreadId,CheckUnInstalledAppsThreadId;
+
+13]	//Created thread to Deny Permission of Blacklisted Executables. -> ExecEventThread
+if(pthread_create(&FanotifyThreadId, NULL, ExecEventThread, NULL) < 0)
+{
+	//Thread to get the Open Permission Events of BlackListed Processes
+	void *ExecEventThread(void *data)
+	{
+		fd = fanotify_init(FAN_CLASS_NOTIF | FAN_CLOEXEC | FAN_CLASS_CONTENT | FAN_NONBLOCK,O_RDONLY | O_LARGEFILE);
+		//Traversing Application BlackList to fanotify mark
+		map<pair<string,string>,string>::iterator itMap;
+		for(itMap = AppBlockList.begin();itMap !=AppBlockList.end();itMap++)
+		{
+			if (fanotify_mark(fd, FAN_MARK_ADD, FAN_OPEN_PERM | FAN_EVENT_ON_CHILD, AT_FDCWD,itMap->first.first.c_str()) == -1)
+			{
+				cout <<"Fanotify: to set fanotify mark"	;	
+
+			}	
+
+		}
+		//read All Permission Events of Executables
+		if(readAllEvents(fd) != true)
+		{
+			bool readAllEvents(int fd)
+			{
+				/* Loop while events can be read from fanotify file descriptor */
+				while(!reloadConfiguration && !TermExitSignal)
+				{
+					len = read(fd, buf, sizeof(buf));
+					cout<<"Fanotify : Able to read Open Permission Events."
+
+						/* Loop over all events in the buffer */
+						while (FAN_EVENT_OK(metadata, len))
+						{
+							//pid_t getPPID(pid_t pid)	get ppid recurisverly by get PPid(int pid){}
+							//                  exclusion list if not md5sum, nfdaemon, gblock
+							{
+								if (metadata->mask & FAN_OPEN_PERM)
+								{
+									map<pair<string,string>,string> ::iterator itPkgList;
+									for(itPkgList = AppBlockList.begin();itPkgList !=AppBlockList.end();itPkgList++)
+									{
+										if(strcmp(itPkgList->first.first.c_str(),path)==0)
+											strcpy(AppName,itPkgList->second.c_str());
+									}
+									-> AppName
+								}
+
+								response.fd = metadata->fd;
+								response.response = FAN_DENY;
+								write(fd, &response, sizeof(response));
+								cout<<"ExecEventThread Blocked Application : AppName.";
+							}
+						}	
+				}
+			}
+		}
+	}	
+}
+
+14]      //Created thread to Deny Permission of Blacklisted Executables.
+if(pthread_create(&CheckUnInstalledAppsThreadId, NULL, CheckUnInstalledPkgs, NULL) < 0)
+{
+	//Thread to Block the Application which is installed after starting Appblocker
+	void *CheckUnInstalledPkgs(void *data)
+	{
+	   if(!UnInstalledPkgList.empty())
+           {
+		map<string,int>::iterator UnPkgList;
+               for(UnPkgList = UnInstalledPkgList.begin();UnPkgList !=UnInstalledPkgList.end();UnPkgList++)
+               {
+			 if(GetPkgNameIfAppName((char *)(UnPkgList->first.c_str()),PkgName,AppName,ExecName))
+                    {
+			if(IsPackageEligible(PkgName,AppName) || AddExecInBlockList(ExecName,AppName))
+                         {
+				cout<<"Application : AppName  is Installed! and it is already in BlockList";
+				cout<<"Monitoring  : AppName.";
+			 }
+		    }
+	       }
+	   }
+      }
+}
+
+     //Process Monitoring Started...
+     ABLogLine(2,"Monitoring Started...");
+
+
+15]     //Kill Running Processes if they are in BlackList.
+CheckRunningProcess();
+void CheckRunningProcess()
+{
+	pthread_mutex_t AppBlockList_mutex;
+	extern map<pair<string,string>,string> AppBlockList;
+	void BlockProcessIfInBlockList(int tgid)
+	{
+		   //Get the Executable path by reading symlink of exe file which present in directory of Process Id.
+	     	   int ret = readlink(ProcessId_path, Exe_path, sizeof(Exe_path));				      -> Exe_path		   if(strcmp(Exe_path,"")!=0 && strcmp(Exe_path,"/ (deleted)")!= 0 && !CheckIfInExcludeList(Exe_path,0))
+	          {
+			//                  exclusion list for "gblock" && "nfdaemon" 
+			{
+				int Md5_status=get_Md5sum(Exe_path, Md5sum);
+				if(Md5_status == 0)
+        		        {
+					 //Traversing the BlackList
+		                    map<pair<string,string>,string>::iterator itMap;
+                		    for(itMap = AppBlockList.begin();itMap !=AppBlockList.end();itMap++)
+                    		    {
+				    //Stop process if Md5sum of running process and blacklisted process are same.
+	                            if(strcmp(Md5sum,itMap->first.second.c_str())==0 )
+           		            {
+				 	AppBlockList_lock();
+					if(IsProcessStopped(tgid))
+                              		{
+						bool IsProcessStopped(int Process_id)
+						{
+		                     //first send SIGTERM to terminate the process   "kill -TERM %d  > /dev/null 2>&1",Process_id
+   		    	 	 //Send SIGINT to Interrupt the process	              "kill -INT %d  > /dev/null 2>&1",Process_id
+				  //Kill the process using SIGKILL or -9		"kill -9 %d  > /dev/null 2>&1",Process_id
+		
+					cout<<"CheckRunningProcess Blocked Application : itMap->second.c_str() 
+						}
+					 AppBlockList_unlock();
+					}
+			 	   }
+				   } 
+		       	      }
+		      } 
+		}
+
+	}	
+}
+
+16]
+     //Wait for Exiting the ExecEventThread.
+     pthread_join(FanotifyThreadId, NULL);
+     pthread_join(CheckUnInstalledAppsThreadId, NULL);
+
+     ABLogLine(2,string("Monitoring Stopped..."));
+     removePidFile(PIDFILE);
+

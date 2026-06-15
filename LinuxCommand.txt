@@ -361,8 +361,10 @@ then paste the content and press Ctrl+D.
 
 34] watch -n 2 'ps aux | grep -i /opt/MicroWorld/bin/usbencrypt | grep -v grep' 
 
-	Using grep -v grep
+    watch -n 0.001 'ps aux | grep -iE "brave" | grep -vE "grep|watch|log|tail" >> process.txt'
+	-> all o/p in process.txt
 
+	Using grep -v grep
 You can also pipe the output to another grep command that explicitly excludes the word "grep". While common, this is slightly less efficient because it spawns an extra process.
 
 35] vim indent step 

@@ -4688,3 +4688,111 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+15/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Investigated AppBlocker behavior for Snap-installed Brave Browser.
+
+    Observed the following log repeatedly generated in:
+
+    /var/MicroWorld/var/log/appblocker.log
+
+    Blocked Application : Brave Web Browser
+
+2] Worked on recursive proc_comm and PPID analysis to suppress unwanted block events.
+
+    Traced process tree up to multiple parent levels.
+
+    Observed execution chain where:
+
+    proc_comm3 = sh
+
+    was involved in browser launch flow.
+
+    Added debugging and code changes in:
+
+    source/ExecEventThread.cpp
+
+    to recursively identify parent processes and exclude false-positive logging conditions.
+
+    Further analysis revealed similar block events were also generated from:
+
+    source/CheckRunningProcess.cpp
+
+    Continued implementation of recursive PPID and proc_comm traversal logic to identify cases where:
+
+    proc_comm2 = sh
+
+    and exclude unnecessary:
+
+    Blocked Application : Brave Web Browser
+
+    log entries.
+
+3] Performed maintenance and recovery activities on the main development machine.
+
+    Observed storage shortage with approximately 863 MB free space remaining.
+
+    Moved Virtual Machine storage from:
+
+    /media/sdb1/VM/
+
+    to
+
+    /media/sdb3/
+
+    Reconfigured VM paths after migration.
+
+    Accessed VM through VNC.
+
+    Created snapshots for backup and recovery purposes.
+
+    Verified VM operations including:
+
+        Start
+
+        Stop
+
+        Restart
+
+    Confirmed VM stability and checked for abort/crash conditions after migration.
+
+4] Performed extensive browser testing across multiple execution methods.
+
+Tested Brave and other browsers through:
+
+    Terminal execution
+
+    X-Terminal execution
+
+    GUI launch
+
+    GUI application menu launch
+
+    New policy deployment/update
+
+    Non-daemonized AppBlocker execution
+
+    AppBlocker service mode
+
+    Verified application detection behavior.
+
+    Monitored AppBlocker logs and policy enforcement.
+
+    Tested under multiple policy and browser conditions.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

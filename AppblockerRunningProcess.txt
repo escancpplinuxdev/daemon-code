@@ -9,6 +9,9 @@
 6] CreateBlackList(0) -> Create Blacklist of Blocked Processes 
 -> Create BlackList of Applications which needs to kill or Deny permission to Execute 
 
+
+-> appblocker start when and only when CreateBlackList(0) is created then -> start monitoring :
+
 extern map<pair<string,string>,string> AppBlockList;
 extern map <string,int> UnInstalledPkgList;
 extern map <string,int> PkgList;

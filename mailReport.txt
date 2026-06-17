@@ -4796,3 +4796,153 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+17/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	1] uninstall escan-dlp then install escan-dlp which have i put new appblocker 
+	2] run every app which i put in policy to checkRunning theread of appblocker -> it works
+	root@rushi-VB-220:~# cat  /opt/MicroWorld/etc/appctrl.conf 
+#*END
+
+[AppControl]
+    Status = "1"
+
+[BlackList]
+    Package1 = "Chromium Web Browser"
+    Package2 = "Firefox"
+    Package3 = "Google Chrome"
+    Package4 = "Microsoft Edge"
+    Package5 = "Brave Web Browser"
+   
+	3] then install every app in dpkg -> apt install app
+	4] start checking appblcker .service from selfprotection on download policy from console .
+	5] then install all app for snap install app then run appblocker same policy condition.
+	6] in that i got msg that gnome-setting-daemon _> application stopped -> device memory is nearly full, An application was using a lot of memory and force to stop for -> run every app which i put in policy to checkRunning theread of appblocker
+	so create 3 gb swap file in /etc/fstab 
+	7 ] then check for new snap install app ->     
+	/snap/firefox/*/usr/lib/firefox/  work perfectly for above pkgName but not for new PkgName
+
+    Package6 = "VLC media player"
+    Package7 = "Opera"
+    Package8 = "Vivaldi"
+	source/ExecEventThread.cpp add debugger at that point and check for it.
+	8] checkRunning -> works give Blocked Application : VLC media player in appblocker.log
+	9] but not for ExecEventThread Blocked Application :   -> it completly blank so 
+	go for new command which give exec and script file of PkgName ->  find -L /snap/vlc/current -type f -executable 
+	source/ExecEventThread.cpp , source/AddIntoBlockList.cpp add debugger at that point and check for it.
+
+
+
+1] Uninstalled the existing escan-dlp package and installed a new build containing the latest AppBlocker code changes.
+
+2] Tested AppBlocker CheckRunningThread functionality by running applications configured in the policy.
+
+Verified configuration:
+
+[AppControl]
+    Status = "1"
+
+[BlackList]
+    Package1 = "Chromium Web Browser"
+    Package2 = "Firefox"
+    Package3 = "Google Chrome"
+    Package4 = "Microsoft Edge"
+    Package5 = "Brave Web Browser"
+
+    Confirmed that CheckRunningThread successfully detected and blocked configured applications.
+
+3] Installed all supported browser applications using Debian package management (apt install) and validated AppBlocker behavior for DPKG-installed applications.
+
+4] Started testing AppBlocker service execution after policy download from the console.
+
+    Verified service startup through self-protection flow.
+
+    Tested policy synchronization and runtime enforcement.
+
+    Monitored AppBlocker service behavior after policy updates.
+
+5] Installed browsers through Snap packages and tested AppBlocker under the same blacklist policy conditions.
+
+    Compared behavior between DPKG-installed and Snap-installed applications.
+
+    Verified package detection and application identification flow.
+
+6] During large-scale application testing, received the following system notification:
+
+gnome-settings-daemon
+Application stopped
+Device memory is nearly full
+
+    Issue occurred while running multiple blocked applications simultaneously to validate CheckRunningThread behavior.
+
+    Identified memory pressure on the testing machine.
+
+Resolution:
+
+    Created a 3 GB swap file.
+
+    Updated /etc/fstab for persistent swap configuration.
+
+    Rebooted and validated swap activation.
+
+7] Continued Snap application testing.
+
+Observed that package identification worked correctly for Firefox Snap installations located under:
+
+/snap/firefox/*/usr/lib/firefox/
+
+However, package detection did not work correctly for newly added blacklist entries:
+
+Package6 = "VLC media player"
+Package7 = "Opera"
+Package8 = "Vivaldi"
+
+    Added debugging in:
+
+    source/ExecEventThread.cpp
+
+    Investigated executable detection and package mapping logic for these applications.
+
+8] Verified that CheckRunningThread successfully generated entries such as:
+
+Blocked Application : VLC media player
+
+in:
+
+/var/MicroWorld/var/log/appblocker.log
+
+9] Observed that ExecEventThread generated:
+
+Blocked Application :
+
+with a blank application name.
+
+    Started investigation of executable name extraction failure.
+
+    Tested alternative commands to obtain executable and launcher script information for Snap packages.
+
+Example:
+
+find -L /snap/vlc/current -type f -executable
+
+    Added additional debugging in:
+
+    source/ExecEventThread.cpp
+    source/AddIntoBlockList.cpp
+
+    Continued analysis of package-to-executable mapping for Snap-installed applications.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

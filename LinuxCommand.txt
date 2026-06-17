@@ -652,5 +652,5 @@ smb: \> cd /temp/Vaibhav/
 	192.168.2.58  user:rushi   -> rushi123  user:root -> root123 -> vnc -> 192.168.2.58:33220
 
 58] 	
-
-
+	clear cache 
+	sync && echo 3 | sudo tee /proc/sys/vm/drop_caches

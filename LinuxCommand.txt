@@ -654,3 +654,29 @@ smb: \> cd /temp/Vaibhav/
 58] 	
 	clear cache 
 	sync && echo 3 | sudo tee /proc/sys/vm/drop_caches
+
+59]	0. check current formatoptions
+	:set formatoptions?
+	
+ 	1. Disable auto‑insertion of // when pressing Enter inside a comment:
+	:set formatoptions-=r
+
+	2. Revert back to default (re‑enable)
+	:set formatoptions+=r
+
+	3.  permanently disable the automatic insertion of // on a new line after pressing Enter inside a comment
+		vim ~/.vimrc
+	set formatoptions-=r
+	:wq -> save file
+
+60]	Terminator shortcut
+
+	Quick Shortcuts & Actions
+
+    Vertical Split: Ctrl + Shift + E
+    Horizontal Split: Ctrl + Shift + O
+    Close Current Pane: Ctrl + Shift + W
+    Navigate Between Panes: Alt + Arrow Keys (Up, Down, Left, Right)
+    Maximize/Toggle Current Pane: Ctrl + Shift + X
+
+61]	

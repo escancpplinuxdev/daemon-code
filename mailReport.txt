@@ -4994,3 +4994,203 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+17/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on AppBlocker optimization in CheckRunningProcess.
+
+    Existing logic compares the running process MD5 checksum with the MD5 checksum stored in the AppBlockList map before generating:
+
+Blocked Application
+
+    Started modifying the logic to compare:
+
+exec_path (running process)
+
+with
+
+exec_path (stored in AppBlockList)
+
+instead of performing MD5 checksum comparisons.
+
+    Objective is to reduce processing overhead and improve runtime performance.
+
+2] Discussed the proposed implementation with Vaibhav.
+
+    Reviewed design and workflow of:
+
+/opt/MicroWorld/etc/appblocker.list
+
+    Discussed cache file creation, loading, updating, and lookup logic.
+
+    Reviewed how the new exec_path-based matching mechanism will interact with the cache file.
+
+3] Demonstrated the new logic and execution flow to Omkar.
+
+    Performed runtime testing with Omkar.
+
+    Added debugging at critical locations to identify time-consuming operations.
+
+    Demonstrated Omkar the following execution sequence:
+
+while (fgets(Filename, sizeof(Filename), fp1) != NULL)
+{
+    GenerateAbsolutePath(Filename);
+    CheckIfExecutable(Filename);
+    CheckIfScript(Filename);
+    get_Md5sum(Filename, MD5sum);
+    CheckIfInExcludeList(Filename, 0);
+}
+
+    Analyzed execution time consumed by each operation with Omkar.
+
+4] Demonstrated internal AppBlockList population flow.
+
+    Reviewed implementation in:
+
+source/AddIntoBlockList.cpp
+
+    Identified that significant processing time is spent during:
+
+AppBlockList.insert(pair<pair<string, string>, string>)
+
+    Continued analysis to optimize insertion and lookup performance.
+
+5] Started implementation work for:
+
+/opt/MicroWorld/etc/appblocker.list
+
+cache file support.
+
+    Designed cache structure for storing application information.
+
+    Planned reuse of previously discovered executable mappings to avoid repetitive filesystem scans and MD5 generation.
+
+    Started integrating cache loading and update mechanisms.
+
+6] Created standalone proof-of-concept snippets for the cache implementation.
+
+    Developed dummy test code for:
+
+        Cache file creation
+
+        Cache file reading
+
+        Cache file updating
+
+        Application lookup
+
+        Exec path matching
+
+    Performed initial validation and functionality testing before integrating into AppBlocker.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+20/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Started evaluating all test conditions where:
+
+dpkg --search /usr/share/applications/*.desktop
+
+becomes a time-consuming operation when executed repeatedly for every package present in the AppBlocker package list.
+
+    Analyzed performance impact during policy loading.
+
+    Tested with multiple installed applications.
+
+    Identified repeated package-to-desktop file lookup as a major contributor to startup delay.
+
+2] Started integrating cache-based optimization into AppBlocker.
+
+    Designed and implemented C++ code for complete handling of:
+
+/opt/MicroWorld/etc/appblocker.list
+
+    Worked on cache file write/read/update logic for all application lifecycle scenarios.
+
+    Developed required functions for:
+
+        Package installation()
+
+        Package removal()
+
+        Package uninstallation()
+
+        Cache file insertion()
+
+        Cache file deletion()
+
+        Cache file update()
+
+        Map population from cache()
+
+        Cache synchronization() with runtime data structures
+
+3] Worked on integration with internal AppBlocker data structures.
+
+    Added logic for maintaining consistency between:
+
+        PkgList
+
+        UninstallList
+
+        AppBlockList
+
+        appblocker.list cache file
+
+    Ensured that application information is automatically inserted, updated, or removed from runtime maps and cache files based on package state changes.
+
+4] Tested cache file workflow with various package scenarios.
+
+    Fresh package installation
+
+    Existing package updates
+
+    Package removal
+
+    Package reinstallation
+
+    Policy reload conditions
+
+    AppBlocker service restart conditions
+
+    Verified cache consistency and correctness across multiple test cases.
+
+5] Continued implementation of cache-driven loading mechanism to reduce filesystem scanning and repeated desktop-file searches during AppBlocker startup.
+
+6] Demonstrated the cache architecture, code flow, and performance optimization approach to Vaibhav.
+
+    Reviewed implementation details.
+
+    Discussed cache maintenance strategy and synchronization logic.
+
+    Collected feedback .
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -5194,3 +5194,118 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+20/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+
+1] Investigated Firefox detection issue on Vaibhav's testing machine.
+
+    Observed that Firefox was installed through Snap, but application discovery logic was also identifying DPKG-related Firefox entries.
+
+    Performed extensive debugging to determine the actual executable path being used during Firefox launch.
+
+    Tested multiple Firefox launch methods and process hierarchies.
+
+    Analyzed command outputs and executable resolution logic to obtain the correct executable path from the Firefox command.
+
+    Worked on inserting the resolved executable path into:
+
+        AppBlockList map
+
+        appblocker.list cache file
+
+    Verified behavior for both Snap-installed and DPKG-installed Firefox environments.
+
+2] Developed C++ code for cache synchronization functionality.
+
+    Implemented:
+
+synchronizeCacheFilewithCurrentBlackList();
+
+    Purpose:
+
+        Synchronize appblocker.list with the current blacklist configuration.
+
+        Remove obsolete applications from cache.
+
+        Add newly configured applications.
+
+        Maintain consistency between policy, runtime AppBlockList maps, and cache file.
+
+3] Implemented cache cleanup functionality.
+
+    Added:
+
+removeAppNameFromCache(AppName);
+
+    Functionality:
+
+        Search cache entries corresponding to a specific application.
+
+        Remove stale or obsolete entries.
+
+        Prevent duplicate or invalid cache records.
+
+4] Implemented cache maintenance and package numbering logic.
+
+    Added:
+
+renumberPackagesNumberInCacheFile();
+
+    Functionality:
+
+        Reorganize package numbering after insertion/removal operations.
+
+        Maintain sequential package ordering.
+
+        Ensure cache file consistency and readability.
+
+5] Performed extensive testing for cache management logic.
+
+Tested scenarios including:
+
+    Fresh application installation
+
+    Package removal
+
+    Application rename scenarios
+
+    Policy updates
+
+    AppBlocker restart
+
+    Snap-installed Firefox
+
+    DPKG-installed Firefox
+
+    Duplicate package entries
+
+    Cache file rebuild conditions
+
+    Blacklist additions and removals
+
+6] Validated synchronization between:
+
+    appctrl.conf
+
+    AppBlockList map
+
+    appblocker.list cache file
+
+ensuring correct application detection and cache consistency under all tested conditions.
+	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

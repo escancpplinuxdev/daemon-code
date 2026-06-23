@@ -1,4 +1,4 @@
-
+// in map complexity is O(log n)
 #include <iostream>
 #include <map>
 	
@@ -63,8 +63,39 @@ int main()
 	}
 
 	
+	std::cout<<"Traversing by iterator\n";
+	auto it1 = m.end();
+	it1--;
+	std::cout<<it1->first<<"|"<<it1->second<<"\n";
+
+
+	auto it2 = m.begin();
+	std::cout<<it2->first<<"|"<<it2->second<<"\n";
+	
+	std::cout<<"Deleting by key m.erase(2)\n";
+	m.erase(2);
+	printMap(m);
+	std::cout<<"\n";
+
+	std::cout<<"Deleting by iterator m.erase(m.begin())\n";
+	m.erase(m.begin());
+	printMap(m);
+	std::cout<<"\n";
+	
+	std::cout<<"m.at(1) handle out of range exception\n";
+	try
+	{
+		std::cout<<"m.at(1) = "<<m.at(1)<<"\n";
+	}	
+	catch ( const std::exception &e)
+	{
+		std::cerr<<"exception occur = "	<<e.what()<<"\n";
+	}
+
 	return 0;
 }
+
+
 
 
 

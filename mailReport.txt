@@ -5309,3 +5309,104 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+20/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Received two new AppBlocker test conditions from Vaibhav on testing laptop 192.168.1.231.
+
+    Analyzed both scenarios.
+
+    Designed required logic changes.
+
+    Started implementation and testing of corresponding C++ code modifications.
+
+2] Worked on the first test condition.
+
+    Existing scenario:
+
+        Firefox installed through DPKG.
+
+        Later Firefox installed through Snap.
+
+        Existing AppBlocker cache contains old Firefox application information.
+
+    Analyzed cache update requirements when application information changes.
+
+    Implemented logic to update existing cache entries when Firefox application details change.
+
+    Verified AppName synchronization between:
+
+        Installed application
+
+        AppBlockList map
+
+        appblocker.list cache file
+
+    Ensured stale Firefox cache entries are properly updated instead of creating duplicate entries.
+
+3] Worked on the second test condition.
+
+    Analyzed behavior when policy contains PackageName instead of AppName.
+
+    Verified whether AppBlocker service can correctly identify and block applications using package information.
+
+    Implemented and tested required logic to support PackageName-based matching.
+
+    Validated compatibility with existing AppName-based implementation.
+
+4] Performed extensive testing of all possible scenarios.
+
+Tested conditions including:
+
+    DPKG Firefox installation
+
+    Snap Firefox installation
+
+    DPKG to Snap migration
+
+    Snap to DPKG migration
+
+    PackageName-based policies
+
+    AppName-based policies
+
+    Cache update conditions
+
+    Cache rebuild conditions
+
+    Policy reload conditions
+
+    Service restart conditions
+
+    Application installation and uninstallation scenarios
+
+5] Replicated the same conditions on my testing machine 192.168.2.220.
+
+    Reproduced reported scenarios.
+
+    Verified behavior consistency.
+
+    Applied code changes and validated fixes.
+
+    Continued debugging and issue resolution.
+
+6] Demonstrated slow-performing conditions and cache update behavior to Vaibhav on 192.168.1.231.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+

@@ -18,8 +18,7 @@ class Solution
 			{
 				char c= s[right];
 				//if character already seen and it's last index is >= left, move left
-
-				if(lastIndex.find(c) != lastIndex.end() && lastIndex[c]>=left)
+				if(lastIndex.count(c) && lastIndex[c]>= left)
 				{
 					left = lastIndex[c] + 1;
 				}
@@ -37,7 +36,7 @@ class Solution
 int main()
 {
 	Solution sol;
-
+/*
 	string s1= "abcabcbb";
 	cout<<"Input: "<<s1<<" -> Output: "<<sol.lengthOfLongestSubstring(s1)<<endl;
 
@@ -49,6 +48,10 @@ int main()
 
 	string s4 = "abcabcabcabcdbb";
 	cout << "Input: " << s4 << " -> Output: " << sol.lengthOfLongestSubstring(s4) << endl;
+*/
+	string s;
+	getline(cin,s);
+	cout << "Input: " <<s<<" -> Output: " << sol.lengthOfLongestSubstring(s) << endl;
 
 	return 0;
 }

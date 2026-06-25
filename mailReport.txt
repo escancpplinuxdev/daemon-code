@@ -5410,3 +5410,256 @@ Programming Dept.
 rushikeshgajmal333@gmail.com
 
 
+24/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Implemented AppBlocker logic changes as per recent design discussions.
+
+    Removed MD5-based dependency from the AppBlocker workflow.
+
+    Discarded MD5 usage from:
+
+        Cache file storage
+
+        Cache file reading logic
+
+        Cache file comparison logic
+
+        AppBlockList insertion logic
+
+        Runtime application matching logic
+
+    Updated implementation to use executable path and application information directly instead of MD5 checksum comparisons.
+
+2] Performed performance optimization of internal AppBlocker data structures.
+
+Existing implementation:
+
+ordered_map
+
+used for:
+
+AppBlockList.insert()
+
+with complexity:
+
+O(log n)
+
+Existing implementation:
+
+ordered_set
+
+used for:
+
+cachedApps.insert()
+blackListSet.find()
+
+with complexity:
+
+O(log n)
+
+Optimization performed:
+
+unordered_map
+
+for:
+
+AppBlockList.insert()
+
+providing average complexity:
+
+O(1)
+
+and
+
+unordered_set
+
+for:
+
+cachedApps.insert()
+blackListSet.find()
+
+providing average complexity:
+
+O(1)
+
+    Made necessary code changes across AppBlocker cache management and lookup operations.
+
+    Verified successful compilation and functionality after migration.
+
+3] Performed extensive testing of all implemented changes.
+
+Tested scenarios including:
+
+    Fresh cache creation
+
+    Cache reload
+
+    Application installation
+
+    Application removal
+
+    Policy updates
+
+    Service restart
+
+    Snap-installed applications
+
+    DPKG-installed applications
+
+    Blacklist additions
+
+    Blacklist removals
+
+    Cache synchronization operations
+
+    Verified correctness and performance improvements.
+
+4] Generated AppBlocker binary for Vaibhav's testing.
+
+Deployment location:
+
+192.168.1.234:/tmpdata/appblocker
+
+    Shared binary for independent validation and testing.
+
+5] Generated and verified MD5 checksums = md5sum appblocker md5sum
+
+5fd324c377c5f0ab45f130d9c7fd9940  appblocker
+15292c0dd1be86551d6fcfc4f36f7a78  md5sum
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+25/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Started working on WinClient enhancement to support Snap-installed applications along with existing APT/DPKG applications.
+
+
+2] Reviewed getPackageStatus() and findInstalledSoftwares() functions.
+
+    Analyzed how APT/DPKG application information is collected.
+
+    Added logic planning for Snap application discovery.
+
+    Worked on combining application data from both locations:
+
+    /usr/share/applications/
+    /var/lib/snapd/desktop/applications/
+
+    Ensured both application sources can be written into:
+
+    /opt/MicroWorld/etc/softwares.list
+
+    in sorted order.
+
+3] Worked on GetPkgNameIfAppName() function.
+
+    Added handling for:
+
+        APT/DPKG applications
+
+        Snap applications
+
+    Ensured application information from both sources does not get mixed.
+
+    Verified retrieval of:
+
+        Application Name
+
+        Package Name
+
+        Version
+
+    Worked on preventing blank entries and error messages from being stored in buffers and subsequently written to softwares.list.
+
+4] Studied inotify-based monitoring mechanism.
+
+    Analyzed monitoring requirements for:
+
+    /usr/share/applications/
+    /var/lib/snapd/desktop/applications/
+
+    Reviewed event handling for:
+
+    IN_CREATE
+    IN_DELETE
+    IN_MOVED_TO
+    IN_MOVED_FROM
+
+    Studied how WinClient can detect software installation, removal, and desktop file changes from both application directories.
+
+5] Performed detailed analysis of software inventory linked-list handling.
+
+    Reviewed structure design:
+
+    struct software
+    {
+        AppName;
+        Version;
+        Date;
+        next;
+    };
+
+    Analyzed insertion, update, deletion, sorting, and synchronization requirements for Snap and APT application entries.
+
+6] Performed testing for various software lifecycle scenarios.
+
+Tested:
+
+    Application installation
+
+    Application uninstallation
+
+    WinClient restart
+
+    WinClient stop/start
+
+    Software list regeneration
+
+    Snap application detection
+
+    APT application detection
+
+Verified outputs in:
+
+/opt/MicroWorld/etc/softwares.list
+
+and monitored logs:
+
+/var/MicroWorld/var/log/eventHistory.log
+/var/MicroWorld/var/log/.winclientcache.log
+
+7] Started studying execution flow and architecture of:
+
+escanra -> escan rmm -> dispxra
+	
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

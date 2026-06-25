@@ -1,0 +1,8 @@
+g++ -std=c++11 -o encrypt encrypt.cpp -lcrypto
+g++ -std=c++11 -o decrypt decrypt.cpp -lcrypto
+
+# Encrypt a file
+./encrypt secret.txt encrypted.dat mypassword
+
+# Decrypt it
+./decrypt encrypted.dat restored.txt mypassword

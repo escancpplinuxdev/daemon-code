@@ -1,0 +1,105 @@
+
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -g
+LDFLAGS = -lcrypto
+
+TARGETS = encrypt decrypt
+
+Variable			Purpose
+CXX				Specifies the C++ compiler (g++).
+
+CXXFLAGS			Compiler flags:
+				• -std=c++11 – use C++11 standard
+				• -Wall – enable all common warnings
+				• -g – include debug symbols (for debugging with gdb).
+LDFLAGS				Linker flags: -lcrypto – link against OpenSSL’s crypto library (needed for encryption functions).
+
+TARGETS				A list of the programs we want to build. Used in multiple rules.
+
+
+all: $(TARGETS)
+
+all 				is the default target (the first target in the file). When you run 'make' without arguments, 
+				it builds all. -> 'make all'
+
+				Its dependencies are $(TARGETS), i.e., both encrypt and decrypt.
+				So make and make all are same.
+
+encrypt: encrypt.cpp
+        $(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+
+Target: encrypt (the executable we want).
+
+Prerequisite: encrypt.cpp – the source file.
+
+Recipe: The command to build it.
+
+    $@ – the target name (here encrypt). - 		$@ expands to encrypt
+
+    $< – the first prerequisite (here encrypt.cpp).-	$< expands to encrypt.cpp
+
+    The expanded command becomes:
+    $(CXX) 	$(CXXFLAGS) 	    	-o 	$@ 		$< 		$(LDFLAGS)
+    g++ 	-std=c++11 -Wall -g 	-o 	encrypt 	encrypt.cpp 	-lcrypto
+
+This rule explicitly tells make how to produce encrypt from encrypt.cpp.
+
+
+decrypt: decrypt.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+
+
+   $(CXX) 	$(CXXFLAGS) 		-o 	$@ 		$< 		$(LDFLAGS)
+   g++		-std=c++11 -Wall -g	-o  	decrypt		decrypt.cpp	-lcrypto
+
+
+clean:
+	rm -f $(TARGETS)
+
+    Its recipe removes the files encrypt and decrypt (by expanding $(TARGETS)).
+
+    Run with make clean to delete the executables.
+
+
+rebuild: clean all
+
+rebuild depends on clean and all.
+
+When you run 'make rebuild' , make first executes 'clean' (removes binaries), then executes 'all' (builds them again).
+
+
+.PHONY: all clean rebuild
+
+	.PHONY tells make that these targets are not real files – they are just actions.
+
+	Without this, if a file named all, clean, or rebuild existed in the directory, make would think those targets are already 	up‑to‑date and would skip their recipes.
+
+	By declaring them as phony, we ensure the recipes are always executed.
+	
+	i.e. if not write .PHONY: all clean rebuild and if touch all clean are present 
+		ls -lrtha  all  clean rebuild 
+-rw-r--r-- 1 root root 0 Jun 24 13:08 rebuild
+-rw-r--r-- 1 root root 0 Jun 24 13:11 clean
+-rw-r--r-- 1 root root 0 Jun 24 13:11 all
+
+		then 
+		make clean && make
+		make: 'clean' is up to date.
+		make: Nothing to be done for 'all'.
+	     else write .PHONY: all clean rebuild
+		make clean && make
+		rm -f encrypt decrypt
+		g++ -std=c++11 -Wall -g -o encrypt encrypt.cpp -lcrypto
+		g++ -std=c++11 -Wall -g -o decrypt decrypt.cpp -lcrypto
+
+
+
+Element				Purpose
+
+CXX, CXXFLAGS, LDFLAGS		Define compiler, flags, and libraries.
+TARGETS				List of executables to build.
+all				Default target – builds both.
+encrypt, decrypt		Individual build rules.
+clean				Removes built files.
+rebuild				Cleans then builds.
+.PHONY				Prevents name conflicts with files.

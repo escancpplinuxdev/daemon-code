@@ -1,7 +1,7 @@
 // in map complexity is O(log n)
 #include <iostream>
 #include <map>
-	
+
 void printMap(const std::map<int, std::string> &m)
 {
 	for(const auto & entry: m)
@@ -26,12 +26,12 @@ int main()
 	m.insert({5,"to"}); // time complexity = O(log n)
 	printMap(m);
 	std::cout<<"\n";
-	
+
 
 	m.insert({6,"not"});
 	printMap(m);
 	std::cout<<"\n";
-	
+
 	// Accessing elements
 	std::cout<<"Accessing elements -> time complexity = O(log n)\n"; 
 	std::cout<<m[2]<<"\n";
@@ -43,13 +43,13 @@ int main()
 	m[4]="Rushi";
 	printMap(m);
 	std::cout<<"\n";
-	
+
 
 	m.at(5)="you";
 	printMap(m);
 	std::cout<<"\n";
-	
-	
+
+
 	std::cout<<"Finding elements by key\n";
 	auto it = m.find(6);
 	if (it == m.end())
@@ -62,7 +62,7 @@ int main()
 		std::cout<<it->first<<"|"<<it->second<<"\n";
 	}
 
-	
+
 	std::cout<<"Traversing by iterator\n";
 	auto it1 = m.end();
 	it1--;
@@ -71,7 +71,7 @@ int main()
 
 	auto it2 = m.begin();
 	std::cout<<it2->first<<"|"<<it2->second<<"\n";
-	
+
 	std::cout<<"Deleting by key m.erase(2)\n";
 	m.erase(2);
 	printMap(m);
@@ -81,7 +81,7 @@ int main()
 	m.erase(m.begin());
 	printMap(m);
 	std::cout<<"\n";
-	
+
 	std::cout<<"m.at(1) handle out of range exception\n";
 	try
 	{
@@ -91,7 +91,12 @@ int main()
 	{
 		std::cerr<<"exception occur = "	<<e.what()<<"\n";
 	}
+	std::cout<<"\n";
+	std::cout<<"m[1] by index square bracket operator\n";
+	std::cout<<"m[1] = "<<m[1]<<"\n";
 
+	std::cout<<"\n";
+	std::cout<<"m.count = '"<<m.count(6)<<"'\n";
 	return 0;
 }
 

@@ -1,0 +1,21 @@
+
+CXX = g++
+CXXFLAGS = -std=c++11 -Wall -g
+LDFLAGS = -lcrypto
+
+TARGETS = encrypt decrypt
+
+all: $(TARGETS)
+
+encrypt: encrypt.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+
+decrypt: decrypt.cpp
+	$(CXX) $(CXXFLAGS) -o $@ $< $(LDFLAGS)
+
+clean:
+	rm -f $(TARGETS)
+
+rebuild: clean all
+
+.PHONY: all clean rebuild

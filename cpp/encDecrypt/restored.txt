@@ -1,0 +1,9 @@
+Why it’s needed
+Without .PHONY
+
+If you have a file named all or clean in your directory, make will think those targets are already up‑to‑date and skip their recipes. For example:
+
+    If a file called clean exists, running make clean would do nothing (because make sees that clean is already there and assumes nothing needs to be done).
+
+    If a file called all exists, make all would also do nothing
+

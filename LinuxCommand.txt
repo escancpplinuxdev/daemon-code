@@ -401,6 +401,18 @@ You can also pipe the output to another grep command that explicitly excludes th
 
 		--append-verify: This is the safer option. It performs a checksum on the existing part of the file before appending. If the existing part is corrupted, it restarts the whole transfer.
 
+	
+		rsync -avzP -e "ssh -p 8623" encDecrypt 192.168.2.58:/tmp
+
+		-e "ssh -p 8623"	Tells rsync to use SSH on port 8623 (instead of default 22).
+
+		 vim ~/.ssh/config
+		Host 192.168.2.58
+		Port 8623  			-> :wq   -> then no need of tell Port
+
+		scp -r /tmpdata/cpp/encDecrypt/all   192.168.2.58:/tmp
+		rsync -avzP  encDecrypt 192.168.2.58:/tmp
+	
 40]	
 	find "[L1]" in all *.cpp , *.c file
 

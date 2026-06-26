@@ -257,8 +257,8 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 
 	rm -rf /opt/MicroWorld/ /var/MicroWorld/ /etc/escandet.dat /etc/microworld.keys /etc/.p*.e*
 
-	/opt/MicroWorld/usr/bin/updatenow_avs --force
 	rm /opt/MicroWorld/var/backavsupd/dirlist.txt /opt/MicroWorld/var/avsupd/dirlist.txt /var/MicroWorld/var/updinfo/*
+	/opt/MicroWorld/usr/bin/updatenow_avs --force
 
 
 19] 	grep -lE "Exec=.*(eog|evince)" /usr/share/applications/*.desktop
@@ -704,4 +704,16 @@ C++26		--std=c++26 (or c++2c)		--std=gnu++26 (or gnu++2c)			Experimental / Rolli
 
 rm registeInt && g++ --std=c++26 -pedantic-errors registeInt.cpp -o registeInt && ./registeInt
 
-62]	
+62]	in c++ set window -> #include<iomanip -> cout<<setw(position in number)<<output<<"\n";
+
+	cout<<"character= s[right] : "<< setw(10)<<character<<"\n";
+
+63]	
+	tempary disable history 
+	
+	set +o history
+	secret_command
+	set -o history
+
+64]
+		

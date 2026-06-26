@@ -5663,3 +5663,68 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+26/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Attempted to run eScan RMM on the existing eScan-DLP build available on testing machine 192.168.2.220.
+
+    Tested RMM functionality independently.
+
+    Verified setup along with Vaibhav.
+
+    Observed that the RMM module was not functioning correctly on the existing DLP build.
+
+    Uninstalled the existing eScan-DLP package to proceed with further testing.
+
+2] Installed the eScan Ultra build for RMM validation.
+
+    Successfully deployed the RMM policy from the management console.
+
+    Applied the required license.
+
+    Verified the RMM configuration file:
+
+/opt/MicroWorld/etc/escanra.conf
+
+Configuration verified:
+
+[eScanRA]
+LogLevel = "2"
+Status = "1"
+
+    Confirmed that policy and configuration values were updated correctly.
+
+3] Monitored RMM display service logs.
+
+    Continuously observed:
+
+tail -f /var/MicroWorld/var/log/eDisp.log
+
+    Verified startup of the eScan Display service.
+
+    Monitored runtime log generation and initialization sequence for further analysis.
+
+4] Started studying the dispxra C++ source code.
+
+    Reviewed the overall code structure and execution flow.
+
+    Added debugging statements at key execution points.
+
+    Traced the runtime flow from initialization through display service execution.
+	
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

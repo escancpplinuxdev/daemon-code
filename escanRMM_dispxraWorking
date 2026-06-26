@@ -1,0 +1,215 @@
+
+1] isRootUser() 
+	-> need to run as root user 
+
+2] ChekKernelVersion() 
+	-> To run this daemon Kernel Version should be greater than 3.10.0
+
+3] daemonize() 
+
+4] isBinaryRunning(PIDFILE, "dispxra")
+
+5] savepid(PIDFILE)
+
+6] readConf -> /opt/MicroWorld/etc/commonsettings.conf "Cloud:IsCloud" -> "1" 
+	-> Cloud is enable so unable to start the disxra
+
+7] readConf -> /opt/MicroWorld/etc/escanra.conf -> "eScanRA:LogLevel"  -> "logLevel"
+
+8] int ret = checkSuspension();
+
+9] int keystatus =validateProdActivation(); 
+
+10]  int CheckStausOrNot=0;
+
+11]  if(keystatus==0) 
+	-> start the eScan display. 
+	   CheckStausOrNot=1; 
+           isLicenseValid=1;
+
+     else if (keystatus==2)
+	-> int retEva=EvaluateLicenseKey();
+
+		if(retEva==1)
+			-> Apply Licence key for  Remote Monitoring management. 
+			-> return 1;
+		else
+			-> start the eScan display. -> isLicenseValid=1;
+
+     else
+	-> License  Key Invalid. 
+	-> return 0;
+
+
+12] if(!CheckStausOrNot) 
+/** If status in configuration file is 0, then process will be stopped. */
+	readConf -> /opt/MicroWorld/etc/escanra.conf "eScanRA:Status" Status
+	
+	 if(atoi(Status) == 0) 
+		-> eScan RMM is disabled 
+		-> removePidFile(PIDFILE); 
+		-> return 0;
+
+13] while(!TermSignal && isLicenseValid ) 
+{	
+		int retGetDisp=getActiveUserDispNum(char* DispNum);
+			-> int ret=getDispNumByFile(DispNum);
+				if(ret==1)
+					-> int retCmd=getDispNumByCmd(DispNum);
+				           if(retCmd)
+				          	-> 
+					  else
+						->
+				else
+			
+
+		  if(retGetDisp==1)
+          		-> unable to get the display number 
+			-> continue;
+
+		  else if(retGetDisp==2)
+			-> User is GDm Or Lighdm ,
+		 			int ret=system("export DISPLAY=:1"); 
+							if(WEXITSTATUS(ret)!=0)
+							->	command not executed properly	
+							printf("export DISPLAY=:1 command not executed properly")
+							else
+							-> 	command is executed
+							printf("export DISPLAY=:1 command executed")
+
+		  else
+			-> else of retGetDisp
+
+14] if(DispNum==NULL || DispNum[0] != ':')
+	int ret=system("export DISPLAY=:1");
+		   if(WEXITSTATUS(ret)!=0)
+               {    
+                    printf("export DISPLAY=:1 command not exuted properly");
+               }
+               printf("export DISPLAY=:1 command is executed");
+
+               strcpy(DispNum,":0");	// rushi -> not understand logic -> above DISPLAY=:1 why strcpy(DISPLAY,:0) ?? 
+
+15] int retProcess=CheckeScanRaProcess(pidNum);
+
+	 if(retProcess==1)
+          {
+		// ftok to generate unique key
+               key_t key = ftok("/opt/MicroWorld",65);
+		if(key==-1) 
+			    -> unable to genrate the key
+			    -> break; 
+
+		// shmget returns an identifier in shmid
+		int shmid = shmget(key,1024,0666|IPC_CREAT);
+		if(shmid==-1)
+			     -> unable to create the shared memory segment 
+			     -> break;
+
+		// shmat to attach to shared memory
+                char *str = (char*) shmat(shmid,(void*)0,0);
+		
+		if(str ==(void *)-1)
+		-> unable to attached shared memory segment
+		-> break;
+
+		char *encodedString=NULL;
+               	const char *data = "eScanRA123Start";
+
+		encodedString = encodeString((const unsigned char *)data, strlen(data));
+                if(encodedString==NULL)
+               		-> failed to encode the string
+			-> break;
+		
+		strcpy(str,encodedString);
+
+		int retSh=shmdt(str);
+                if(retSh==-1)
+			-> "unbale to detaches the shared memory segment"
+			-> break;
+	
+		sprintf(cmd,"export DISPLAY=%s && /opt/MicroWorld/ra/sbin/eScanRA &",DispNum);
+
+		int ret_sys=system(cmd);
+                if(WEXITSTATUS(ret_sys)!=0)
+			-> Failed to start the eScanRA
+			-> return 1;
+
+		 KillFlag=1;
+	}
+	else if(retProcess==0)
+	{
+
+	int retDispRunning=getRunningProcessDispNum(pidNum,RunningDispNum);
+	 if(retDispRunning)
+		-> "unable to get the running display number of eScanRA"
+		-> continue;
+	 else
+		-> if(strcmp(RunningDispNum,DispNum)==0)
+		 	-> continue;
+		   else
+			-> Kill the eScanRA for Display Number : RunningDispNum 
+			   int retSys=system("killall -9 eScanRA");
+	                   if(WEXITSTATUS(retSys)!=0)
+				-> Fail to kill eScanRa
+				-> return 1;
+			
+	            	// ftok to generate unique key
+                           key_t key = ftok("/opt/MicroWorld",65);
+                           if(key==-1)
+				-> unable to genrate the key
+				-> break;
+
+			// shmget returns an identifier in shmid
+                	   int shmid = shmget(key,1024,0666|IPC_CREAT);
+        	           if(shmid==-1)
+				-> unable to create the shared memory segment
+				-> break;
+	
+			// shmat to attach to shared memory
+                           char *str = (char*) shmat(shmid,(void*)0,0);
+
+		           if(str ==(void *)-1)
+				 -> unable to attached shared memory segment
+				 -> break;
+
+	                 char *encodedString=NULL;
+                         const char *data = "eScanRA123Start";
+                         encodedString = encodeString((const unsigned char *)data, strlen(data));
+                         if(encodedString==NULL)
+				-> failed to encode the string
+				-> break;
+	
+			//Data written in memory str :
+			strcpy(str,encodedString);
+		
+			 //detach from shared memory
+                         int retSh=shmdt(str);
+                         if(retSh==-1)
+				-> unbale to detaches the shared memory segment
+				-> break;
+
+			 sprintf(cmd,"export DISPLAY=%s && /opt/MicroWorld/ra/sbin/eScanRA &",DispNum);
+                         int ret_sys=system(cmd);
+                         if(WEXITSTATUS(ret_sys)!=0)
+				-> Failed to start eScanRA
+				-> return;
+			
+			KillFlag = 1;
+	  		Start the eScanRA with Display Number:- DispNum
+
+	else
+		Unble to Check the escanra process
+		break;
+
+
+} above while loop ->    while(!TermSignal && isLicenseValid ) end here.
+16] if(KillFlag)
+	-> int retSys=system("killall -9 eScanRA ");
+          if(WEXITSTATUS(retSys)!=0)
+		-> Fail to kill eScanRa
+
+
+removePidFile(PIDFILE);
+eScan Display stop 
+return 0;

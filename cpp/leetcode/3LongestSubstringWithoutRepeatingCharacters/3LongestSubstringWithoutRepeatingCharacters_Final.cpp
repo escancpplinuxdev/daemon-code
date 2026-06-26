@@ -2,6 +2,8 @@
 #include <string>
 #include <unordered_map>
 #include <iostream>
+#include <iomanip>
+
 using namespace std;
 
 class Solution
@@ -13,20 +15,39 @@ class Solution
 
 			int left = 0;
 			int maxLen = 0;
+			int curLen = 0;
 
 			for(int right=0; right<s.length();++right)
 			{
-				char c= s[right];
+				cout<<setw(2)<<"right = "<<right<<"\tleft = "<<left<<"\n";
+				char character= s[right];
+				cout<<"character= s["<<right<<"] : " <<character<<"\n";
 				//if character already seen and it's last index is >= left, move left
-				if(lastIndex.count(c) && lastIndex[c]>= left)
+				cout<<"lastIndex.count("<<character<<") : " <<lastIndex.count(character)<<"\n";
+				cout<<"lastIndex["<<character<<"]>= left : "<<lastIndex[character]<<" >= "<<left;
+				if(lastIndex.count(character) && lastIndex[character]>= left)
 				{
-					left = lastIndex[c] + 1;
+					left = lastIndex[character] + 1;
+					cout<<"\t-> true \nleft = lastIndex["<<character<<"] + 1 : " <<left<<"\n";
+				}
+				else
+				{
+					cout<<"\t-> false";
 				}
 
-				lastIndex[c]=right;
-				maxLen=max(maxLen,right-left+1);
-
-
+				lastIndex[character]=right;
+				cout<<"\nlastIndex["<<character<<"]=right : " <<lastIndex[character]<<"\n";
+				curLen = right - left + 1;
+				cout<<"curLen = right - left + 1 = "<<right<<" - "<<left<<" + 1 : " <<curLen<<"\n";
+				cout<<"maxLen : " <<maxLen<<"\n";
+				cout<<"maxLen=max("<<maxLen<<","<<curLen<<") = ";
+				maxLen=max(maxLen,curLen);
+				cout<<"maxLen : " <<maxLen<<"\n";
+				for(auto &it : lastIndex)				
+				{
+					cout<<it.first<<"|"<<it.second<<" ";
+				}
+				cout<<"\n\n\n";
 			}
 			return maxLen;
 
@@ -51,7 +72,7 @@ int main()
 */
 	string s;
 	getline(cin,s);
-	cout << "Input: " <<s<<" -> Output: " << sol.lengthOfLongestSubstring(s) << endl;
+	cout << "Input: " <<s<<" -> Output: \n" << sol.lengthOfLongestSubstring(s) << endl;
 
 	return 0;
 }

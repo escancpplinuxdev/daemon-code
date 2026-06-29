@@ -5728,3 +5728,140 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+26/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+		1] in dispxra read c++ code , add debug then check each and every line function of code by dry run non -daemonize dispxra and check it with eDisp.log on loglevl = 4 
+		2] understanbd concept of share memory , how to write / read on share memory by dispxra -> escan1234RA on it. which read by escanRA
+		3] and for get display number by file /run/systemd/sessions/number it reqruied session as Type="x11" not gdm,lightdm,wayland 
+		4] work on appblocker case in sensative AppName -> match AppName with Packages name by tolower then trip space logic 
+		5] test this daemonize binary and give to vaibhav for testing .
+		6] start working on winclient where both apt/ snap app watch inotify should be given where write code for watch on both dir which give install and uninstall time filepath of both apt / snap app .
+		7] going to to write further logic where change in struct node and write in software.list file and log event will be ggive to us. understand concept of inotify watch on 2 dir, strcut node ** write , read soreted node then , read from file softwares.list of strcut ** node then write from struct ** node to file softwares.list 
+
+
+
+1] Continued detailed analysis of dispxra C++ source code.
+
+    Performed line-by-line code review.
+
+    Added debugging statements at important execution points.
+
+    Executed dispxra in non-daemonized mode for dry-run analysis.
+
+    Verified every function call and execution flow.
+
+    Correlated runtime behavior with logs generated in:
+
+    /var/MicroWorld/var/log/eDisp.log
+
+    Increased logging level to LogLevel = 4 for detailed execution tracing and validation.
+
+2] Studied the Shared Memory implementation used by dispxra to escanRA.
+
+    Understood the concept of shared memory creation, attachment, read, and write operations.
+
+    Analyzed communication through the shared memory segment:
+
+    escan1234RA
+
+    Verified how dispxra writes display information into shared memory and how eScanRA reads it for further processing.
+
+3] Investigated display number detection mechanism.
+
+    Studied how display session information is obtained from:
+
+    /run/systemd/sessions/<session_number>
+
+    Verified that display detection requires:
+
+    Type="x11"
+
+    and does not work correctly for:
+
+        gdm
+
+        lightdm
+
+        Wayland
+
+    Continued analysis of session handling logic for display identification.
+
+4] Worked on AppBlocker enhancement for case-insensitive application matching.
+
+    Modified application comparison logic to:
+
+        Convert AppName and configured PackageName to lowercase.
+
+        Trim leading and trailing whitespace before comparison.
+
+    Improved matching accuracy for application names having different letter cases or extra spaces.
+
+    Added required C++ code and started validation.
+
+5] Tested the updated AppBlocker daemonized binary.
+
+    Verified functionality after code changes.
+
+    Generated the updated binary and provided it to Vaibhav for testing .
+
+6] Started development work on WinClient to support monitoring of both APT and Snap application installations.
+
+    Added inotify watch logic for both application directories:
+
+    /usr/share/applications/
+    /var/lib/snapd/desktop/applications/
+
+    Worked on detecting:
+
+        Application installation
+
+        Application uninstallation
+
+        Desktop file creation
+
+        Desktop file deletion
+
+    Verified retrieval of application file paths for both APT and Snap packages.
+
+7] Started designing the next phase of WinClient software inventory handling.
+
+    Planned modifications to the software linked-list structure.
+
+    Studied handling of:
+
+    struct software
+    {
+        AppName;
+        Version;
+        Date;
+        next;
+    };
+
+    Analyzed implementation for:
+
+        Reading data from softwares.list into struct software **
+
+        Maintaining sorted linked-list nodes
+
+        Updating linked-list entries based on inotify events
+
+        Writing updated linked-list back to:
+
+        /opt/MicroWorld/etc/softwares.list
+
+    Studied generation of corresponding WinClient log events after software installation or removal.
+		
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

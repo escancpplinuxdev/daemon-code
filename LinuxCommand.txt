@@ -9,6 +9,8 @@
 	root@192.168.2.58's password: 
 
 2]	grep -irn "File Attached => path =" source/ --include="*.cpp" --include="*.h" --exclude="*.cpp_*" --exclude="*.txt" --color	
+	grep -irnw "printf" source --include=*.{c,cpp} | grep  '\\n' --color
+	grep -irn "\bprintf\b" source --include=*.{c,cpp,h}
 
 	grep → search text
 
@@ -17,12 +19,16 @@
 	-r → recursive search in directories
 
 	-n → show line number
+	
+	-w → Match whole word only
+	
+	\bprintf\b → Use the regex word boundary \b
 
 	"File Attached => path =" → text pattern to search
 
 	source/ → directory to search in
 
-	--include="*.cpp" → search only .cpp files
+	--include="*.cpp" → search only .cpp files -> --include=*.{c,cpp,h}
 
 	--include="*.h" → search only .h files
 

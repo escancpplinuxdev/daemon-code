@@ -1,0 +1,4 @@
+
+1] libupdate.so.1.0.0 	-> removePath(str) 	-> 
+2] appblocker		-> snap & apt app	->
+3] winlcient		-> snap & apt app	->

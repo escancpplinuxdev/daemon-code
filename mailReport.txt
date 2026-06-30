@@ -5739,15 +5739,6 @@ Cc:     raja@escanav.com
 Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
 
 Dear sir,
-		1] in dispxra read c++ code , add debug then check each and every line function of code by dry run non -daemonize dispxra and check it with eDisp.log on loglevl = 4 
-		2] understanbd concept of share memory , how to write / read on share memory by dispxra -> escan1234RA on it. which read by escanRA
-		3] and for get display number by file /run/systemd/sessions/number it reqruied session as Type="x11" not gdm,lightdm,wayland 
-		4] work on appblocker case in sensative AppName -> match AppName with Packages name by tolower then trip space logic 
-		5] test this daemonize binary and give to vaibhav for testing .
-		6] start working on winclient where both apt/ snap app watch inotify should be given where write code for watch on both dir which give install and uninstall time filepath of both apt / snap app .
-		7] going to to write further logic where change in struct node and write in software.list file and log event will be ggive to us. understand concept of inotify watch on 2 dir, strcut node ** write , read soreted node then , read from file softwares.list of strcut ** node then write from struct ** node to file softwares.list 
-
-
 
 1] Continued detailed analysis of dispxra C++ source code.
 
@@ -5843,6 +5834,7 @@ Dear sir,
         AppName;
         Version;
         Date;
+	filename;
         next;
     };
 
@@ -5860,6 +5852,109 @@ Dear sir,
 
     Studied generation of corresponding WinClient log events after software installation or removal.
 		
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+30/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Completed development and testing of WinClient enhancements for both Snap and APT/DPKG applications.
+
+    Implemented complete support for softwares.list generation from both package managers.
+
+    Studied and implemented linked-list based software management using:
+
+struct sw_node
+{
+    char name[256];
+    char version[128];
+    char filename[256];
+    char status;
+    char date[30];
+    sw_node *next = NULL;
+};
+
+    Implemented structure handling, node insertion, deletion, updating, and sorted traversal.
+
+    Worked with std::vector<std::pair<...>> for temporary software information management before updating the linked list.
+
+    Implemented software list file writing and synchronization.
+
+    Added handling for:
+
+        APT/DPKG application installation
+
+        APT/DPKG application uninstallation
+
+        Snap application installation
+
+        Snap application uninstallation
+
+    Implemented inotify monitoring on both application directories:
+
+    /usr/share/applications/
+    /var/lib/snapd/desktop/applications/
+
+    Retrieved application file paths directly from inotify events and updated the software inventory accordingly.
+
+    Performed complete testing for install, uninstall, restart, and runtime update scenarios.
+
+2] Investigated and resolved a segmentation fault in updatenow.
+
+    Observed crash during cache cleanup when processing:
+
+    /var/MicroWorld/var/tmp/bdplugins
+
+    Identified that removeDir() was attempting to process objects without distinguishing between:
+
+        Regular files
+
+        Directories
+
+        Symbolic links
+
+    Modified the C++ implementation to correctly handle each filesystem object type.
+
+    Completed cache path establishment logic.
+
+    Verified successful execution through testing without segmentation faults.
+	
+    make this changes in both debian and rpm c++ code.
+
+3] Enhanced AppBlocker compatibility for older platform versions.
+
+    Implemented case-insensitive application matching using:
+
+    toLower(trim(AppName)) == toLower(trim(output))
+
+    Developed a compatible implementation for lower compiler/library versions where required functionality was unavailable.
+
+    Verified application matching behavior for different combinations of uppercase/lowercase names and leading/trailing spaces.
+
+4] Completed implementation and testing of all above enhancements.
+
+    WinClient Snap/APT support
+
+    UpdateNow segmentation fault fix
+
+    AppBlocker compatibility improvements
+
+    Verified successful compilation and runtime behavior.
+
+    Ready to give testing updated binaries to Vaibhav.
+
 Thanks Regards,
 Rushikesh Sunil Gajmal
 Programming Dept.

@@ -5960,3 +5960,81 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+30/06/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Started working on RPM development environment to make the following modules compatible with C++98.
+
+AppBlocker
+WinClient
+libupdate
+Identified C++11/C++17 dependent code and started converting it to C++98-compatible implementation.
+Verified successful compilation of the modified source code in the RPM build environment.
+
+2] Verified deployment of newly generated binaries in their respective installation paths.
+
+Checked SELinux context using:
+
+ls -Z appblocker
+
+Verified that the following command is executed after binary installation:
+
+restorecon -R appblocker
+Confirmed that the required SELinux context restoration is handled through the RPM .spec file after installation.
+
+3] Started validation of AppBlocker in the RPM environment.
+
+Verified binary execution and runtime behavior.
+Continued development and testing of WinClient for RPM compatibility.
+
+4] Investigated PassPrompt issue reported by Divesh Sir.
+
+Studied the complete C++ source code and execution flow.
+Analyzed command-line argument handling.
+
+Verified validation logic for:
+
+argv[1]
+argv[2]
+Confirmed required input constraints:
+Minimum length: 2 characters
+Maximum  length: 255 characters or : 128 characters
+Implemented the required C++ changes.
+Generated a new PassPrompt binary.
+Demonstrated the updated implementation and testing results to Divesh Sir.
+
+5] Started testing DLP policy deployment from 192.168.1.229 server.
+
+Created and deployed rushi_usbBlocking_policy.
+Attempted to apply the policy on testing machine 192.168.2.220.
+
+Executed:
+
+/opt/MicroWorld/usr/bin/updatenow_avs --force
+
+Observed the following issues:
+
+This product is running on trial, please activate your license key.
+Downloading: https://192.168.1.229:2443/dirlist.txt
+HTTP Error: 408
+Download failed after 3 attempts
+Failed to read UpdateFiles Enable
+updatenow_avs finish !!
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

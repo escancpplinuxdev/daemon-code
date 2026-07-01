@@ -8,7 +8,8 @@ using namespace std;
 class Solution
 {
 	public:
-		double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2)
+		double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) // for [] [] -> -0.5
+//		int findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) -> for [] [] -> 0
 		{
 			// Ensure nums1 is the smaller array for optimal binary search
 			if (nums1.size() > nums2.size())
@@ -93,17 +94,29 @@ int main()
 	// Example 2: [1,2] and [3,4] → median = 2.5
 	vector<int> nums1_2 = {1, 2};
 	vector<int> nums2_2 = {3, 4};
+	printVector(nums1_2);
+	printVector(nums2_2);
 	cout << "Example 2: " << sol.findMedianSortedArrays(nums1_2, nums2_2) << endl;
 
 	// Additional test: [0,0] and [0,0] → median = 0
 	vector<int> nums1_3 = {0, 0};
 	vector<int> nums2_3 = {0, 0};
+	printVector(nums1_3);
+	printVector(nums2_3);
 	cout << "Example 3: " << sol.findMedianSortedArrays(nums1_3, nums2_3) << endl;
 
 	// Additional test: [] and [1] → median = 1 (though the problem assumes non‑empty, but works)
 	vector<int> nums1_4 = {};
 	vector<int> nums2_4 = {1};
+	printVector(nums1_4);
+	printVector(nums2_4);
 	cout << "Example 4: " << sol.findMedianSortedArrays(nums1_4, nums2_4) << endl;
+
+	vector<int> nums1_5 = {};
+	vector<int> nums2_5 = {};
+	printVector(nums1_5);
+	printVector(nums2_5);
+	cout << "Example 5: " << sol.findMedianSortedArrays(nums1_5, nums2_5) << endl;
 
 	return 0;
 }

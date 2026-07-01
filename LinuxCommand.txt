@@ -116,6 +116,9 @@ Option	Meaning	Symbolic Links Behavior	Example Situation
 i.e     u 10 	  to  u 18   -> scp
 	
 	For ssh root@192.168.1.251 -> a
+
+	ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss root@192.168.1.251
+
 	go to ssh -p 8623 root@192.168.2.138 then ssh root@192.168.1.251
 
 14] 	du -sh / du -h
@@ -721,5 +724,14 @@ rm registeInt && g++ --std=c++26 -pedantic-errors registeInt.cpp -o registeInt &
 	secret_command
 	set -o history
 
-64]
-		
+64]  passPrompt 
+
+	howToCompile_passPrompt.txt
+	1] make clean
+	2] check cat /tmp/buildflags_qmake
+             -> __WMCBUILD__                      ->  present
+	3] /usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile passPrompt.pro
+	4] make
+
+65] 
+	

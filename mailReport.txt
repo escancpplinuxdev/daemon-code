@@ -5961,7 +5961,7 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
-30/06/2026
+01/07/2026
 
 From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
 Subject:        Report of 05/03/2026
@@ -6038,3 +6038,106 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+
+02/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Continued working on the dispxra service for eScan RMM to enable display capture on X11 sessions.
+
+    Executed eScanRA by manually exporting the X11 display:
+
+    export DISPLAY=:1
+    echo $DISPLAY
+    export DISPLAY=:1 && /opt/MicroWorld/ra/sbin/eScanRA &
+
+    Verified that:
+
+    DispNum = ":1"
+
+    was correctly detected.
+
+    Confirmed that dispxra writes the encoded string:
+
+    Write Data eScanRA123Start : encodedString : ZVNjYW5SQTEyM1N0YXJ0
+
+    into the shared memory.
+
+    Applied the eScan RMM license from the 192.168.1.229 server and verified that:
+
+    /opt/MicroWorld/etc/escanra.conf
+
+    Status = "1"
+
+    was updated successfully.
+
+    Monitored detailed logs using:
+
+    tail -f /var/MicroWorld/var/log/eDisp.log
+
+    with LogLevel = "4".
+
+    Observed that the RMM console established the session but displayed a blank (black) screen on the server console despite successful shared memory updates.
+
+2] Demonstrated the issue to Vaibhav and discussed the execution flow with Divesh Sir.
+
+    Re-tested dispxra using X11 sessions.
+
+    Verified behavior when the session was disabled and re-enabled.
+
+    Investigated automatic display number detection using:
+
+    ps e -u %s | sed -rn 's/.* DISPLAY=(:[0-9]*).*/\\1/p'
+
+    Observed that the detected display was:
+
+    DISPLAY=:0
+
+    Repeated the execution using:
+
+    export DISPLAY=:0 && /opt/MicroWorld/ra/sbin/eScanRA &
+
+    Verified that shared memory continued to receive:
+
+    Write Data eScanRA123Start : encodedString : ZVNjYW5SQTEyM1N0YXJ0
+
+    Continued debugging the blank display issue in the RMM console after successful initialization.
+
+3] Started working on mwfirewalld after receiving the issue from Vaibhav.
+
+    Studied the C++ source code and execution flow.
+
+    Reviewed firewall rule generation and policy application logic.
+
+    Applied mwfirewalld policy from the Network Security section with limited rule configuration.
+
+    Triggered policy update using:
+
+    /opt/MicroWorld/usr/bin/updatenow_avs --force
+
+    Verified firewall rule generation and application using:
+
+    iptables -L -v
+
+    Checked generated firewall configuration:
+
+    cat /opt/MicroWorld/etc/firewallRules
+
+    Monitored firewall runtime logs:
+
+    tail -f /var/MicroWorld/var/log/mwfirewall.log
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

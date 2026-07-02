@@ -1,5 +1,6 @@
-1] 1] full analysis 2] logic/bugs 3] overflow/ UB 4] security/ Dos 5] code quality 6] performance 7] compiler warning 8] dest practices 9] o/p correctness 10] memory 11] optimized and safe version 12] bad practices 13] summary table
+ 1] full analysis 2] logic/bugs 3] overflow/underflow/ UB 4] security/ Dos 5] code quality 6] performance 7] compiler warning 8] best practices 9] o/p correctness 10] memory 11] optimized and safe version 12] bad practices 13] explain in detail time and space complexity calculate 14] summary table
 
+	g++ -Wall -Wextra -Wshadow -Wformat-security -Wconversion -Wsign-conversion -Wnull-dereference -pedantic -Wunused-result -Wwrite-strings   cmdCommand.cpp -o cmdCommand && ./cmdCommand
 
 0]
 	192.168.2.58 :		root passwd --> su 	--> ketan$321

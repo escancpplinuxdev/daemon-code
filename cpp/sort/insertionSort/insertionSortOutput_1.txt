@@ -1,0 +1,110 @@
+UnSorted array : 5 8 6 3 9 1 7 2 4 0 
+Size = 10
+For i = 1
+And j = 0 Comparing 5 > 8
+a[1]=8
+5 8 6 3 9 1 7 2 4 0 
+
+For i = 2
+And j = 1 Comparing 8 > 6
+And j = 1 Comparing 8 > 6
+a[2]=8
+a[1]=6
+5 6 8 3 9 1 7 2 4 0 
+
+For i = 3
+And j = 2 Comparing 8 > 3
+And j = 2 Comparing 8 > 3
+a[3]=8
+And j = 1 Comparing 6 > 3
+a[2]=6
+And j = 0 Comparing 5 > 3
+a[1]=5
+a[0]=3
+3 5 6 8 9 1 7 2 4 0 
+
+For i = 4
+And j = 3 Comparing 8 > 9
+a[4]=9
+3 5 6 8 9 1 7 2 4 0 
+
+For i = 5
+And j = 4 Comparing 9 > 1
+And j = 4 Comparing 9 > 1
+a[5]=9
+And j = 3 Comparing 8 > 1
+a[4]=8
+And j = 2 Comparing 6 > 1
+a[3]=6
+And j = 1 Comparing 5 > 1
+a[2]=5
+And j = 0 Comparing 3 > 1
+a[1]=3
+a[0]=1
+1 3 5 6 8 9 7 2 4 0 
+
+For i = 6
+And j = 5 Comparing 9 > 7
+And j = 5 Comparing 9 > 7
+a[6]=9
+And j = 4 Comparing 8 > 7
+a[5]=8
+a[4]=7
+1 3 5 6 7 8 9 2 4 0 
+
+For i = 7
+And j = 6 Comparing 9 > 2
+And j = 6 Comparing 9 > 2
+a[7]=9
+And j = 5 Comparing 8 > 2
+a[6]=8
+And j = 4 Comparing 7 > 2
+a[5]=7
+And j = 3 Comparing 6 > 2
+a[4]=6
+And j = 2 Comparing 5 > 2
+a[3]=5
+And j = 1 Comparing 3 > 2
+a[2]=3
+a[1]=2
+1 2 3 5 6 7 8 9 4 0 
+
+For i = 8
+And j = 7 Comparing 9 > 4
+And j = 7 Comparing 9 > 4
+a[8]=9
+And j = 6 Comparing 8 > 4
+a[7]=8
+And j = 5 Comparing 7 > 4
+a[6]=7
+And j = 4 Comparing 6 > 4
+a[5]=6
+And j = 3 Comparing 5 > 4
+a[4]=5
+a[3]=4
+1 2 3 4 5 6 7 8 9 0 
+
+For i = 9
+And j = 8 Comparing 9 > 0
+And j = 8 Comparing 9 > 0
+a[9]=9
+And j = 7 Comparing 8 > 0
+a[8]=8
+And j = 6 Comparing 7 > 0
+a[7]=7
+And j = 5 Comparing 6 > 0
+a[6]=6
+And j = 4 Comparing 5 > 0
+a[5]=5
+And j = 3 Comparing 4 > 0
+a[4]=4
+And j = 2 Comparing 3 > 0
+a[3]=3
+And j = 1 Comparing 2 > 0
+a[2]=2
+And j = 0 Comparing 1 > 0
+a[1]=1
+a[0]=0
+0 1 2 3 4 5 6 7 8 9 
+
+Sorted array   : 0 1 2 3 4 5 6 7 8 9 

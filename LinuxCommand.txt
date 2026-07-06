@@ -1,4 +1,4 @@
- 1] full analysis 2] logic/bugs 3] overflow/underflow/ UB 4] security/ Dos 5] code quality 6] performance 7] compiler warning 8] best practices 9] o/p correctness 10] memory 11] optimized and safe version 12] bad practices 13] explain in detail time and space complexity calculate 14] summary table
+ 1] full analysis 2] logic/bugs 3] overflow/underflow/ UB 4] security/ Dos 5] code quality 6] performance 7] compiler warning 8] best practices 9] o/p correctness 10] one by one explain in detail how mathematically calculate memory  11] bad practices 12] mathematically one by one explain in detail how calculate time and space complexity calculate 13] summary table 14] optimized and safe version
 
 	g++ -Wall -Wextra -Wshadow -Wformat-security -Wconversion -Wsign-conversion -Wnull-dereference -pedantic -Wunused-result -Wwrite-strings   cmdCommand.cpp -o cmdCommand && ./cmdCommand
 
@@ -264,6 +264,12 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 	
 	check package info -> rpm -qip escan-dlp-22.0.1400-2990.x86_64.rpm 
 	List package files -> rpm -ql escan
+
+	after mv binary 
+	ls -Z appblocker 			-> unconfined_u:object_r:bin_t:s0 appblocker
+	restorecon -R appblocker  		-> system_u:object_r:bin_t:s0 appblocker
+	-> if failed 				-> unconfined_u:object_r:bin_t:s0 appblocker
+	sudo chcon -u system_u appblocker 	-> system_u:object_r:bin_t:s0 appblocker
 
 	rm -rf /opt/MicroWorld/ /var/MicroWorld/ /etc/escandet.dat /etc/microworld.keys /etc/.p*.e*
 
@@ -735,4 +741,55 @@ rm registeInt && g++ --std=c++26 -pedantic-errors registeInt.cpp -o registeInt &
 	4] make
 
 65] 
+	sudo sed -i 's/ptvm-217/ptvm-218/g' /etc/hosts
+
+	sudo 	-> superuser (root) privileges.
+		-> /etc/hosts is owned by root , w/o sudo get permission denied error 
+	sed 	-> stream editior -> text processing tool
+		-> it reads input file and perform text transformation (like find and replace) , here edit /etc/hosts
+	-i 	-> in place editing 
+		-> tell sed to modify file directly in disk instead of just printing changes to terminal
+		i.e w/o it changes get print on terminal
+		-> if use -i.bak it create .bak file also
+
+	i.e sudo sed 's/ptvm-217/ptvm-218/g' /etc/hosts -> output print on terminal
+	    sudo sed -i.bak 's/ptvm-217/ptvm-218/g' /etc/hosts -> create /etc/hosts & /etc/hosts.bak 
 	
+	s 	-> substitute 	-> command for find and replae 	
+	/ 	-> delimiter 	-> separate filed of substitution command 
+	ptvm-217-> serach pattern-> the extact text to look for
+	/ 	-> delimiter
+	ptvm-218-> replacement string 
+	/ 	-> delimiter
+	g 	-> Global -> replcae every occurrence on every line.
+
+66] 
+	1] ; (Semicolon) – Command Separator , Sequential Execution (Regardless of Success/Failure)
+			-> Runs each command one after another, regardless of whether the previous command succeeded or failed.
+	2] && (Logical AND) – Conditional Execution (Stop on Failure)
+			-> The next command runs only if the previous command succeeded (exit code 0). Stops at the first failure.
+	3] & (Ampersand) – Background Execution (Concurrent)	
+			 -> Each command is started in the background without waiting for the previous one to finish. All commands run in parallel (concurrently).
+	4] || (Logical OR)  - The next command runs only if the previous command failed with (exit code non‑zero). Stops at the first success.
+
+Feature			; (Semicolon)		&& (AND)				& (Ampersand)
+Runs sequentially?	✅ Yes (in order)	✅ Yes (in order)			❌ No (runs in parallel)
+Waits for completion?	✅ Yes			✅ Yes					❌ No (background)
+Stops on first failure?	❌ No (runs all)	✅ Yes (short‑circuits)			❌ No (runs all)
+Exit code matters?	❌ No			✅ Yes					❌ No (in terms of chaining)
+Output order		Predictable (ordered)	Predictable (ordered, truncated)	Unpredictable (interleaved)
+
+
+	
+Operator	Name		Execution	Depends on previous?	Stops early?		Use case
+;		Separator	Sequential	❌ No			❌ No (runs all)	Run several independent commands.
+&&		AND		Sequential	✅ Yes (success only)	✅ Yes (on failure)	Check if all are installed.
+&		Background	Parallel (async)❌ No			❌ No			Run tasks concurrently.
+||		OR		Sequential	✅ Yes (failure only)	✅ Yes (on success)	Find the first that is installed.
+
+67] 
+	#define DBG_PRINT  std::cout << "Line = " << __LINE__ << " Func = " << __func__<< " File = " << __FILE__ << " Time = " << __TIME__ << "\n"
+
+68]  
+
+

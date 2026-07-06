@@ -6141,3 +6141,184 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+02/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Modified PassPrompt as requested by Vaibhav.
+
+    Prepared a corporate-compatible PassPrompt binary.
+
+    Updated password validation logic for special character handling.
+
+    Modified the $ and # related conditions as per the required behavior.
+
+    Generated the updated binary and shared it with Vaibhav for further testing.
+
+2] Continued development of AppBlocker for the RPM environment.
+
+    Identified that some RPM-specific package management commands were not working as expected.
+
+    Researched alternative RPM-compatible commands for application and package detection.
+
+    Updated the C++ implementation to support the new commands.
+
+    Verified compatibility with the RPM build environment.
+
+3] Performed extensive testing of AppBlocker under different package management scenarios.
+
+Tested the following cases:
+
+    DNF application installation
+
+    DNF application uninstallation
+
+    Snap application installation
+
+    Snap application uninstallation
+
+    Mixed DNF and Snap environments
+
+    Policy update after application changes
+
+    AppBlocker service restart
+
+    Runtime application detection
+
+    Verified application detection, blacklist handling, and logging across all test cases.
+
+4] Investigated WinClient synchronization issue.
+
+    Observed that when WinClient service was stopped, application install/uninstall operations performed during that period generated duplicate installation events after the service restarted.
+
+    Analyzed synchronization between:
+
+    struct sw_node
+
+    and
+
+    /opt/MicroWorld/etc/softwares.list
+
+    Reviewed linked-list synchronization logic and software inventory updates.
+
+    Worked on preventing duplicate event generation by correctly synchronizing cached software information with the current system state.
+
+    Continued debugging and validating event logging behavior for install/uninstall operations after WinClient restart on both or one of them apt/snap on inotify_watch directory.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+02/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on handling delayed package detection for Snap-installed Opera.
+
+Observed that after installing Opera via Snap, the package information was not immediately available.
+Analyzed the delay in Snap package registration and desktop file generation.
+Adjusted the C++ logic to correctly handle delayed package detection and update the software inventory once the package became available.
+Verified the implementation under different installation timing scenarios.
+
+2] Enhanced WinClient handling for applications installed through both APT and Snap.
+
+Tested the scenario where VLC Media Player is installed from both package managers.
+Verified application identification using:
+Application Name (AppName)
+Executable/Desktop file path (Filename)
+Modified the logic to distinguish between APT and Snap installations of the same application.
+Ensured that separate install/uninstall events are generated for each installation source without conflicts.
+Validated correct updates in softwares.list and corresponding event generation.
+
+3] Performed comprehensive testing and integrated the changes into the eScan-DLP build.
+
+Tested all relevant scenarios, including:
+Snap application installation
+Snap application uninstallation
+APT application installation
+APT application uninstallation
+Applications installed through both APT and Snap
+WinClient synchronization
+Software inventory updates
+Event generation consistency
+Incorporated the implemented changes into the DLP code.
+Generated a new eScan-DLP build containing the latest WinClient -> escan-dlp.amd64.deb
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+02/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Started making the WinClient code compatible with the C++98 standard.
+
+    Reviewed existing C++11-based STL usage and identified compatibility issues.
+
+    Updated the implementation to support C++98 for the following data structures:
+
+    vector<pair<string, string> > vec;
+    std::map<string, string> swMap;
+    std::map<string, string> tmpMap;
+
+    Modified the code to remove C++11-dependent constructs while preserving the existing functionality.
+
+    Verified successful compilation in the RPM development environment.
+
+2] Worked on GetPkgNameIfAppName.cpp for RPM package information retrieval.
+
+    Implemented RPM-compatible logic to obtain the package name and desktop file mapping using:
+
+    pkg=$(rpm -qf "/usr/share/applications/org.gnome.Totem.desktop" 2>/dev/null | sed 's/-[0-9].*//'); [ -n "$pkg" ] && echo "$pkg: /usr/share/applications/org.gnome.Totem.desktop"
+
+    Used the retrieved package name to obtain the installed package version through:
+
+    rpm -qi <PackageName> | grep Version | awk '{print $3}'
+
+    Integrated the above logic into the C++ implementation to populate:
+
+        Package Name
+
+        Package Version
+
+        Desktop File Path
+
+    Verified correct information retrieval for RPM-installed applications and continued testing with different application packages to ensure reliable software on generation.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

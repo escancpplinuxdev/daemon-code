@@ -6270,7 +6270,7 @@ rushikeshgajmal333@gmail.com
 
 
 
-02/07/2026
+07/07/2026
 
 From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
 Subject:        Report of 05/03/2026
@@ -6322,3 +6322,134 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+02/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Investigated the WinClient restart issue in the RPM environment.
+
+    Observed that after deleting softwares.list, WinClient repeatedly restarted.
+
+    Traced the issue to the InitialLoad process while loading data into the struct sw linked list.
+
+    Identified that the existing RPM command was not returning the required output format (PkgName:FilePath).
+
+    Updated the command to:
+
+    "pkg=$(rpm -qf \"%s\" 2>/dev/null | sed 's/-[0-9].*//'); [ -n \"$pkg\" ] && echo \"$pkg: %s\"",
+    fullPath.c_str(),
+    fullPath.c_str()
+
+    Verified correct package name and desktop file path retrieval during initial software inventory generation.
+
+2] Performed comprehensive install/uninstall testing for both RPM and Snap applications.
+
+Tested RPM applications:
+
+    Firefox
+
+    Google Chrome
+
+    Microsoft Edge
+
+Tested Snap applications:
+
+    Opera
+
+    VLC Media Player
+
+    Chromium
+
+    Verified correct detection, software inventory updates, and event generation for all scenarios.
+
+3] Tested mixed installation scenarios for VLC.
+
+    Installed VLC through both RPM and Snap.
+
+    Verified install and uninstall behavior independently.
+
+    Added checks based on executable filename to identify whether the application already exists before updating the software inventory.
+
+    Ensured correct handling of duplicate application names originating from different package managers.
+
+4] Resolved delayed version detection for Snap-installed Chromium.
+
+    Observed that immediately after installation, softwares.list contained:
+
+    Chromium Web Browser[Snap]|
+
+    instead of:
+
+    Chromium Web Browser[Snap]|150.0.7871.46
+
+    Modified getPackageDetails() logic to retry package information retrieval.
+
+    Added:
+
+        sleep(1) between retries.
+
+        Up to 10 attempts to obtain the package version before updating the software inventory.
+
+    Verified successful version retrieval after package initialization.
+
+5] Tested software synchronization when WinClient was stopped.
+
+    Verified install/uninstall operations while the WinClient service was stopped.
+
+    Specifically tested applications with identical names across RPM and Snap installations, such as VLC Media Player.
+
+    Ensured correct version information was maintained in softwares.list after WinClient restarted and synchronized the current system state.
+
+6] Implemented application name differentiation for Snap packages.
+
+    As discussed with Divesh Sir and Vaibhav, modified the software inventory logic to append the [Snap] suffix to Snap-installed application names.
+
+Examples:
+
+VLC Media Player
+VLC Media Player[Snap]
+
+    This clearly distinguishes Snap applications from their RPM/APT counterparts and avoids conflicts during inventory synchronization and event generation.
+
+7] Performed end-to-end validation using package installation and removal commands.
+
+Snap testing:
+
+sudo snap remove opera
+sudo snap remove vlc
+sudo snap remove chromium
+
+sudo snap install opera
+sudo snap install vlc
+sudo snap install chromium
+
+RPM testing:
+
+sudo dnf remove firefox -y
+sudo dnf remove microsoft-edge -y
+sudo dnf remove google-chrome -y
+sudo dnf remove vlc -y
+
+sudo dnf install firefox -y
+sudo dnf install microsoft-edge -y
+sudo dnf install google-chrome -y
+sudo dnf install vlc -y
+
+    Verified software installation, removal, version updates, event generation, and synchronization under all test cases.
+
+    Also incorporated the same enhancements into the Debian DLP codebase to maintain consistent behavior across both RPM and Debian dlp builds.
+	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

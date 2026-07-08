@@ -6453,3 +6453,124 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+08/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+
+1] Enhanced WinClient logic to distinguish Snap applications from normal (APT/DPKG) applications.
+
+    Modified the software inventory generation to append the (Snap) suffix for all Snap-installed applications before writing them to softwares.list.
+
+    Implemented logic similar to:
+
+    std::string SnapApp = std::string(cPtr) + "(Snap)";
+    strcpy(cPtr, SnapApp.c_str());
+
+    Updated:
+
+    GetPkgNameIfAppName(PkgName, Version, filePath, SnapApp);
+
+    to correctly identify whether an application is installed through Snap or the native package manager and retrieve the corresponding package details.
+
+2] Investigated Debian package lookup and version retrieval issues.
+
+    Verified normal package detection:
+
+    dpkg --search /usr/share/applications/vlc.desktop
+
+    Output:
+
+    vlc: /usr/share/applications/vlc.desktop
+
+    Verified invalid desktop file handling:
+
+    dpkg --search /usr/share/applications/qwerty.desktop
+
+    Output:
+
+    dpkg-query: no path found matching pattern
+
+    Exit status:
+
+    1
+
+    Added proper handling for package lookup failures to prevent invalid entries from being processed.
+
+3] Fixed incorrect version retrieval issue.
+
+    Observed duplicate and incorrect version values such as:
+
+    VLC media player|0.10.2-0ubuntu1
+    VLC media player|3.0.21-11
+
+    Traced the issue to the version retrieval command:
+
+    dpkg -s <PackageName> | grep Version | awk '{print $2}'
+
+    Investigated grep/awk pipeline failures causing broken pipe messages and garbage version values.
+
+    Updated the implementation to retrieve package versions reliably and eliminate incorrect version entries.
+
+4] Improved software inventory handling when package version is unavailable.
+
+    Modified the logic so that if the package version cannot be obtained, the application entry is still written to softwares.list.
+
+    Format:
+
+    AppName|
+
+    Ensured that applications are not skipped simply because version information is unavailable.
+
+5] Removed eScan-related application entries.
+
+    Updated filtering logic to prevent internal eScan components from being written to softwares.list.
+
+    Verified that only user-installed software is included in the software inventory.
+
+6] Enhanced desktop file validation.
+
+    Added validation in:
+
+    validateDesktopFile(fname);
+
+    Handled backup desktop files such as:
+
+    /usr/share/applications/google-chrome.desktop_backup_tls1.2_org
+
+    Prevented backup or temporary desktop files from being processed as valid applications- > isvalideDesktopFile(fname)
+
+    Verified correct output:
+
+    Google Chrome|150.0.7871.46-1
+
+    and eliminated incorrect entries such as:
+
+    Google Chrome|0.10.2-0ubuntu1
+
+7] Performed comprehensive testing of all above changes.
+
+    Verified Snap and APT/DPKG application detection.
+
+    Tested valid and invalid desktop files.
+
+    Tested missing package information scenarios.
+
+    Validated software inventory generation and version retrieval.
+
+    Confirmed correct updates to softwares.list across all tested conditions.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

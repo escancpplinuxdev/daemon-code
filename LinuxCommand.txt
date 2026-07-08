@@ -254,6 +254,17 @@ google-chrome-stable: /usr/share/applications/com.google.Chrome.deskto
 	build debian build -> dpkg-deb --build buildroot escan-dlp.amd64.deb
 	dpkg -i escan-dlp-22.0.1400-2990.x86_64.deb
 	dpkg -P escan-dlp
+
+
+ar t escan-dlp.amd64.deb
+debian-binary
+control.tar.gz
+data.tar.gz
+
+Recent versions of dpkg-deb use xz compression by default because it provides better compression than gzip. So convert to gzip below command use to make build. because server only accept .gz compression.
+
+dpkg-deb -Zgzip --build buildroot/ escan-dlp.amd64.deb
+
 	
 	check package info -> dpkg -l escan-dlp-22.0.1400-2990.x86_64.deb
 	List package files -> dpkg -L escan

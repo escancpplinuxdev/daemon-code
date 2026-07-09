@@ -801,6 +801,8 @@ Operator	Name		Execution	Depends on previous?	Stops early?		Use case
 67] 
 	#define DBG_PRINT  std::cout << "Line = " << __LINE__ << " Func = " << __func__<< " File = " << __FILE__ << " Time = " << __TIME__ << "\n"
 
-68]  
+68]  	Silence all output stderr + stdout  ; show exit code
+	
+	which google-chrome >/dev/null 2>&1 ; echo $?
 
-
+69]	

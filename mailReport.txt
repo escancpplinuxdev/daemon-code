@@ -6574,3 +6574,54 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+09/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Installed the Debian eScan-DLP build and verified the WinClient module functionality, including software inventory generation and event reporting.
+
+2] Uninstalled the existing build and modified WinClient to replace the "(Snap)" suffix with "(Snap App)" for applications installed via Snap. Generated a new Debian eScan-DLP build, reinstalled it, and validated the updated WinClient behavior.
+
+3] Started preparing the technical design document for the WinClient module. The following enhancement has been completed:
+
+	
+	18. Add (Snap App) in end of software events for applications installed via snap
+    Added "(Snap App)" suffix to software installation events for applications installed via Snap.
+
+4] Resolved the Updatenow_AVS browser event handling issue. Verified correct processing of the following browser events received from gblock:
+	 12. In updatenow_avs, handle these browser events correctly:
+    /usr/bin/brave-browser
+
+    /usr/bin/google-chrome
+
+    /usr/bin/microsoft-edge
+
+5] Reviewed the existing logging implementation and analyzed LibeScan cron logging to implement date and time support for all Updatenow_AVS all log entries.
+
+6] Executed Updatenow and verified log generation through LibUpdate by monitoring autoupdate.log.
+
+7] Implemented the logUpdate() function to include timestamps in all Updatenow_AVS log entries. Verified the changes in:
+
+    /var/MicroWorld/var/log/autoupdate_avs.log
+
+8] Started working on the next enhancement:
+	
+	20. remove below from updatenow_avs log
+    Removing unnecessary log entries from Updatenow_AVS logs as per the pending development requirement (Point 20).
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

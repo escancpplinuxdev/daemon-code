@@ -44,7 +44,7 @@ int main()
 		std::cerr<<"Failed to open read file\n";
 	}
 	// line buffer to store	
-	char line[512];
+	char line[512] = "";
 	if( fgets (line,sizeof(line),fp))
 	{
 		std::cout<<"[READ] "<<line<<"\n";
@@ -55,6 +55,21 @@ int main()
 		std::cerr<<"Failed to read file\n";
 	}
 	
+
+	// append data in file 
+	
+	
+	char * buff = "Google Chrome|565.1654.2161";
+	if (fputs(buff,fp) == 0)
+	{
+		std::cout<<"fputs write in file \n";
+	}
+	
+	char buffer[256]= "";
+	if(fgets(buffer,sizeof(buffer),fp) == 0)
+	{
+		std::cout<<"[Read] "<<buffer<<"\n";
+	}
 	fclose(fp);
 	return 0;
 }

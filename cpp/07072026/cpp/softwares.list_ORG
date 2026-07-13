@@ -1,18 +1,18 @@
-About Xfce|4.20.1-1ubuntu1|/usr/share/applications/google.desktop
-About|1:49.0-1ubuntu2|/usr/share/applications/google.desktop
-Access Prompt|3.41.2-4|/usr/share/applications/google.desktop
-Accessibility|1:49.0-1ubuntu2|/usr/share/applications/google.desktop
-Accessibility|4.20.1-1ubuntu1|/usr/share/applications/google.desktop
-Additional Drivers|0.114|/usr/share/applications/google.desktop
-Advanced Network Configuration|1.36.0-3ubuntu2|/usr/share/applications/google.desktop
-Appearance|1:49.0-1ubuntu2|/usr/share/applications/google.desktop
-Appearance|4.20.1-1ubuntu1|/usr/share/applications/google.desktop
-Application Finder|4.20.0-2|/usr/share/applications/google.desktop
-Apps|1:49.0-1ubuntu2|/usr/share/applications/google.desktop
-Bluetooth Transfer|47.1-2|/usr/share/applications/google.desktop
-Bluetooth|1:49.0-1ubuntu2|/usr/share/applications/google.desktop
-Brave Web Browser(Snap App)|1.92.138|/usr/share/applications/google.desktop
-Bulk Rename|4.20.4-1|/usr/share/applications/google.desktop
+About Xfce|4.20.1-1ubuntu1
+About|1:49.0-1ubuntu2
+Access Prompt|3.41.2-4
+Accessibility|1:49.0-1ubuntu2
+Accessibility|4.20.1-1ubuntu1
+Additional Drivers|0.114
+Advanced Network Configuration|1.36.0-3ubuntu2
+Appearance|1:49.0-1ubuntu2
+Appearance|4.20.1-1ubuntu1
+Application Finder|4.20.0-2
+Apps|1:49.0-1ubuntu2
+Bluetooth Transfer|47.1-2
+Bluetooth|1:49.0-1ubuntu2
+Brave Web Browser(Snap App)|1.92.138
+Bulk Rename|4.20.4-1
 Characters|48.0-1
 Chromium Web Browser(Snap App)|150.0.7871.46
 Clipboard Manager Settings|2:1.6.6-1build1
@@ -151,17 +151,3 @@ Xwayland|2:24.1.6-1ubuntu1.1
 Zenity|4.1.99-1
 ksnip|1.10.1+git20240308-1
 xfreerdp3|3.16.0+dfsg-2ubuntu0.5
-
-
-[BlackList]
-    Package1 ="Firefox"
-    Package2 ="Xfburn"
-    Package3 ="Xwayland"
-    Package4 ="Zenity"
-    Package5 ="Xfce Terminal"
-    TotalPackages = "5"
-
-[AppControl]
-    Status = "1"
-
-

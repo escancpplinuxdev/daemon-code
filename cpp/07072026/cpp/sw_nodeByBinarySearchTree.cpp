@@ -9,6 +9,49 @@ volatile sig_atomic_t keep_running = 1;
 
 using namespace std;	// std::
 			//forward declaration for threads function 
+
+pthread_mutex_t update_log_write = PTHREAD_MUTEX_INITIALIZER;
+#define update_logfilelock()    pthread_mutex_lock(&update_log_write)
+#define update_logfileunlock()  pthread_mutex_unlock(&update_log_write)
+
+
+void logUpdate(short int reqDebugLevel, string logLine )
+{
+     char confLogValue[25]="4";
+
+     if(reqDebugLevel <= atoi(confLogValue) )
+     {
+          time_t sinceepoch = time(NULL);
+          struct tm *rpt_time = localtime(&sinceepoch);
+          char rtime[24];
+          /**
+           * Time information will be added to keep track.
+           */
+          memset(rtime, 0, 24);
+          strftime(rtime, 23, "[%d-%b-%Y@%H:%M:%S] ", rpt_time);
+
+          update_logfilelock();
+          /**
+           * If 'log' directory does not exits, it will be created. If log file already exist, new log lines will be appended.
+           */
+          FILE *fp = fopen("/tmpdata/cpp/07072026/cpp/softwareupdate_lists.log", "a");
+          if(fp == NULL)
+          {
+               system("mkdir -p /var/MicroWorld/var/log/");
+               FILE *fp = fopen("/var/MicroWorld/var/log/autoupdate_avs.log", "a");
+               if(fp == NULL)
+               {
+                    update_logfileunlock();
+                    return;
+               }
+          }
+          fprintf(fp,"%s ", rtime );
+          fprintf(fp, "%s\n",logLine.c_str() ? logLine.c_str() :"NULL");
+          fclose(fp);
+          update_logfileunlock();
+     }
+}
+
 void * sendswevent(void *);
 
 struct sw_node
@@ -203,6 +246,7 @@ int main()
 	char AppName [52] = "";
 	char Version [25] = "";
 	char Filepath [252] = "";
+	logUpdate(1, string("Trying to open file softwares.list."));
 	const char *temp = "/tmpdata/cpp/07072026/cpp/softwares.list";
 	FILE *fp = fopen(temp,"r");
 	if (fp != NULL)
@@ -229,47 +273,77 @@ int main()
 			}
 
 			//tokenise
-						char *token = strtok(line,"|");
+			char *token = strtok(line,"|");
 
-						if (token != NULL)
-						{
-						strcpy(AppName,token);
-						token = strtok(NULL,"|");
-						if(token != NULL)
-						{
-						strcpy(Version,token);
-						}
-						}
-			 
+			if (token != NULL)
+			{
+				strcpy(AppName,token);
+				token = strtok(NULL,"|");
+				if(token != NULL)
+				{
+					strcpy(Version,token);
+					token = strtok(NULL,"|");
+					if(token != NULL)
+					{
+						strcpy(Filepath,token);
+					}
+					else
+					{
+						strcpy(Filepath,"/usr/share/applications/firefox.desktop");
+					}
+				}
+			}
+
 
 
 
 			// Split by '|'
-/*			char *token = strtok(line, "|");
-			if (!token)
-				continue;
-			strncpy(AppName, token, sizeof(AppName) - 1);
-			AppName[sizeof(AppName) - 1] = '\0';
+			/*			char *token = strtok(line, "|");
+						if (!token)
+						continue;
+						strncpy(AppName, token, sizeof(AppName) - 1);
+						AppName[sizeof(AppName) - 1] = '\0';
 
-			token = strtok(NULL, "|");
-			if (!token)
-				continue;
-			strncpy(Version, token, sizeof(Version) - 1);
-			Version[sizeof(Version) - 1] = '\0';
-*/
+						token = strtok(NULL, "|");
+						if (!token)
+						continue;
+						strncpy(Version, token, sizeof(Version) - 1);
+						Version[sizeof(Version) - 1] = '\0';
 			root = Insert(root,AppName,Version,"/usr/share/applications/firefox.desktop");
+			 */
+			root = Insert(root,AppName,Version,Filepath);
 		}
-		fclose(fp);
+		//		fclose(fp);
+		
+		int status = fclose (fp);
+		std::cout<<"status = '"<<status<<"'\n";
+		bool commandSucceeded = (status != -1 && WIFEXITED(status) && WEXITSTATUS(status) == 0 );
+		cout<<"commandSucceeded = '"<<commandSucceeded<<"'\n";
+
+		if(commandSucceeded)
+		{
+			std::cout<<"command pass \n";
+		}
+		else
+		{
+			std::cout<<"command exited if errno = '"<<WIFEXITED(status)<<"'\n";
+		}
 
 	}
-
+	else
+	{
+		std::cerr<<"unable to open file , errno = '"<<errno<<"' =  '"<<strerror(errno)<<"'\n";
+	}
+	
+	logUpdate(1, string("file softwares.list close."));
+	
 	root = Insert(root,
 			"Firefox",
 			"141.0",
 			"/usr/share/applications/firefox.desktop");
 
 	root = Insert(root,
-			"Google Chrome",
+			"Google Chrome(Snap App)",
 			"138.0",
 			"/usr/share/applications/google.desktop");
 
@@ -290,7 +364,7 @@ int main()
 
 	cout << "Software List\n\n";
 
-	Print(root);
+		Print(root);
 
 	pthread_t swthreadID;
 
@@ -322,9 +396,9 @@ int main()
 		}
 		cout << "\n\nFound\n";
 
-		cout << node->name << endl;
+		cout << node->name << "|";
 
-		cout << node->version << endl;
+		cout << node->version << "|";
 
 		cout << node->filename << endl;
 	}

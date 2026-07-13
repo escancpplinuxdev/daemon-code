@@ -3,3 +3,33 @@
 2] appblocker		-> snap & apt app	->
 3] winlcient		-> snap & apt app	->
 4] passPrompt		-> length <= 2		->
+
+
+
+Binary	Purpose
+mwscanner	Malware scanner for files and directories
+epsdaemon	Endpoint security daemon
+nfdaemon	Netfilter queue daemon (network filtering)
+appblocker	Application blocking service
+gblock	Web/generic blocking component
+winclient	Windows client integration
+contentScanner	Content scanning module
+clipboardWatcher	Clipboard monitoring utility
+escangui	GUI frontend for eScan
+GAblocker	Generic application blocker
+printercontrol	Printer management utility
+mwprintd	Print daemon
+mwfirewalld	Firewall management daemon
+mwcpmon	Copy protection monitor
+mwcdmon	CD/DVD monitor
+mwpblocker	Process blocker
+commonutil	Common utilities
+xmlParser	XML parsing utility
+checkpassdesktop	Password check utility
+pdfexport	PDF export utility
+mwmailsend	Mail sending utility
+updatenow_avs	Antivirus update utility
+updatenow	General update utility
+mwagent	Agent service
+notify-send	Desktop notification utility
+authenticator	Authentication service

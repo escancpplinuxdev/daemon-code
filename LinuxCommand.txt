@@ -805,4 +805,10 @@ Operator	Name		Execution	Depends on previous?	Stops early?		Use case
 	
 	which google-chrome >/dev/null 2>&1 ; echo $?
 
-69]	
+69]    md5sum 
+
+	recursively md5sum entire directory
+	find . -type f -exec md5sum {} + > recursive_checksums.md5
+70]	
+
+	

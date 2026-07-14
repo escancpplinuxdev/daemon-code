@@ -1,0 +1,78 @@
+
+   Date		Topic		Details						Practice
+
+1] 14072026	std::vector	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+i am 4.5 year  c++ programmer on linux os , today is 14072026 give me complete details road map for c++ programming form start .
+
+my timetable is 
+
+morning — 60 min7:30 – 8:30
+
+7:30 – 7:40	Warm-up — recall yesterday's topic. Write 3 key points from memory.
+
+7:40 – 8:10	Concept learning — read theory, annotate code examples, draw memory diagrams.
+
+8:10 – 8:25	Code one small program demonstrating the concept.
+
+8:25 – 8:30	Write tomorrow's question — what will you learn next morning?
+
+evening — 95 min7:20 – 8:55
+
+7:20 – 7:30	Review morning's concept — any gaps? Check docs.
+
+7:30 – 8:10	Deep coding — implement full program, mini-project, or Linux system call demo.
+
+8:10 – 8:35	LeetCode , striver , geeksforgeeks, naukri.com coding 360 coding ninja — problems matched to current phase topic.
+
+8:35 – 8:50	Notes — add to your study journal. What was confusing? What clicked?
+
+8:50 – 8:55	Prep for tomorrow — set the topic, open the file, write the first line.
+
+give me each day work topic by topic in details for each date  , where 2nd and 4th saturday is working office day .in english with practive session at leetcode geeksforgeeks stravae coding 360 , coding ninja  question for releated topic for that date 

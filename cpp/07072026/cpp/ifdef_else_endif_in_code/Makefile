@@ -1,4 +1,5 @@
 # make rebuild && ./ifdef_else_endif_in_code
+# make clean && make && ./ifdef_else_endif_in_code
 # rm -f *.o ifdef_else_endif_in_code
 # g++ -Wall -Iheader -o ifdef_else_endif_in_code source/ifdef_else_endif_in_code.cpp source/print.cpp -D__WMCBUILD__
 

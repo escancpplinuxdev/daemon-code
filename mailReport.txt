@@ -6770,3 +6770,62 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+15/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Prepared the eScan Ultra build by integrating all required updates across the package structure, including:
+
+    lib/
+
+    bin/
+
+    sbin/
+
+    usr/bin/
+
+    usr/sbin/
+
+    etc/
+
+    etc/init/
+
+    etc/init.d/
+
+    etc/logrotate.d/
+
+    Related binaries, libraries, configuration files, startup scripts, and package resources and write releated script files.
+
+2] Successfully generated the Debian package:
+
+dpkg-deb: building package 'escan-ultra' in 'escan-ultra.amd64.deb'
+
+3] Installed the newly generated escan-ultra.amd64.deb package on the 192.168.2.220 testing machine .
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+16/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+

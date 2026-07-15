@@ -427,6 +427,13 @@ You can also pipe the output to another grep command that explicitly excludes th
 			-f  -> full path
 			
 39]	rsync ->
+
+mv -f /tmp/cpp/* .
+mv: cannot move '/tmp/cpp/ifdef_else_endif_in_code' to './ifdef_else_endif_in_code': Directory not empty
+
+-> 		rsync -av --remove-source-files /tmp/cpp/*  . 		
+
+
 		rsync -avzP --append-verify escan-edr.amd64.deb   192.168.1.231:/tmpdata
 		scp -r escan-edr.amd64.deb 192.168.1.231:/tmpdata
 		
@@ -822,5 +829,78 @@ Operator	Name		Execution	Depends on previous?	Stops early?		Use case
 	recursively md5sum entire directory
 	find . -type f -exec md5sum {} + > recursive_checksums.md5
 70]	
+	Question / Link 	
+	1] GFG 		= https://www.geeksforgeeks.org/problems/word-ladder/1
+	2] leetcode	= https://leetcode.com/problems/two-sum/submissions/2067327407/
+	3] striver	= https://takeuforward.org/dsa/strivers-a2z-sheet-learn-dsa-a-to-z 
+	4] naukri.com
+	   /code-360	= https://www.naukri.com/code360/problems/set-matrix-zeros_3846774?onboarding=true&leftPanelTabValue=PROBLEM
+	5] 
 
+71]	
+	Makefile
+
+vim header/ifdef_else_endif_in_code.h
+
+#ifndef __IFDEF_ELSE_ENDIF_IN_CODE_H__
+#define __IFDEF_ELSE_ENDIF_IN_CODE_H__
+
+void print (void *data);
+
+#endif
+
+vim header/print.h
+
+#ifndef __PRINT_H__
+#define __PRINT_H__
+
+void print (void *data);
+
+#endif
+
+tree
+.
+├── buildflags
+├── header
+│   ├── ifdef_else_endif_in_code.h
+│   └── print.h
+├── ifdef_else_endif_in_code
+├── Makefile
+└── source
+    ├── ifdef_else_endif_in_code.cpp
+    └── print.cpp
+
+3 directories, 7 files
+
+vim Makefile
+
+# make rebuild && ./ifdef_else_endif_in_code
+# make clean && make && ./ifdef_else_endif_in_code
+# rm -f *.o ifdef_else_endif_in_code
+# g++ -Wall -Iheader -o ifdef_else_endif_in_code source/ifdef_else_endif_in_code.cpp source/print.cpp -D__WMCBUILD__
+
+CXX= g++
+
+CXXFLAGS= -Wall -Iheader
+
+BUILDFLAGS=$(shell echo `cat /tmpdata/cpp/07072026/cpp/ifdef_else_endif_in_code/buildflags 2>/dev/null`)
+
+TARGET= ifdef_else_endif_in_code
+
+OBJS= source/ifdef_else_endif_in_code.cpp source/print.cpp
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+        $(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS) $(BUILDFLAGS)
+        @echo $(TARGET) done .
+
+clean :
+        rm -f *.o $(TARGET)
+
+rebuild : clean all
+
+.PHONY: all clean rebuild
+
+72]	
 	

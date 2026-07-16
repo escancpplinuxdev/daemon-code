@@ -818,7 +818,10 @@ Operator	Name		Execution	Depends on previous?	Stops early?		Use case
 ||		OR		Sequential	✅ Yes (failure only)	✅ Yes (on success)	Find the first that is installed.
 
 67] 
-	#define DBG_PRINT  std::cout << "Line = " << __LINE__ << " Func = " << __func__<< " File = " << __FILE__ << " Time = " << __TIME__ << "\n"
+	#define DBG_PRINT  std::cout << "Line = " << __LINE__ << " Func = " << __func__<< " File = " << __FILE__ << " Time = " << __TIME__ << "\n"				
+	
+	DBG_PRINT;	
+
 
 68]  	Silence all output stderr + stdout  ; show exit code
 	
@@ -903,4 +906,53 @@ rebuild : clean all
 .PHONY: all clean rebuild
 
 72]	
+	gui,escasngui
+
+	escangui.pro -> Makefile
+make clean -> Make any changtes like lib, -l lib here passPrompt.pro  -> make a Makefile by this command -> /usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile passPrompt.pro  -> which contain changes form passPrompt.pro file -> make clean && make 
+
+73]	
+	%s/printf/\/\/printf/gc
 	
+	%s/DBG_PRINT/\/\/DBG_PRINT/gc
+
+
+74]
+	doxygen -> sudo apt install doxygen
+
+/tmpddata/ifdef_else_endif_in_code# a -> for ifdef_else_endif_in_code.cpp
+-rw-r--r-- 1 root root   15 Jul 13 13:00 buildflags
+drwxr-xr-x 2 root root 4.0K Jul 13 17:16 source
+drwxr-xr-x 5 root root 4.0K Jul 15 11:40 ..
+-rw-r--r-- 1 root root  679 Jul 15 11:44 Makefile
+drwxr-xr-x 2 root root 4.0K Jul 15 11:54 header
+
+
+	1] make clean
+	2] doxygen -g ifdef_else_endif_in_code.doxygen
+-> Configuration file 'ifdef_else_endif_in_code.doxygen' created.
+
+Now edit the configuration file and enter
+
+  doxygen ifdef_else_endif_in_code.doxygen
+
+to generate the documentation for your project
+
+	3] doxygen ifdef_else_endif_in_code.doxygen
+	4] vim ifdef_else_endif_in_code.doxygen
+PROJECT_NAME           = "ifdef_else_endif_in_code"
+EXTRACT_ALL            = YES
+EXTRACT_STATIC         = YES
+INPUT                  = source header
+RECURSIVE              = YES
+INLINE_SOURCES         = YES
+HAVE_DOT               = YES
+
+:wq -> save file 
+	5] doxygen ifdef_else_endif_in_code.doxygen
+	6] make -C latex/
+	7] cp latex/refman.pdf ifdef_else_endif_in_code.pdf
+
+75]				
+
+

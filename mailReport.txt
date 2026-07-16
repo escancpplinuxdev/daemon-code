@@ -6827,5 +6827,56 @@ Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.
 
 Dear sir,
 
+1]  Tested and analyzed the altest utility for domain categorization:
+
+    Observed that the installed binary at:
+
+    /opt/MicroWorld/bin/altest
+
+    failed to categorize internal domains:
+
+    /opt/MicroWorld/bin/altest -sitex=npidcbb09.local
+    Failed to get Top Level Domain:[npidcbb09.local](-1)
+
+    /opt/MicroWorld/bin/altest -sitex=npib8ac2b.local
+    Failed to get Top Level Domain:[npib8ac2b.local](-1)
+
+    Verified that the newly built binary correctly categorizes both internal and public domains:
+
+    ./altest -sitex=npib8ac2b.local
+    npib8ac2b.local = Business (5)
+
+    ./altest -sitex=npidcbb09.local
+    npidcbb09.local = Business (5)
+
+    ./altest -sitex=google.com
+    google.com = Search Engines & Portals (37)
+
+    Validated the functionality of the updated binary for expected domain classification behavior.
+
+2] Integrated the updated altest binary into both product builds:
+
+    eScan DLP → Generated updated escan-dlp.amd64.deb
+
+    eScan Ultra → Generated updated escan-ultra.amd64.deb
+
+3] Discussed and understood the overall working, architecture, and implementation details of the mwencr module with Omkar G.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+17/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
 
 

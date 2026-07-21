@@ -6879,4 +6879,169 @@ Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.
 
 Dear sir,
 
+1] Made the WinClient binary compatible for eScan EDR and eScan XDR builds by integrating the required code and configuration changes.
 
+2] Applied policy from Server 192.168.1.204 on the eScan Ultra installation to verify proper policy download, deployment, and client synchronization.
+
+3] Started preparation of eScan EDR and eScan XDR Debian builds by integrating the latest binaries, libraries, configuration files, and required package components.
+
+4] Investigated the nfdaemon domain categorization issue:
+
+    Verified that the altest utility correctly categorizes the domain:
+
+    /opt/MicroWorld/bin/altest -sitex=connectivity-check.ubuntu.com
+    connectivity-check.ubuntu.com = Computers & Technology (11)
+
+    Observed that nfdaemon reports:
+
+    Caching FAILED lookup for: [connectivity-check.ubuntu.com.] (-1)
+
+    Started debugging and researching the difference in behavior between altest and nfdaemon, including domain lookup flow, DNS handling, and category lookup through the eScan cloud domain classification service.
+
+5] Updated the required components for both eScan EDR and eScan XDR packages, including:
+
+
+    /opt/MicroWorld/etc/
+
+    bin/
+
+    sbin/
+
+    usr/bin/
+
+    usr/sbin/
+
+    Related binaries, libraries, and configuration files.
+
+6] Successfully generated the Debian packages:
+
+dpkg-deb -Zgzip --build buildroot/ escan-xdr.amd64.deb
+dpkg-deb: building package 'escan-xdr' in 'escan-xdr.amd64.deb'
+
+dpkg-deb -Zgzip --build buildroot/ escan-edr.amd64.deb
+dpkg-deb: building package 'escan-edr' in 'escan-edr.amd64.deb'
+
+7] Started installation and validation of the newly generated eScan EDR and eScan XDR packages to verify successful installation.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+18/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] work on Prepared and generated the latest eScan EDR and eScan XDR builds for installation and validation.
+
+2] Continued development and debugging of the nfdaemon module.
+
+    Investigated the issue where multiple requests for the same domain generate repeated events, although only a single event should be reported for a blocked domain.
+
+    Analyzed the current event handling flow for banned domain (BLOCKED) events and identified areas requiring event deduplication.
+
+3] Worked on designing an efficient event caching and deduplication mechanism.
+
+    Evaluated different STL containers (std::map, std::unordered_map, and std::set) for storing recently processed domain events.
+
+    Studied suitable data structures and algorithms to prevent duplicate event generation while maintaining optimal lookup performance.
+
+    Designed logic to cache domain events and automatically flush the cache after a configurable interval (3 minutes), allowing the same domain event to be reported again after cache expiry.
+
+    Started implementing separate deduplication logic for:
+
+    int sendDeduplicatedBLOCKEDEvent(const std::string& domainName);
+
+    and
+
+    int sendDeduplicatedVISITEDEvent(const std::string& domainName);
+
+    to independently manage BLOCKED and VISITED event reporting.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+18/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on nfdaemon to eliminate duplicate event generation in /var/MicroWorld/var/log/eventHistory.log.
+
+    Analyzed the issue where multiple log entries were generated for the same domain event.
+
+    Designed and implemented a global cache class using an STL map to store processed events:
+
+        Key: Domain Name
+
+        Value: Event Timestamp
+
+    Used the cache to suppress duplicate events within the configured time window before writing to eventHistory.log.
+
+2] Continued development on nfdaemon domain categorization.
+
+    Compared the domain lookup logic with altest to ensure consistent behavior.
+
+    Modified the lookup flow to correctly categorize domains such as:
+
+    connectivity-check.ubuntu.com = Computers & Technology (11)
+
+3] Investigated the continuous logging issue in dispxra (eDisp.log).
+
+    Analyzed repeated log entries such as:
+
+    [20-Jul-2026@00:35:56] session number :- 3
+    [20-Jul-2026@00:35:56] DispNum is NULL
+    [20-Jul-2026@00:35:58] session number :- 3
+    [20-Jul-2026@00:35:58] DispNum is NULL
+    [20-Jul-2026@00:36:00] session number :- 3
+    [20-Jul-2026@00:36:00] DispNum is NULL
+
+	Investigated possible improvements to suppress repetitive log entries while preserving useful information.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+18/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	1] in nfdaemon check for map clear on event histroy.log host event after 30 min. and give to Vaibhav
+	2] after that /opt/MicroWorld/etc/.UrlQueue.cache file get repeated host and category of for every hit so , As per Vaibhav one entry should come oonly once in /opt/MicroWorld/etc/.UrlQueue.cache make chage for it test for every possible condition.
+	3] test nfdaemon on all possible condition .( yestday and today condition put this in mail).
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

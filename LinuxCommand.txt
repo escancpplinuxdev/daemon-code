@@ -12,6 +12,9 @@ To: 	omkarg@escanav.com, rushikeshg@escanav.com, shrikrishna@escanav.com
 
 	192.168.2.58 :		root passwd --> su 	--> ketan$321
 				omkar 		sudo su --> ketan$123
+	
+	192.168.1.93 : 192.168.1.204 -> Ultra server
+	192.168.1.93 : 192.168.1.229 -> Dlp   server
 
 1]	scp  -P 8623 -r detectNew* 192.168.2.58:/tmpdata/Rushikesh_27022026/detectNewApp
 	root@192.168.2.58's password: 
@@ -702,7 +705,7 @@ smb: \> cd /temp/Vaibhav/
 55]	vnc -> 192.168.2.220 -> remina -> vnc -> 192.168.2.58:33220 -> passwd -> secret -> user:rushi -> rushi123
 	    -> 192.168.2.219 -> remina -> vnc -> 192.168.2.219:1    -> passwd -> secret -> user:omker -> root123
 
-56]    	flush buffer ; clear caches -> sync; echo 3 > /proc/sys/vm/drop_caches	
+56]    	flush buffer , clear caches -> sync; echo 3 > /proc/sys/vm/drop_caches	
 
 57]	ip 
 	192.168.1.234 user:vaibhav -> vaibhav  user:root -> root123 -> rdesktop -g 1920x1080  192.168.1.200:33234
@@ -909,7 +912,9 @@ rebuild : clean all
 	gui,escasngui
 
 	escangui.pro -> Makefile
-make clean -> Make any changtes like lib, -l lib here passPrompt.pro  -> make a Makefile by this command -> /usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile passPrompt.pro  -> which contain changes form passPrompt.pro file -> make clean && make 
+make clean -> Make any changtes like lib, -l lib here passPrompt.pro  -> make a Makefile by this command -> 
+	/usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile passPrompt.pro  -> which contain changes form passPrompt.pro file -> create Makefile -> 
+	 make clean && make 
 
 73]	
 	%s/printf/\/\/printf/gc

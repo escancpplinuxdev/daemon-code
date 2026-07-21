@@ -9,8 +9,6 @@ CXXFLAGS= -Wall -Iheader
 
 BUILDFLAGS=$(shell echo `cat /tmpdata/cpp/07072026/cpp/ifdef_else_endif_in_code/buildflags 2>/dev/null`)
 
-DEFINES=$(BUILDFLAGS)
-
 TARGET= ifdef_else_endif_in_code
 
 OBJS= source/ifdef_else_endif_in_code.cpp source/print.cpp
@@ -19,14 +17,11 @@ all	: $(TARGET)
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS) $(BUILDFLAGS)
-	@echo "$(TARGET) done ."
+	@echo $(TARGET) done .
 
 clean 	:
 	rm -f *.o $(TARGET)
 
-DBG	: DEFINES += -D__WMC__
-DBG	: clean all
-
 rebuild : clean all
 
-.PHONY: all clean rebuild DBG
+.PHONY: all clean rebuild

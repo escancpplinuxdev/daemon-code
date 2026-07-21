@@ -6,9 +6,18 @@
 #include "ifdef_else_endif_in_code.h"
 
 //int printFormMain(int *len1, int *len2)
+
+#ifdef __DBG__
+
+	#define DBG_PRINT  std::cout << "Line = " << __LINE__ << " Func = " << __func__<< " File = " << __FILE__ << " Time = " << __TIME__ << "\n"
+#else
+	#define DBG_PRINT ((void)0)	
+#endif
+
 std::ostream& printFormMain(int *len1, int *len2)
 {
 	std::cout<<"printFormMain \n";
+	DBG_PRINT;
 	return *len1 > *len2 ? std::cout<<"len1 = '"<<*len1<<"'\n" : std::cout<<"len2 = '"<<*len2<<"'\n";
 }
 
@@ -20,12 +29,13 @@ int main(int argc, char **argv)
 		printf("Usage: passprompt <serial> <device_name>\n");
 		return 0;
 	}
-		
+
 	int len1 = strlen(argv[1]);
 	int len2 = strlen(argv[2]);
 
+	DBG_PRINT;
 	std::cout<<"len1 = '"<<len1<<"' len2 = '"<<len2<<"'\n";
-	
+
 	if(len1 > 128 || len1 < 2)
 	{
 		std::cout<<"len1 > 128 || len1 < 2\n";
@@ -34,7 +44,8 @@ int main(int argc, char **argv)
 	{
 		std::cout<<"not len1 > 128 || len1 < 2\n";
 	}
-	
+
+	DBG_PRINT;
 
 	if(len2 > 256 || len2 < 2)
 	{
@@ -61,5 +72,6 @@ int main(int argc, char **argv)
 	print(NULL);
 	printFormMain(&len1,&len2);	
 
+	DBG_PRINT;
 	return 0;
 }

@@ -7036,10 +7036,115 @@ Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
 Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
 
 Dear sir,
-	1] in nfdaemon check for map clear on event histroy.log host event after 30 min. and give to Vaibhav
-	2] after that /opt/MicroWorld/etc/.UrlQueue.cache file get repeated host and category of for every hit so , As per Vaibhav one entry should come oonly once in /opt/MicroWorld/etc/.UrlQueue.cache make chage for it test for every possible condition.
-	3] test nfdaemon on all possible condition .( yestday and today condition put this in mail).
 
+1] Enhanced nfdaemon event caching logic.
+
+    Verified the cache cleanup mechanism for host events recorded in eventHistory.log.
+
+    Implemented and tested automatic clearing of cached host entries after 30 minutes, allowing the same host event to be generated again after the cache expiry period.
+
+    Shared the updated binary to Vaibhav .
+
+2] Optimized .UrlQueue.cache handling.
+
+    Observed that /opt/MicroWorld/etc/.UrlQueue.cache was storing repeated host and category entries for every access.
+
+    As discussed with Vaibhav, modified the logic so that each Host + Category combination is stored only once in the cache file.
+
+    Implemented the required changes and validated the behavior under different browsing scenarios to ensure duplicate cache entries are no longer generated.
+
+3] Performed comprehensive nfdaemon testing by validating both yesterday's and today's changes, including:
+
+    Host event deduplication in eventHistory.log.
+
+    30-minute cache expiry and event regeneration.
+
+    .UrlQueue.cache duplicate entry prevention.
+
+    Domain categorization and event generation.
+
+    Cache synchronization and repeated access scenarios.
+
+    check Overall module stability across different test cases.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+18/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on libmwshare.so.1.0.0 to identify and remove unwanted log messages.
+
+    Analyzed unnecessary log generation.
+
+    Implemented the required changes to suppress unwanted logs while preserving essential debugging and operational logs.
+
+2] Completed all five enhancement points provided by Vaibhav for libmwshare.so.1.0.0.
+
+    Implemented the required code changes.
+
+    Built the updated library.
+
+    Verified the functionality through testing.
+
+    Shared the updated libmwshare.so.1.0.0 with Vaibhav.
+
+3] Started working on CVE analysis as guided by Divesh Sir.
+
+    Studied the process of identifying vulnerabilities using cve-bin-tool.
+
+    Understood the workflow for scanning binaries and libraries to detect known Common Vulnerabilities and Exposures (CVEs).
+
+4] Installed and configured the cve-bin-tool environment.
+
+    Set up the required dependencies.
+
+    Verified the installation and configuration for vulnerability scanning.
+
+5] Performed an initial CVE scan using cve-bin-tool.
+
+    Successfully generated the vulnerability analysis report.
+
+    Verified that no known vulnerabilities were detected:
+
+    There are 0 products with known CVEs detected.
+
+    Generated the JSON report:
+
+    INFO report of cve_bin_tool.OutputEngine - JSON report stored at /root/report.json
+
+	   INFO     cve_bin_tool - Overall CVE summary:                                                                    
+           INFO     cve_bin_tool - There are 0 products with known CVEs detected                                         
+           INFO     cve_bin_tool.OutputEngine - JSON report stored at /root/report.json                          
+           INFO     cve_bin_tool.OutputEngine - Output stored at report.json  
+
+vim report.json
+
+	[]    "metadata": {
+        "timestamp": "2026-07-22.18-19-35",
+        "tag": "",
+        "scanned_dir": "/opt/MicroWorld/",
+        "products_with_cve": 0,
+        "products_without_cve": 84,
+        "total_files": 1632
+    },
+    "report": []
+}
+
+
+ 
 Thanks Regards,
 Rushikesh Sunil Gajmal
 Programming Dept.

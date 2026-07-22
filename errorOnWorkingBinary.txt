@@ -1,0 +1,16 @@
+
+1] winclient :- 	:- snap app
+
+2] appblocker :- 	:- snap app
+
+3] gblock :- 		:- which comand sapurss.
+
+4] nfdaemon :- 20072026 :- many log on one event. -> Block / Allowed
+
+5] dispxra :- 20072026	:- unwanted log -> change loglevel 1 to 4
+
+6] libmshware :- 22072026 :- if .ini file then don't write log.
+
+7] cve-bin-tool	:- 22072026	:- make report.json
+
+8] 

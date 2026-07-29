@@ -112,14 +112,20 @@ Option	Meaning	Symbolic Links Behavior	Example Situation
 	omkar@PTLD-3:/tmp$ vboxmanage startvm "Centos-7_Developement-217" -type headless
 
 	vboxmanage list vms
+
+	VBoxManage startvm "u25-Testing-2.220" --type gui
 	
 	vboxmanage startvm "u25-Testing" -type headless
+
+	VBoxManage controlvm u25-Testing-2.220 poweroff
 
 	vboxmanage list runningvms
 
 	vboxmanage controlvm "u25-Testing”  poweroff
 
 	vboxmanage controlvm "Centos-7_Developement-217”  poweroff
+
+	VBoxManage modifyvm "RHEL-9_TESTING-2.219_passwd_root123"  --vrdeproperty VNCPassword=secret
 
 12]  	echo $? check pervious command execute right ya wrong.
 	

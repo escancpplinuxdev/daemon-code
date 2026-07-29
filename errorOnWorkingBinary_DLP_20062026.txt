@@ -1,0 +1,24 @@
+
+1] winclient :- 	:- snap app
+
+2] appblocker :- 	:- snap app
+
+3] gblock :- 		:- which comand sapurss.
+
+4] nfdaemon :- 20072026 :- many log on one event. -> Block / Allowed
+
+5] dispxra :- 20072026	:- unwanted log -> change loglevel 1 to 4
+
+6] libmshware.so.1.0.0 :- 22072026 :- if .ini file then don't write log.
+
+7] cve-bin-tool	:- 22072026	:- make report.json
+
+8] libupdate	:- 	:- removedir() to removePath() it remove all symlink, file,  dir.
+
+9] updatenow_avs :- 	:- ShowAlert to showAlert , Print screen blocking apply policy.
+
+10] rtscanner :- 27062026 :- while(1) to while(RT_TERMINATION == 0)
+
+11] install.sh :- 29062026 :- # comment rtscanner start becz we start rtscanner on FIM:Status "1" not Config:Status "1"
+
+12] mwagent :- 29062026 :- add checkDLP() func. for rtscanner start/ stop.

@@ -7370,3 +7370,39 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+29/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Prepared the escan-dlp.amd64.deb build and started installation/testing.
+
+    Observed an rtscanner startup error during execution of the installation/startup script.
+
+    Investigated the startup flow and handled the rtscanner-related error.
+
+2] Tested the other eScan DLP modules using the generated escan-dlp.amd64.deb build.
+
+    Verified module startup and basic functionality under different test conditions.
+
+    Checked for any issues introduced by the latest build changes.
+
+3] Prepared a new eScan DLP build after applying the required corrections.
+
+    Started fresh installation and validation of the updated build.
+
+    Began testing the new build against Policy A to verify correct policy deployment and module behavior.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

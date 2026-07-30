@@ -3,7 +3,7 @@
 
 2] appblocker :- 	:- snap app
 
-3] gblock :- 		:- which comand sapurss.
+3] gblock :- 		:- which comand sapress.
 
 4] nfdaemon :- 20072026 :- many log on one event. -> Block / Allowed
 

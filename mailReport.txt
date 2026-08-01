@@ -7406,3 +7406,105 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+29/07/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	1] Prepared the escan-dlp.amd64.deb build and started installation/testing using Policy A deployed from Server 192.168.1.229.
+
+    Tested each eScan DLP module under different conditions.
+
+    Completed the final escan-dlp.amd64.deb build on 192.168.2.216.
+
+    Build path:
+
+/home/workspace/escan_soho_corp_src/escan-antivirus-checkin/escan-DLP/escan-dlp.amd64.deb
+
+
+2] Performed crash validation during each test condition.
+
+    Checked /var/crash/ after testing each module and condition.
+
+    Verified whether any new crash reports were generated during the testing process.
+
+	 3] give updatenow_avs of co-operate version to vaibhav.
+ 
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Investigated the segmentation fault occurring in epsdaemon.
+
+    Started debugging to identify the exact location of the crash.
+
+    Tested the issue by applying policies from the management server.
+
+    Performed debugging in both daemonized and non-daemonized execution modes to compare behavior and isolate the root cause.
+
+2] Worked on the Screen Capture Blocking feature.
+
+    Investigated the segmentation fault occurring in the screen capture blocking thread.
+
+    Studied the C++ class implementation, including class design and access modifiers, to understand the execution flow.
+
+    Researched the overall screen capture blocking mechanism, policy handling, and implemented test scenarios for different policy states.
+
+3] Verified the functionality through server policy download.
+
+    Applied the latest policy from the server.
+
+    Confirmed correct policy synchronization and validated the screen capture blocking behavior after policy updates.
+
+4] Tested the Screen Capture Blocking feature with multiple screen capture applications, including:
+
+    flameshot
+
+    grim
+
+    shotwell
+
+    xwd
+
+Verified blocked executable paths such as:
+
+/usr/bin/flameshot
+/bin/flameshot
+/usr/bin/grim
+/bin/grim
+/usr/bin/shotwell
+/bin/shotwell
+/usr/bin/xwd
+/bin/xwd
+
+and validated the corresponding block events generated during testing.
+
+5] Integrated the updated epsdaemon binary into the latest escan-dlp.amd64.deb build.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+void printVector(const std::vector<int>v);
+
 void Ctor()
 {
 	//	std::vector<int>v{10}; pass -> accept as initializer list o/p -> 10
@@ -19,7 +21,8 @@ void Ctor()
 	std::cout<<"Constructs with 5 copies of value 3 .\n";
 	//	std::vector<int>v1{5,3}; pass -> accept as initializer list o/p -> 5 3
 
-	std::vector<int>v1(5,3); // o/p -> 3 3 3 3 3
+	std::vector<int>v1(5,3); // o/p -> 3 3 3 3 3	// // Uses () -> Calls constructor (size, value)
+							// Result: 5 elements, all initialized to 3.
 
 	std::vector<int>::const_iterator it1;
 	for(it1 = v1.cbegin(); it1!= v1.cend(); ++it1)
@@ -29,6 +32,9 @@ void Ctor()
 	std::cout<<"\n";
 
 	std::cout<<"Constructs from braced initializer list.\n";
+// Uses {} -> Calls std::initializer_list 
+// Result: 9 elements: the number 1 to  the number 9.
+
 	std::vector<int>v2 = {1,2,3,4,5,6,7,8,9};  // o/p -> 9 8 7 6 5 4 3 2 1
 
 	//	std::vector<int>v2 = (1,2,3,4,5,6,7,8,9); error: conversion from ‘int’ to non-scalar type ‘std::vector<int>’ requested
@@ -93,7 +99,6 @@ void Ctor()
 	}
 	std::cout<<"\n";
 }
-void printVector(const std::vector<int>v);
 void Capacity()
 {
 	std::vector<int>v = {1,2,3,4,5,6,7,8,9,0};
@@ -297,16 +302,145 @@ void VectorOperation()
 
 void Modifiers()
 {
-	std::vector<int> v = {5,6,4,6,4,6,1,6,3,2,9,8,7};
-	v.push_back(10);
+	std::cout<<"1. Construction and push_back \n";
+	std::vector<int> v;
+	std::cout<<"initialize empty vector \n";
+	printVector(v);
+	
+	v.push_back(10); // copy/add element at the end.
+	v.push_back(20);
+	v.push_back(30);
+	std::cout<<"push_back(10), 20, 30 \n";
 	printVector(v);
 
-	v.push_back(std::move(10));
+	std::cout<<"push_back(std::move(40)) \n";
+	v.push_back(std::move(40));
 	printVector(v);
+
+	std::cout<<"2. pop_back \n";
+	v.pop_back(); // remove last element
+	printVector(v);
+	
+	std::cout<<"3. insert single element \n";
+	auto it1 = v.begin() + 1 ; // point to 2nd element 
+	std::cout<<"it1 = begin() + 1 position of v = "<<*it1<<"\n";
+	auto insert_at = v.insert(it1,60);
+	std::cout<<"Return iterator to value : "<<*insert_at<<" gonna insert at position of it1 : "<<*it1<<" \n";
+	printVector(v);
+
+	std::cout<<"4. insert count , copies of element\n";
+	auto it2 = v.begin() + 2;
+	std::cout<<"it2 = v.begin() + 2 position of v = "<<*it2<<"\n";
+	auto insert_at1 = v.insert(it2 , 3, 7); // insert 3 copies of 7 before it2. // i.e put 7 at it2 position and move element of it2 next.
+	std::cout<<"Return iterator to value : "<<*insert_at1<<"\n";
+	printVector(v);
+	
+	std::cout<<"5. insert range \n";
+	std::vector<int> other = {100,200,300,400};
+	printVector(other);
+	
+	auto it3 = v.end(); // insert at the end.
+	v.insert(it3,other.begin(),other.end());
+	printVector(v);
+
+	std::cout<<"6. insert initializer list\n";
+	auto it4 = v.begin(); 
+	v.insert(it4,{30,40,50,60});
+	std::cout<<"insert 30, 40, 50, 60 at begin initialize list\n";
+	printVector(v);
+	v.insert(v.end(),{500,600});
+	std::cout<<"insert 500,600 at end initialize list\n";
+	printVector(v);
+
+	std::cout<<"7. emplace (construct in-place)\n";
+	v.emplace(v.begin(),888); // constructs int(888) directly in place at v.begin() place.
+	printVector(v);
+
+	std::cout<<"8. emplace_back \n";
+	v.emplace_back(999); // in place at end 999 contruction at end.
+	printVector(v);
+
+	std::cout<<"9. erase (single element) \n";
+	auto it6 = v.begin() + 2;
+	std::cout<<"v.erase(v.begin() + 2) = "<<*(v.begin() + 2)<<"\n";
+	printVector(v);
+	auto erase_it = v.erase(it6);
+	std::cout<<"erase third elements "<<*erase_it<<"\n";
+	printVector(v);
+	std::cout<<"Returned iterator pointing to "<<*it6<<"  next element\n";
+	
+	
+	std::cout<<"10. erase (range) \n";
+	printVector(v);
+	v.erase(v.begin() +1 , v.begin() +4); // erase begin() + 1 to upto +4 not +4 element.
+	std::cout<<"v.erase(v.begin() +1 , v.begin() +4) = \n";
+	printVector(v);
+
+	std::cout<<"11. clear\n";
+	printVector(v);
+	std::cout<<"v.size() = "<<v.size()<<" v.capacity() = "<<v.capacity()<<"\n";
+//	v.clear();
+	printVector(v);
+	std::cout<<"v.size() = "<<v.size()<<" v.capacity() = "<<v.capacity()<<"\n";
+
+	std::cout<<"12. v.resize(24)  \n"; //resize(n) → changes the size of the vector to n.
+	printVector(v);			// If n is bigger, it adds new elements (initialized with default values).
+	std::cout<<"v.size() = "<<v.size()<<" v.capacity() = "<<v.capacity()<<"\n";
+	v.resize(4);			// If n is smaller, it removes elements from the end.
+	printVector(v);
+	std::cout<<"v.size() = "<<v.size()<<" v.capacity() = "<<v.capacity()<<"\n";
+
+	std::cout<<"12. v.resize(27,8)  \n";	//resize() can reduce size
+	v.resize(27,8);
+	printVector(v);
+	std::cout<<"v.size() = "<<v.size()<<" v.capacity() = "<<v.capacity()<<"\n";
+
+	std::cout<<"13. v.reserve(30)\n"; // reserve(n) → changes the capacity (allocated memory) to at least n.
+	v.clear();				// It does not add or remove elements.
+	printVector(v);				// It just pre-allocates memory to avoid future re‑allocations. so make v.capacity() >= v.reserve() i.e memory reserved.
+	std::cout<<"v.size() = "<<v.size()<<" v.capacity() = "<<v.capacity()<<"\n";	
+	v.reserve(30);			//reserve() never shrinks capacity
+	printVector(v);			//reserve() does not initialize elements so std::cout<<v[30]; -> ❌ Undefined behaviour – element doesn't exist yet.
+	std::cout<<"v.size() = "<<v.size()<<" v.capacity() = "<<v.capacity()<<"\n";
+
+	std::cout<<"14. v.assign(range)\n";
+	std::vector<int>  another = {1,2,3,4,5,6,7,8};
+	v.assign(another.begin(),another.end());
+	std::cout<<"v.assign(another.begin(),another.end())\n";
+	printVector(v);
+
+	std::cout<<"15. assign (initializer_list) \n";
+	v.assign({10,20,30,40});
+	printVector(v);
+
+	std::cout<<"16. swap \n";
+	std::vector<int>w = {100,200,300,400,500};
+	std::cout<<"v = ";
+	printVector(v);
+	std::cout<<"w = ";
+	printVector(w);
+	v.swap(w);
+	std::cout<<"v = ";
+	printVector(v);
+	std::cout<<"w = ";
+	printVector(w);
+	
+
+
+
+}
+
+void combine ()
+{
+//	std::vector<int> v = ({5,6,7}); // error: conversion from ‘int’ to non-scalar type ‘std::vector<int>’ requested
+	std::vector<int> v = {(5,6,7)}; // o/p ->  [7]
+	printVector(v);
+	
 }
 int main()
 {
 	std::vector<int>v = {1,2,3,4,5};
+	std::vector<int>w(10,7);
 
 //	std::cout<<"1. Vector Ctor and Assignment \n";
 //	Ctor();
@@ -315,19 +449,22 @@ int main()
 //	std::cout<<"2. Vector Capacity \n";
 //	Capacity();
 
-//	VectorOperation();
+	VectorOperation();
 
 //	std::cout<<"Element Access \n";
 //	ElementAccess();
 
-	std::cout<<"Modifiers (Insert / Erase / Push / Pop) \n";
-	Modifiers();
+//	std::cout<<"Modifiers (Insert / Erase / Push / Pop) \n";
+//	Modifiers();
+
+//	combine();
 
 	return 0;
 }
 
 /*
-   std::vector is a dynamic array that provides random access, fast insertion/removal at the end, and amortised O(1) push/pop.
+
+std::vector is a dynamic array that provides random access, fast insertion/removal at the end, and amortised O(1) push/pop.
 
 
 */

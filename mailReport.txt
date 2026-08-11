@@ -7508,3 +7508,349 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on understanding the Screen Capture Blocking functionality.
+
+    Studied the complete execution flow of the screen capture blocking mechanism.
+
+    Verified the stability of epsdaemon during testing.
+
+    Checked /var/crash/ for any crash reports generated during execution and confirmed that epsdaemon is working properly without generating crash reports.
+
+2] Enhanced GAblocker by adding a duplicate event check.
+
+    Implemented logic to prevent duplicate log event generation when the GAblocker service is stopped.
+
+3] Implemented the apply2fapolicies() function for 2FA Authenticator.
+
+    Added the required logic to apply Two-Factor Authentication policies.
+
+    Integrated the function into the existing policy application workflow.
+
+4] Worked on debugging the 2FA Authenticator module.
+
+    Added debug logs to trace the execution flow.
+
+    Investigated the ownership issue where .key_authenticator_1 was not receiving the correct ownership.
+
+    Analyzed the change_ownership() function and verified the chown operation for the /root/.key_authenticator file to identify the root cause of the ownership assignment issue.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on the Authenticator module for 2FA.
+
+    Updated the ownership of /root/.key_authenticator to root:root.
+
+    Modified the logic to avoid unwanted ownership changes during execution.
+
+    Applied the required 2FA license and validated the functionality by:
+
+        Running the authenticator directly.
+
+        Applying the policy from the management server.
+
+        Verifying the behavior under both execution methods.
+
+2] Worked on updatenow_avs.
+
+    Implemented and verified reading of the 2FA configuration.
+
+    Tested the integration between updatenow_avs and the Authenticator module.
+
+    Performed validation across multiple test scenarios to ensure correct policy handling and configuration updates.
+
+3] Prepared the latest escan-dlp build.
+
+    Generated a new escan-dlp.amd64.deb package.
+
+    Installed the build and performed comprehensive testing across all relevant modules and policy scenarios to verify build stability and functionality.
+
+4] Provided the updated AppBlocker binary to Vaibhav for testing.
+
+    Explained the working of the appblocker.list cache file, including:
+
+        Synchronization between the cache file and in-memory data structures.
+
+        Cache refresh logic and its role in improving AppBlocker performance by avoiding repeated package discovery.
+
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Shared the latest escan-dlp.amd64.deb build with Vaibhav for validation.
+
+    Started installation and testing on the 192.168.2.220 testing machine.
+
+2] Worked on updatenow_avs performance optimization.
+
+    Investigated the high CPU utilization issue.
+
+    Analyzed the execution flow and started implementing changes to reduce unnecessary CPU usage while maintaining the required functionality.
+
+3] Investigated the issue where already installed software was generating a "New Software Installed" event in eventHistory.log.
+
+    Analyzed the WinClient software detection logic.
+
+4] Worked on the epsdaemon Screen Capture feature.
+
+    Investigated the screenCapture() failure.
+
+    Debugged the execution flow and started resolving the issue to ensure proper Screen Capture policy enforcement.
+
+5] Continued development of the 2FA feature.
+
+    Implemented the required logic for handling Status == 1. for user = "vaibhav,rushi,rushikesh"
+
+    Added support for SSH login with 2FA authentication.
+
+    Tested the implementation under different configurations and user scenarios to verify correct policy behavior.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Performed comprehensive 2FA policy testing in epsdaemon.
+
+    Verified 2FA policy behavior during:
+
+        Desktop login
+
+        Normal user login
+
+        Root user login
+
+        Multiple user scenarios
+
+    Tested policy execution for both Status = 1 and Status = 2 to ensure correct authentication behavior under all supported conditions.
+
+2] Worked on epsdaemon policy modules.
+
+    Investigated and resolved the Bluetooth Block failure.
+
+    Debugged and fixed the Wi-Fi Block segmentation fault.
+
+    Verified both features through policy deployment and functional testing.
+
+3] Updated libwifiblock.so.
+
+    Removed unnecessary printf statements to clean up console output.
+
+    Modified the user lookup logic to return -1 instead of NULL when the specified user is not found.
+
+    Tested the updated library under different user scenarios to validate the changes.
+
+4] Integrated the updated binaries and libraries into the latest escan-dlp.amd64.deb build.
+
+    Generated the updated Debian package.
+
+    Shared the latest build to Vaibhav .
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on the epsdaemon service failure.
+
+    Investigated the service startup and execution flow.
+
+    Checked the individual threads within epsdaemon to identify the thread responsible for the service failure.
+
+    Added debugging and analyzed thread behavior under different execution conditions.
+
+    Tested epsdaemon in both daemonized and non-daemonized modes.
+
+    Performed testing under different conditions to identify and handle the service failure.
+
+2] Investigated the mwcpmon service stop issue.
+
+    Observed that systemctl stop mwcpmon was failing.
+
+    Started debugging the service stop/termination flow.
+
+    Checked the process and thread termination behavior to identify why mwcpmon was not stopping correctly.
+
+    Started testing the required changes under different start/stop conditions.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Worked on updatenow_avs for update verification and database update handling.
+
+    Investigated the update verification flow and database update process.
+
+    Tested error conditions during update requests.
+
+    Investigated the HTTP 404 Not Found error occurring for update queries and started analyzing the request/response handling.
+
+2] Worked on libmwshare.so.1.0.0.
+
+    Updated the library to handle the identified error conditions.
+
+    Tested the updated library with the related update and error-handling scenarios.
+
+3] Worked on epsdaemon for Bluetooth device policy handling.
+
+    Updated and tested Bluetooth blocking functionality.
+
+    Added/validated the required behavior to allow Bluetooth audio devices according to policy.
+
+    Tested the changes in both daemonized and non-daemonized execution modes.
+
+    Verified the functionality under different Bluetooth device and policy conditions.
+
+4] Completed verification of the updated modules.
+
+    All related modules were tested under the required conditions.
+
+    The changes were reviewed and approved by Vaibhav.
+
+    Integrated the approved binaries/libraries into the required build path for the DLP build.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on the mwcpmon segmentation fault (core dumped) issue.
+
+    Debugged the crash and analyzed the thread ID memory management.
+
+    Replaced the manual malloc/realloc handling of threadIds with:
+
+std::vector<pthread_t> threadIds;
+
+    This improves memory management and avoids potential memory allocation/reallocation issues.
+
+    Updated the thread-processing loop so that it terminates correctly when TERMINATE_RT_SCANNER is triggered:
+
+if(TERMINATE_RT_SCANNER)
+{
+    break;
+}
+
+2] Performed comprehensive mwcpmon testing.
+
+    Tested the updated implementation in both daemonized and non-daemonized modes.
+
+    Verified different start, stop, termination, and thread-handling conditions.
+
+    After successful testing, demonstrated the changes to Vaibhav.
+
+    The changes were verified by Vaibhav and integrated into the eScan DLP build.
+
+3] Performed comprehensive epsdaemon validation.
+
+    Tested epsdaemon in both daemonized and non-daemonized modes.
+
+    Verified different service, thread, policy, start, stop, and termination conditions.
+
+    Demonstrated the tested changes to Vaibhav for review.
+
+    The changes were verified by Vaibhav and added to the eScan DLP build.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -22,3 +22,19 @@
 11] install.sh :- 29062026 :- # comment rtscanner start becz we start rtscanner on FIM:Status "1" not Config:Status "1"
 
 12] mwagent :- 29062026 :- add checkDLP() func. for rtscanner start/ stop.
+
+13] epsdaemon :- 01082026 :- epsdaemon segmentation fault solve.
+
+14] authenticator :- 04062026 :- set chown root:root of /root/.key_authenticator for 2fa. 
+
+15] updatenow_avs:- 04062026 :- 2fa conf read. cpu uilitation too high so reduce and again change.
+
+16] libwifiblock.so:- 06082026 :-  remove printf statement.
+
+17] epsdaemon:- 06082026 :- bluetooth block failed solved. , wifiblock segmentation fault solve.
+
+18] updatenow_avs :- 10082026 :- error update when server not found.
+
+19] libmwshare.1.0.0 :- 10082026 :-  error update when server not found.
+
+20] 

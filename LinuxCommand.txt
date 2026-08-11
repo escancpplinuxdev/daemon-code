@@ -262,6 +262,9 @@ Search ALL files in current directory and subdirectories
 → find lines containing:
 dlp OR edr OR xdr OR ultra OR corpo
 
+ grep -irn -v '^[[:space:]]*$' /opt/MicroWorld/var/avsupd/L0MacAdmin.ini
+-> want to view only the content (ignoring blank lines)
+
 15]	xdg-open command.odt & xdg-open program.odt &	
 
 16]
@@ -965,5 +968,13 @@ HAVE_DOT               = YES
 	7] cp latex/refman.pdf ifdef_else_endif_in_code.pdf
 
 75]				
+	cpu and memory of /opt/MicroWorld/ 
+while true; do      echo "=== $(date) ===";      ps -eo pid,pcpu,pmem,comm,args | awk '$5 ~ /^\/opt\/MicroWorld/';      sleep 2;  done
 
+	cpu of single binary
+
+	while true; do ps -C updatenow_avs -o %cpu --no-headers; sleep 2; done	
+
+76]	
+	
 

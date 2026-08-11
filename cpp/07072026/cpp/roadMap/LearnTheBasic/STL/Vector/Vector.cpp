@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <vector>
+#include <algorithm> // std::find
 
 void printVector(const std::vector<int>v);
 
@@ -433,9 +434,38 @@ void Modifiers()
 void combine ()
 {
 //	std::vector<int> v = ({5,6,7}); // error: conversion from ‘int’ to non-scalar type ‘std::vector<int>’ requested
-	std::vector<int> v = {(5,6,7)}; // o/p ->  [7]
+//	std::vector<int> v = {(5,6,7)}; // o/p ->  [7]
+
+	std::vector<int>v = {1,2,3};
+
+	std::cout<<"sizeof(v) = "<<sizeof(v)<<"\n";
 	printVector(v);
 	
+}
+
+void VectorexponentialGrowth()
+{
+	std::vector<int> v;
+
+	for(int i = 1; i< 100; ++i)
+	{
+//		v[i] = i;
+		v.push_back(i);
+		std::cout<<"v["<<i<<"] = "<<v[i]<<"  capacity = "<<v.capacity()<<"  size = "<<v.size()<<"\n";
+	}
+
+	auto it = std::find(v.begin(), v.end(), 42); // #include <algorithm> header required.
+	if(it != v.end())
+	{
+		std::cout<<"Found element = "<<*it<<"\n";
+	}
+	else
+	{
+		std::cout<<"Element not found \n";
+	}
+/*
+It guarantees amortised O(1) push_back. If capacity grew by a constant amount (e.g., +1), the total cost would be O(n²).
+*/
 }
 int main()
 {
@@ -449,7 +479,7 @@ int main()
 //	std::cout<<"2. Vector Capacity \n";
 //	Capacity();
 
-	VectorOperation();
+//	VectorOperation();
 
 //	std::cout<<"Element Access \n";
 //	ElementAccess();
@@ -459,6 +489,7 @@ int main()
 
 //	combine();
 
+	VectorexponentialGrowth();
 	return 0;
 }
 

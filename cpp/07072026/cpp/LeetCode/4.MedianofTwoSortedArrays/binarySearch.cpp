@@ -76,5 +76,9 @@ container must support random access. O(1) jump to any index. -> i.e binary sear
 well defined comparison between elements and target.
 
 
-3] 
+3] What is "binary search on answer"? How do you recognize a problem needs this pattern?
+
+Answer: Instead of searching for a value within a sorted array, you binary search over the space of possible answers (a range of numbers), using a monotonic — to decide which half of the answer-range to keep.
+
+
 */

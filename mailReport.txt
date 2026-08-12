@@ -7854,3 +7854,62 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on the eScan 2FA for Linux build and explained the authenticator working  to Omkar.
+
+    Explained how the Authenticator module works.
+
+    Explained the role and working of key_auth.conf.
+
+2] Started working on WinClient for eScan 2FA for Linux.
+
+    Studied and implemented the required WinClient event handling for 2FA.
+
+    Worked on the softwares.list event flow related to the 2FA product.
+
+3] Worked on WinClient and libmwshare integration for eScan 2FA.
+
+    Verified handling of different 2FA software events through WinClient.
+
+    Worked on libmwshare to handle the product key/license information for eScan 2FA for Linux.
+
+    Verified the communication and data flow between the related modules.
+
+4] Worked on updatenow_avs for eScan 2FA policy updates.
+
+    Implemented/validated the policy update flow.
+
+5] Prepared the eScan 2FA for Linux Debian build.
+
+    Generated escan-2FA.amd64.deb.
+
+    Installed and tested the build on 192.168.2.220.
+
+    Verified the generated events and logs using:
+
+tail -f /var/MicroWorld/var/log/eventHistory.log
+
+    Checked the required event logs as discussed with Vaibhav.
+
+6] Completed the escan-2FA.amd64.deb build and installation.
+
+    Installed the generated package on the testing machine.
+
+7] check key validation.
+ 
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

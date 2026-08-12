@@ -1,0 +1,40 @@
+
+1] winclient :- 	:- snap app
+
+2] appblocker :- 	:- snap app
+
+3] gblock :- 		:- which comand sapress.
+
+4] nfdaemon :- 20072026 :- many log on one event. -> Block / Allowed
+
+5] dispxra :- 20072026	:- unwanted log -> change loglevel 1 to 4
+
+6] libmshware.so.1.0.0 :- 22072026 :- if .ini file then don't write log.
+
+7] cve-bin-tool	:- 22072026	:- make report.json
+
+8] libupdate	:- 	:- removedir() to removePath() it remove all symlink, file,  dir.
+
+9] updatenow_avs :- 	:- ShowAlert to showAlert , Print screen blocking apply policy.
+
+10] rtscanner :- 27062026 :- while(1) to while(RT_TERMINATION == 0)
+
+11] install.sh :- 29062026 :- # comment rtscanner start becz we start rtscanner on FIM:Status "1" not Config:Status "1"
+
+12] mwagent :- 29062026 :- add checkDLP() func. for rtscanner start/ stop.
+
+13] epsdaemon :- 01082026 :- epsdaemon segmentation fault solve.
+
+14] authenticator :- 04062026 :- set chown root:root of /root/.key_authenticator for 2fa. 
+
+15] updatenow_avs:- 04062026 :- 2fa conf read. cpu uilitation too high so reduce and again change.
+
+16] libwifiblock.so:- 06082026 :-  remove printf statement.
+
+17] epsdaemon:- 06082026 :- bluetooth block failed solved. , wifiblock segmentation fault solve.
+
+18] updatenow_avs :- 10082026 :- error update when server not found.
+
+19] libmwshare.1.0.0 :- 10082026 :-  error update when server not found.
+
+20] 

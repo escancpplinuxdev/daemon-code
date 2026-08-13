@@ -7913,3 +7913,71 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+01/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on 2FA key validation.
+
+    Studied the key validation flow and how the license key is verified by the eScan 2FA components.
+
+    Checked the interaction between the license key, product configuration, and update mechanism.
+
+2] Installed eScan DLP and tested the license/update behavior with multiple management servers:
+
+    192.168.1.204
+
+    192.168.1.223
+
+    192.168.1.229
+
+    Verified the behavior of the product key and updatenow_avs with each server.
+
+    Modified the system date/time to simulate a 3-month time difference and tested key validation and update behavior under the changed date/time conditions.
+
+3] Installed and tested escan-2FA.amd64.deb and verified the generated license key.
+
+Checked:
+
+/opt/MicroWorld/etc/keys/microworld.keys
+
+Verified the license configuration:
+
+[License]
+Key=BLDN-CVEM-ESNH-EXDM-CMDM-TNCU-RVOF-QZ
+
+4] Tested updatenow_avs with the eScan 2FA product:
+
+/opt/MicroWorld/usr/bin/updatenow_avs --force
+
+    Verified the product identification as:
+
+Product Name = eScan 2FA for Linux
+
+    Tested the product/update behavior against the configured management servers.
+
+5] Investigated the install.sh issue related to trial key generation.
+
+    Identified an issue with:
+
+/opt/MicroWorld/sbin/encdec --gentrialkey CL 5 2>/dev/null
+
+    Debugged the trial-key generation and installation flow.
+
+    Started resolving the issue and validating the fix under different installation, key-validation, date/time, and update conditions.
+
+6] Performed testing eScan 2FA trial license and update scenarios to ensure the corrected installation and key-generation logic works consistently.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -25,7 +25,7 @@ class Solution
 				}
 				else if (nums[lo] <= nums[mid])
 				{
-					if (nums[lo] <= target && target < nums[mid]) 
+					if (nums[lo] <= target && target < nums[mid]) // [lo .... mid]
 					{	
 						hi = mid - 1;
 					}
@@ -36,7 +36,7 @@ class Solution
 				}
 				else
 				{
-					if (nums[mid] < target && target <= nums[hi]) 
+					if (nums[mid] < target && target <= nums[hi]) // [mid ... lo]
 					{
 						lo = mid + 1;
 					}
@@ -92,4 +92,4 @@ Input: nums = [2,5,6,0,0,1,2], target = 3
 Output: false
 
 
- */
+*/

@@ -7981,3 +7981,308 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+14/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on the eScan 2FA for Linux package and investigated the license-key processing issue.
+
+    Observed that /opt/MicroWorld/usr/bin/updatenow_avs and eScanGUI were not processing the license key correctly. show this to vaibhav , discuss how license to be want then.
+
+    Started debugging the key validation and product-license handling flow.
+
+2] Updated updatenow_avs to handle the Invalid License Key condition.
+
+    Added the required invalid-license-key handling and validation logic.
+
+    Tested the behavior with the following servers:
+
+        192.168.1.229
+
+        192.168.1.204
+
+        192.168.1.223
+
+    Verified the behavior under different key and server-response conditions.
+
+3] Updated eScanGUI to display an "Invalid License Key" popup during startup.
+
+    Added the required prompt handling for invalid license conditions.
+
+    Tested the popup behavior with servers:
+
+        192.168.1.229
+
+        192.168.1.204
+
+        192.168.1.223
+
+    Verified startup behavior for valid and invalid license-key scenarios.
+
+4] Generated a new escan-2FA.amd64.deb build containing the updated license-validation changes.
+
+    Installed and tested the new build.
+
+    Performed testing with all three management servers:
+
+        192.168.1.229
+
+        192.168.1.204
+
+        192.168.1.223
+
+    Tested different license, update, server-response, and startup conditions to validate the complete 2FA license-handling flow.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+14/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Performed comprehensive testing of escan-2FA.amd64.deb on the eScan 2FA server 192.168.0.117.
+
+    Tested SSH login functionality for all available users.
+
+    Verified 2FA authentication for individual users as well as different user-login scenarios.
+
+    Checked the behavior under different login and authentication conditions.
+
+2] Updated updatenow_avs for the 192.168.0.117 eScan 2FA server.
+
+    Updated the policy handling so that an additional 2FA Add-on key is not required.
+
+    Verified that the 2FA policy can be applied directly using the build/product key.
+
+    Tested the policy update flow under the required conditions.
+
+3] Updated libmwshare.so.1.0.0.
+
+    Modified the library to read the PID from the escan-ver file.
+
+    Tested the updated PID-reading logic with the related 2FA components.
+
+4] Prepared the updated build for further validation.
+
+    Placed the build on:
+
+192.168.2.216:/tmp
+
+    Informed Divesh Sir and Vaibhav about the updated build.
+
+    Provided the build for testing .
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+14/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Prepared the escan-edr.amd64.deb build by integrating all the latest updated binaries and libraries.
+
+2] Performed installation and uninstallation testing of the newly generated eScan EDR build.
+
+    Verified successful installation.
+
+    Verified proper uninstallation and cleanup.
+
+3] Tested WinClient software inventory functionality.
+
+    Verified softwares.list handling for applications installed through APT/DPKG and Snap.
+
+    Checked already-installed software detection and corresponding software events.
+
+    Verified software inventory behavior after application installation and removal.
+
+4] Tested AppBlocker functionality.
+
+    Verified blocking of Firefox installed through Snap.
+
+    Verified blocking of Google Chrome installed through APT/DPKG.
+
+    Checked the corresponding AppBlocker logs and policy behavior.
+
+5] Tested 2FA authentication.
+
+    Verified 2FA during SSH login.
+
+    Tested 2FA during desktop login.
+
+    Verified the behavior for Omkar's user account and other users.
+
+    Checked the different login and authentication conditions.
+
+6] Tested nfdaemon domain filtering.
+
+    Tested domain handling for:
+
+        amazon.com
+
+        flipkart.com
+
+    Verified the corresponding domain policy and event behavior.
+
+7] Tested rtscanner functionality.
+
+    Sent the EICAR test file to verify real-time scanning and detection.
+
+    Checked scanner behavior and related logs after detection.
+
+8] check updatenow_avs for unlincese manual list.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+14/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Investigated and resolved the INSECURE MODE warning generated by the eScan cron job.
+
+Observed in syslog:
+
+/etc/cron.d/escan-missedcron
+INSECURE MODE (group/other writable)
+
+Checked using:
+
+tail -f /var/log/syslog | grep -i insecure
+
+Corrected the file permission using:
+
+sudo chmod 644 /etc/cron.d/escan-missedcron
+
+Verified the cron configuration after applying the permission change.
+
+2] Updated ContentScanner duplicate-event handling.
+
+    Added a 30-second blockDuplicationEventLog mechanism to prevent duplicate events within the specified time window.
+
+    Tested the changes on 192.168.2.220.
+
+    Verified the functionality for both Monitor and Block modes.
+
+    Tested with AadhaarCard.pdf; the file was successfully handled according to the configured policy.
+
+3] Tested epsdaemon functionality on the 192.168.2.220 testing machine using the updated version from 192.168.1.226.
+
+    Verified epsdaemon startup and runtime behavior.
+
+    Checked the service and related functionality after deployment.
+
+4] Resolved the epsdaemon library dependency issue.
+
+    Added:
+
+/opt/MicroWorld/lib/libwifiblock.so
+
+as a required library dependency for:
+
+/opt/MicroWorld/sbin/epsdaemon for Generic pendrive. serial.lenght < 13.
+
+    Verified the service using:
+
+systemctl status epsdaemon
+
+    Confirmed that epsdaemon is running successfully.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+14/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Performed comprehensive testing of corporate epsdaemon on the small laptop 192.168.1.230.
+
+    Tested epsdaemon in both daemonized and non-daemonized modes.
+
+    Verified functionality under different policy, service, and execution conditions.
+
+    Demonstrated the test results to Vaibhav and received confirmation on the testing.
+
+2] Worked on epsdaemon client connectivity.
+
+    Established and verified the client connection flow.
+
+    Made the required changes in epsdaemon to ensure proper client-side communication.
+
+    Provided the updated epsdaemon to Vaibhav for testing.
+
+    Verified that the updated implementation works correctly on the client machine.
+
+3] Applied the same epsdaemon changes to the eScan EDR and eScan DLP environments.
+
+    Integrated the required changes into the respective builds.
+
+    Prepared and installed the eScan EDR .deb build.
+
+    Demonstrated the updated functionality to Vaibhav for validation.
+
+4] Performed comprehensive testing of the eScan 2FA build.
+
+    Tested 2FA functionality under different login and policy conditions.
+
+    Verified the behavior across the required test scenarios.
+
+    Demonstrated the 2FA functionality and test results to Vaibhav.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

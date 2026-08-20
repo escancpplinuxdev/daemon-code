@@ -3,4 +3,9 @@
 
 2] libmwshare.so.1.0.0 :- 12082026 :- handle product key of eScan 2FA for Linux
 
-3] updatenow_avs :- 12082026 :- 2fa policy update of eScan 2FA for Linux
+3] updatenow_avs :- 12082026 :- 2fa policy update of eScan 2FA for Linux , invalid license key.
+
+4] libmwshare.so.1.0.0 :- 17082026 :- update to read PID form escan-ver file.
+
+5] updatenow_avs :- 12082026 :- 2fa server where no Add on key of 2fa required direct applicy ploicy by build key.
+

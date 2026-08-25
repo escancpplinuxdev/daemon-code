@@ -8297,11 +8297,154 @@ Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
 Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
 
 Dear sir,
-	1]
 
+
+1] Worked on the escan-2FA.amd64.deb build to investigate and resolve the reported license issue.
+
+    Analyzed the existing license-handling flow.
+
+    Implemented the required changes as per the updated requirements.
+
+    Tested the corrected license behavior under the required conditions.
+
+2] Demonstrated the implemented changes to Vaibhav.
+
+    Explained the license-handling changes and related behavior.
+
+    Performed verification with Vaibhav and confirmed the updated functionality.
+
+3] Started working on updatenow_avs for the 192.168.1.237 server.
+
+    Started implementing the required changes related to license-key handling.
+
+    Began testing the updated license validation and update flow with the server configuration for escan-2FA.amd64.deb.
+
+and complete the build.
 
 Thanks Regards,
 Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+21/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] As discussed with Vaibhav, worked on removing the obsolete nfdaemon-related components from the EDR build:
+
+    sbin/nfdaemon
+
+    prepareWebFilter
+
+    etc/init
+
+    init.d/nfdaemon*
+
+    netfilterk_module
+
+    Disabled the related website-blocking functionality from install.sh.
+
+2] Removed the above components and generated a new eScan EDR build.
+
+    Installed the newly generated build.
+
+    Verified that the EDR package installs successfully after the changes.
+
+3] Started uploading the project modules to the 2.111 cvs_linux Git machine.
+
+    Began uploading the modules one by one.
+
+    The process is taking considerable time due to the large number of modules and files involved.
+
+4] Updated the website-blocking configuration.
+
+    Changed:
+
+/opt/MicroWorld/etc/websiteblock.conf
+showAlert = "1"
+
+to:
+
+showAlert = "0"
+
+    Removed escanguiScan.sh from install.sh for all applicable builds.
+
+5] Updated permissions for service files.
+
+    Set the required permission to 644 for service files under:
+
+/etc/init.d/
+
+    Verified the permissions after the change.
+
+6] Started investigating a WinClient issue related to escanpfmodule.ko.
+
+    Removed:
+
+/opt/MicroWorld/sbin/escanpfmodule.ko
+
+    Observed error code 10730 being reported by WinClient after removal.
+
+    Started tracing the WinClient execution flow to identify where the error is generated and determine the required handling.	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+21/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Worked on escancl -ls license validation.
+
+    Implemented the required C++ handling for the Invalid License Key condition.
+
+    Tested the command and verified the expected error handling and output.
+
+2] Explained the eScan 2FA Authenticator workflow to Vaibhav.
+
+    Discussed the complete authentication flow and related components.
+
+    Explained the interaction between the Authenticator on status 1, 2,3 for gdm and lightdm.
+
+3] Investigated a WinClient issue related to Snapd-installed software.
+
+    Analyzed the incorrect/ unexpected event being generated in:
+
+/var/MicroWorld/var/log/eventHistory.log
+
+    Debugged the Snap application detection and software-event handling logic.
+
+    Implemented the required changes to resolve the issue.
+
+4] Performed comprehensive testing of the updated functionality.
+
+    Tested Snap and normal application scenarios.
+
+    Verified the related WinClient events and logs under different conditions.
+
+    Prepared the updated build and provided it to Vaibhav. 
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

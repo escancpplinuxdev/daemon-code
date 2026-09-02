@@ -1,0 +1,4 @@
+
+1] qmake calculator.pro
+2] make
+3] ./calculator

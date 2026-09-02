@@ -925,7 +925,7 @@ make clean -> Make any changtes like lib, -l lib here passPrompt.pro  -> make a 
 	/usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile passPrompt.pro  -> which contain changes form passPrompt.pro file -> create Makefile -> 
 	 make clean && make 
 
-73]	
+73] replace printf
 	%s/printf/\/\/printf/gc
 	
 	%s/DBG_PRINT/\/\/DBG_PRINT/gc
@@ -975,6 +975,10 @@ while true; do      echo "=== $(date) ===";      ps -eo pid,pcpu,pmem,comm,args 
 
 	while true; do ps -C updatenow_avs -o %cpu --no-headers; sleep 2; done	
 
-76]	
+76]	git -> 192.168.2.111 -> root123 -> /home/git/SOURCE_2026/source_2.216_debian_64_2026 
 	
+	ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss root@192.168.2.111
 
+77]	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind_mwfirewalld.log /tmpdata/mwfirewalld
+
+78]

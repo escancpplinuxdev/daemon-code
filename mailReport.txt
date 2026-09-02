@@ -8448,3 +8448,422 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+26/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] Integrated mwcdmon into all required paths and prepared the updated builds.
+
+    Added the required mwcdmon binary/configuration changes across the applicable build paths.
+
+    Generated the updated:
+
+escan-dlp.amd64.deb
+escan-2FA.amd64.deb
+
+    Provided both builds to Vaibhav for testing and validation.
+
+2] Worked on the 2FA Authenticator module.
+
+    Added debugger/tracing points to the Authenticator code.
+
+    Analyzed and explained the encryption function workflow to Vaibhav.
+
+    Traced the input, encryption, character filtering, and final security-key generation process.
+
+3] Worked on the 2FA security-key generation issue reported by Vaibhav and implemented the required logic.
+
+Step 1 – Initial Security Key Generation
+
+    Generated the initial 16-character string using:
+
+lowercase Username + MachineCode
+
+    Example:
+
+Username    = admin
+MachineCode = 12345678902083
+
+Step 2 – Character Replacement
+
+    Applied the required character replacement rules by excluding:
+
+[' ', '8', '9', '0', 'i', 'I', 'O', 'o', '1']
+
+    Replaced them with:
+
+['A', 'b', 'C', 'd', 'E', 'f', 'G', 'h', 'J']
+
+    Generated the initial 16-character SecurityKey accordingly.
+
+Step 3 – Encryption
+
+    Passed the generated SecurityKey to the existing Encdec.dll/encryption functionality through EncryptPassword().
+
+    Verified the encrypted output using debugger traces.
+
+Step 4 – Excluded-Character Processing
+
+    After encryption, filtered the excluded characters again without applying replacement.
+
+    Verified the resulting encrypted string and character positions.
+
+Step 5 – Username-Based Character Skipping
+
+    Implemented the required logic based on the Username length:
+
+        Even number of characters: skip 2 characters.
+
+        Odd number of characters: skip 1 character.
+
+    Continued the process until the required 16-character final SecurityKey was generated.
+
+    Added handling so that when the end of the encrypted string is reached, processing continues from the required next character position.
+
+Step 6 – Final Security Key
+
+    Implemented the final:
+
+GetFirst16CharExcludingCharacters(EncryptedValue)
+
+    Verified the final SecurityKey generation against the expected logic and examples.
+
+4] Completed debugging and testing of the complete 2FA security-key generation and encryption workflow.
+
+    Verified Username and MachineCode processing.
+
+    Verified encryption and post-encryption filtering.
+
+    Verified even/odd Username-length handling.
+
+    Verified final 16-character SecurityKey generation.
+
+    Resolved the reported 2FA logic issue and prepared the changes in authenticator.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+26/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	1] Worked on the 2FA Authenticator to resolve the authentication issue for all users.
+
+    Implemented and verified the required security-key generation logic:
+
+        Generate a 16-character string using lowercase Username + Machine Code.
+
+        Ignore the characters:
+
+        ' ', '8', '9', '0', 'i', 'I', 'O', 'o', '1'
+
+        Encrypt the generated 16-character string.
+
+        Again filter the above characters from the encrypted output.
+
+    Verified the logic for different usernames and machine-code combinations.
+
+2] Updated and tested:
+
+/opt/MicroWorld/bin/authenticator
+
+    Checked the Authenticator workflow under different user conditions.
+
+    Verified the security-key generation and validation process.
+
+    Tested the implementation for individual users as well as multiple users.
+
+3] Prepared a fresh escan-2FA.amd64.deb build containing the updated Authenticator changes.
+
+    Installed the fresh build and started comprehensive validation.
+
+    Tested 2FA authentication for:
+
+        All users.
+
+        Particular/specific users.
+
+        SSH login.
+
+        Desktop/user login.
+
+        Combined SSH and desktop login scenarios.
+
+    Checked different valid/invalid authentication and user-policy conditions.
+
+4] Continued verification of the complete eScan 2FA authentication workflow to ensure consistent behavior across all supported user-login scenarios.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+26/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. 2FA – CompanyID Logic Implementation and Testing
+
+    Analyzed the CompanyID requirement in the 2FA connection flow.
+
+    Developed the required CompanyID generation/handling logic in C++.
+
+    Implemented the logic and tested each condition and possible scenario to verify the expected behavior.
+
+    Explained the implemented CompanyID logic and flow to Vaibhav for better understanding and verification.
+
+2. Master Key Encryption Issue – Root User
+
+    Verified the master key handling for all users.
+
+    Observed that the functionality was working correctly for regular users, but for a particular root user, the master key was being stored as an unencrypted ID.
+
+    Debugged the issue and identified the root-user-specific condition causing the encryption to be skipped.
+
+    Corrected the issue so that the master key is properly encrypted for the root user as well.
+
+    Verified the behavior after the fix to ensure consistent encryption across users, specially root.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+26/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. ServerUID – Root User Handling
+
+    Implemented the same val_setter = 0 and return logic for serverUID in the particular root-user condition.
+
+    Built the updated escan-2FA.amd64.deb package after completing the code changes.
+
+2. On Fresh install escan-2FA.amd64.deb 2FA SSH User Login Testing – Server
+
+    Tested SSH and user-login conditions for the following users:
+
+        root
+
+        rushi
+
+        escan
+
+    Verified the behavior for all users as well as the specific user/server conditions.
+
+3. 2FA Cloud User Login Testing
+
+    Tested SSH and user-login conditions for:
+
+        root
+
+        rushi
+
+        escan
+
+    Verified the behavior for all users and particular-user conditions in the cloud environment.
+
+    Demonstrated all the performed testing and results to Vaibhav using the small laptop at 192.168.1.230.
+
+4. Build Deployment
+
+    Placed the generated 2FA build at the following location:
+
+192.168.2.138:/media/sdc/omkar/workspace/code/escan_build/escan_2FA
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+26/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-2FA – Script Updates
+
+Updated the escan-2fa naming/configuration across all required installation and uninstallation script files.
+
+    Updated the following scripts:
+
+        control
+
+        prerm
+
+        uninstall.sh
+
+        install.sh
+
+        postinst
+
+    Verified the script changes for consistency across the installation and removal flow.
+
+2. Console Uninstallation Testing
+
+    Performed console-based uninstallation testing on the 1.237 server.
+
+    Tested each relevant condition and verified the uninstallation behavior.
+
+    Demonstrated the complete testing process and results to Vaibhav.
+
+    Validated that the expected behavior is maintained under the tested conditions.
+
+
+3. GAblocker, mwfirewalld and updatenow_avs – Crash and Memory Leak Fixes
+
+    Worked on the reported segmentation fault and memory leak issues in:
+
+        GAblocker
+
+        mwfirewalld
+
+        updatenow_avs
+
+    Debugged the affected code paths and analyzed the root causes of the issues.
+
+    Implemented the required fixes and verified the behavior after the changes.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+26/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	1. Segmentation Fault Fixes using valgrind.
+
+    Worked on the segmentation fault issues reported in the following modules:
+
+        updatenow_avs
+
+        GAblocker
+
+        mwfirewalld
+
+    Debugged the affected code and identified the causes of the segmentation faults.
+
+    Implemented the required fixes and verified the corrected behavior.
+
+    Integrated the changes into the escan-dlp.amd64.deb package.
+
+    Verified the updated build after integration.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+26/08/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-2FA RPM Build
+
+    Prepared the RPM build for escan-2FA:
+    escan-2fa-22.0.1400-2990.x86_64.rpm
+
+    Integrated and updated the required components and files in the build:
+
+        updatenow_avs
+
+        winclient
+
+        mwagent
+
+        authenticator
+
+        install.sh
+
+        pre-uninstall
+
+        libmwshare.so.1.0.0
+
+        libescan.so.1.0.0
+
+        Spec file
+
+        escangui
+
+    Verified the updated changes and generated the RPM successfully.
+
+2. updatenow_avs – DLP Debugging
+
+    Added the required debugging points/logging in updatenow_avs for the DLP-related flow.
+
+    Started debugging and analyzing the execution flow to identify issue.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

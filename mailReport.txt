@@ -8867,3 +8867,114 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+03/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-2FA RPM Testing
+
+    Started testing the newly generated RPM package:
+    escan-2fa-22.0.1400-2990.x86_64.rpm
+
+    Performed testing on the 1.231 RPM laptop with the following users:
+
+        rushi
+
+        omkar
+
+        escan
+
+        root1
+
+        root
+
+    Verified the user login behavior and 2FA functionality for the different user conditions.
+
+2. SSH Password and OTP Login Support
+
+    Identified the requirement to add the following configuration file to the RPM package:
+    /etc/ssh/sshd_config.d/50-redhat.conf
+
+    Added the new configuration to provide proper support for password and OTP-based SSH login.
+
+    Completed the required RPM changes and verified the SSH login behavior after the update.
+
+3. escangui User Login Testing
+
+    Tested user login through escangui for the configured users.
+
+    Verified the login flow and checked the behavior after the new SSH configuration changes.
+	
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+03/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-2FA RPM – User Login and SSH Testing
+
+    Performed comprehensive testing of the 2FA RPM for different user-login and SSH conditions on the 1.237 server.
+
+    Verified the functionality through escangui as well as SSH login.
+
+    Tested the following users:
+
+        rushi
+
+        omkar
+
+        escan
+
+        admin_test
+
+        test-admin
+
+        root
+
+    The 2FA functionality is working correctly for all tested users except root.
+
+    For the root user, the expected 2FA behavior is not working as observed during testing.
+
+    Started R&D/debugging for the root-user-specific case to determine the required handling and solution.
+
+2. epsdaemon – Read-Only USB Whitelist Testing
+
+    Vaibhav provided an epsdaemon issue for investigation.
+
+    Checked and reproduced the issue on the small laptop under the required conditions.
+
+    Tested the read-only USB whitelist functionality across the relevant conditions.
+
+    Verified the behavior for each condition and shared the findings/results with Vaibhav.
+	 
+
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

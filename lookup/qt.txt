@@ -22,3 +22,7 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 5] cat and vim diff
 6] diff malloc, and new
 7] polymorphism run , binding
+8] mutux and semaphore diff
+9] how many storage class.
+10] comlpiation error type which
+11] stack and heap diff

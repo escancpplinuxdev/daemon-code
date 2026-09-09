@@ -8978,3 +8978,196 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+03/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. SELinux Policy – 2FA Authenticator
+
+    Worked on creating the SELinux policy required for the 2FA Authenticator RPM.
+
+    Created the microworld.pp SELinux policy package to allow the required MicroWorld operations under SELinux.
+
+    Kept the generated policy package at:
+    /opt/MicroWorld/backup/microworld.pp
+
+2. SELinux Policy Deployment
+
+    Deployed the policy using:
+    semodule -i microworld.pp
+
+    Verified the required SELinux permissions for:
+
+        sshd_t → root user access
+
+        gdm_t → root user access
+
+3. SELinux Policy Verification
+
+    Verified the installed policy using:
+    semodule -l | grep -i microworld
+
+    Confirmed the installed policy module as:
+    microworld_sshd
+
+4. Automatic Policy Removal – C++ Implementation
+
+    Implemented C++ logic to remove the SELinux policy after 30 seconds using:
+    semodule -r microworld
+
+    Tested the policy removal flow and verified the expected behavior.	
+	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+08/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. 2FA Authenticator – SELinux Policy Deployment
+
+    Developed C++ code in the Authenticator to handle the SELinux policy files:
+
+        /opt/MicroWorld/backup/microworld_sshd.te
+
+        /opt/MicroWorld/backup/microworld_sshd.mod
+
+        /opt/MicroWorld/backup/microworld_sshd.pp
+
+    Added file availability/presence checks before proceeding with policy deployment.
+
+    Implemented the required policy deployment using:
+    semodule -i /opt/MicroWorld/backup/microworld_sshd.pp >/dev/null 2>&1
+
+    Verified the deployment flow through the Authenticator.
+
+2. Separate SSH and GDM SELinux Policy Testing
+
+    Initially implemented and tested only the SSH SELinux policy.
+
+    Tested SSH policy behavior for:
+
+        All users
+
+        Particular/specific users
+
+    Verified the installed policy using:
+    semodule -l | grep -i microworld_ssh
+
+    Tested policy removal on the 1.237 environment and verified the behavior after removal.
+
+    Next, worked on the GDM SELinux policy.
+
+    Made the necessary changes to the GDM policy based on the testing requirements.
+
+    Implemented C++ code to generate/write the required policy content into the policy file.
+
+    Tested the GDM policy for:
+
+        All users
+
+        Particular/specific users
+
+    Verified the installed policy using:
+    semodule -l | grep -i microworld_gdm
+
+    Tested the policy removal flow on the 1.237 environment.
+
+3. Combined SELinux Policy
+
+    Developed C++ code to generate and write the combined SSH + GDM SELinux policy.
+
+    Verified the combined policy module using:
+    semodule -l | grep -i microworld_ssh
+
+    Deployed the combined policy and verified its behavior.
+
+    Tested the combined policy for:
+
+        All users
+
+        Particular/specific users
+
+    Performed policy removal and re-application testing on the 1.237 environment.
+
+    Repeated the apply → test → remove cycle to validate consistent behavior.
+
+4. Policy Removal Timing
+
+    Added a 20-second delay in the rpmMachineType() flow before removing the SELinux policy.
+
+    Implemented the policy removal using:
+    semodule -r microworld_sshd
+
+    Tested the delay and policy removal flow to ensure the policy remains available for the required duration before being removed.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+08/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-2FA RPM Build and Testing
+
+    Prepared and tested the RPM package:
+    escan-2fa-22.0.1400-2990.x86_64.rpm
+
+    Performed testing on the 1.237 server under each required condition.
+
+    Verified the Authenticator functionality and confirmed that it is working properly across the tested conditions.
+
+2. Console Uninstallation – escan-2FA
+
+    Attempted to uninstall escan-2FA through the console using the unmeScan cron.d flow.
+
+    The uninstallation failed at the TTY +76 pre-uninstall password condition.
+
+    Investigated the failure and checked the behavior of the pre-uninstall flow.
+
+3. Script and Uninstallation Flow Investigation
+
+    Tested the available installation/uninstallation scripts using different possible combinations and conditions.
+
+    The existing script combinations did not resolve the console uninstallation issue.
+
+    Based on the testing results, started working on a new logic/approach to handle the uninstallation flow correctly.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

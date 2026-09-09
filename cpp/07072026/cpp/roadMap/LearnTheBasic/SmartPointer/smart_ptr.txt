@@ -1,0 +1,216 @@
+============================================================
+     SMART POINTERS DEMO WITH FILE READING (C++14)
+============================================================
+[2026-09-09 17:32:56] 
+📂 Reading data from file: ./read_smart_ptr.txt
+[2026-09-09 17:32:56] 📊 File size: 178 bytes
+[2026-09-09 17:32:56] ✅ Read 178 bytes from file
+[2026-09-09 17:32:56] 
+📄 Content read from file:
+101,UniqueRes1
+102,UniqueRes2
+103,NewRes
+201,ContainerRes1
+202,ContainerRes2
+301,SharedRes1
+302,SharedRes2
+303,SharedRes3
+304,SharedRes4
+401,WeakRes1
+402,WeakRes2
+403,FactoryRes
+
+[2026-09-09 17:32:56] 
+📝 Parsing resource data...
+[2026-09-09 17:32:56]    Processing line: 101,UniqueRes1
+[2026-09-09 17:32:56] 🔧 Resource [1] 'Resource_1' ACQUIRED (data: 101,UniqueRes1)
+[2026-09-09 17:32:56]    Processing line: 102,UniqueRes2
+[2026-09-09 17:32:56] 🔧 Resource [2] 'Resource_2' ACQUIRED (data: 102,UniqueRes2)
+[2026-09-09 17:32:56]    Processing line: 103,NewRes
+[2026-09-09 17:32:56] 🔧 Resource [3] 'Resource_3' ACQUIRED (data: 103,NewRes)
+[2026-09-09 17:32:56]    Processing line: 201,ContainerRes1
+[2026-09-09 17:32:56] 🔧 Resource [4] 'Resource_4' ACQUIRED (data: 201,ContainerRes1)
+[2026-09-09 17:32:56]    Processing line: 202,ContainerRes2
+[2026-09-09 17:32:56] 🔧 Resource [5] 'Resource_5' ACQUIRED (data: 202,ContainerRes2)
+[2026-09-09 17:32:56]    Processing line: 301,SharedRes1
+[2026-09-09 17:32:56] 🔧 Resource [6] 'Resource_6' ACQUIRED (data: 301,SharedRes1)
+[2026-09-09 17:32:56]    Processing line: 302,SharedRes2
+[2026-09-09 17:32:56] 🔧 Resource [7] 'Resource_7' ACQUIRED (data: 302,SharedRes2)
+[2026-09-09 17:32:56]    Processing line: 303,SharedRes3
+[2026-09-09 17:32:56] 🔧 Resource [8] 'Resource_8' ACQUIRED (data: 303,SharedRes3)
+[2026-09-09 17:32:56]    Processing line: 304,SharedRes4
+[2026-09-09 17:32:56] 🔧 Resource [9] 'Resource_9' ACQUIRED (data: 304,SharedRes4)
+[2026-09-09 17:32:56]    Processing line: 401,WeakRes1
+[2026-09-09 17:32:56] 🔧 Resource [10] 'Resource_10' ACQUIRED (data: 401,WeakRes1)
+[2026-09-09 17:32:56]    Processing line: 402,WeakRes2
+[2026-09-09 17:32:56] 🔧 Resource [11] 'Resource_11' ACQUIRED (data: 402,WeakRes2)
+[2026-09-09 17:32:56]    Processing line: 403,FactoryRes
+[2026-09-09 17:32:56] 🔧 Resource [12] 'Resource_12' ACQUIRED (data: 403,FactoryRes)
+[2026-09-09 17:32:56] ✅ Created 12 resources
+[2026-09-09 17:32:56] 
+📋 Created resources:
+[2026-09-09 17:32:56] 📦 Resource ID: 1, Name: Resource_1, Data: 101,UniqueRes1
+[2026-09-09 17:32:56] 📦 Resource ID: 2, Name: Resource_2, Data: 102,UniqueRes2
+[2026-09-09 17:32:56] 📦 Resource ID: 3, Name: Resource_3, Data: 103,NewRes
+[2026-09-09 17:32:56] 📦 Resource ID: 4, Name: Resource_4, Data: 201,ContainerRes1
+[2026-09-09 17:32:56] 📦 Resource ID: 5, Name: Resource_5, Data: 202,ContainerRes2
+[2026-09-09 17:32:56] 📦 Resource ID: 6, Name: Resource_6, Data: 301,SharedRes1
+[2026-09-09 17:32:56] 📦 Resource ID: 7, Name: Resource_7, Data: 302,SharedRes2
+[2026-09-09 17:32:56] 📦 Resource ID: 8, Name: Resource_8, Data: 303,SharedRes3
+[2026-09-09 17:32:56] 📦 Resource ID: 9, Name: Resource_9, Data: 304,SharedRes4
+[2026-09-09 17:32:56] 📦 Resource ID: 10, Name: Resource_10, Data: 401,WeakRes1
+[2026-09-09 17:32:56] 📦 Resource ID: 11, Name: Resource_11, Data: 402,WeakRes2
+[2026-09-09 17:32:56] 📦 Resource ID: 12, Name: Resource_12, Data: 403,FactoryRes
+[2026-09-09 17:32:56] 💥 Resource [1] 'Resource_1' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [2] 'Resource_2' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [3] 'Resource_3' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [4] 'Resource_4' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [5] 'Resource_5' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [6] 'Resource_6' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [7] 'Resource_7' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [8] 'Resource_8' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [9] 'Resource_9' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [10] 'Resource_10' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [11] 'Resource_11' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [12] 'Resource_12' DESTROYED
+[2026-09-09 17:32:56] 
+========== UNIQUE_PTR DEMO ==========
+[2026-09-09 17:32:56] 
+[1.1] Creating unique_ptr with make_unique
+[2026-09-09 17:32:56] 🔧 Resource [101] 'UniqueRes1' ACQUIRED (data: Custom data 1)
+[2026-09-09 17:32:56] ⚙️  Resource [101] is working... (data: Custom data 1)
+[2026-09-09 17:32:56] 
+[1.2] Creating unique_ptr with new
+[2026-09-09 17:32:56] 🔧 Resource [102] 'UniqueRes2' ACQUIRED (data: Custom data 2)
+[2026-09-09 17:32:56] ⚙️  Resource [102] is working... (data: Custom data 2)
+[2026-09-09 17:32:56] 
+[1.3] Moving ownership (copy is not allowed)
+[2026-09-09 17:32:56] ⚠️  uPtr1 is now nullptr (ownership moved to uPtr3)
+[2026-09-09 17:32:56] ⚙️  Resource [101] is working... (data: Custom data 1)
+[2026-09-09 17:32:56] 
+[1.4] Getting raw pointer using get()
+[2026-09-09 17:32:56] ⚙️  Resource [102] is working... (data: Custom data 2)
+[2026-09-09 17:32:56] 
+[1.5] Releasing ownership (manual delete required)
+[2026-09-09 17:32:56] ⚙️  Resource [101] is working... (data: Custom data 1)
+[2026-09-09 17:32:56] 💥 Resource [101] 'UniqueRes1' DESTROYED
+[2026-09-09 17:32:56] ✅ Released resource deleted manually
+[2026-09-09 17:32:56] 
+[1.6] Reset - deletes current and optionally takes new
+[2026-09-09 17:32:56] 💥 Resource [102] 'UniqueRes2' DESTROYED
+[2026-09-09 17:32:56] ✅ uPtr2 reset to null
+[2026-09-09 17:32:56] 🔧 Resource [103] 'NewRes' ACQUIRED (data: New data)
+[2026-09-09 17:32:56] ⚙️  Resource [103] is working... (data: New data)
+[2026-09-09 17:32:56] 
+[1.7] Unique_ptr in vector container
+[2026-09-09 17:32:56] 🔧 Resource [201] 'ContainerRes1' ACQUIRED (data: Container data 1)
+[2026-09-09 17:32:56] 🔧 Resource [202] 'ContainerRes2' ACQUIRED (data: Container data 2)
+[2026-09-09 17:32:56] 📦 Resource ID: 201, Name: ContainerRes1, Data: Container data 1
+[2026-09-09 17:32:56] 📦 Resource ID: 202, Name: ContainerRes2, Data: Container data 2
+[2026-09-09 17:32:56] 
+[1.8] Transfer from container (move)
+[2026-09-09 17:32:56] ✅ Adopted resource: 
+[2026-09-09 17:32:56] 📦 Resource ID: 201, Name: ContainerRes1, Data: Container data 1
+[2026-09-09 17:32:56] ⚠️  container[0] is now null
+[2026-09-09 17:32:56] 
+--- uniquePtrDemo() ending - all unique_ptrs destroyed ---
+[2026-09-09 17:32:56] 💥 Resource [201] 'ContainerRes1' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [202] 'ContainerRes2' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [103] 'NewRes' DESTROYED
+[2026-09-09 17:32:56] 
+========== SHARED_PTR DEMO ==========
+[2026-09-09 17:32:56] 
+[2.1] Creating shared_ptr with make_shared
+[2026-09-09 17:32:56] 🔧 Resource [301] 'SharedRes1' ACQUIRED (data: Shared data 1)
+[2026-09-09 17:32:56] ⚙️  Resource [301] is working... (data: Shared data 1)
+[2026-09-09 17:32:56] 
+[2.2] Copying shared_ptr (shared ownership)
+[2026-09-09 17:32:56] 📊 Reference count: 3
+[2026-09-09 17:32:56] 
+[2.3] Modifying through any shared_ptr
+[2026-09-09 17:32:56] 📦 Resource ID: 301, Name: ModifiedSharedRes, Data: Shared data 1
+[2026-09-09 17:32:56] 
+[2.4] Creating shared_ptr with new
+[2026-09-09 17:32:56] 🔧 Resource [302] 'SharedRes2' ACQUIRED (data: Shared data 2)
+[2026-09-09 17:32:56] 
+[2.5] shared_ptr in vector container
+[2026-09-09 17:32:56] 🔧 Resource [303] 'SharedRes3' ACQUIRED (data: Shared data 3)
+[2026-09-09 17:32:56] 📊 Reference count (sPtr1): 4
+[2026-09-09 17:32:56] 📦 Resource ID: 301, Name: ModifiedSharedRes, Data: Shared data 1
+[2026-09-09 17:32:56] 📦 Resource ID: 302, Name: SharedRes2, Data: Shared data 2
+[2026-09-09 17:32:56] 📦 Resource ID: 303, Name: SharedRes3, Data: Shared data 3
+[2026-09-09 17:32:56] 
+[2.6] Temporary shared_ptr in scope
+[2026-09-09 17:32:56] 📊 Inside scope: ref count = 5
+[2026-09-09 17:32:56] 📊 After scope: ref count = 4
+[2026-09-09 17:32:56] 
+[2.7] Reset - decreases reference count
+[2026-09-09 17:32:56] 📊 After sPtr2.reset(): ref count = 3
+[2026-09-09 17:32:56] 
+[2.8] Getting raw pointer using get()
+[2026-09-09 17:32:56] ⚙️  Resource [301] is working... (data: Shared data 1)
+[2026-09-09 17:32:56] 
+[2.9] Move semantics
+[2026-09-09 17:32:56] 🔧 Resource [304] 'SharedRes4' ACQUIRED (data: Shared data 4)
+[2026-09-09 17:32:56] ⚠️  sPtr5 is now null (moved to sPtr6)
+[2026-09-09 17:32:56] ⚙️  Resource [304] is working... (data: Shared data 4)
+[2026-09-09 17:32:56] 
+--- sharedPtrDemo() ending - all shared_ptrs destroyed ---
+[2026-09-09 17:32:56] 💥 Resource [304] 'SharedRes4' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [303] 'SharedRes3' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [302] 'SharedRes2' DESTROYED
+[2026-09-09 17:32:56] 💥 Resource [301] 'ModifiedSharedRes' DESTROYED
+[2026-09-09 17:32:56] 
+========== WEAK_PTR DEMO ==========
+[2026-09-09 17:32:56] 
+[3.1] Creating weak_ptr from shared_ptr
+[2026-09-09 17:32:56] 🔧 Resource [401] 'WeakRes1' ACQUIRED (data: Weak data 1)
+[2026-09-09 17:32:56] 📊 weak_ptr expired? NO
+[2026-09-09 17:32:56] 
+[3.2] Using lock() to get temporary shared_ptr
+[2026-09-09 17:32:56] ✅ Successfully locked weak_ptr: 
+[2026-09-09 17:32:56] 📦 Resource ID: 401, Name: WeakRes1, Data: Weak data 1
+[2026-09-09 17:32:56] 📊 Reference count while locked: 2
+[2026-09-09 17:32:56] 
+[3.3] weak_ptr doesn't affect reference count
+[2026-09-09 17:32:56] 📊 Reference count (sPtr): 1
+[2026-09-09 17:32:56]    (weak_ptr doesn't increase ref count)
+[2026-09-09 17:32:56] 
+[3.4] Breaking cycles with weak_ptr
+[2026-09-09 17:32:56] 
+[3.4a] Shared_ptr cycle (DEMONSTRATION - manually broken)
+[2026-09-09 17:32:56] 🔧 Node 1 created (data: Node1 data)
+[2026-09-09 17:32:56] 🔧 Node 2 created (data: Node2 data)
+[2026-09-09 17:32:56] ⚠️  Cycle created! Node1 and Node2 hold shared_ptr to each other
+[2026-09-09 17:32:56] ✅ Manually broke the cycle - no memory leak!
+[2026-09-09 17:32:56] 
+[3.4b] Weak_ptr breaks cycle (GOOD - no leak)
+[2026-09-09 17:32:56] 🔧 Node 3 created (data: Node3 data)
+[2026-09-09 17:32:56] 🔧 Node 4 created (data: Node4 data)
+[2026-09-09 17:32:56] ✅ Weak_ptr breaks the cycle - no memory leak!
+[2026-09-09 17:32:56] 
+[3.5] weak_ptr in container
+[2026-09-09 17:32:56] 🔧 Resource [402] 'WeakRes2' ACQUIRED (data: Weak data 2)
+[2026-09-09 17:32:56] 💥 Resource [402] 'WeakRes2' DESTROYED
+[2026-09-09 17:32:56] 
+[3.6] Cleaning up expired weak_ptrs
+[2026-09-09 17:32:56] 💥 Resource [401] 'WeakRes1' DESTROYED
+[2026-09-09 17:32:56] ✅ sPtr reset - Resource 401 destroyed
+[2026-09-09 17:32:56] ❌ Expired (already destroyed)
+[2026-09-09 17:32:56] ❌ Expired (already destroyed)
+[2026-09-09 17:32:56] 
+[3.7] Factory pattern with weak_ptr
+[2026-09-09 17:32:56] 🔧 Resource [403] 'FactoryRes' ACQUIRED (data: Factory data)
+[2026-09-09 17:32:56] ✅ Factory object still exists: 
+[2026-09-09 17:32:56] 📦 Resource ID: 403, Name: FactoryRes, Data: Factory data
+[2026-09-09 17:32:56] 
+--- weakPtrDemo() ending - all weak_ptrs destroyed ---
+[2026-09-09 17:32:56] 💥 Resource [403] 'FactoryRes' DESTROYED
+[2026-09-09 17:32:56] 💥 Node 4 destroyed
+[2026-09-09 17:32:56] 💥 Node 3 destroyed
+[2026-09-09 17:32:56] 💥 Node 2 destroyed
+[2026-09-09 17:32:56] 💥 Node 1 destroyed
+
+============================================================
+     ALL DEMOS COMPLETED SUCCESSFULLY
+============================================================

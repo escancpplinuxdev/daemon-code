@@ -1,0 +1,12 @@
+101,UniqueRes1
+102,UniqueRes2
+103,NewRes
+201,ContainerRes1
+202,ContainerRes2
+301,SharedRes1
+302,SharedRes2
+303,SharedRes3
+304,SharedRes4
+401,WeakRes1
+402,WeakRes2
+403,FactoryRes

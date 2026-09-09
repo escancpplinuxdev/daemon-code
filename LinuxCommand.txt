@@ -304,10 +304,14 @@ dpkg-deb -Zgzip --build buildroot/ escan-dlp.amd64.deb
 	List package files -> rpm -ql escan
 
 	after mv binary 
-	ls -Z appblocker 			-> unconfined_u:object_r:bin_t:s0 appblocker
-	restorecon -R appblocker  		-> system_u:object_r:bin_t:s0 appblocker
+	ls -Z appblocker 			-> unconfined_u:object_r:tmp_t:s0 appblocker
+	restorecon -R appblocker  		-> system_u:object_r:tmp_t:s0 appblocker
+
 	-> if failed 				-> unconfined_u:object_r:bin_t:s0 appblocker
 	sudo chcon -u system_u appblocker 	-> system_u:object_r:bin_t:s0 appblocker
+
+	# Extract entire RPM contents
+	rpm2cpio escan-2fa-22.0.1400-2990.x86_64.rpm | cpio -idmv
 
 	rm -rf /opt/MicroWorld/ /var/MicroWorld/ /etc/escandet.dat /etc/microworld.keys /etc/.p*.e*
 
@@ -339,6 +343,8 @@ dpkg-deb -Zgzip --build buildroot/ escan-dlp.amd64.deb
 	Paste with "p" (paste from register a).
 
 
+	Fix: "E37: No write since last change" Error in Vim
+	:e! source/term_signal_handle.cpp
 
 
 22] klavaro --> type master comman
@@ -767,7 +773,7 @@ rm registeInt && g++ --std=c++26 -pedantic-errors registeInt.cpp -o registeInt &
 
 62]	in c++ set window -> #include<iomanip -> cout<<setw(position in number)<<output<<"\n";
 
-	cout<<"character= s[right] : "<< setw(10)<<character<<"\n";
+	cout<<"c= s[right] : "<< setw(10)<<c<<"\n";
 
 63]	
 	tempary disable history 
@@ -928,7 +934,7 @@ make clean -> Make any changtes like lib, -l lib here passPrompt.pro  -> make a 
 	/usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile passPrompt.pro  -> which contain changes form passPrompt.pro file -> create Makefile -> 
 	 make clean && make 
 
-73] replace printf
+73] replace c printf
 	%s/printf/\/\/printf/gc
 	
 	%s/DBG_PRINT/\/\/DBG_PRINT/gc

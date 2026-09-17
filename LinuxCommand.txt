@@ -4,9 +4,12 @@
 
 	 g++ -std=c++20 -Wall -Wextra -Wshadow -Wsign-conversion     -fsanitize=address,undefined -g medianOfTwoSortedVectorArrayByThirdArray.cpp -o medianOfTwoSortedVectorArrayByThirdArray
 
-	make a && valgrind ./a
+	make a  && valgrind --leak-check=full -s ./a
 
 i am making notes on pointer in C++ give in details which i can write copy and paste in Pointer Explanation.cpp 5 year experience interview question on each and every on it  and problem on it in leetcode, GFG, strivers, coding 360, etc, and more other problem / thing give
+
+1] Admin -> vinod dhavare : vind@escanav.com 
+2] ESCANHR 		  : escanhr@escanav.com
 
 0]	To:     divesh@escanav.com
 Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
@@ -302,7 +305,10 @@ dpkg-deb -Zgzip --build buildroot/ escan-dlp.amd64.deb
 	
 	check package info -> rpm -qip escan-dlp-22.0.1400-2990.x86_64.rpm 
 	List package files -> rpm -ql escan
-
+	install or not 	   -> rpm -qa | grep -i escan
+	Debug uninstallation   -> rpm -evv escan-2fa
+	InstallationScript.sh   -> rpm -q --scripts 	escan-2fa-22.0.1400-2990.x86_64  > /tmp/InstallationScript.sh
+	
 	after mv binary 
 	ls -Z appblocker 			-> unconfined_u:object_r:tmp_t:s0 appblocker
 	restorecon -R appblocker  		-> system_u:object_r:tmp_t:s0 appblocker
@@ -990,4 +996,19 @@ while true; do      echo "=== $(date) ===";      ps -eo pid,pcpu,pmem,comm,args 
 
 77]	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind_mwfirewalld.log /tmpdata/mwfirewalld
 
-78]
+78]	locate command 
+
+	sudo updatedb
+	
+	Find exact matches for zip.h -> find / -name "zip.h" -exec ls -lrtha {} \;
+		
+		->	locate -r '/zip\.h$' 
+	
+	-r: Enables basic regex matching.
+
+	/zip\.h$: Ensures the path ends specifically with /zip.h, ignoring files like zip.h.in or zip.h.gch. 
+
+79]
+
+	
+

@@ -9171,3 +9171,118 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+
+11/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+escan-2fa-22.0.1400-2990.x86_64.rpm build put in path of 
+
+192.168.2.138:/media/sdc/omkar/workspace/code/escan_build/escan-2fa 
+
+with md5sum
+
+root@PTLD-2 16:26:01 /media/sdc/omkar/workspace/code/escan_build/escan-2fa > md5sum escan-2fa*
+87dab9c7cfe54ba7fc8069ef7b81931f  escan-2fa-22.0.1400-2990.x86_64.rpm
+2c514202549905f77fc259cc3d7118a2  escan-2fa.amd64.deb
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+16/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Authenticator – Common main.cpp
+
+    Developed a common main.cpp for the Authenticator functionality.
+
+    Updated the implementation to support both RPM and DPKG package environments using the same common code structure.
+
+2. DLP – checkUninstallationPassword() Changes
+
+    Reviewed the changes made to the checkUninstallationPassword() function in the RPM escan-antivirus.spec file.
+
+    Replicated the required changes in the DLP build to maintain consistent uninstallation-password handling.
+
+3. DLP RPM Build
+
+    Started the DLP RPM build with the updated changes.
+
+    Verified the build process and integrated the required modifications.
+
+4. escan-2FA RPM – Log Cleanup
+
+    Reviewed the extra logging present in the RPM 2FA build as pointed out by Vaibhav.
+
+    Removed the unnecessary/extra log messages to keep the build output clean.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-DLP RPM Build
+
+    Prepared the DLP RPM build using the latest updated DPKG source.
+
+    Moved all required updated source files, header files, Makefiles, libraries, and dependent libraries to the RPM build machine.
+
+    Made the necessary compatibility changes for the RPM environment.
+
+    Performed:
+
+        make clean
+
+        make
+
+        make install
+
+    Verified the compilation and installation on the RPM machine.
+
+    Integrated the updated binaries and required components into:
+    escan-dlp-22.0.1400-2990.x86_64.rpm build.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+

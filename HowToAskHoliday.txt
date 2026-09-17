@@ -1,0 +1,8 @@
+
+1] One day sick leave   -> msg to both.
+
+2] function leave 	-> 1 week advance permission from both
+
+3] mail -> end of the day 
+	if server not working -> call 815 then 841 -> next start of the morning 
+				

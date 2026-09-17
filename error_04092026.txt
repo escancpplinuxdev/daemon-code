@@ -2,3 +2,5 @@
 1] dpkg winclient : s/w already present at getStatus() fun handle snapd folder not present error.
 
 2] rpm authenticator : main.cpp change
+
+3] rpm escan-antivirus.spec -> checkUninstallationPassword() function changes -> replicate to all build ask vaibhav ?? 

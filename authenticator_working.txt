@@ -1,0 +1,99 @@
+
+
+escan-antivirus.spec file change working 
+
+1] escan-antivirus.spec -> prerm
+	
+	/opt/MicroWorld/sbin/commonutil writeconfig /opt/MicroWorld/etc/keyauth.conf auth:Status 0
+	/opt/MicroWorld/bin/authenticator
+
+2] escan-antivirus.spec -> prerm
+
+	 prerm -> checkUninstallationPassword script change 
+
+		1.	if ! test -r /dev/tty  2>/dev/null; then
+		
+		2. 	printf "Please enter uninstallation password: " > /dev/tty
+        	        IFS= read -r -s text < /dev/tty
+	                printf "\n" > /dev/tty
+
+
+
+
+
+1]authenticator working 
+	
+	0] if /opt/MicroWorld/etc/keyauth.conf file not present --> return -1;           -> end
+		
+	else
+
+	1] Status == 0 
+		remove_file_from_policies();
+		checkRpm()
+			then removeSemodulePolicy()	// semodule -r microworld_sshd >/dev/null 2>&1
+			     sleep(20);  // required 20 sec to remove policy
+		return 0;		-> end of authenticatior -> stop
+
+	2] checkRpm()
+		( !isSemoduleLoaded() ) -> not semodule Loaded then deploy policy
+		check file present 
+			/opt/MicroWorld/backup/microworld_sshd.te
+			/opt/MicroWorld/backup/microworld_sshd.mod
+			/opt/MicroWorld/backup/microworld_sshd.pp
+		then apply 
+			semodulePolicyDeploy()	// semodule -i /opt/MicroWorld/backup/microworld_sshd.pp >/dev/null 2>&1
+				apply sucessfull 	--> ok
+				else			--> return 0;		-> end
+				//Failed to apply semodule policy. semodule not present, 2FA policy not apply
+
+				sleep(30); // need 30 sec to apply policy
+		else
+			//semodule policy not present in path , 2FA policy not apply.
+			return 0;	-> end	
+
+	3] readConf /opt/MicroWorld/etc/keyauth.conf  auth:SLKOPTION  value store in  cPtr
+
+		1] cPtr == 1
+
+			remove_file_from_policies();
+			
+			if 	Users == ""	-> apply_setting_for_all();
+			else			->  apply_setting_for_users();
+					
+		2] cPtr == 2
+			
+                        remove_file_from_policies();
+
+                        if      Users == ""     -> apply_setting_for_all();
+                        else                    ->  apply_setting_for_users();
+
+		3] cPtr == 3
+			
+                        remove_file_from_policies();
+
+                        if      Users == ""     -> apply_setting_for_all();
+                        else                    ->  apply_setting_for_users();
+
+
+
+		4] cPtr == 0
+	
+                       remove_file_from_policies();
+
+			checkRpm()
+        	        removeSemodulePolicy()
+			sleep(20);  // required 20 sec to remove policy
+
+	
+	return 0; // end of program	
+
+
+1] test condition 
+	1] install by normal terminal -> rpm -ivh escan-2fa-22.0.1400-2990.x86_64.rpm
+	
+	2] uninstall by 1. normal termianl -> rpm -e escan-2fa
+			2. ssh termianl	   -> rpm -e escan-2fa
+			3. server unistall client -> /etc/cron.d/mwunescan
+
+	3] authenticator test 
+			1.  

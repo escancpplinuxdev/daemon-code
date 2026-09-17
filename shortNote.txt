@@ -1,0 +1,41 @@
+
+
+1] 
+
+CXXFLAGS := -fPIC -Wall -Wextra -std=c++17 -gdwarf-2
+LDFLAGS  := -lstdc++fs
+
+CXXFLAGS → passed to the compiler during compilation
+
+LDFLAGS → passed to the linker during linking
+
+-fPIC generates position-independent code, essential for building shared libraries (.so files) that can be loaded at any memory address.
+
+	Makes code relocatable for shared libraries
+
+-Wall -Wextra	Enables all warnings
+
+-std=c++17	Uses C++17 features
+
+-gdwarf-2	Adds debug info
+
+-lstdc++fs links the filesystem library 
+
+Q: Difference between CXXFLAGS and LDFLAGS?
+
+    A: CXXFLAGS is for compilation (syntax, warnings, standard). LDFLAGS is for linking (library paths, libraries). Putting -lstdc++fs in CXXFLAGS fails because the linker never sees it.
+
+
+2]
+
+	grep -c "zip_t\b" /usr/include/zip.h 
+
+-c, --count
+              Suppress normal output; instead print a count of matching lines for each input  file. 
+
+3] 
+
+	rpm --qf|--queryformat	
+
+4] 
+

@@ -9286,3 +9286,63 @@ Programming Dept.
 rushikeshgajmal333@gmail.com
 
 
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-DLP RPM Installation and Testing
+
+    Installed the following DLP RPM package on the 192.168.1.231 test machine:
+    escan-dlp-22.0.1400-2990.x86_64.rpm
+
+    Started functional testing of the RPM and its related components after installation.
+
+2. RHEL 9.6 Test Environment Setup
+
+    The test machine is running:
+    Red Hat Enterprise Linux 9.6 (Plow)
+
+    The system is not registered with an entitlement/subscription server.
+
+    Prepared the required testing environment, which took additional time due to the initial system setup.
+
+    Installed/configured the required snapd, DNF environment, kernel modules, and application dependencies.
+
+    Installed/verified applications required for testing, including:
+
+        Google Chrome
+
+        Brave Browser
+
+        Chromium Browser
+
+        VLC
+
+        snapd
+
+    Installed the required kernel modules using:
+    dnf install kernel-modules -y
+
+3. uninstallPassword() Testing
+
+    Checked the uninstallPassword() implementation in the prerm section of the RPM spec file.
+
+    Tested the function under all three required conditions.
+
+    Verified the behavior of the winclient and Appblocker conditions flow.
+
+    Validated the expected password/uninstallation behavior for the tested scenarios.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

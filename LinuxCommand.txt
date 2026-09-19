@@ -1008,7 +1008,16 @@ while true; do      echo "=== $(date) ===";      ps -eo pid,pcpu,pmem,comm,args 
 
 	/zip\.h$: Ensures the path ends specifically with /zip.h, ignoring files like zip.h.in or zip.h.gch. 
 
-79]
+
+79]	ldd 
+		One-Liner with Grep Context
+
+for f in *; do ldd "$f" 2>/dev/null | grep -q "not found" && echo "BROKEN: $f"; done
+
+	BROKEN: clipboardWatcher
+	BROKEN: epsdaemon
+
+80] 
 
 	
-
+	

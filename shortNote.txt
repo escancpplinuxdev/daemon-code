@@ -38,4 +38,11 @@ Q: Difference between CXXFLAGS and LDFLAGS?
 	rpm --qf|--queryformat	
 
 4] 
+	for f in *; do ldd "$f" 2>/dev/null | grep -q "not found" && echo "BROKEN: $f"; done
+BROKEN: clipboardWatcher
+BROKEN: epsdaemon
 
+5] ldd on dir 
+	for f in *; do ldd "$f" 2>/dev/null | grep -q "not found" && echo "BROKEN: $f"; done 
+
+6]	

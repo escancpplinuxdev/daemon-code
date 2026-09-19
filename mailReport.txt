@@ -9346,3 +9346,55 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	1. DLP RPM – Library Dependency (ldd) Issues
+
+    Worked on resolving the ldd dependency issues for the DLP RPM binaries located under:
+
+        /sbin
+
+        /bin
+
+        /usr/bin
+
+        /usr/sbin
+
+    Checked the required shared-library dependencies and made the necessary changes to ensure the binaries are compatible with the DLP RPM build environment.
+
+2. sendUninstallationEvent() – Event 10701 Validation
+
+    Reviewed the sendUninstallationEvent() implementation and made the required changes in the build.
+
+    Tested the uninstallation flow under all three required test conditions on the RPM laptop.
+
+    Verified that event ID 10701 (escan uninstallation event) is generated as the last event after uninstallation.
+
+    Demonstrated all three test conditions and the event sequence to Vaibhav for validation.
+
+    After receiving confirmation from Vaibhav, planned/applied the required changes across all 5 RPM builds and 5 Debian builds.
+
+3. DLP Latest Binary Integration
+
+    Coordinated with Shrikishan to obtain the latest binary.
+
+    Integrated the latest binary and worked on the required changes for compatibility with the current DLP build.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

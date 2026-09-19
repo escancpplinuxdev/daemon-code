@@ -4,3 +4,13 @@
 2] rpm authenticator : main.cpp change
 
 3] rpm escan-antivirus.spec -> checkUninstallationPassword() function changes -> replicate to all build ask vaibhav ?? 
+
+				tty change
+				
+				sendUninstallationEvent() position change.
+
+4] qpdf -> 2 lib file to /o/M/lib/
+   libzip
+   libZixing
+
+5]

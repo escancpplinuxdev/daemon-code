@@ -9398,3 +9398,52 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+1. Debian – Uninstallation Event 10701 Testing
+
+    Tested the Debian build on the following machines:
+
+        2.220
+
+        1.234
+
+        1.230 small laptops
+
+    Verified the uninstallation flow under all three required conditions:
+
+        Terminal-based uninstallation
+
+        Server-side mwunScan / cron.d uninstallation
+
+        SSH terminal-based uninstallation
+
+    Checked the generated event sequence and verified that escan uninstallation event 10701 is generated as the last event in the Debian environment.
+
+    Performed the testing across the required machines and conditions to validate consistent behavior.
+
+2. Debian 2FA Build – sendUninstall Event 10701
+
+    Verified the Debian 2FA build and confirmed that the sendUninstall event 10701 is generated at the end of the uninstallation flow.
+
+    After verification, placed the updated Debian 2FA build at:
+
+192.168.2.138:/media/sdc/omkar/workspace/code/escan_build/escan-2fa
+
+	
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

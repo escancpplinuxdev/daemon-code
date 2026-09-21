@@ -13,4 +13,4 @@
    libzip
    libZixing
 
-5]
+5] debian sendUninstallation event change in all system.

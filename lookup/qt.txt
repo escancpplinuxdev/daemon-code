@@ -26,3 +26,5 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 9] how many storage class.
 10] comlpiation error type which
 11] stack and heap diff
+12] diff between zombie process and orpane process
+13] dangling pit program and solve that program.

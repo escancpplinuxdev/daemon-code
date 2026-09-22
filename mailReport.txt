@@ -9447,3 +9447,73 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-DLP RPM Build
+
+Added the newly updated components:
+GAblocker
+contentScanner
+clipBoardWatcher
+Integrated the components into the DLP RPM build.
+Prepared the updated:
+escan-dlp-22.0.1400-2990.x86_64.rpm
+
+2. DLP RPM – Uninstallation Event 10701 Validation
+
+Verified the sendUninstallation() implementation in the prerm flow.
+Tested the stable build installation and uninstallation process.
+Confirmed that event 10701 – eScan Uninstallation is generated as the last event under all three required test conditions.
+Sample verified event:
+
+22 Sep 2026;13:24:05;LOCALHOST.LOCALDOMAIN_[0-72601c63-41e3-7a48-bd06-f10d3481da38];192.168.1.231;root;10701;eScan Uninstaller;0;eScan for Linux;eScan Uninstallation;Uninstall;eScan Uninstaller
+
+3. eScan RMM – DLP RPM Testing
+
+Checked the eScan RMM functionality in the DLP RPM build.
+Verified the escanra configuration and RMM connectivity.
+Confirmed successful connection with the eScanRAP server at 192.168.1.229.
+Verified the following RMM activity in the logs:
+Successful eScanRAP connectivity
+Client connection acceptance
+Remote connection while the application is running in client mode
+JPG format support detection
+Reviewed /var/MicroWorld/var/log/escanra.log and escanra.conf to validate the RMM behavior.
+
+4. escan-2FA RPM Version Update
+
+Updated the escan-2FA RPM version from:
+escan-2fa-22.0.1400-2990.x86_64.rpm
+to:
+escan-2fa-22.0.1400-2995.x86_64.rpm
+
+5. escangui – Authenticator UI
+
+Investigated the escangui behavior when getuid() != 0.
+Identified the unwanted display of the bold “Two-Factor Authentication” text along with the Authenticator logo.
+Started working on the required UI logic changes to remove/prevent the unwanted display.
+
+6. /opt/MicroWorld/lib – LDD Dependency Issue
+
+Started investigating the ldd dependency errors for libraries under:
+/opt/MicroWorld/lib/*
+
+
+	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -797,6 +797,18 @@ rm registeInt && g++ --std=c++26 -pedantic-errors registeInt.cpp -o registeInt &
 	3] /usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile passPrompt.pro
 	4] make
 
+
+
+     escangui 
+	how to compile escangui
+
+	1] make clean
+	2] check cat /tmp/buildflags_qmake
+             -> __WMCBUILD__                      ->  present
+
+	3] /usr/local/Trolltech/Qt-4.4.0/bin/qmake -unix -o Makefile escangui.pro
+	4] make
+
 65] 
 	sudo sed -i 's/ptvm-217/ptvm-218/g' /etc/hosts
 

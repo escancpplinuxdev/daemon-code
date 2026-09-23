@@ -13,7 +13,7 @@ i am making notes on pointer in C++ give in details which i can write copy and p
 
 0]	To:     divesh@escanav.com
 Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
-To: 	omkarg@escanav.com, rushikeshg@escanav.com, shrikrishna@escanav.com
+To: 	omkarg@escanav.com, rushikeshg@escanav.com, shrikrishna@escanav.com, abhishekr@escanav.com
 
 
 	192.168.2.58 :		root passwd --> su 	--> ketan$321

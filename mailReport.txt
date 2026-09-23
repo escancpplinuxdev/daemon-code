@@ -9517,3 +9517,41 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. RPM – LDD Library Dependency Issue
+
+Investigated the RPM build for shared-library dependency issues reported by ldd as "not found".
+Checked the required library source dir Makefile dependencies and started working on resolving the missing-library references in the RPM environment.
+
+2. escangui – Qt Button Font Styling
+
+Worked on the escangui UI behavior for the getuid() != 0 condition.
+Added the required font stylesheet/QPalette handling for btnFILE->setDisabled(TRUE).
+Updated the styling so that the button displays with the expected/normal font appearance when disabled for non-root users.
+test/check the UI behavior after the change. working on it.
+
+3. escangui – Qt5/Qt6 Wayland Support R&D
+
+Performed R&D on Qt5 and Qt6 Wayland support for escangui.
+Investigated the required Qt Wayland platform plugins (qt5-qtwayland and related Qt6 components).
+Checked the requirements for enabling/supporting GUI execution under the Wayland display server.
+Started evaluating the required plugin/package and application-side changes for Wayland compatibility.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -9555,3 +9555,51 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1. Qt 2FA escangui – Two-Factor Authentication UI
+
+    Worked on the 2FA escangui UI where the Two-Factor Authentication text was appearing greyed out with a bright white font.
+
+    Analyzed the UI behavior and identified that the current disabled-state logic was affecting the font appearance.
+
+2. Authenticator Icon Disabled-State Correction
+
+    Updated the UI logic so that only the Authenticator icon appears greyed out, while the Two-Factor Authentication text remains in its normal appearance.
+
+    Removed the unnecessary btnFILE->setDisabled(TRUE) logic that was causing the text/font to appear greyed out.
+
+    Applied the required icon styling to provide a visually disabled/greyed-out appearance without changing the text styling.
+
+3. Click Action Handling / No action on Mouse event
+
+    Added logic to ensure that no action is performed when the Authenticator icon is clicked under invalid/unavailable conditions.
+
+    Updated the clickAction() condition to return immediately when any of the following conditions are true:
+
+        getuid() != 0
+
+        isKeyValid() == false
+
+        atoi(unLincenseVal) == 1
+
+    This prevents further processing when the user is not root, the key is invalid, or the license condition is not valid.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

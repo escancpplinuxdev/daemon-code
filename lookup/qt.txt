@@ -28,3 +28,8 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 11] stack and heap diff
 12] diff between zombie process and orpane process
 13] dangling pit program and solve that program.
+14] all basic knowledge OS, DataBase, Networking, DBMS.
+15] virtual class override c++ code. write ctor , write dtor delete* this what happen now??
+16] shallow copy diff deep copy.
+17] osi level.
+

@@ -9603,3 +9603,51 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-2FA RPM Build
+
+    Prepared the updated:
+    escan-2fa-22.0.1400-2995.x86_64.rpm
+
+    Integrated the latest escangui changes into the RPM build.
+
+    Verified the updated build and escangui integration.
+
+2. RPM – LDD Library Dependency R&D
+
+    Investigated the library dependencies under:
+    /opt/MicroWorld/lib
+
+    Used the following command to identify missing shared-library dependencies:
+    ldd <library> | grep -i "not found"
+
+    Performed R&D on the reported "not found" library dependencies and investigated possible solutions for resolving them in the RPM environment.
+
+3. Qt Wayland Support R&D
+
+    In parallel, continued R&D on Qt Wayland support for the escangui application.
+
+    Investigated the requirements for enabling Wayland support (wayland = true) in the Qt environment.
+
+    Checked the required Qt Wayland plugins/configuration and their compatibility with the current escangui setup.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

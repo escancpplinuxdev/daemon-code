@@ -528,6 +528,18 @@ To see context: Add -C 2 to see 2 lines before and after the match. This is help
 
 	then run script, it create debug.log
 
+
+	vim /opt/MicroWorld/bin/run.sh
+
+#!/bin/bash
+exec 2>debug.log
+set -x
+
+export LD_LIBRARY_PATH=/opt/MicroWorld/lib:$LD_LIBRARY_PATH
+exec /opt/MicroWorld/bin/* "$@"
+
+
+
 42] 
 	script comment
 	

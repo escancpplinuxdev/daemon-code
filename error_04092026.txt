@@ -14,3 +14,13 @@
    libZixing
 
 5] debian sendUninstallation event change in all system.
+
+6] 28092026 :- escan-2fa-22.0.1400-2995.x86_64.rpm  rpm 2fa build whole lib change 
+		In install.sh add
+ for f in /opt/MicroWorld/lib/*.so*; do     [ -f "$f" ] && /opt/MicroWorld/lib/patchelf --set-rpath /opt/MicroWorld/lib "$f"; done
+		this line.
+
+	this solve ldd error.
+
+7] 
+

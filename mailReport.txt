@@ -9651,3 +9651,56 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. LDD Missing Library Investigation
+
+    Investigated the missing shared-library dependencies reported using:
+    ldd * | grep -i "not found"
+
+    Checked the libraries under:
+    /opt/MicroWorld/lib/
+
+    Downloaded the required legacy_libs package/files to /tmpdata/legacy_libs on the testing machine for further analysis.
+
+2. RPM Library Extraction Without System Installation
+
+    Instead of directly installing the RPM and potentially polluting the test system with additional libraries, extracted the required RPM contents using:
+    rpm2cpio <package.rpm> | cpio -idmv
+
+    Used the extracted RPM contents to identify and obtain the missing libraries required by ldd.
+
+3. Library Deployment and Dependency Resolution
+
+    Moved the required missing libraries to:
+    /opt/MicroWorld/lib/
+
+    Rechecked the library dependencies after placing the required libraries.
+
+    Verified that the dependent libraries are now correctly linked and the previously reported ldd "not found" errors were resolved.
+
+4. Qt Wayland Support R&D
+
+    In parallel, continued R&D on Qt Wayland support for the escangui application.
+
+    Investigated the requirements for enabling Wayland support (wayland = true) in the Qt environment.
+
+    Checked the required Qt Wayland plugins/configuration and their compatibility with the current escangui setup.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

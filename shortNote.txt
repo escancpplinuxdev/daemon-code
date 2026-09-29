@@ -45,4 +45,112 @@ BROKEN: epsdaemon
 5] ldd on dir 
 	for f in *; do ldd "$f" 2>/dev/null | grep -q "not found" && echo "BROKEN: $f"; done 
 
-6]	
+6] 	SONAME
+
+	In C++, a SONAME (shared object name) is a field embedded inside a shared library (.so file) that guides the operating system's dynamic linker on which library version to load at runtime. It acts as an API/ABI management tool, ensuring backward compatibility and preventing crashes caused by mismatching library updates.	
+
+The Three-Name Convention
+When building professional C++ libraries, Linux systems track three distinct names for a single library file:
+	
+Name Type	Example			Purpose
+Real Name	libmath.so.1.2.0	The actual file on disk containing the binary compiled code.
+SONAME		libmath.so.1		Embedded inside the library and application binary. Specifies the Major API Version.
+Linker Name	libmath.so		A symlink used by the compiler (g++ -lmath) to locate the library during build time.
+
+7]	patchelf
+			-> "When the loader is resolving my dependencies, look in /opt/MicroWorld/lib before the system paths."
+
+	patchelf is a small, standalone utility used to modify existing ELF (Executable and Linkable Format) binaries and shared libraries. It is widely used by developers and system packagers (such as in the NixOS Ecosystem) to force compiled programs to look for dependencies in custom, non-standard directories without needing to recompile the source code.
+
+	Key Capabilities
+patchelf provides precise control over how the dynamic linker handles a binary's runtime dependencies:
+
+Modify the RPATH / RUNPATH: Changes the search path embedded inside the binary where the system looks for shared libraries (.so files).
+Change the Dynamic Loader / Interpreter: Directs the binary to use a specific dynamic linker (e.g., a specific version of ld-linux.so) instead of the system default.
+Manage Dependencies (DT_NEEDED): Adds, removes, or replaces specific shared library dependencies declared inside the binary.
+Shrink RPATH: Automatically removes paths from the RPATH that do not contain any libraries needed by the binary, reducing clutter.
+Alter the SONAME: Rewrites the internal identity (SONAME) of a shared library.
+
+	
+	for f in /opt/MicroWorld/lib*.so*; do
+	    [ -f "$f" ] && patchelf --set-rpath /opt/MicroWorld/lib "$f"
+	done
+
+
+8] 	utilies 
+
+	Computer Science (IT)	A small, supportive software program designed to perform maintenance tasks or manage system resources.	Antivirus software, file compressors, or disk cleanup utilities.	
+
+9]	
+	Tools to Inspect Memory
+1. /proc/<pid>/maps
+bash
+
+cat /proc/$$/maps
+
+Shows segments: text, data, heap, stack, shared libs.
+2. pmap
+bash
+
+pmap -x <pid>
+
+Shows memory usage per segment.
+3. valgrind
+bash
+
+valgrind --leak-check=full ./program
+
+Detects leaks, invalid access, uninitialized reads.
+4. gdb
+bash
+
+gdb ./program
+(gdb) break main
+(gdb) run
+(gdb) info proc mappings
+
+Shows memory layout during debugging.
+5. size command
+bash
+
+size a.out
+
+Shows sizes of text, data, bss sections.
+
+Example:
+text
+
+   text    data     bss     dec     hex filename
+   1534     600       8    2142     85e a.out	
+
+10]	MIT-SHM
+
+	MIT-SHM stands for the MIT Shared Memory Extension (also known as XShm). It is a core protocol extension for the X Window System (X11) designed to speed up the exchange of image data between an application (the X client) and the display system (the X server).
+
+	How It Works
+Traditionally, when a local application wants to draw a large image on your screen using X11, it has to pack the raw pixel data and send it to the X server over a local network socket or pipe. This serialization and data copying creates a heavy CPU bottleneck for graphic-intensive tasks. 
+
+MIT-SHM bypasses the socket entirely. It allocates a shared memory segment (via Linux System V IPC or file descriptors) that both the application and the X server can look at simultaneously. Instead of copying a massive block of pixels, the application just writes the pixels to that shared memory pool and sends a small message telling the X server exactly where to look. 
+
+	
+11]	
+	In Linux, IPC stands for Inter-Process Communication.
+Overview
+	IPC is a set of programming techniques and mechanisms that allow running processes to exchange data, synchronize their execution, and share resources safely within an operating system.
+Common IPC Mechanisms in Linux
+
+    Pipes (Anonymous & Named): Used to stream data sequentially from one process to another, such as using the pipe character (|) in the terminal or FIFO files on disk.
+
+    Message Queues: Allow processes to send and receive discrete packets of data or messages stored in a queue managed by the kernel.
+
+    Shared Memory: The fastest IPC method, allowing multiple processes to access a single, common region of RAM directly.
+
+    Semaphores: Used alongside shared memory to synchronize access and prevent race conditions or conflicting writes.
+
+    Sockets (UNIX Domain & Network): Enable bidirectional data streaming between processes on the same machine or across a network.
+
+    Signals: Lightweight notifications sent to a process to inform it that a specific event has occurred.
+
+12]
+	
+	

@@ -9704,3 +9704,54 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Qt GUI Issue Investigation – RPM
+
+    Worked on the reported Qt GUI issue in the RPM environment.
+
+    Investigated the behavior of escangui and related Qt components to identify the cause of the GUI issue.
+
+2. escangui – Blank White Window R&D
+
+    Performed R&D to identify a solution for the issue where escangui displays a blank white window when running as root.
+
+    Analyzed the Qt display/platform environment and related dependencies to determine the possible cause and required changes.
+
+3. Wayland Enablement – Required Libraries
+
+    Investigated the libraries required for the Wayland-enabled configuration:
+    WaylandEnable=true in /etc/gdm/custom.conf.
+
+    Downloaded and analyzed the required libraries and Qt Wayland dependencies needed for the configuration.
+
+4. /opt/MicroWorld/lib Library Compatibility
+
+    Checked how the required Wayland/Qt libraries behave when moved to:
+    /opt/MicroWorld/lib
+
+    Investigated whether placing these libraries in the MicroWorld library path resolves the Qt GUI/Wayland issue without affecting the existing environment.
+
+5. Library Dependency Analysis
+
+    Checked the dependency chain of the required libraries.
+
+    Investigated both backward dependencies and forward dependencies to understand whether adding/updating libraries under /opt/MicroWorld/lib could affect existing MicroWorld components or introduce compatibility issues.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

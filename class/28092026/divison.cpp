@@ -165,6 +165,8 @@ void printLongDivision(long long dividend, long long divisor)
 
 int main()
 {
+    printLongDivision(174321, 6);
+    printLongDivision(54030, 6);
     printLongDivision(156, 4);
     printLongDivision(17, 5);
     printLongDivision(1234, 12);

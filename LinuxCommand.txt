@@ -1041,7 +1041,13 @@ for f in *; do ldd "$f" 2>/dev/null | grep -q "not found" && echo "BROKEN: $f"; 
 	BROKEN: clipboardWatcher
 	BROKEN: epsdaemon
 
-80] 
+80] 	{ and pushes the brace to a new line 
 
 	
-	
+apt update && apt install -y clang-format
+clang-format -i -style="{BreakBeforeBraces: Allman}" 1614.MaximumNestingDepthoftheParentheses.cpp
+
+
+81]
+
+		

@@ -151,6 +151,90 @@ Common IPC Mechanisms in Linux
 
     Signals: Lightweight notifications sent to a process to inform it that a specific event has occurred.
 
-12]
+12]	Pruning
 	
+In C++ programming, pruning means removing unnecessary nodes, branches, or data paths from a data structure (like a tree or graph) or a search space to save memory and improve runtime efficiency	
+
+13]
+	ELF layout meaning
+
+
+The ELF (Executable and Linkable Format) layout defines the structural architecture of a binary file used in Linux and Unix-like operating systems. It dictates how an executable program, shared library (.so), or object file (.o) is organized on disk and how the operating system loads it into system memory.
+Think of it as a blueprint divided into three core parts: administrative headers, content sections (for compilers), and segments (for the OS loader).
+The Structural Hierarchy of an ELF File
+An ELF file has two completely different views depending on whether it is being read by a compiler/linker or executed by the operating system kernel.
+text
+
++--------------------------------------+
+
+|             ELF Header               |  <- File identity and blueprint
++--------------------------------------+
+
+|      Program Header Table (PHT)      |  <- Map for Execution (Segments)
++--------------------------------------+
+
+|             .text section            |  <- Your compiled binary code
++--------------------------------------+
+
+|             .data section            |  <- Initialised global variables
++--------------------------------------+
+
+|             .rodata section          |  <- Read-only strings and data
++--------------------------------------+
+
+|             .bss section             |  <- Uninitialised variables (0)
++--------------------------------------+
+
+|      Section Header Table (SHT)      |  <- Map for Linking (Sections)
++--------------------------------------+
+
+Use code with caution.
+The Core Components Explained
+1. The ELF Header (The ID Card)
+Located at the very beginning of the file, this tells the operating system how to read the binary. It contains:
+
+    The Magic Number: A 4-byte signature (0x7f 45 4c 46 or \x7fELF) verifying it is a valid ELF file.
+    Architecture Details: Specifies if it is 32-bit or 64-bit, and the CPU target (e.g., x86-64, ARM).
+    The Entry Point: The exact memory address where the CPU should start executing code (usually pointing to _start, which sets up the environment before calling your main() function).
+
+2. The Program Header Table & Segments (The Execution View)
+The Program Header Table (PHT) is mandatory for executable files and shared libraries. It tells the Linux Kernel how to map the file directly into virtual memory blocks called Segments.
+
+    PT_LOAD: Tells the kernel to load this specific chunk of code or data into RAM and assigns hardware permissions like Read, Write, or Execute (r-x or rw-).
+    PT_INTERP: Specifies the path to the dynamic linker (like /lib64/ld-linux-x86-64.so.2) that must run first to handle shared libraries. (This is what patchelf alters).
+    PT_DYNAMIC: Holds a list of directories and tags (like DT_NEEDED and DT_RPATH) defining what external library files this program needs to run.
+
+3. Sections & The Section Header Table (The Linking View)
+While segments are for executing, Sections are for compiling and debugging. The Section Header Table (SHT) is a index at the tail end of the file used by linkers (ld) to stitch multiple object files together.
+
+    .text: Contains the actual compiled, read-only CPU instructions.
+    .data: Contains global and static variables that have an explicit initial value (e.g., int x = 10;).
+    .rodata: Stands for "Read-Only Data". Stores hardcoded string literals (e.g., cout << "Test 1: ";).
+    .bss: Stores global variables that are declared but not initialised (e.g., int global_array[100];). It takes up almost zero space on disk because it just tells the system to allocate blank blocks of zeroed memory at runtime.
+    .symtab / .strtab: The symbol and string tables. They store the names and positions of functions and variables, which tools like gdb use for debugging.
+
+How to Inspect an ELF Layout on Linux
+You can peer inside any compiled Linux binary using built-in command-line tools:
+
+    View the ELF Header:
+    bash
+
+    readelf -h ./my_program
+
+    Use code with caution.
+    View the Program Headers (Segments mapped to memory):
+    bash
+
+    readelf -l ./my_program
+
+    Use code with caution.
+    View individual Sections (Code, data sizes):
+    bash
+
+    readelf -S ./my_program
+
+    Use code with caution.
+
+
+14] 
 	

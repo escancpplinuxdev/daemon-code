@@ -23,4 +23,6 @@
 	this solve ldd error.
 
 7] 
+30092026	escangui -> to authenticator & -> escangui is not responding” prompt with options to wait or force stop.
 
+8] 

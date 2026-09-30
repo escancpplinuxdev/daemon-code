@@ -32,4 +32,7 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 15] virtual class override c++ code. write ctor , write dtor delete* this what happen now??
 16] shallow copy diff deep copy.
 17] osi level.
-
+18] class object insert int to stl set
+19] swap 2 position in ll.
+20] 3 level pointer address , value ??
+21] diff between makeFile and cmake, cmake.txt 

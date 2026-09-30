@@ -9755,3 +9755,44 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+
+17/09/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escangui – Wayland Save Operation Issue
+
+    Tested escangui with WaylandEnable=true configured in:
+    /etc/gdm/custom.conf
+
+    Observed that during the Save operation, the application becomes unresponsive and the system displays the “escangui is not responding” prompt with options to wait or force stop.
+
+2. Root Cause Investigation
+
+    Performed detailed R&D to identify the source of the issue.
+
+    Checked the problem at different levels, including the Qt GUI flow, Wayland environment, application operation, and related library/dependency behavior.
+
+    Analyzed the Save operation flow to determine where the application is getting blocked or delayed.
+
+3. Solution and Validation
+
+    Identified a solution/mitigation for the issue.
+
+    Implemented the required changes and checked how the application behaves after applying the solution.
+
+    Re-tested the Save operation under the Wayland-enabled environment to verify that the issue is mitigated.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

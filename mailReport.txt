@@ -9796,3 +9796,74 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+
+01/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escangui – Wayland Blank White Window Issue Fix
+
+    Investigated the blank white window issue in escangui when running with:
+    WaylandEnable=true in /etc/gdm/custom.conf
+
+    Identified that the issue was related to X11 shared memory usage.
+
+    Tested the solution using:
+    NO_X11_MIT_SHM=1
+
+    Implemented the required handling in C++ code so that when running as root under Wayland, escangui avoids SHM usage and runs directly with the required environment handling.
+
+    Verified the application behavior after the change.
+
+2. escangui UI Changes
+
+    Updated the button text from:
+    Cancel
+    to:
+    Close
+
+    Verified the UI behavior after the change.
+
+3. pk-gtk-module Warning Handling
+
+    Observed the warning related to missing pk-gtk-module.
+
+    Added handling in C++ code to avoid the warning impact during application execution.
+
+    Verified the application flow after the change.
+
+4. escan-2FA RPM Build
+
+    Integrated all above changes and prepared the updated RPM build:
+    escan-2fa-22.0.1400-2995.x86_64.rpm
+
+5. RPM Testing – 1.231 Laptop
+
+    Tested the updated RPM build on the 1.231 laptop.
+
+    Verified the functionality under all three required conditions.
+
+    Checked the Authenticator and escangui behavior after the changes.
+
+6. Testing on Shrikishan Machine
+
+    Tested the same build on Shrikishan’s machine:
+    2.219
+
+    Verified that the application runs successfully under all three required conditions.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -25,4 +25,15 @@
 7] 
 30092026	escangui -> to authenticator & -> escangui is not responding” prompt with options to wait or force stop.
 
-8] 
+8] 01102026 		escangui -> add 2fun() setGuiWaylandEnble() & error GTK message() . 
+
+			    // 1. Silence the specific GTK warning we don't care about.
+			    silenceGtkPkModuleWarning();
+
+			    // 2. Set Qt/X11/GTK env before QApplication.
+			    runGuiWaylandEnable();
+
+			change cancel -> close button. 
+
+		pending -> escangui 
+			   popup -> other gui for MIT_SHM .

@@ -9867,3 +9867,65 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+01/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. Root User – escangui Blank White Screen R&D
+
+    Continued R&D on the blank white screen issue observed when running escangui as the root user.
+
+    Tested the following environment variables to address the X11 shared-memory/Qt rendering behavior:
+
+        QT_X11_NO_MITSHM=1
+
+        QT_GRAPHICSSYSTEM=raster
+
+    Checked the application behavior after applying these environment settings.
+
+2. Root User Display and XAUTHORITY Handling
+
+    Investigated the display and authentication environment required when escangui is launched by root.
+
+    Tested logic to identify and set the appropriate XAUTHORITY file for the active graphical session.
+
+    Also checked the DISPLAY environment and fallback handling when it is not already available.
+
+    Tested:
+    export XAUTHORITY=/root/.Xauthority
+    to verify root-user access to the graphical session.
+
+3. escangui Flow Explanation and Demonstration
+
+    Explained the escangui execution flow, the root-user GUI issue, and the observed blank-screen problem to Vaibhav and Omkar.
+
+    Explained the investigation performed and the environment-related factors affecting GUI execution.
+
+4. USBMessage GUI – Wayland Handling
+
+    Checked the USBMessage GUI source and execution behavior.
+
+    Investigated whether the same Wayland/root-user GUI handling can be applied to USBMessage.
+
+    Prepared the updated GUI for Vaibhav and placed it at:
+    2.216:/tmp
+
+5. Qt Code Analysis
+
+    Read and analyzed the relevant Qt source code to understand the GUI initialization, display handling, rendering, and related execution flow.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

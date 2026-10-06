@@ -9929,3 +9929,137 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+01/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1. escan-2FA RPM Build and Server Policy Testing
+
+    Prepared the updated RPM build:
+    escan-2fa-22.0.1400-2995.x86_64.rpm
+
+    Deployed the build on the 1.231 RPM laptop and configured/connected it with the 1.237 server using the required server policy.
+
+    Performed comprehensive testing of all required conditions and scenarios.
+
+    Demonstrated the complete testing flow and results to Vaibhav.
+
+2. escangui – Complete Condition Testing
+
+    Repeated the same test scenarios through escangui.
+
+    Verified each required condition and user-login scenario through the GUI.
+
+    Demonstrated all tested conditions and results to Vaibhav.
+
+3. pam_google_authenticator.so – R&D
+
+    Read and analyzed the pam_google_authenticator.so implementation.
+
+    Performed R&D on its PAM authentication flow and OTP-related handling to understand how the module works and how it works.
+
+4. RPM MD5 Checksum and Build Verification
+
+    Generated the MD5 checksum of the RPM build:
+
+4cdb56fb8ea73c3fc23eaf7e78ec69e1
+
+    Verified the same checksum after placing the RPM at:
+
+/media/sdc/omkar/workspace/code/escan_build/escan-2fa
+
+root@PTLD-2 20:25:52 /media/sdc/omkar/workspace/code/escan_build/escan-2fa > md5sum escan-2fa-22.0.1400-2995.x86_64.rpm
+4cdb56fb8ea73c3fc23eaf7e78ec69e1  escan-2fa-22.0.1400-2995.x86_64.rpm
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com 
+
+01/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] DLP RPM – escangui Wayland/Root User Fix
+
+    Started work on the DLP RPM escangui build.
+
+    Worked on the issue where escangui was showing a blank/white screen when executed as the root user under Wayland.
+
+    Added and tested the required Wayland-related configuration:
+
+        WaylandEnable=true
+
+        NO_X11_MIT_SHM=1
+
+    Performed testing to ensure escangui launches correctly for the root user without the blank/white screen issue.
+
+2] DLP RPM – Updated Binary Integration and Build
+
+    Collected and integrated the updated binaries/components:
+
+        libsync
+
+        GAblocker
+
+        mwcpmon
+
+        libcontentcontrol
+
+        contentscanner
+
+        libcontentextration
+
+        mwscanner
+
+        ClipboardWatcher
+
+        printercontrol
+
+        checkdesktop
+
+        nfedlp
+
+        libnfedlp
+
+        commonutil
+
+    Added the required files, directories, headers, and commands into the RPM build environment on the 2.218 machine.
+
+    Compiled the updated components and prepared the RPM build.
+
+    Deployed the updated build to the 1.251 test machine for further testing and validation.
+
+3] EDR – updatenow_avs Error R&D
+
+    Vaibhav reported an error related to EDR updatenow_avs.
+
+    Started debugging and R&D to identify the root cause of the issue.
+
+    Checked the relevant flow and worked on finding a suitable remedy/fix for the reported error.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

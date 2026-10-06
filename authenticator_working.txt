@@ -1,4 +1,7 @@
+log in rpm -> tail -f /var/log/secure
 
+1] key made buy 	/opt/MicroWorld/bin/authenticator
+2] key compare by 	/opt/MicroWorld/lib/key_authenticator.so
 
 escan-antivirus.spec file change working 
 
@@ -96,4 +99,87 @@ escan-antivirus.spec file change working
 			3. server unistall client -> /etc/cron.d/mwunescan
 
 	3] authenticator test 
-			1.  
+			1. 
+
+
+
+
+
+
+
+/**************************************************************/
+
+root@ketan-VirtualBox:/home/workspace/source# locate pam_google_authenticator.so
+/home/workspace/source/keyauthenticator/google-authenticator-libpam-master_ketan_15_April_2024/.libs/pam_google_authenticator.so
+
+2-Fa accept/has two OTP 
+
+1] no server -> escangui apply authenticator -> materkey OTP -> https://intranet//suppotmain.apsx
+
+i.e. 	-> (default + current Time) % 1 million = OTP 
+	
+	-> (serverUID + current Time) % 1million = OTP
+
+2]	
+
+secret			.key_authenticator
+secret_1		.key_authenticator_1
+
+/home/rushi/
+    │
+    ├── .key_authenticator
+    │       │
+    │       └── <generated op3>
+    │
+    └── .key_authenticator_1
+            │
+            └── BAKAGBBAFAMAGANB
+
+
+
+/root/
+    │
+    ├── .key_authenticator
+    │       │
+    │       └── <generated op3>
+    │
+    └── .key_authenticator_1
+            │
+            └── BAKAGBBAFAMAGANB
+
+
+
+
+                USER
+                 │
+                 │ enters OTP
+                 ↓
+        pam_google_authenticator.so
+                 │
+          ┌──────┴──────┐
+          │             │
+          ↓             ↓
+ .key_authenticator   .key_authenticator_1
+          │             │
+          ↓             ↓
+        op3        BAKAGBBAFAMAGANB
+          │             │
+          ↓             ↓
+      TOTP #1          TOTP #2
+          │             │
+          └──────┬──────┘
+                 ↓
+            compare OTP
+                 │
+          ┌──────┴──────┐
+          ↓             ↓
+       matches       no match
+          ↓             ↓
+       ACCEPT          REJECT 
+
+
+The first file gets a user-specific secret (op3) or the fixed secret BAKAGBBAFAMAGANB, depending on val_setter.
+
+The second file always gets:	-> BAKAGBBAFAMAGANB
+
+

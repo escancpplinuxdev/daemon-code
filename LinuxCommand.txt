@@ -387,7 +387,17 @@ Buffer Safety	Con	sprintf doesn't check limits. If the model name is somehow hug
 	paste -> export HISTTIMEFORMAT="%d/%m/%y %H:%M:%S -> "  #date time -> commandHistory
 	close -> :wq
 	source ~/.bashrc
-	histor
+	history
+
+	/etc/bash.bashrc and also ~/.bashrc 
+
+	
+alias a="ls -lrtha --color"
+alias p="cd /tmpdata/cpp/LeetCode/"
+alias g="cd /tmpdata/cpp/GFG/"
+alias n="cd /tmpdata/cpp/naukriCode360/"
+
+we can put both of the files it run.
 
 29] Vim maintains a "Jumplist" of locations you have visited.
 
@@ -1048,6 +1058,11 @@ apt update && apt install -y clang-format
 clang-format -i -style="{BreakBeforeBraces: Allman}" 1614.MaximumNestingDepthoftheParentheses.cpp
 
 
+83] 
+
+Shrikrishna Arun Jadhav  -> shrikrishna@escanav.com
+
+
 81]
 	if [ "$(id -u)" = "0" ] && [ -z "$XAUTHORITY" ]; then
     for xa in /run/user/*/gdm/Xauthority /home/*/.Xauthority; do
@@ -1090,6 +1105,17 @@ watch -c: The -c flag tells the watch utility to interpret ANSI color codes. Wit
 grep --color=always: Changing auto to always forces grep to keep the color markers attached to the text "escan", even though it is being piped into the next grep -v filter block.
 
 
-83] 
 
- 
+84]   	func											header files
+	std::sort(block.begin(), block.end(),							#include <algorithm> // sort()
+                      [](const std::vector<int>& a, const std::vector<int>& b) {
+                          return a[1] < b[1];
+                      });
+
+
+	std::pow(2,depth)									#include <cmath> //std::pow();
+
+
+
+
+85]	 

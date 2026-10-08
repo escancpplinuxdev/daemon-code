@@ -1,0 +1,25 @@
+
+1. qmake myclass.pro -> it create Makefile and 
+				  .qmake.stash  file
+
+root@rushi-VB-220:/tmpdata/cpp/qt/test/t1# qmake myclass.pro
+Info: creating stash file /tmpdata/cpp/qt/test/t1/.qmake.stash
+
+2. make
+After successful make:
+text
+
+total 120K
+drwxr-xr-x 4 root root 4.0K Sep  2 16:28 ..
+-rw-r--r-- 1 root root  239 Sep  2 16:28 main.cpp
+-rw-r--r-- 1 root root  353 Sep  2 16:29 myclass.h
+-rw-r--r-- 1 root root  309 Sep  2 16:29 myclass.cpp
+-rw-r--r-- 1 root root  231 Sep  2 16:29 myclass.pro
+-rw-r--r-- 1 root root  693 Sep  2 16:36 .qmake.stash
+-rw-r--r-- 1 root root  21K Sep  2 16:36 Makefile
+drwxr-xr-x 2 root root 4.0K Sep  2 16:36 .moc/          ← Generated MOC files
+-rw-r--r-- 1 root root 4.4K Sep  2 16:37 main.o         ← Compiled object
+-rw-r--r-- 1 root root 4.4K Sep  2 16:37 myclass.o      ← Compiled object
+-rw-r--r-- 1 root root  17K Sep  2 16:37 moc_myclass.o  ← Compiled MOC object
+-rwxr-xr-x 1 root root  36K Sep  2 16:37 test           ← YOUR EXECUTABLE!
+

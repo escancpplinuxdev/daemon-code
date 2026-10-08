@@ -1,0 +1,16 @@
+#!/bin/bash
+export LD_LIBRARY_PATH=/opt/MicroWorld/lib:$LD_LIBRARY_PATH
+export QT_X11_NO_MITSHM=1
+export QT_GRAPHICSSYSTEM=raster
+export GTK_MODULES=""
+export GTK2_MODULES=""
+export GTK_PATH=/opt/MicroWorld/lib
+
+if [ "$(id -u)" = "0" ] && [ -z "$XAUTHORITY" ]; then
+    for xa in /run/user/*/gdm/Xauthority /home/*/.Xauthority; do
+        [ -r "$xa" ] && export XAUTHORITY="$xa" && break
+    done
+fi
+[ -n "$DISPLAY" ] || export DISPLAY=:0
+
+exec /opt/MicroWorld/bin/escangui.real "$@"

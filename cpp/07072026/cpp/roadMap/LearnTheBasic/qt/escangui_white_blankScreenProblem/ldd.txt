@@ -1,0 +1,1 @@
+for f in *; do ldd "$f" 2>/dev/null | grep -q "not found" && echo "BROKEN: $f"; done

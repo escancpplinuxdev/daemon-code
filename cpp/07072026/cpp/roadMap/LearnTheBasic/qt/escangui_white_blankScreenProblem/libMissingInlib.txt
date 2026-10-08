@@ -1,0 +1,102 @@
+for f in *; do
+    [ -f "$f" ] || continue
+    missing=$(ldd "$f" 2>/dev/null | grep "not found")
+    if [ -n "$missing" ]; then
+        echo "=== $f ==="
+        echo "$missing"
+    fi
+done
+
+
+=== libboost_filesystem.so.1.53.0 ===
+	libboost_system.so.1.53.0 => not found
+=== libboost_regex.so.1.53.0 ===
+	libicuuc.so.50 => not found
+	libicui18n.so.50 => not found
+	libicudata.so.50 => not found
+=== libgcrypt.so.11 ===
+	libnsl.so.1 => not found
+=== libicui18n.so.50 ===
+	libicuuc.so.50 => not found
+=== libicuuc.so.50 ===
+	libicudata.so.50 => not found
+=== libidn2.so.0 ===
+	libunistring.so.0 => not found
+=== libldap-2.2.so.7 ===
+	liblber-2.2.so.7 => not found
+	libsasl2.so.2 => not found
+	libssl.so.4 => not found
+	libcrypto.so.4 => not found
+=== libldap_r.so.2 ===
+	liblber-2.2.so.7 => not found
+	libsasl2.so.2 => not found
+	libssl.so.4 => not found
+	libcrypto.so.4 => not found
+=== libnotify.so.1 ===
+	libgtk-x11-2.0.so.0 => not found
+	libgdk-x11-2.0.so.0 => not found
+=== libnotify.so.1.0 ===
+	libgtk-x11-2.0.so.0 => not found
+	libgdk-x11-2.0.so.0 => not found
+=== libnotify.so.1.0.0 ===
+	libgtk-x11-2.0.so.0 => not found
+	libgdk-x11-2.0.so.0 => not found
+=== libQtGui.so.4 ===
+	libpng12.so.0 => not found
+	libQtCore.so.4 => not found
+=== libtiff.so.5 ===
+	libjbig.so.2.0 => not found
+
+
+
+
+
+
+====================================================================================================
+
+
+[root@localhost lib]# 
+[root@localhost lib]# for f in *; do ldd "$f" 2>/dev/null | grep "not found" && echo "Missing in -> $f" && echo "---"; done
+	libboost_system.so.1.53.0 => not found
+Missing in -> libboost_filesystem.so.1.53.0
+---
+	libicuuc.so.50 => not found
+	libicui18n.so.50 => not found
+	libicudata.so.50 => not found
+Missing in -> libboost_regex.so.1.53.0
+---
+	libnsl.so.1 => not found
+Missing in -> libgcrypt.so.11
+---
+	libicuuc.so.50 => not found
+Missing in -> libicui18n.so.50
+---
+	libicudata.so.50 => not found
+Missing in -> libicuuc.so.50
+---
+	libunistring.so.0 => not found
+Missing in -> libidn2.so.0
+---
+	liblber-2.2.so.7 => not found
+	libsasl2.so.2 => not found
+	libssl.so.4 => not found
+	libcrypto.so.4 => not found
+Missing in -> libldap-2.2.so.7
+---
+	liblber-2.2.so.7 => not found
+	libsasl2.so.2 => not found
+	libssl.so.4 => not found
+	libcrypto.so.4 => not found
+Missing in -> libldap_r.so.2
+---
+	libpng12.so.0 => not found
+	libQtCore.so.4 => not found
+Missing in -> libQtGui.so.4
+---
+	libjbig.so.2.0 => not found
+Missing in -> libtiff.so.5
+---
+[root@localhost lib]# ldd libtiff.so.5 | grep -i not
+	libjbig.so.2.0 => not found
+[root@localhost lib]# 
+

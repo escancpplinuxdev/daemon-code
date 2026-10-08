@@ -2834,4 +2834,15 @@ To avoid bugs without constantly referencing the chart, memorize these three int
 
 17 $]
 
+nfdaemon -> libnfdaemon.so
 
+libnfdaemon.so
+
+1. remove int main() 
+2. in Makefile add -shared
+
+     $(TARGET): $(OBJ_FILES)
+     $(CXX) -shared $(OBJ_FILES) $(INCLUDE) -Wl,-rpath=/opt/MicroWorld/lib/ $(LIBS) -o $(TARGET) -lstdc++fs
+3. 
+
+18 $]

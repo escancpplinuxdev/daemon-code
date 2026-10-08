@@ -1118,4 +1118,44 @@ grep --color=always: Changing auto to always forces grep to keep the color marke
 
 
 
-85]	 
+85]	binary get stuck -> find what happen  
+
+sudo strace -f -o /tmp/updatenow_trace.txt ./updatenow_avs --force
+
+sudo strace -p <PID>
+
+
+pgrep -a updatenow_avs
+163764 /tmpdata/updatenow_avs --force
+
+sudo strace -p 163764
+
+Command						Purpose
+ps aux | grep updatenow_avs			Find the PID of the stuck process .
+sudo strace -p <PID>				Watch the system calls to see where it's blocking .
+pgrep -a updatenow_avs
+pstree -p <PID>					See the process tree to find sub-processes .
+ps -ef --forest | grep updatenow_avs		Alternative way to view the process hierarchy and children .
+The --forest option draws ASCII art lines to show the parent-child relationships, making it easy to spot sub-processes 
+
+sudo strace -f ./updatenow_avs	(Future runs) 	Trace the binary and all its children from the start .
+
+If you want to trace the main binary and all the child processes it creates from the very beginning, you should run it with the -f (follow forks) flag. Since it's already stuck, you can't easily do this retroactively, but it's useful if you need to restart it:
+bash
+
+sudo strace -f -o /tmp/updatenow_trace.txt ./updatenow_avs --force
+
+The -o flag saves the output to a file so you can analyze it without the terminal scrolling too fast 
+
+86]  find qt binary in dir
+
+cd /opt/MicroWorld/bin
+
+for f in $(file * | grep ELF | awk -F: '{print $1}'); do     ldd "$f" 2>/dev/null | grep -qi libQt && echo "Qt binary: $f"; done
+
+87] 
+   
+	 smbclient //192.168.0.8/external -U raja
+	-> raja 
+
+88]

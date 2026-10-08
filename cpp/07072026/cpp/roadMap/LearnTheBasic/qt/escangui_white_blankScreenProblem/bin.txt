@@ -1,0 +1,52 @@
+for lib in libboost_filesystem.so.1.53.0 libboost_regex.so.1.53.0 libgcrypt.so.11 \
+           libicui18n.so.50 libicuuc.so.50 libidn2.so.0 libldap-2.2.so.7 libldap_r.so.2 \
+           libnotify.so.1 libQtGui.so.4 libtiff.so.5; do
+    echo "───── $lib ─────"
+    find . -type f -name "*.so*" -o -type f -perm -u+x 2>/dev/null | while read f; do
+        file "$f" 2>/dev/null | grep -q "ELF" || continue
+        if readelf -d "$f" 2>/dev/null | grep -q "NEEDED.*$lib"; then
+            echo "  → $f"
+        fi
+    done
+done
+
+
+
+───── libboost_regex.so.1.53.0 ─────
+  → ./mwscanner
+───── libgcrypt.so.11 ─────
+  → ./gblock
+───── libQtGui.so.4 ─────
+  → ./VirusPopUp
+  → ./autoscanpopup
+  → ./common_gui
+  → ./escanWeb
+  → ./escangui
+  → ./escanusb
+  → ./passPrompt
+
+
+
+
+───── libboost_filesystem.so.1.53.0 ─────
+  → ./epsdaemon
+  → ./mwcpmon
+───── libboost_regex.so.1.53.0 ─────
+  → ./mwcpmon
+───── libgcrypt.so.11 ─────
+  → ./metablock
+  → ./mwagent
+  → ./mwpblocker
+  → ./mwprintd
+  → ./nfdaemon
+  → ./reverseShellEvent
+  → ./winclient
+───── libicui18n.so.50 ─────
+  → ./mwcpmon
+───── libicuuc.so.50 ─────
+  → ./mwcpmon
+───── libidn2.so.0 ─────
+  → ./epsdaemon
+
+
+

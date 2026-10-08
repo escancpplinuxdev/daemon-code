@@ -10063,3 +10063,87 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+01/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Content Scanner – Case-Sensitive Detection see how omkar and sir gonna do.
+
+    Reviewed and understood the working flow of Content Scanner, libcontentextraction, and mwscanner for case-sensitive content detection scenarios.
+
+    Observed and analyzed how the components process and detect content when the case of the input data differs.
+
+    Studied the interaction between these components to understand the complete content-scanning flow.
+
+2] DLP RPM Testing
+
+    Tried to test the DLP RPM on the 1.231 machine.
+
+    Checked the RPM installation and related functionality during testing.
+
+3] EDR DLP Issue Discussion
+
+    Discussed the reported EDR DLP issue with Shri Krishna.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+01/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] DLP RPM – SSH Issue R&D
+
+Performed R&D on the 1.231 RPM machine to investigate why SSH was not working after installing the DLP build and applying the DLP policy.
+Checked the DLP policy  flow and related components to identify the cause of the SSH issue.
+
+2] nfedlp – iptables Rule Analysis
+
+Identified that the issue was related to nfedlp, where iptables -L -t mangle rules were being created.
+Studied the nfedlp flow and the creation of the mangle table rules to understand their impact on SSH connectivity.
+
+3] EDR updatenow_avs – Trial Period Policy Handling
+
+Reviewed the EDR updatenow_avs flow on the 1.238 machine.
+During the trial period, when keyStatus == 0, all DLP policies were being applied.
+Analyzed the existing logic and made the required changes to handle the DLP policy application correctly.
+
+4] DLP Testing on 1.238
+
+Tested the updated updatenow_avs changes on the 1.238 machine. againt 0.221 srver
+Verified the DLP policy application using:
+./updatenow_avs --force
+Checked whether the expected DLP policy was applied correctly after the forced update.
+
+5] Additional Testing on 1.248
+
+Repeated the testing on the 1.248 machine to further verify the updated EDR/DLP behavior and policy application.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

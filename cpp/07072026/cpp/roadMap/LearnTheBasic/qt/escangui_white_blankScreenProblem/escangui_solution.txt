@@ -1,0 +1,357 @@
+Problem A — Blank white window as root.
+When omkar ran escangui, the GUI rendered fine. When root ran it, they got a blank white rectangle with X11 errors:
+text
+
+X Error: BadAccess (attempt to access private resource denied) 10
+  Extension:  130 (MIT-SHM)
+
+Under Wayland/Xwayland on RHEL 9, only the session owner (omkar) can use the MIT-SHM extension. Root's process is denied that. Qt4's paint path tries MIT-SHM first, fails, falls back to server-side X pixmaps, fails again, and leaves the window uninitialized → blank white.
+
+
+
+
+
+MIT-SHM stands for the MIT Shared Memory Extension (also known as XShm). It is a core protocol extension for the X Window System (X11) designed to speed up the exchange of image data between an application (the X client) and the display system (the X server). 
+
+How It Works
+Traditionally, when a local application wants to draw a large image on your screen using X11, it has to pack the raw pixel data and send it to the X server over a local network socket or pipe. This serialization and data copying creates a heavy CPU bottleneck for graphic-intensive tasks. 
+
+MIT-SHM bypasses the socket entirely. It allocates a shared memory segment (via Linux System V IPC or file descriptors) that both the application and the X server can look at simultaneously. Instead of copying a massive block of pixels, the application just writes the pixels to that shared memory pool and sends a small message telling the X server exactly where to look. 
+
+Key Constraints
+
+    Local Machine Only: Because it relies on shared RAM segments managed by the OS kernel, MIT-SHM only works if both the application and the X server are running on the exact same physical computer. 
+
+    Remote Issues (SSH Forwarding): If you use SSH X11 forwarding (ssh -X or ssh -Y) to run a graphical program on a remote server and display it locally, MIT-SHM will fail. The remote application will often throw an explicit error like X Error of failed request: BadShmSeg because it's trying to share memory with an X server across a network boundary where it cannot exist. 
+   
+
+Where is it used?
+MIT-SHM is standard on modern modern Linux desktops using Xorg. It is widely heavily utilized by performance-critical applications like video players (VLC, MPV), emulators, web browsers, and the Java 2D pipeline to draw frames rapidly without lagging the CPU. 
+
+Are you running into a specific "BadShmSeg" or "MIT-SHM extension missing" error while launching a graphical app, or perhaps trying to run a program inside a Docker container or over an SSH tunnel? Let me know the context so I can give you the exact environment variables to fix it.
+
+
+
+
+# --- 1. Copy everything flat into /opt/MicroWorld/lib ---
+cd /tmpdata/legacy_libs/gtk2_bundle
+
+cp -d usr/lib64/libgtk-x11-2.0.so.0*  /opt/MicroWorld/lib/
+cp -d usr/lib64/libgdk-x11-2.0.so.0*  /opt/MicroWorld/lib/
+cp -d usr/lib64/libgailutil.so.18*    /opt/MicroWorld/lib/
+cp -d usr/lib64/gtk-2.0/modules/*.so  /opt/MicroWorld/lib/
+cp -d usr/lib64/gtk-3.0/modules/*.so  /opt/MicroWorld/lib/
+
+# --- 2. rpath sweep ---
+cd /opt/MicroWorld/lib
+for f in *.so*; do
+    [ -f "$f" ] && patchelf --set-rpath /opt/MicroWorld/lib "$f"
+done
+
+# --- 3. Verify ---
+ldd * 2>/dev/null | grep "not found"
+# expected: (empty)
+
+# --- 4. Install the wrapper ---
+cp /opt/MicroWorld/bin/escangui /opt/MicroWorld/bin/escangui.real
+
+cat > /opt/MicroWorld/bin/escangui <<'EOF'
+#!/bin/bash
+export LD_LIBRARY_PATH=/opt/MicroWorld/lib:$LD_LIBRARY_PATH
+export QT_X11_NO_MITSHM=1
+export QT_GRAPHICSSYSTEM=raster
+export GTK_MODULES=""
+export GTK2_MODULES=""
+export GTK_PATH=/opt/MicroWorld/lib
+
+if [ "$(id -u)" = "0" ] && [ -z "$XAUTHORITY" ]; then
+    for xa in /run/user/*/gdm/Xauthority /home/*/.Xauthority; do
+        [ -r "$xa" ] && export XAUTHORITY="$xa" && break
+    done
+fi
+[ -n "$DISPLAY" ] || export DISPLAY=:0
+
+exec /opt/MicroWorld/bin/escangui.real "$@"
+EOF
+
+chmod +x /opt/MicroWorld/bin/escangui
+
+# --- 5. Run ---
+escangui
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Full explanation of the fix — every line, every decision
+
+Let's walk through what this block does, why each piece exists, and how it makes escangui work for both omkar and root without any system modification.
+The two problems we were solving
+
+Before the code, the context:
+
+Problem A — Blank white window as root.
+When omkar ran escangui, the GUI rendered fine. When root ran it, they got a blank white rectangle with X11 errors:
+text
+
+X Error: BadAccess (attempt to access private resource denied) 10
+  Extension:  130 (MIT-SHM)
+
+Under Wayland/Xwayland on RHEL 9, only the session owner (omkar) can use the MIT-SHM extension. Root's process is denied that. Qt4's paint path tries MIT-SHM first, fails, falls back to server-side X pixmaps, fails again, and leaves the window uninitialized → blank white.
+
+Problem B — Gtk-Message: Failed to load module "pk-gtk-module".
+GTK2 (which the bundled Qt4 uses for theming) scans its module directory for libpk-gtk-module.so. RHEL 9 no longer ships this module for GTK2 — it was dropped after RHEL 8. So GTK2 prints a warning every launch.
+
+The block you pasted fixes both without touching /etc/gdm/custom.conf, without installing packages, and keeping everything inside /opt/MicroWorld/lib/.
+Section 1 — Copy everything flat into /opt/MicroWorld/lib/
+bash
+
+cd /tmpdata/legacy_libs/gtk2_bundle
+
+cp -d usr/lib64/libgtk-x11-2.0.so.0*  /opt/MicroWorld/lib/
+cp -d usr/lib64/libgdk-x11-2.0.so.0*  /opt/MicroWorld/lib/
+cp -d usr/lib64/libgailutil.so.18*    /opt/MicroWorld/lib/
+cp -d usr/lib64/gtk-2.0/modules/*.so  /opt/MicroWorld/lib/
+cp -d usr/lib64/gtk-3.0/modules/*.so  /opt/MicroWorld/lib/
+
+Why each line:
+Line	What it copies	Why it's needed
+cd /tmpdata/legacy_libs/gtk2_bundle	Move into the extraction folder	RPMs were extracted here with rpm2cpio | cpio -idmv
+cp -d usr/lib64/libgtk-x11-2.0.so.0*	GTK2's main widget library	Provides libgtk-x11-2.0.so.0 — needed by libnotify and Qt4's GTK theme plugin
+cp -d usr/lib64/libgdk-x11-2.0.so.0*	GTK2's low-level graphics library	libgdk-x11-2.0.so.0 is a hard dependency of libgtk-x11-2.0.so.0
+cp -d usr/lib64/libgailutil.so.18*	Accessibility utility library	Depended on by GTK2 internals
+cp -d usr/lib64/gtk-2.0/modules/*.so	GTK2 modules (libcanberra-gtk-module.so)	Optional sound module; bundled for completeness
+cp -d usr/lib64/gtk-3.0/modules/*.so	GTK3 modules (libpk-gtk-module.so)	The GTK3 build of the pk module — harmless to have
+
+The -d flag is critical. cp -d preserves symlinks as symlinks rather than following them. Notice what you saw in the extraction:
+text
+
+usr/lib64/libgtk-x11-2.0.so.0 -> libgtk-x11-2.0.so.0.2400.33
+
+The .so.0 name is a symlink to the real file .so.0.2400.33. The dynamic linker looks up libraries by the soname (.so.0), and the actual bytes live in the versioned file. If you used plain cp (or cp -r), it would copy the target's contents to the .so.0 name — turning the symlink into a real file and losing the .2400.33 file entirely. Some tools then fail because they expect both names to be present.
+
+With cp -d, both the symlink and its target are copied correctly.
+
+Why "flat"? Because we decided not to create the gtk-2.0/modules/ subdirectory structure inside the bundle. GTK would normally look there, but we're going to suppress module loading altogether (see the wrapper below), so the modules just need to be present somewhere the loader can find them — and LD_LIBRARY_PATH=/opt/MicroWorld/lib handles that.
+Section 2 — The rpath sweep
+bash
+
+cd /opt/MicroWorld/lib
+for f in *.so*; do
+    [ -f "$f" ] && patchelf --set-rpath /opt/MicroWorld/lib "$f"
+done
+
+What this does: for every .so file in the bundle, patchelf --set-rpath /opt/MicroWorld/lib writes a DT_RUNPATH entry into the ELF dynamic section of that file. It says:
+
+    "When the loader is resolving my dependencies, look in /opt/MicroWorld/lib before the system paths."
+
+Why this matters: the app was built long ago, expecting the libraries to be found either via /etc/ld.so.conf or via LD_LIBRARY_PATH. We refuse to touch /etc/ld.so.conf.d/ because that broke yum/rpm earlier. Instead, we bake the search path into each library. Now:
+
+    libnotify.so.1 finds libgtk-x11-2.0.so.0 in the bundle — no env var needed.
+
+    libgtk-x11-2.0.so.0 finds libgdk-x11-2.0.so.0 in the bundle.
+
+    libQtGui.so.4 finds libQtCore.so.4 in the bundle.
+
+    Every library in the set is now self-contained.
+
+Why the [ -f "$f" ] guard: the glob *.so* matches both real files and symlinks. patchelf refuses to work on symlinks — it errors out. The -f test ([ -f ... ]) returns true only for regular files that can be followed. Hmm, actually [ -f ] is also true for symlinks pointing at files. The safer guard is [ -f "$f" ] && [ ! -L "$f" ], but since we only run this on /opt/MicroWorld/lib/*.so* and every symlink points to a file present in the same folder, running patchelf on the symlink will just modify the target — which is fine.
+
+Why not just set RPATH once on the executable? Because the executable might be a shell script (Qt launcher) or the app binary may not know about the bundle. RPATH on each library is the robust approach — no matter which entry point loads them, each one self-resolves.
+
+How RPATH differs from LD_LIBRARY_PATH: LD_LIBRARY_PATH is environment-scoped and affects every binary in the shell session. RPATH is baked into the file and scoped only to that library. Global vs local — that's the whole difference, and it's what makes this safe.
+Section 3 — Verify
+bash
+
+ldd * 2>/dev/null | grep "not found"
+# expected: (empty)
+
+What this checks: for every library in the bundle, ask the loader to resolve its dependencies. If every dependency resolves, no line contains "not found".
+
+Why 2>/dev/null: ldd sometimes emits warnings about libraries that aren't loadable (e.g. libnss3.so version mismatches). Those warnings go to stderr. We only care about "not found" lines, so we discard stderr.
+
+Why this is the acceptance test: it's the same command your manager runs. If it's empty, the bundle is complete for its own dependencies.
+
+What "empty" means: every .so in the folder can find every one of its own dependencies — either inside the folder (via rpath) or from the system. Zero missing.
+Section 4 — Install the wrapper
+bash
+
+cp /opt/MicroWorld/bin/escangui /opt/MicroWorld/bin/escangui.real
+
+Back up the original binary as escangui.real. We keep it so the wrapper can exec it after setting environment variables. Nothing is deleted — if the wrapper has a bug, the original is still there.
+bash
+
+cat > /opt/MicroWorld/bin/escangui <<'EOF'
+#!/bin/bash
+...
+exec /opt/MicroWorld/bin/escangui.real "$@"
+EOF
+
+Write a new escangui that is a shell script, replacing the old binary at that path. Because escangui is what users type and what's in the desktop launcher, making it a wrapper means the environment is set up automatically.
+
+The heredoc <<'EOF' (with the quoted EOF) means: take everything up to EOF literally — don't expand $VARIABLE or $(...) during the write. That's important because the script itself contains $LD_LIBRARY_PATH, $(id -u), etc., which should be evaluated at runtime, not at write time.
+bash
+
+chmod +x /opt/MicroWorld/bin/escangui
+
+Make the script executable. Without +x, running escangui would fail with "Permission denied".
+Inside the wrapper — line by line
+bash
+
+#!/bin/bash
+
+Tells the kernel to run this file with bash.
+bash
+
+export LD_LIBRARY_PATH=/opt/MicroWorld/lib:$LD_LIBRARY_PATH
+
+Prepends the bundle to the library search path. LD_LIBRARY_PATH is checked after RPATH but before the system default paths. Setting it here means the app and its child processes see the bundle. :$LD_LIBRARY_PATH preserves any existing value (usually empty).
+bash
+
+export QT_X11_NO_MITSHM=1
+
+This is the fix for the blank white window. It tells Qt4's X11 backend not to use MIT-SHM (X11's shared memory extension). Under Wayland/Xwayland, MIT-SHM is only available to the session's own user; root is denied. Without this flag, Qt tries SHM, gets BadAccess, and its fallback path produces a broken pixmap → blank window. With QT_X11_NO_MITSHM=1, Qt skips SHM entirely and uses plain X11 calls that work fine for root.
+bash
+
+export QT_GRAPHICSSYSTEM=raster
+
+The other half of the blank-window fix. Tells Qt to use its raster graphics system — a purely software painter that renders into a client-side surface, then blits to the X window. This avoids all server-side X pixmap creation (X_CreatePixmap, X_ShmAttach, X_CopyArea). Those were exactly the operations producing BadAccess, BadShmSeg, and BadDrawable errors. With raster, no X pixmap is ever requested → no errors → correct rendering.
+
+The default on Qt4 X11 is native — it uses X's own rendering. raster is slower but bulletproof under restricted X sessions.
+bash
+
+export GTK_MODULES=""
+export GTK2_MODULES=""
+
+This is the fix for the pk-gtk-module warning. GTK2 loads a list of modules from gtk.immodules. Setting GTK_MODULES to an empty string tells GTK "load no modules". GTK stops trying libpk-gtk-module.so — the missing-module warning disappears.
+
+The module is only useful for PackageKit-driven font installation, which your antivirus GUI never uses. Zero functional impact.
+
+GTK2_MODULES is the same for GTK2 specifically in some builds.
+bash
+
+export GTK_PATH=/opt/MicroWorld/lib
+
+Points GTK's module/theme search path at the bundle. Harmless if the module isn't there; useful if GTK ever tries to load a module from the bundle.
+bash
+
+if [ "$(id -u)" = "0" ] && [ -z "$XAUTHORITY" ]; then
+    for xa in /run/user/*/gdm/Xauthority /home/*/.Xauthority; do
+        [ -r "$xa" ] && export XAUTHORITY="$xa" && break
+    done
+fi
+
+This is what makes the wrapper work for root without xhost.
+
+    id -u returns the numeric UID. "$(id -u)" = "0" checks if we're running as root.
+
+    [ -z "$XAUTHORITY" ] — only proceed if XAUTHORITY isn't already set (i.e. we're not running via sudo -E with the env preserved).
+
+    The loop searches for the active user's X authentication cookie in the standard paths:
+
+        /run/user/*/gdm/Xauthority — GNOME/GDM session on modern RHEL
+
+        /home/*/.Xauthority — classic per-user file
+
+    [ -r "$xa" ] && export XAUTHORITY="$xa" && break — the first readable file wins.
+
+Why this is needed: X11 requires a cookie (XAUTHORITY) to authenticate to a session that belongs to another user. When omkar logs into GNOME, the session's X server is owned by omkar, and the cookie lives under omkar's runtime directory. Root, by default, doesn't know where that cookie is. Reading it and exporting XAUTHORITY lets root talk to omkar's X server — no xhost + needed, no global config change.
+
+This is not a security hole because xa must be readable by root (which it will be if omkar has logged in interactively).
+bash
+
+[ -n "$DISPLAY" ] || export DISPLAY=:0
+
+If DISPLAY isn't already set, default to :0 — the first X server. This is the standard value on a single-seat desktop.
+bash
+
+exec /opt/MicroWorld/bin/escangui.real "$@"
+
+Replace the shell with the real binary, passing through all arguments ("$@"). exec is important because:
+
+    It doesn't create a subprocess — the real app becomes the process with the same PID.
+
+    Signals (SIGTERM, SIGINT, SIGKILL) go directly to the app, not to the shell wrapper.
+
+    Environment variables set above are inherited by the app.
+
+    When the app exits, the shell is already gone, so no zombie process.
+
+If we used plain /opt/MicroWorld/bin/escangui.real "$@" (without exec), the shell would stay alive waiting for the app, consuming a process slot and swallowing signals.
+Section 5 — Run
+bash
+
+escangui
+
+Because /opt/MicroWorld/bin/ is on your PATH, typing escangui finds the wrapper. The wrapper sets the environment, then execs the real binary. The GUI appears.
+
+Running as root works the same way — the wrapper detects UID 0 and pulls in omkar's X cookie automatically.
+Why this works — the mechanism in one diagram
+text
+
+You type: escangui
+    ↓
+Bash finds /opt/MicroWorld/bin/escangui (the wrapper)
+    ↓
+Wrapper exports:
+    LD_LIBRARY_PATH=/opt/MicroWorld/lib          → bundle libraries first
+    QT_X11_NO_MITSHM=1                           → skip the extension root can't use
+    QT_GRAPHICSSYSTEM=raster                     → render client-side, no X pixmaps
+    GTK_MODULES=""                               → GTK loads no modules → no warning
+    GTK_PATH=/opt/MicroWorld/lib                 → GTK search path (harmless)
+    XAUTHORITY=/run/user/1000/gdm/Xauthority     → root can authenticate to omkar's X
+    DISPLAY=:0                                    → default display
+    ↓
+Wrapper execs /opt/MicroWorld/bin/escangui.real
+    ↓
+The app starts, uses QT_GRAPHICSSYSTEM=raster → no MIT-SHM → paints correctly
+GTK never tries pk-gtk-module → no warning
+Every library in the bundle has rpath=/opt/MicroWorld/lib → no LD_LIBRARY_PATH needed
+
+Why every design decision was made
+Decision	Alternative	Why we chose ours
+rpath on each library	ldconfig in /etc/ld.so.conf.d/	Global ldconfig broke yum/rpm — this stays local
+Wrapper script	Edit /etc/gdm/custom.conf to disable Wayland	GDM change affects all users on the machine
+Wrapper script	Install PackageKit-gtk-module from repo	Package doesn't exist for GTK2 on RHEL 9
+Auto-detect XAUTHORITY	xhost +si:localuser:root	xhost grants access on the running session only — wrapper is persistent
+GTK_MODULES=""	Build the missing module from source	Cosmetic warning; build takes 30–60 min and adds deps
+QT_GRAPHICSSYSTEM=raster	QT_X11_NO_MITSHM=1 alone	raster also avoids X_CreatePixmap; both flags together are bulletproof
+Flat folder	gtk-2.0/modules/ subdirectory	Avoids path assumptions and GTK's module-scan logic entirely
+exec in wrapper	Plain invocation	Signal handling + no zombie shell
+cp -d	cp -r	Preserves symlinks; -r would break the .so.0 → .so.0.N chain
+2>/dev/null on ldd	Show all output	Warnings about version mismatches are noise; only "not found" matters
+What the user experiences
+Scenario	Before	After
+omkar runs escangui	Works ✅	Works ✅
+root runs escangui	Blank white window + X errors	Works ✅
+Terminal output	Gtk-Message: Failed to load module "pk-gtk-module" on every launch	Silent ✅
+Any file in /etc/	—	Unchanged
+Any package installed system-wide	—	None
+Any path outside /opt/MicroWorld/	—	Unchanged
+Bundle portability	Dependent on LD_LIBRARY_PATH being set	Self-contained via rpath ✅
+Summary — the story in one paragraph
+
+    The GUI is a legacy Qt4 app that was built years ago. On RHEL 9 with Wayland, running it as root hit two problems: the X server denied MIT-SHM access (leading to a blank window), and GTK2 couldn't find the pk-gtk-module plugin it wanted (producing a warning). We fixed both inside /opt/MicroWorld/ — no system config, no package install. We bundled the missing GTK2 libraries and set rpath on every library in the folder so the bundle resolves its own dependencies without touching /etc/ld.so.conf.d/. We replaced the escangui binary with a wrapper that sets QT_X11_NO_MITSHM=1 and QT_GRAPHICSSYSTEM=raster to avoid the restricted X11 paths, sets GTK_MODULES="" to skip the missing module, and auto-detects root's XAUTHORITY so root can talk to the session owner's X server. The wrapper execs the real binary. The result: escangui works for both omkar and root, silently, with no system modifications.
+
+That's the full explanation — problem, mechanism, fix, rationale, and result.

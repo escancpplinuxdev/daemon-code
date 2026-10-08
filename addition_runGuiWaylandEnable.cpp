@@ -165,8 +165,15 @@ void runGuiWaylandEnable()
 
 int main()
 {
+
+
+
+
 	        silenceGtkPkModuleWarning();   // <-- very first line
         runGuiWaylandEnable();	// MIT_SHM error show white blankScreenGui
+
+
+
 
 
 }

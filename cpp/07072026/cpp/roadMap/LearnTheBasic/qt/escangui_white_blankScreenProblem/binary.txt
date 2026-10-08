@@ -1,0 +1,16 @@
+for lib in libboost_filesystem.so.1.53.0 libboost_regex.so.1.53.0 libgcrypt.so.11 \
+           libicui18n.so.50 libicuuc.so.50 libidn2.so.0 libldap-2.2.so.7 libldap_r.so.2 \
+           libnotify.so.1 libnotify.so.1.0 libnotify.so.1.0.0 libQtGui.so.4 libtiff.so.5; do
+    echo "Library: $lib"
+    
+    # Search all .so files and executables in the project
+    find . -type f \( -name "*.so" -o -name "*.so.*" -o -perm -u+x \) 2>/dev/null | while read f; do
+        # Skip non-ELF files quickly
+        file "$f" 2>/dev/null | grep -q "ELF" || continue
+        
+        if ldd "$f" 2>/dev/null | grep -q "$lib"; then
+            echo "  → $f"
+        fi
+    done
+    echo ""
+done

@@ -1,0 +1,69 @@
+Step 1: Link Both Computers to Your GitHub Account
+GitHub needs to know that both your PC and your laptop belong to you so that it allows you to push changes. You can set this up using either HTTPS or SSH.
+Option A: Using HTTPS (Easiest)
+
+    Download and install Git on both computers.
+    The first time you try to communicate with GitHub from either machine, a window will pop up asking you to Sign in with your browser. Just log into your GitHub account to authenticate.
+
+Option B: Using SSH Keys (Recommended for Developers)
+
+    Open the terminal/Git Bash on your PC and generate a key by running:
+    bash
+
+    ssh-keygen -t ed25519 -C "your_email@example.com"
+
+    Use code with caution.
+    Copy the generated public key (cat ~/.ssh/id_ed25519.pub).
+    Go to GitHub → Settings → SSH and GPG keys → New SSH Key and paste it there.
+    Repeat these exact steps on your laptop so both machines have their unique keys added to your GitHub account.
+
+Step 2: Set Up the Repository
+
+    If the repo already exists on GitHub: You can skip this step.
+    If the project is currently only on your PC: Push it to GitHub first.
+        Go to GitHub and click New Repository. Do not add a README or .gitignore if your code already exists.
+        Open the terminal in your project folder on your PC and run:
+        bash
+
+        git init
+        git add .
+        git commit -m "Initial commit"
+        git branch -M main
+        git remote add origin <your-github-repo-URL>
+        git push -u origin main
+
+        Use code with caution.
+
+Step 3: Clone the Repo onto the Second Machine (Laptop)
+Now that your code is safely sitting on GitHub, go to your laptop, open a terminal in the folder where you want your project to live, and run:
+bash
+
+git clone <your-github-repo-URL>
+
+Use code with caution.
+This downloads the exact same repository along with its entire history onto your laptop.
+Daily Workflow: How to Sync Between PC and Laptop
+Now that both machines are connected to the same repository, use this standard routine to keep them in sync:
+
+[ Your PC ]  ---(git push)--->  [ GitHub Repo ]  ---(git pull)--->  [ Your Laptop ]
+
+1. When working on your PC:
+Make your changes, save them, and send them to GitHub:
+bash
+
+git add .
+git commit -m "Finished the stack feature"
+git push origin main
+
+Use code with caution.
+2. When switching over to your laptop:
+Before you type a single line of new code, download the updates you just made from your PC:
+bash
+
+git pull origin main
+
+Use code with caution.
+Once you are done working on the laptop, add, commit, and push just like you did on the PC.
+3. When returning to your PC:
+Run git pull origin main to fetch the laptop's work before you start typing again.
+

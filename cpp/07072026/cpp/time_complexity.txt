@@ -1,0 +1,122 @@
+1] 
+
+cheat to know about time complexity
+
+To easily determine the time complexity of an algorithm without getting bogged down in complex math, you can use a few simple patterns based on how the code loop runs.
+Here is your ultimate cheat sheet for finding time complexity (O) in seconds:
+
+1. The Core Cheat Table
+
+Loop Pattern	Code Example	Time Complexity	Real-World Meaning
+No Loops / Single line executions	a = b + c;	O(1) (Constant)	The time never changes, no matter how big the input is.
+Normal Loop (Changes by ± 1)	for (int i=0; i<n; i++)	O(n) (Linear)	The time grows proportionally with the size of n.
+Dividing/Multiplying (Changes by *2 or /2)	for (int i=1; i<n; i*=2)	\(O(\log n)\) (Logarithmic)	Extremely fast. The data halves every step (like binary search).
+Nested Loops (Loop inside a loop)	for... { for... }	O(n²) (Quadratic)	Slow. Usually happens when comparing every element to every other element.
+Divide & Conquer with Loop	Merge Sort / Quick Sort	\(O(n \log n)\) (Linearithmic)	The standard sorting complexity. Halving the data but looking at all of it each time.
+
+2. Quick "Mental Rules" to Scan Code
+
+• Rule 1: Drop the Constants
+	• If your loop runs 2n times or you have two separate loops running n times each (n + n), it simplifies down to O(n). Ignore constants like 2, 3, or 100.
+• Rule 2: Keep the Dominant Term
+	• If a function has a nested loop (n²) followed by a single loop (n), the total runtime is written as O(n²). Always pick the slowest component.
+• Rule 3: Look at the Inputs
+	• If a nested loop runs up to a different variable (e.g., outer loop up to A, inner loop up to B), the complexity is \(O(A \times B)\), not O(n²).
+
+3. Visualizing Time Complexity (Fastest to Slowest)
+
+\(\mathbf{O(1)<O(}\log \mathbf{n)<O(n)<O(n}\log \mathbf{n)<O(n}^{\mathbf{2}}\mathbf{)<O(2}^{\mathbf{n}}\mathbf{)<O(n!)}\)
+• Excellent: O(1) and \(O(\log n)\)
+• Good: O(n)
+• Decent/Fair: \(O(n \log n)\)
+• Poor (Avoid if possible): O(n²) and above
+
+2] 
+
+The Recursive Cheat Rule
+When a function calls itself, it creates a "tree" of calls. To find the time complexity of recursion, you only need to answer two simple questions:
+
+    Branches: How many new recursive calls are made inside the function? (Let's call this
+    )
+    Depth: How deep does the recursion go before hitting the base case? (Let's call this
+    )
+
+Your time complexity is generally
+.
+3 Common Recursive Patterns
+Pattern A: Single Reduction (Linear Recursion)
+The function decreases the input size by exactly 1 and calls itself once.
+cpp
+
+void printNumbers(int n) {
+    if (n <= 0) return;
+    cout << n;
+    printNumbers(n - 1); // 1 branch, decreases by 1
+}
+
+Use code with caution.
+
+    Branches (
+    ): 1
+    Depth (
+    ):
+    steps to reach 0.
+    Complexity:
+    (Acts exactly like a normal for loop).
+
+Pattern B: The Exponential Trap (Tree Recursion)
+The function calls itself multiple times at once (like standard Fibonacci).
+cpp
+
+int fib(int n) {
+    if (n <= 1) return n;
+    return fib(n - 1) + fib(n - 2); // 2 branches!
+}
+
+Use code with caution.
+
+    Branches (
+    ): 2 (each call spawns two more calls)
+    Depth (
+    ):
+    Complexity:
+    (Horribly slow! It doubles its work with every increase in
+    ).
+
+Pattern C: Divide and Conquer (Logarithmic Depth)
+The function splits the problem in half at every single step.
+cpp
+
+int binarySearch(int arr[], int low, int high, int x) {
+    if (high >= low) {
+        int mid = low + (high - low) / 2;
+        if (arr[mid] == x) return mid;
+        if (arr[mid] > x) return binarySearch(arr, low, mid - 1); // Only 1 branch executed
+        return binarySearch(arr, mid + 1, high);
+    }
+    return -1;
+}
+
+Use code with caution.
+
+    Branches (
+    ): 1 (the code uses if/else, so it only goes down one path, not both)
+    Depth (
+    ):
+    (because the array size is halved every step)
+    Complexity:
+    (Incredibly efficient).
+
+💡 The Ultimate "Cheat" Shortcut for Interviews
+If you see a recursive function, check if it stores past answers.
+
+    If it does NOT store answers (Plain Recursion): It is usually exponential
+    or
+    .
+    If it DOES store answers (Memoization / Dynamic Programming): The complexity drops drastically to
+    . For example, if
+    ranges from 1 to
+    , it will only do around 100 unique calculations, making it
+    instead of exponential!
+
+3] 

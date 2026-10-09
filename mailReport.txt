@@ -10147,3 +10147,26 @@ Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+
+In testing see that , in rpm 2FA there in extra binary . In rpm 2fa build remove all extra binarys that not nessary to 2FA build , In 2FA buid remove nfedlp which iptables depoly iptables in nfedlp in policy is given i.e eror so  remove extra binary in 2FA build.
+
+and then put build escan-2fa-22.0.1400-2995.x86_64.rpm  in path 
+
+192.168.2.138:/media/sdc/omkar/workspace/code/escan_build/escan-2fa/escan-2fa-22.0.1400-2995.x86_64.rpm
+
+1] escan-2FA RPM – Extra Binary Analysis and Removal
+
+    During testing, identified that the RPM 2FA build contained extra binaries that were not required for Two-Factor Authentication (2FA).
+
+    Reviewed the build contents and removed unnecessary binaries to keep the 2FA package limited to the required components.
+
+	Identified that nfedlp was included in the 2FA build and was creating iptables rules when the corresponding policy was applied.
+
+2] Updated escan-2FA RPM Build
+
+    Prepared the updated RPM build with unnecessary binaries removed.
+
+    Placed the updated build at the following location:
+
+192.168.2.138:/media/sdc/omkar/workspace/code/escan_build/escan-2fa/escan-2fa-22.0.1400-2995.x86_64.rpm
+

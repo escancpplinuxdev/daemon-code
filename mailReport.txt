@@ -10170,3 +10170,113 @@ and then put build escan-2fa-22.0.1400-2995.x86_64.rpm  in path
 
 192.168.2.138:/media/sdc/omkar/workspace/code/escan_build/escan-2fa/escan-2fa-22.0.1400-2995.x86_64.rpm
 
+
+01/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	
+
+1] RPM Testing Machine – GUI and Graphics Hardware Issue
+
+    Investigated the GUI issue on my RPM testing machine caused by the "Deprecated hardware is detected" error.
+
+    Performed R&D on the graphics hardware compatibility issue and the required graphics card configuration changes.
+
+    Downloaded and configured the necessary repositories and hardware-related packages required for the Server with GUI environment.
+
+    Worked on resolving the graphics compatibility issue to restore the GUI functionality on the testing machine.
+
+2] DLP Components – Knowledge Transfer and Compilation
+
+    Received knowledge transfer (KT) from Omkar regarding the working and implementation of the following DLP components:
+
+        contentScanner
+
+        libcontentcontrol.so
+
+        libcontentextraction.so
+
+        mwscanner
+
+        printercontrol
+
+    Studied the working flow and interaction between these components.
+
+    Compiled the updated components on the 2.218 RPM machine.
+
+3] DLP – SCP and Ctrl + Print Testing
+
+    Tested the compiled DLP components on the 1.234 testing machine.
+
+    Performed testing for the following scenarios:
+
+        SCP (Secure Copy): Checked content-scanning and DLP policy behavior during file transfers using SCP.
+
+        Ctrl + Print: Checked printer-control functionality and DLP policy handling when printing using the Ctrl + P shortcut.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+13/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+
+1] VNC Server Setup and Configuration – 1.231 RPM Machine
+
+    Worked on setting up and configuring VNC Server on the 1.231 RPM machine.
+
+    Performed R&D on the VNC Server installation, configuration, and remote GUI access.
+
+    Investigated the setup issues and made the required configuration changes to enable VNC connectivity.
+
+2] RPM and SELinux Environment – Code Compatibility R&D
+
+    Performed R&D and testing to make the existing C++/Linux code compatible with the RPM and SELinux development environments.
+
+    Analyzed the required code changes and SELinux-related restrictions affecting application functionality.
+
+    Discussed the technical issues, code compatibility requirements, and possible solutions with Shri Krishna and Omkar.
+
+3] DLP Components – Updated Binary Integration and Testing
+
+    Received updated versions of the following DLP components:
+
+        nfedlp
+
+        contentScanner
+
+        printercontrol
+
+    Integrated the updated components into the eScan build on the 1.231 RPM machine.
+
+    Performed testing to check the functionality 
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

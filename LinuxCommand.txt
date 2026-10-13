@@ -316,6 +316,9 @@ dpkg-deb -Zgzip --build buildroot/ escan-dlp.amd64.deb
 	-> if failed 				-> unconfined_u:object_r:bin_t:s0 appblocker
 	sudo chcon -u system_u appblocker 	-> system_u:object_r:bin_t:s0 appblocker
 
+	
+	-> system_u:object_r:admin_home_t:s0 appblocker -> sudo chcon -t bin_t appblocker -> system_u:object_r:bin_t:s0 appblocker
+
 	# Extract entire RPM contents
 	rpm2cpio escan-2fa-22.0.1400-2990.x86_64.rpm | cpio -idmv
 
@@ -1147,7 +1150,7 @@ sudo strace -f -o /tmp/updatenow_trace.txt ./updatenow_avs --force
 
 The -o flag saves the output to a file so you can analyze it without the terminal scrolling too fast 
 
-86]  find qt binary in dir
+86]  find gui/qt binary in dir
 
 cd /opt/MicroWorld/bin
 
@@ -1158,4 +1161,41 @@ for f in $(file * | grep ELF | awk -F: '{print $1}'); do     ldd "$f" 2>/dev/nul
 	 smbclient //192.168.0.8/external -U raja
 	-> raja 
 
-88]
+88] ssh root@192.168.2.54
+->  dev@123
+
+89] rpm decode installation / uninstallation
+
+rpm -ivh -vvv escan-dlp-22.0.1400-2990.x86_64.rpm 2>&1 | tee installEscan_dlp_rpm_ivh_vvv_escan-dlp
+
+rpm -e -vvv escan-dlp 2>&1 | tee uninstallEscan_dlp_rpm_e_vvv_escan-dlp
+
+90]
+
+iptables -n -L -t mangle
+iptables -v -L -t mangle
+
+	-n -> IP addresses and port numbers will be printed in numeric forma
+
+	-v -> ( --verbose) flag to provide highly detailed, multi-column information 
+			Interface Name (in / out) (like eth0, wlan0, or lo)
+			Rule Options (opt): (example, if a rule has an inversion ! flag).
+			TOS Masks: Shows Type of Service bits ->  which help track rules prioritizing network traffic
+			
+
+	-L -> List all rules in the selected chain
+
+	-t mangle -> it show mangle table which has 	PREROUTING
+						    	INPUT
+							FORWARD
+							OUTPUT
+							POSTROUTING
+
+	
+
+sudo iptables -t mangle -F
+sudo iptables -F
+
+	-F ->  Flush : equivalent to deleting all the rules one by one.
+
+91] 

@@ -2845,4 +2845,12 @@ libnfdaemon.so
      $(CXX) -shared $(OBJ_FILES) $(INCLUDE) -Wl,-rpath=/opt/MicroWorld/lib/ $(LIBS) -o $(TARGET) -lstdc++fs
 3. 
 
-18 $]
+18 $] static type 
+
+	Polymorphism
+	Storage/ memory Duration
+	Object Orientation
+
+
+
+19 $] 

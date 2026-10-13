@@ -36,3 +36,5 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 19] swap 2 position in ll.
 20] 3 level pointer address , value ??
 21] diff between makeFile and cmake, cmake.txt 
+22] what is use of singleton class
+23]

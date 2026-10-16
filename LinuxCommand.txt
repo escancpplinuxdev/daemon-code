@@ -91,8 +91,7 @@ Option	Meaning	Symbolic Links Behavior	Example Situation
 
 7] 	eScan selfprotection 
 
-	/opt/MicroWorld/sbin/commonutil writeconfig /opt/MicroWorld/etc/customprocesslist.conf SelfProtection:Status "0"
-	systemctl stop selfprotection mwagent
+	/opt/MicroWorld/sbin/commonutil writeconfig /opt/MicroWorld/etc/customprocesslist.conf SelfProtection:Status "0" &&	systemctl stop selfprotection mwagent
 
 8]	find . -type f | wc -l 
 	ls -1          | wc -l      -> count no. of files in current directory
@@ -311,7 +310,7 @@ dpkg-deb -Zgzip --build buildroot/ escan-dlp.amd64.deb
 	
 	after mv binary 
 	ls -Z appblocker 			-> unconfined_u:object_r:tmp_t:s0 appblocker
-	restorecon -R appblocker  		-> system_u:object_r:tmp_t:s0 appblocker
+	restorecon -R appblocker  		-> system_u:object_r:bin_t:s0 appblocker
 
 	-> if failed 				-> unconfined_u:object_r:bin_t:s0 appblocker
 	sudo chcon -u system_u appblocker 	-> system_u:object_r:bin_t:s0 appblocker

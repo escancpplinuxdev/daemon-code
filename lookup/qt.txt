@@ -37,4 +37,7 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 20] 3 level pointer address , value ??
 21] diff between makeFile and cmake, cmake.txt 
 22] what is use of singleton class
-23]
+23] 2 sums leetcode -> mcx
+24] isSubsequence leetcode 
+25]  tree remove node
+26] graph -> mcx

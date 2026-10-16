@@ -10280,3 +10280,170 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+13/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] RPM DLP – nfedlp Website Blocker Issue Resolution
+
+    Investigated the issue where nfedlp was not immediately applying website blocking when WebsiteBlock = 1.
+    Reproduced the issue and discussed the behavior with Shri Krishna why thread read it as WebsiteBlock status = 0.
+    Added debugging statements to trace the execution flow of the website blocker thread.
+    Analyzed why the website blocker thread was not detecting the updated status = 1 condition.
+    Identified and resolved the issue in the website blocker logic.
+
+2] DLP EPSDaemon Policy – Wayland Password Prompt GUI Freeze
+
+    Added and tested the EPSDaemon policy through the DLP server.
+    Investigated an issue where the passPrompt GUI was freezing in the background while requesting a password with WaylandEnable=true.
+    Debugged the password prompt execution flow and identified a memory leak caused by the dynamically allocated EPassInputDLG object not being deleted.
+    Updated the C++ code to properly release the allocated memory:
+
+EPassInputDLG *pdlg = new EPassInputDLG;
+QString text = pdlg->getText(&ok);
+delete pdlg;
+pdlg = NULL;
+
+    Reviewed the required headers <unistd.h> and <cstdio> for _exit() and fflush(), along with the application's exit-code handling.
+
+3] passPrompt.sh – Exit Status Handling Fix
+
+    Identified an issue in passPrompt.sh where the script checked $? after assigning the previous exit status to a variable, resulting in an incorrect condition.
+    Modified the script to correctly capture and validate the exit status of the passPrompt executable.
+
+Updated logic:
+
+/opt/MicroWorld/bin/passPrompt "$1" "$2"
+ret0=$?
+
+if [ "$ret0" -ne 1 ]; then
+    exit "$ret0"
+fi
+
+    Corrected the exit-status handling to ensure the password prompt script returns the appropriate result.
+
+4] Development and RPM Testing
+
+    Performed all development, debugging, and code modifications on the 2.58 desktop PC.
+    Deployed and tested the updated components on the 1.231 RPM laptop.
+
+	check this in waylandEnble = true / false / # each case.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+13/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] EPSDaemon – passPrompt User Session Issue
+
+    Investigated the issue where the main logged-in user was Omkar, and the passPrompt GUI was always opening in Omkar's session, even when the application was executed by another user.
+    Performed R&D on the user-session handling and GUI execution flow under different login conditions.
+    Analyzed why passPrompt was displaying in the main logged-in user's session instead of the user executing the application.
+    Checked the behavior under different user-login and execution scenarios.
+
+2] EPSDaemon – Wayland Configuration Testing
+
+    Performed testing of EPSDaemon and passPrompt under the following GDM configurations:
+        WaylandEnable=true
+        WaylandEnable=false
+        #WaylandEnable=false (commented configuration)
+    Tested the password prompt behavior under different user sessions and Wayland/X11 configurations.
+    Performed testing on two PCs by changing the configurations and observing the GUI behavior.
+    Demonstrated the testing scenarios, issues, and findings to Vaibhav.
+
+3] C++ Code and passPrompt.sh – User Session Handling Changes
+
+    Analyzed the passPrompt execution flow in the C++ code and passPrompt.sh script.
+    Worked on the required changes to handle different user-login scenarios correctly.
+    Modified and tested the C++ code and shell script for different Wayland configurations.
+    Investigated the GUI display and user-session handling to ensure the password prompt opens in the appropriate user session.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+16/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+
+1] EPSDaemon – passPrompt User Session Issue
+
+    Investigated the issue where the main logged-in user was Omkar, and the passPrompt GUI was always opening in Omkar's session, even when the application was executed by another user.
+
+    Performed R&D on the user-session handling and GUI execution flow under different login conditions.
+
+    Analyzed why passPrompt was displaying in the main logged-in user's session instead of the user executing the application.
+
+    Checked the behavior under different user-login and execution scenarios.
+
+2] EPSDaemon – Wayland Configuration Testing
+
+    Performed testing of EPSDaemon and passPrompt under the following GDM configurations:
+
+
+#	State	Meaning	Effective Value	Session Type
+1	WaylandEnable=true	Explicitly set to true	true	Wayland
+2	WaylandEnable=true → #WaylandEnable=true (after reboot)	Commented after being true	default (true)	Wayland
+3	WaylandEnable=false	Explicitly set to false	false	Xorg
+4	WaylandEnable=false → #WaylandEnable=false (after reboot)	Commented after being false	default (true)	Wayland
+5	#WaylandEnable=true	Commented from the start	default (true)	Wayland
+6	#WaylandEnable=false	Commented false value	default (true)	Wayland
+
+    Tested the password prompt behavior under different user sessions and Wayland/X11 configurations.
+
+    Performed testing on by reboot and switch user PCs by changing the configurations and observing the GUI behavior.
+
+    Demonstrated the testing scenarios, issues, and findings to Vaibhav , shrikrishna give script for his debian check
+
+3] C++ Code and passPrompt.sh – User Session Handling Changes
+
+    Analyzed the passPrompt execution flow in the C++ code and passPrompt.sh script.
+
+    Worked on the required changes to handle different user-login scenarios correctly.
+
+    Modified and tested the C++ code and shell script for different Wayland configurations.
+
+    Investigated the GUI display and user-session handling to ensure the password prompt opens in the appropriate user session.
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

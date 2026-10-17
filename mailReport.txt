@@ -10447,3 +10447,48 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+16/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] DLP – passPrompt.sh and xhost-displayManager.sh Issue Resolution
+
+    Resolved the issues related to passPrompt.sh and xhost-displayManager.sh in the RPM environment.
+    Verified the updated scripts in both RPM and Debian environments and obtained the expected results.
+    Checked the password prompt GUI behavior and display handling under different user sessions.
+    Integrated the updated scripts into the DLP build.
+
+2] DLP – Wayland and Xorg Configuration Testing
+
+Performed testing under the following six GDM configuration scenarios:
+No.	Configuration	Expected Session Type
+1	WaylandEnable=true	Wayland
+2	WaylandEnable=true → #WaylandEnable=true (after reboot)	Default (Wayland)
+3	WaylandEnable=false	Xorg
+4	WaylandEnable=false → #WaylandEnable=false (after reboot)	Default (Wayland)
+5	#WaylandEnable=true	Default (Wayland)
+6	#WaylandEnable=false	Default (Wayland)
+
+    Tested the updated passPrompt.sh and xhost-displayManager.sh scripts under all six configurations.
+    Verified the password prompt GUI execution and display behavior after changing the GDM settings and rebooting the machine where required.
+    Checked the functionality in both RPM and Debian environments to ensure compatibility.
+
+3] escangui – Device Control Window Size Issue
+
+    Investigated an issue where the Device Control window in escangui was appearing smaller than expected.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

@@ -267,14 +267,49 @@ int main()
     while (true)
     {
         cout << "> ";
-        if (!getline(cin, line)) break;
+        if (!getline(cin, line)) break;  // getline reads everything until the newline — unlike cin >> word which stops at spaces. That's important because expressions contain spaces.
         if (line == "quit" || line == "exit") break;
         if (line.empty()) continue;
 
-        vector<Term> terms = parseExpression(line);
-        string factored = factorExpression(terms);
+        vector<Term> terms = parseExpression(line);     // 	turn the text into data
+        string factored = factorExpression(terms);	//	do the math
 
         cout << "  " << line << "  =  " << factored << "\n\n";
     }
     return 0;
 }
+
+
+/*
+
+**********************************************************************************************
+
+struct Term
+{
+    int coefficient = 1;
+    map<string, int> vars;
+    string group;
+    int    groupPower = 0;
+};
+
+
+example, 2a^3b becomes:
+Field	Value	Meaning
+coefficient	2	the number in front
+vars	{"a": 3, "b": 1}	a map: variable name → power
+group	""	no group here
+groupPower	0	—
+
+And c(a+b) becomes:
+Field	Value
+coefficient	1
+vars	{"c": 1}
+group	"(a+b)"
+groupPower	1
+
+Why map<string, int>? Because we need to look up "what's the power of a?" quickly, and map does that in O(log n). 
+
+
+********************************************************************************************
+
+

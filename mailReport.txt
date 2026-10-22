@@ -10492,3 +10492,139 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+16/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] escanusb – Process Hang and Background Daemonization Fix
+
+Issue: The escanusb popup utility correctly closed after a 5-second timer on Debian, but on RPM systems, the GUI would disappear while the process remained alive in the background (ps aux | grep escanusb).
+
+Root Cause & Resolution:
+
+    Self-Referential Pipe Deadlock: The stderr-filter thread was writing GTK warnings back into the same pipe it was reading from (fd 2). On RPM, this filled the pipe buffer, causing the thread to block in fputs while holding the stderr mutex. When main() returned, glibc's exit() called fflush(NULL), which deadlocked waiting for that mutex.
+
+        Fix: Removed the background thread entirely and silenced the GTK warning using environment variables (GTK_MODULES="") before QApplication instantiation.
+
+    Ineffective Qt Event Loop Exit: QApplication::exit(0) was a no-op because QApplication::exec() was never entered. The process relied entirely on returning from main().
+
+        Fix: Replaced the return with _exit(0) (bypassing atexit stdio teardown) to ensure deterministic process termination on both distros.
+
+	 this tested in 1.231 waylandEnable = true / false 
+		in 2.215 - debian 22 
+		in 2.210 - Centos 9 
+
+2] escangui – USB Device Control Window Truncation Fix
+
+Issue: On RPM systems, the "USB Control" radio button labels (e.g., "Allow all", "Block all") were visibly truncated, and the overall layout was vertically squished.
+
+Root Cause & Resolution:
+
+    Font Metrics & Hardcoded Margins: RPM uses different default FreeType font fallbacks. The QGroupBox custom stylesheet (margin-top: 1ex) was insufficient to accommodate the taller RPM text metrics, causing the inner QHBoxLayout to push the radio buttons outside the fixed WIN_HEIGHT (450) bounds.
+
+
+    Widget Compression: The radio buttons were shrink-wrapping to incorrect font width calculations, causing the painter to clip the text.
+	try to solve it.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+21/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] USB Control GUI – Radio Button Readability: Worked on improving the readability and layout of the USB Control radio buttons in the EUsbDialog constructor for Ubuntu 24.04 and RHEL 9.6.
+
+2] GUI Spacing Improvements: Reviewed the layout spacing between the Refresh button, combo box, USB device list, and Add button to improve the overall UI alignment.
+
+3] Set USB Password Button Alignment: Reviewed the positioning of the Set USB password link button (lnkSetUsbPasswd) and its placement within grdUsbControlList. Investigated how the grid layout and alignment settings affect its position and how to shift it 2 pixels to the right.
+
+4] Qt Layout Review: Reviewed the use of QGridLayout, widget alignment, and size policies to maintain proper positioning and prevent layout issues.
+
+
+I examined the EUsbDialog::EUsbDialog() constructor and studied the existing QGridLayout, QHBoxLayout, widget size policies, and alignment settings.
+
+I focused on correcting the layout configuration rather than manually changing widget coordinates, because Qt's layout manager automatically calculates widget positions.
+
+The solution involved reviewing widget sizing, adjusting spacing, and positioning controls within the grid layout.
+
+I also considered cross-distribution behavior because font rendering, DPI scaling, and Qt platform settings can affect how the same GUI appears on different Linux distributions.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+
+
+22/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	
+1] escangui (Support Window) – Link Truncation Fix
+
+Issue: The last character of every ELinkButton (e.g., "Live chat", "Create debug diagnostics") was clipped on RHEL.
+
+Root Cause & Resolution:
+
+    Dynamic Width Calculation: The custom ELinkButton was compressing based on narrower Ubuntu font metrics.
+
+        Fix: Implemented dynamic width calculation using QFontMetrics::width(). The code now calculates the exact pixel width of the icon + text + padding for every link and enforces it using setMinimumWidth(), ensuring the layout engine allocates enough space on RHEL.
+
+2] escangui (Web Control) – Complete Layout Refactor
+
+Issue: On RHEL, the Add/Delete buttons overlapped, the Sites list was stretched, and the bottom row (Show Alert, Save, Cancel) was crushed together.
+
+Root Cause & Resolution:
+
+    Grid Misalignment & Qt API Misuse: The QGridLayout was struggling with different font metrics. Additionally, Qt::AlignLeft was being passed to the stretch argument of addWidget(), causing erratic stretching.
+
+        Fix: I completely refactored the layout, abandoning the complex grid in favor of nested QVBoxLayout and QHBoxLayout containers.
+
+    Implementation Details:
+
+        Created distinct Left and Right columns for the tables and input fields.
+
+        Used addStretch(1) to perfectly align the input boxes with their respective tables above them.
+
+        Built a unified bottomLayout with a middle stretch to keep Log Level on the left and Show Alert/Save/Cancel pinned to the right.
+
+        get exact heights (bodyH = 176) to ensure the left table and right list columns align perfectly.
+
+3] this tested on RHEL 9.6 , Linux mint, Ubuntu 24 
+\
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+

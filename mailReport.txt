@@ -10621,10 +10621,43 @@ Root Cause & Resolution:
         get exact heights (bodyH = 176) to ensure the left table and right list columns align perfectly.
 
 3] this tested on RHEL 9.6 , Linux mint, Ubuntu 24 
-\
+
+
 Thanks Regards,
 Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
 
+
+
+22/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+1] Worked on the eScan Enterprise DLP Web Control GUI on RHEL 9.6 Plow and made layout changes in ewebdialog.cpp.
+
+2] Removed the ReadME functionality from the Web Control dialog, including its GUI components and related function calls.
+
+3] Investigated the linker error related to EWebDialog::openWebFilterInst() and identified the remaining declaration in ewebdialog.h and its Qt MOC dependency.
+
+4] Modified the Web Control GUI layout to maintain equal spacing on the left and right sides.
+
+5] Adjusted the Show Alert, Save, and Cancel controls toward the left to align them properly below the Add/Delete buttons.
+
+6] Worked on reducing the height of the Allow All, Block All, and Disable radio-button group box to improve GUI alignment and appearance on RHEL 9.6.
+
+7] Reviewed the changes to preserve the existing Web Control functionality, including category management, website Add/Delete, Show Alert, Save, and Cancel operations.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

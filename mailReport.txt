@@ -10661,3 +10661,138 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+22/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+1] Worked on the eScan Enterprise DLP Web Control GUI layout to match the Ubuntu 22.04 interface, including radio button alignment, group box height, widget spacing, and margins.
+
+2] Worked on the File Integrity Monitor (FIM) GUI in efimdialog.cpp to improve compatibility with RHEL 9.6.
+
+3] Reviewed and modified Qt layouts (QGridLayout, QVBoxLayout, and QHBoxLayout) to correct the alignment of Enable/Disable radio buttons, directory input fields, watch list, and Browse/Add/Remove/Clearall buttons.
+
+4] Adjusted widget dimensions, layout margins, spacing, and size policies to match the Ubuntu 22.04 FIM GUI appearance.
+
+5] Investigated possible causes of GUI differences between Ubuntu and RHEL 9.6, including Qt rendering, font metrics, fixed widget dimensions, and Wayland/X11 compatibility.
+
+6] Reviewed Qt display environment settings (DISPLAY, XAUTHORITY, and QT_X11_NO_MITSHM) related to GUI rendering and compatibility on RHEL.
+
+7] do changes give by vaibhav also and give me escan-edr debian build.
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+22/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+1] Debian DLP – Updated Build Preparation
+
+    Prepared the updated Debian DLP build with the latest code changes.
+
+    Collected and integrated the updated libraries and binaries provided by Shri Krishna.
+
+    Updated the required files and dependencies in the Debian DLP build.
+
+    Compiled and prepared the updated Debian DLP package.
+
+2] RPM DLP – Code and Binary Integration
+
+    Worked on applying the same Debian DLP updates to the RPM environment.
+
+    Integrated the updated libraries, binaries, and required code changes into the RPM DLP build.
+
+    Checked the RPM-specific build configuration and dependencies.
+
+    Compiled and prepared the updated RPM DLP package.
+
+3] DLP – Script Backup and Replacement
+
+    Took backups of the existing script files before making changes.
+
+    Replaced the existing scripts with their updated versions.
+
+    Checked the updated script changes and their compatibility with the DLP installation process.
+
+4] RPM DLP – Installation and Testing
+
+    Installed and tested the updated DLP RPM build on the 1.231 RPM laptop.
+
+    Checked the installation process and the integration of updated libraries, binaries, and scripts.
+
+    Performed additional build and installation checks on the testing laptop.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+22/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+
+1] escanwebDLP – GUI Issue Resolution
+
+    Assisted Shri Krishna in investigating and resolving the issues related to the escanwebDLP GUI.
+
+    Analyzed the GUI behavior and identified the required changes.
+
+    Worked on resolving the reported GUI issues and checked the updated functionality.
+
+2] nfdaemon – Library Dependency R&D
+
+    Performed R&D on the dependencies of nfdaemon to libnfdaemon.
+
+    Analyzed the existing library dependencies to identify deprecated or unnecessary components.
+
+    Started documenting the required dependencies and possible changes needed for libnfdaemon to function correctly.
+
+    Cross-checked the dependency structure with the existing Debian DLP build to identify differences between the Debian and RPM environments.
+
+3] DLP RPM – Source Code Updates and Build Testing
+
+    Integrated the latest changes into the RPM source code and DLP buildroot.
+
+    Updated the required source files, libraries, and build configurations.
+
+    Prepared the updated DLP RPM build with the latest modifications.
+
+    Installed and tested the updated DLP RPM build on the 1.231 RPM laptop.
+
+    Checked the installation process and the behavior of the updated components in the RPM environment.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

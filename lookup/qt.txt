@@ -41,3 +41,5 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 24] isSubsequence leetcode 
 25]  tree remove node
 26] graph -> mcx
+27] system design c++ parking plot
+28] diff between race condition vs race data

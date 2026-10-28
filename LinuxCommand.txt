@@ -10,6 +10,10 @@ i am making notes on pointer in C++ give in details which i can write copy and p
 
 1] Admin -> vinod dhavare : vind@escanav.com 
 2] ESCANHR 		  : escanhr@escanav.com
+3] pcprob		  :  	"IT Helpdesk" <pcprob@escanav.com>
+
+http://192.168.0.19/EasyPAY/view/mdimain.aspx?1=1&key=MWSSPL&mod=ess&code=MWSSPL
+
 
 0]	To:     divesh@escanav.com
 Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>

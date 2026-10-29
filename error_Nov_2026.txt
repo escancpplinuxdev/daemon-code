@@ -1,6 +1,13 @@
 
 1] 28102026 -> escangui change
 
-   dicuss vaibhav about nfademon dependency all 
+   dicuss vaibhav about nfademon dependency all -> yes discuss
+
+29102026
+	add preparePortblaock.sh new updated give by vaibhav
+	
+	change install.sh CompileKerModule by removing prepareWebfilter.sh releated all
+	
+	rm /opt/MicroWorld/.netfilter_kmodule entire dir
 
 2]

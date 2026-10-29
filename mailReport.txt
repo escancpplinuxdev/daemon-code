@@ -10796,3 +10796,59 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+22/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear Sir,
+
+
+1] nfdaemon – Dependency Analysis and Discussion
+
+    Discussed the nfdaemon dependencies and related technical issues in detail with Vaibhav.
+
+    Reviewed the existing dependency structure in Install.sh  and the required changes for the DLP RPM build.
+
+2] DLP RPM – preparePortblock.sh Script Update
+
+    Received the updated preparePortblock.sh script from Vaibhav.
+
+    Integrated the updated script into the DLP RPM build.
+
+    Checked the required changes for compatibility with the existing installation process.
+
+3] DLP RPM – install.sh  Kernel Module() Changes
+
+    Modified the CompileKerModule function in install.sh.
+
+    Removed all references and execution logic related to prepareWebfilter.sh.
+
+    Removed the existing Netfilter kernel module directory using:
+
+    rm -rf /opt/MicroWorld/.netfilter_kmodule
+
+    Updated the installation flow to reflect these changes.
+
+4] DLP RPM – New Build and Web Filter Testing
+
+    Prepared the updated eScan DLP RPM build with the latest script and installation changes.
+
+    Installed and tested the new DLP RPM build on the 1.231 RPM laptop.
+
+    Tested website blocking for amazon.com and flipkart.com using:
+
+        Server-side DLP web filter policy
+
+        escangui web filter settings
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

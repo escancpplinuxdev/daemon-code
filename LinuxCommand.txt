@@ -596,6 +596,11 @@ This is your
 multi-line 
 comment section.
 '
+
+The : is a built-in no-op (no operation) command. The single quotes '...' tell Bash to treat everything inside as a string argument. Because : does nothing with the string, the entire block is ignored.
+
+
+
 43]		top 
 		top -d 0.5 -> just like watch -n 0.2  		 -> q to quit top program
 
@@ -1201,4 +1206,4 @@ sudo iptables -F
 
 	-F ->  Flush : equivalent to deleting all the rules one by one.
 
-91] 
+91]  

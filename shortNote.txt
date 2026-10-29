@@ -3328,15 +3328,24 @@ Always use #include <thread> (or std::jthread in C++20) for modern C++ developme
 
 	Merge Sort	-> Split in half, sort halves, combine	Consistent performance under all conditions	
 			eg. The Logic: Divide and Conquer. Keep splitting the array in half until you have sub-arrays of size 1 (which are inherently sorted). Then, repeatedly merge these small sub-arrays back together in sorted order.
+			(The "Divide and Conquer" Method) Core Logic: It recursively splits the array in half until it reaches single-element lists (which are sorted by default). Then, it merges those tiny lists back together in perfect sorted order.
 
 	Quick Sort	-> Divide items around a pivot value	Highly efficient in practice (low memory overhead)
 			eg. The Logic: Divide and Conquer. Pick a "pivot" element (usually the last one). Rearrange the array so all elements smaller than the pivot go to the left, and all elements larger go to the right. The pivot is now in its final sorted position. Repeat this process recursively for the left and right sub-arrays.
+			 (The "Pivot and Partition" Method)
+Core Logic: It picks a single element called a pivot. It rearranges the array so that all items smaller than the pivot go to its left, and all items larger go to its right. It then recursively repeats this for the left and right sides.		
+	
 
 	Heap sort	-> turning the unsorted array into a Binary Heap structure (a visual parent-child tree where parents are always larger than their children), and then repeatedly extracting the largest element to build the sorted array from back to front.
 			eg. The Logic: Convert the array into a Max-Heap (a binary tree where the parent is always larger than its children). The largest element is now at the root (index 0). Swap this root with the last element in the array, shrinking the heap size. Then "heapify" the new root down to restore the Max-Heap property. Repeat until the heap is empty.
+			(The "Pivot and Partition" Method)
+Core Logic: It picks a single element called a pivot. It rearranges the array so that all items smaller than the pivot go to its left, and all items larger go to its right. It then recursively repeats this for the left and right sides.
 
+			
 	Radix Sort	-> Bucketing items digit by digit	Can sort integers in linear time without comparing them
 			eg. it sorts numbers digit by digit, starting from the Least Significant Digit (LSD) (the rightmost digit) and moving towards the Most Significant Digit (MSD). It uses a stable sub-sorting algorithm (usually Counting Sort) to sort the numbers based on each digit.
+			(The "Digit by Digit" Bucket Method)
+Core Logic: Instead of comparing numbers directly, it groups them into 10 buckets (0 to 9) based on their digits, starting from the Least Significant Digit (ones place) up to the Most Significant Digit (tens place).
 
 22 $] 	
 		

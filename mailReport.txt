@@ -10852,3 +10852,91 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+22/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] RPM Builds – Netfilter Kernel Module Removal
+
+    Removed the netfilter_kerModule() related logic from all 4 RPM builds.
+
+    Updated the respective RPM .spec files to remove Netfilter kernel module references and dependencies.
+
+    Modified the CompileKerModule() function in install.sh for all four builds.
+
+    Checked the installation scripts to ensure the removed Netfilter kernel module logic is no longer executed.
+
+2] Debian Builds – Netfilter Changes Verification
+
+    Reviewed all 4 Debian builds to verify the previously implemented Netfilter kernel module remove.
+
+    Cross-checked the installation scripts and related configurations  between RPM and Debian builds.
+
+3] escangui – Qt Layout Development
+
+    Started Qt GUI layout development and rendering improvements for the remaining eScan builds.
+
+    Analyzed the existing Qt widget layouts, window dimensions, and alignment issues.
+
+    Made code changes and started testing the updated GUI layouts.
+
+4] EDR – Real-Time Monitor GUI Layout Changes
+
+    Worked on the Real-Time Monitor window in the Antivirus section of the EDR escangui.
+
+    Updated the Qt layout management code to improve widget positioning, alignment, and rendering.
+
+    Checked the GUI behavior under different window and display conditions.
+
+5] escangui – File Integrity Monitor and Web Control Updates
+
+    Implemented new Qt GUI layout changes for the following modules:
+
+        File Integrity Monitor
+
+        Web Control
+
+    Updated the relevant widget layouts and UI components to improve their appearance and visibility.
+
+6] USB Device Control – New GUI Options
+
+    Worked on adding the following options to the USB Device Control window:
+
+        AutoScan
+
+        Advanced Settings
+
+        Disable Wi-Fi
+
+        Disable Bluetooth
+
+    Added the required Qt checkbox controls for the Wi-Fi and Bluetooth options.
+
+    Updated the GUI layout to accommodate the new controls.
+
+7] RHEL 9.6 – GUI & Ubuntu 24.04 LTS Testing
+
+    Started testing the updated escangui changes on the 1.231 RHEL 9.6 laptop.
+
+    Checked the layout rendering, widget alignment, and visibility of the updated controls.
+
+    Investigated GUI compatibility issues specific to the RHEL 9.6 environment. and Ubuntu 24.04 LTS
+
+8] RHEL 9.6 – Virtual Machine Setup Preparation
+
+    Obtained the RHEL 9.6 ISO for setting up a virtual machine.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

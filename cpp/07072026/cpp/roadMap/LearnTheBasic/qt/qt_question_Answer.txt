@@ -1,0 +1,1019 @@
+C++ Qt GUI Interview Questions and Answers
+Based on Your eScan Real Time Monitor GUI Issue — Ubuntu 24.04 vs RHEL 9.6
+For a C++ Linux developer with 4–5 years of experience, an interviewer may ask how you developed, debugged, and fixed cross-platform GUI problems using Qt.
+
+Your Real Time Monitor issue is a useful practical example because it involves:
+- C++ object-oriented programming
+- Qt Widgets
+- QGridLayout, QVBoxLayout, and QHBoxLayout
+- Qt parent-child memory management
+- Linux GUI rendering
+- Ubuntu 24.04 and RHEL 9.6 compatibility
+- Qt signals and slots
+- GUI debugging and troubleshooting
+I'll cover 30 interview questions with answers, including explanations you can use when discussing your actual eScan project.
+Part 1: Real-Time Project-Based Interview Questions
+Q1. Tell me about a challenging Qt GUI issue you solved in your project.
+Interviewer: You mentioned working on eScan antivirus software. Can you explain a challenging GUI issue you encountered?
+Answer
+In my project, I worked on the Real Time Monitor GUI developed using C++ and Qt.
+
+The application was working correctly on Ubuntu 24.04 LTS, but when I tested the same application on RHEL 9.6, I observed a GUI layout issue.
+
+The directory input field, directory list, and action buttons were misaligned. Some buttons were partially hidden behind the directory list.
+
+After examining the Qt widget hierarchy and layout code, I identified that the directory section used a QGridLayout with large spacer items and platform-dependent widget size calculations.
+
+For example:
+spacerHorizontal1 = new QSpacerItem(
+    630,
+    20,
+    QSizePolicy::Minimum,
+    QSizePolicy::Minimum
+);
+
+spacerlstGroup1 = new QSpacerItem(
+    90,
+    150,
+    QSizePolicy::Minimum,
+    QSizePolicy::Minimum
+);
+
+I revised the layout to use controlled margins, spacing, widget sizes, and grid column widths.
+lstBoxGroup1Layout->setColumnMinimumWidth(0, 93);
+lstBoxGroup1Layout->setColumnMinimumWidth(1, 380);
+lstBoxGroup1Layout->setColumnMinimumWidth(2, 68);
+
+The objective was to make the GUI consistent across Ubuntu and RHEL without modifying the underlying antivirus functionality.
+
+Important: In an interview, say you resolved and verified the issue only after you have actually tested the updated build on both operating systems.
+Possible follow-up
+Interviewer: Why was the same code displaying differently on Ubuntu and RHEL?
+
+Answer:
+
+Qt uses the operating system's available fonts, rendering environment, style configuration, and display settings.
+
+Differences in font metrics, widget size hints, Qt styles, and DPI scaling can affect layout calculations.
+
+If a layout depends heavily on spacer sizes and implicit widget dimensions, these differences can cause controls to shift or overlap.
+Q2. What is QGridLayout in Qt?
+Answer
+QGridLayout arranges widgets in rows and columns.
+
+It is useful for forms, settings panels, and interfaces where multiple controls must remain aligned.
+Example
+QGridLayout *layout = new QGridLayout();
+
+QLabel *label = new QLabel("Directory:");
+
+QLineEdit *edit = new QLineEdit();
+
+QPushButton *button = new QPushButton("Browse");
+
+layout->addWidget(label, 0, 0);
+layout->addWidget(edit, 0, 1);
+layout->addWidget(button, 0, 2);
+
+Layout
+        Column 0       Column 1         Column 2
+       ┌───────────┬─────────────────┬──────────┐
+Row 0  │ Directory │ QLineEdit       │ Browse   │
+       └───────────┴─────────────────┴──────────┘
+
+Interview follow-up
+Q: What does this mean?
+layout->addWidget(widget, 2, 1, 3, 2);
+
+Answer:
+addWidget(
+    widget,
+    2,  // Starting row
+    1,  // Starting column
+    3,  // Row span
+    2   // Column span
+);
+
+The widget starts at row 2, column 1 and occupies three rows and two columns.
+Q3. What is the difference between QHBoxLayout, QVBoxLayout, and QGridLayout?
+Answer
+Layout	Purpose	Example
+QHBoxLayout	Arranges widgets horizontally	Enable / Disable
+QVBoxLayout	Arranges widgets vertically	Add / Remove / ClearAll
+QGridLayout	Arranges widgets in rows and columns	Directory settings form
+QFormLayout	Arranges labels and input fields	Configuration form
+QStackedLayout	Displays one page at a time	Multiple settings pages
+
+
+Example from your project
+Horizontal layout:
+realTimeSettingLayout = new QHBoxLayout();
+
+realTimeSettingLayout->addWidget(realTimeEnable);
+realTimeSettingLayout->addWidget(realTimeDisable);
+
+Output:
+(●) Enable           ( ) Disable
+
+Vertical layout:
+lstBoxbtnGroup1layout = new QVBoxLayout();
+
+lstBoxbtnGroup1layout->addWidget(btnAdd);
+lstBoxbtnGroup1layout->addWidget(btnExclude);
+lstBoxbtnGroup1layout->addWidget(btnRemoveGroup1);
+lstBoxbtnGroup1layout->addWidget(btnRemoveAllGroup1);
+
+Output:
+[ Add      ]
+
+[ Exclude  ]
+
+[ Remove   ]
+
+[ ClearAll ]
+
+Q4. What is QSpacerItem, and how did it cause your GUI problem?
+Answer
+QSpacerItem reserves space inside a Qt layout.
+
+It can separate widgets or consume available space.
+Example
+QSpacerItem *spacer = new QSpacerItem(
+    630,
+    20,
+    QSizePolicy::Minimum,
+    QSizePolicy::Minimum
+);
+
+Here:
+- 630 is the preferred width supplied to the spacer.
+- 20 is the preferred height.
+- QSizePolicy::Minimum influences how the layout may resize the spacer.
+The exact space allocated depends on the layout constraints and available geometry.
+Problem in my project
+The original code used:
+spacerHorizontal1 = new QSpacerItem(
+    630,
+    20,
+    QSizePolicy::Minimum,
+    QSizePolicy::Minimum
+);
+
+This spacer spanned three columns of the grid.
+
+It influenced the grid's minimum size requirements and distribution of horizontal space.
+
+Combined with the label's size hint and other widgets, this made the layout sensitive to differences between Ubuntu and RHEL.
+Solution
+I removed the unnecessary large spacers and used controlled layout spacing.
+lstBoxGroup1Layout->setHorizontalSpacing(12);
+lstBoxGroup1Layout->setVerticalSpacing(12);
+
+Interview point: A spacer does not automatically cause a GUI bug. The problem occurs when its size constraints conflict with the available space or other widget requirements.
+Q5. What is the difference between setFixedSize(), setMinimumSize(), and resize()?
+Answer
+Function	Meaning
+setFixedSize(w,h)	Sets minimum and maximum sizes to the same values
+setMinimumSize(w,h)	Prevents the widget from becoming smaller than specified
+setMaximumSize(w,h)	Prevents the widget from becoming larger than specified
+resize(w,h)	Requests a widget size, subject to constraints and layout management
+setSizePolicy()	Specifies preferred resizing behavior
+
+
+Example
+selectedDirGroup1->setFixedSize(380, 20);
+
+This means the directory input field must remain 380 pixels wide and 20 pixels high.
+lstObjListGroup1->setMinimumSize(380, 150);
+
+This allows the list to grow but prevents it from shrinking below the minimum.
+Interview follow-up
+Q: Is setFixedSize() always recommended?
+
+Answer:
+
+No.
+
+Fixed sizes are useful for tightly controlled interfaces, but excessive fixed sizing can cause clipping on systems with different DPI settings, fonts, or translations.
+
+For responsive interfaces, size policies, minimum sizes, and layouts are generally preferable.
+
+In a legacy application with a fixed window size, carefully chosen fixed dimensions may be appropriate.
+Q6. What is QSizePolicy in Qt?
+Answer
+QSizePolicy tells Qt how a widget should behave when additional space is available or when the layout has limited space.
+
+Common policies include:
+Policy	Behavior
+Fixed	Widget should not grow or shrink
+Minimum	Size hint is the minimum desirable size; widget can grow
+Maximum	Widget can shrink but should not grow beyond its size hint
+Preferred	Size hint is preferred; widget can grow or shrink
+Expanding	Widget can grow and actively requests extra space
+MinimumExpanding	Widget requires at least its size hint and wants extra space
+Ignored	Size hint is ignored during layout calculations
+
+
+Example
+lblSelectedDirGroup1->setSizePolicy(
+    QSizePolicy::Fixed,
+    QSizePolicy::Preferred
+);
+
+This means:
+- Horizontally, the label has a fixed size policy.
+- Vertically, Qt can adjust its height according to the layout.
+Follow-up
+Q: What happens if two widgets use QSizePolicy::Expanding?
+
+Qt distributes available space according to stretch factors, size hints, minimum and maximum sizes, and the widgets' size policies.
+Q7. What is the difference between setSpacing() and setContentsMargins()?
+Answer
+setSpacing() controls the space between layout items.
+
+setContentsMargins() controls the empty space around the contents of the layout.
+Example
+layout->setSpacing(10);
+
+layout->setContentsMargins(
+    20,  // Left
+    10,  // Top
+    20,  // Right
+    10   // Bottom
+);
+
+Diagram
+┌─────────────────────────────────────┐
+│           Top margin                │
+│                                     │
+│  ┌──────────┐  10px  ┌──────────┐   │
+│  │ Widget 1 │        │ Widget 2 │   │
+│  └──────────┘        └──────────┘   │
+│                                     │
+│          Bottom margin              │
+└─────────────────────────────────────┘
+
+In your project:
+watchGroupLayout->setContentsMargins(24, 12, 24, 12);
+
+This creates controlled spacing inside the directory group.
+Part 2: Qt Object-Oriented Programming Questions
+Q8. Explain the constructor of your ERealTimeDialog class.
+Code
+ERealTimeDialog::ERealTimeDialog(
+    QWidget *parent,
+    Qt::WFlags fl
+)
+: RoundDialog(
+    parent,
+    fl,
+    WIN_WIDTH,
+    WIN_HEIGHT
+)
+{
+}
+
+Answer
+ERealTimeDialog is a class derived from RoundDialog.
+
+The constructor receives two parameters:
+1. QWidget *parent — The parent widget.
+2. Qt::WFlags fl — Window flags controlling window behavior.
+The following is a base-class constructor call:
+: RoundDialog(parent, fl, WIN_WIDTH, WIN_HEIGHT)
+
+It initializes the base class before the derived class constructor body executes.
+Interview follow-up
+Q: Why use an initialization list?
+
+Answer:
+
+A constructor initialization list initializes base classes and member variables directly.
+
+It is necessary for initializing base classes, reference members, and const members that require initialization.
+
+It can also avoid unnecessary default construction followed by assignment.
+Q9. What is Qt's parent-child ownership mechanism?
+Answer
+Qt provides an object ownership system based on QObject.
+
+When a parent QObject is destroyed, it automatically destroys its child QObject objects.
+Example
+QWidget *parentWidget = new QWidget();
+
+QPushButton *button = new QPushButton(
+    "Browse",
+    parentWidget
+);
+
+delete parentWidget;
+
+When parentWidget is deleted, Qt also deletes button.
+Your project
+btnAdd = new EPushButton(
+    BUTTON_BG_L,
+    BUTTON_BG_M,
+    BUTTON_BG_R,
+    false,
+    addWatchGroup
+);
+
+Here, addWatchGroup is the parent of btnAdd.
+
+When the group box is destroyed, the button is destroyed automatically.
+Follow-up
+Q: Why don't you manually delete all widgets in your destructor?
+
+Your destructor contains:
+ERealTimeDialog::~ERealTimeDialog()
+{
+    if(access(WATCH_LIST_TEMP, F_OK) == 0)
+    {
+        unlink(WATCH_LIST_TEMP);
+    }
+}
+
+The widgets owned through Qt's parent-child hierarchy are automatically destroyed.
+
+Therefore, manually deleting every child widget is unnecessary.
+
+However, developers must still manage resources that are not owned by Qt's object hierarchy.
+Q10. What is the difference between QObject and QWidget?
+Answer
+QObject	QWidget
+Base class for Qt objects	Base class for visual UI controls
+Supports signals and slots	Supports signals and slots
+Supports object ownership	Supports object ownership
+Does not itself provide a visual widget	Can be displayed on screen
+Used for timers, workers, and other objects	Used for dialogs, buttons, labels, and controls
+
+
+Example
+QObject *obj = new QObject();
+
+QWidget *window = new QWidget();
+
+QObject is the base class of QWidget.
+
+Conceptually:
+QObject
+   |
+   └── QWidget
+          |
+          ├── QDialog
+          ├── QPushButton
+          ├── QLabel
+          ├── QLineEdit
+          └── QListWidget
+
+Q11. What is the difference between QWidget and QDialog?
+Answer
+QWidget is the base class for visual controls and windows.
+
+QDialog is a specialized widget designed for dialog-based interactions.
+
+For example:
+QWidget *window = new QWidget();
+
+QDialog *dialog = new QDialog();
+
+A QDialog provides features such as:
+- accept()
+- reject()
+- exec()
+- Accepted and Rejected result values
+Project-specific answer
+In my application, ERealTimeDialog inherits from a custom RoundDialog class.
+
+This allows the application to use a consistent custom dialog appearance.
+
+The exact behavior depends on how RoundDialog is implemented.
+Part 3: Qt Signals and Slots
+Q12. What are signals and slots in Qt?
+Answer
+Signals and slots are Qt's mechanism for communication between objects.
+
+A signal indicates that an event occurred.
+
+A slot is a function that can respond to the signal.
+Example
+connect(
+    btnBrowseGroup1,
+    SIGNAL(clicked()),
+    this,
+    SLOT(browseGroup1Clicked())
+);
+
+Explanation
+When the user clicks the Browse button:
+User clicks Browse
+        |
+        v
+QPushButton emits clicked()
+        |
+        v
+Qt signal-slot connection
+        |
+        v
+browseGroup1Clicked()
+        |
+        v
+Directory selection functionality
+
+Follow-up
+Q: What happens if the signal and slot are not connected?
+
+The button may still receive click events, but the intended slot will not execute through that connection.
+Q13. What is the difference between direct and queued connections?
+Answer
+Qt supports multiple connection types.
+
+Two important types are:
+
+Direct connection
+
+The slot executes immediately in the thread that emits the signal.
+
+Queued connection
+
+The slot invocation is posted to the event queue of the receiver's thread and executes when that thread processes the event.
+Example
+connect(
+    sender,
+    SIGNAL(dataReady()),
+    receiver,
+    SLOT(processData()),
+    Qt::QueuedConnection
+);
+
+Interview follow-up
+Q: Which connection is used by default?
+
+Qt::AutoConnection.
+
+For an automatic connection, Qt uses a direct connection if the receiver lives in the thread currently emitting the signal. Otherwise, it uses a queued connection.
+
+This is particularly important when using worker threads.
+Q14. What is the difference between SIGNAL() / SLOT() and modern Qt connections?
+Old syntax — Your project
+connect(
+    btnAdd,
+    SIGNAL(clicked()),
+    this,
+    SLOT(AddValueToList())
+);
+
+Modern Qt syntax
+connect(
+    btnAdd,
+    &QPushButton::clicked,
+    this,
+    &ERealTimeDialog::AddValueToList
+);
+
+The modern function-pointer syntax provides compile-time checking of signal and slot compatibility.
+
+However, your application appears to use older Qt APIs and custom widget classes.
+
+For legacy code, you must consider the Qt version and actual inheritance hierarchy before changing the connection syntax.
+Q15. What is the difference between clicked(), toggled(), and activated()?
+Answer
+Signal	Common widget	When emitted
+clicked()	QPushButton	Button is activated
+toggled(bool)	QRadioButton, QCheckBox	Checked state changes
+activated(int)	QComboBox	User activates an item
+currentIndexChanged(int)	QComboBox	Current selection changes
+
+
+Your code
+connect(
+    realTimeEnable,
+    SIGNAL(toggled(bool)),
+    this,
+    SLOT(enableRealTime(bool))
+);
+
+When the Enable radio button changes its checked state, Qt invokes the slot.
+connect(
+    cmbLogLevel,
+    SIGNAL(activated(int)),
+    this,
+    SLOT(settingChanged())
+);
+
+When the user activates a log-level option, the configuration-change handler is called.
+Part 4: Advanced Qt GUI and Linux Interview Questions
+Q16. What is QStackedWidget, and why did you use it?
+Answer
+QStackedWidget stores multiple pages but displays only one page at a time.
+
+In your project:
+wgtstkMonitor = new QStackedWidget(0);
+
+wgtrtscanner = new QWidget(wgtstkMonitor);
+
+wgtrtscannerExclude = new QWidget(wgtstkMonitor);
+
+wgtstkMonitor->addWidget(wgtrtscanner);
+wgtstkMonitor->addWidget(wgtrtscannerExclude);
+
+The stack contains two pages:
+QStackedWidget
+      |
+      |---- Page 0: AV Monitor
+      |
+      |---- Page 1: Exclude Directory
+
+You can switch between them using:
+wgtstkMonitor->setCurrentIndex(0);
+
+or:
+wgtstkMonitor->setCurrentIndex(1);
+
+Follow-up: What is the difference between QTabWidget and QStackedWidget?
+
+QTabWidget provides a tab bar for switching between pages.
+
+QStackedWidget provides page switching without automatically displaying tabs.
+
+Your application uses both:
+tabRealTimeScanner->addTab(wgtstkMonitor, "");
+tabRealTimeScanner->addTab(wgtOption, "");
+tabRealTimeScanner->addTab(wgtstkRealTimeQuarantine, "");
+
+The outer tab widget controls the main sections, while the inner stacked widget controls the AV Monitor and Exclude Directory pages.
+Q17. What is the difference between QGroupBox and QFrame?
+Answer
+QGroupBox groups related widgets and can display a title.
+
+QFrame provides a rectangular container with configurable borders and frame styles.
+
+Your code:
+realTimeScanner = new QGroupBox(wgtrtscanner);
+
+This creates the Monitor status group.
+QFrame *mainGroup = new QFrame();
+
+This creates the main framed container.
+Feature	QGroupBox	QFrame
+Title support	Yes	No built-in title
+Border support	Yes	Yes
+Can contain layouts	Yes	Yes
+Typical usage	Group related controls	Visual container or separator
+
+
+Q18. What is the difference between setStyleSheet() and setFont()?
+Answer
+setStyleSheet() controls the appearance of Qt widgets using Qt Style Sheets.
+
+setFont() controls the font properties.
+
+Example:
+realTimeScanner->setStyleSheet(
+    "QGroupBox {"
+    "border: 1px solid rgb(0,83,117);"
+    "border-radius: 6px;"
+    "background: rgb(226,238,250);"
+    "}"
+);
+
+This sets the border, rounded corners, and background.
+QFont fontSize10_bold = font();
+
+fontSize10_bold.setBold(true);
+
+realTimeScanner->setFont(fontSize10_bold);
+
+This sets the font weight.
+
+Follow-up: Can stylesheets affect layout?
+
+Yes. Stylesheets can influence padding, borders, margins, and widget size hints.
+
+For example:
+button->setStyleSheet("padding: 10px;");
+
+This may increase the button's preferred dimensions.
+Q19. Why can Qt font rendering differ between Ubuntu and RHEL?
+Answer
+Qt uses font metrics to calculate text dimensions.
+
+Different Linux systems may use different:
+- Installed fonts
+- Fontconfig configurations
+- Font hinting settings
+- Qt platform themes
+- DPI scaling values
+- Qt styles
+For example:
+QFontMetrics fm(fontSize10_bold);
+
+int width = fm.width("Select directory");
+
+The calculated width may differ depending on the actual font selected.
+
+In Qt 4, QFontMetrics::width() is commonly used to calculate text width.
+
+In newer Qt versions, horizontalAdvance() is preferred for measuring text advance.
+
+Follow-up: How would you reduce font-related layout differences?
+
+I would use a consistent font family, avoid relying exclusively on implicit label widths, and verify widget size hints on both operating systems.
+Q20. How do you debug overlapping Qt widgets?
+Answer
+I follow these steps:
+
+Step 1: Identify the overlapping widgets.
+
+In my project, these were:
+selectedDirGroup1
+lstObjListGroup1
+btnBrowseGroup1
+btnAdd
+btnExclude
+btnRemoveGroup1
+btnRemoveAllGroup1
+
+Step 2: Check their geometry.
+qDebug() << "Directory:"
+         << selectedDirGroup1->geometry();
+
+qDebug() << "List:"
+         << lstObjListGroup1->geometry();
+
+qDebug() << "Browse:"
+         << btnBrowseGroup1->geometry();
+
+Step 3: Check size constraints.
+qDebug() << "Size hint:"
+         << btnBrowseGroup1->sizeHint();
+
+qDebug() << "Minimum size:"
+         << btnBrowseGroup1->minimumSize();
+
+qDebug() << "Maximum size:"
+         << btnBrowseGroup1->maximumSize();
+
+Step 4: Check the parent dimensions.
+qDebug() << "Group size:"
+         << addWatchGroup->size();
+
+Step 5: Review the layout.
+
+I check:
+setSpacing()
+setContentsMargins()
+setColumnMinimumWidth()
+setColumnStretch()
+setSizePolicy()
+setFixedSize()
+
+Step 6: Test after the dialog is displayed.
+
+Qt may not have calculated the final widget geometry inside the constructor.
+
+I therefore inspect geometry after the layout has been activated and the dialog is shown.
+Q21. What happens if the total widget width exceeds the parent width?
+Answer
+Suppose the parent group has 600 pixels of available width.
+
+The child layout requires:
+Label          = 93 pixels
+Directory      = 380 pixels
+Button         = 68 pixels
+Column spacing = 24 pixels
+Left margin    = 24 pixels
+Right margin   = 24 pixels
+--------------------------------
+Total          = 613 pixels
+
+The layout requires 613 pixels, but only 600 pixels are available.
+
+This creates a size-constraint conflict.
+
+Qt cannot always satisfy every minimum or fixed-size requirement.
+
+Depending on the widget hierarchy and layout constraints, content may become clipped, extend beyond the available region, or force a larger minimum size.
+Interview follow-up
+Q: What mistake should you avoid?
+
+Do not blindly increase widget sizes without calculating the total required space.
+
+Important for your project: Your proposed layout requires at least 613 pixels horizontally. The actual usable width inside addWatchGroup must be verified to ensure the layout fits.
+Q22. What is the difference between setColumnMinimumWidth() and setColumnStretch()?
+Answer
+setColumnMinimumWidth() specifies the minimum width of a grid column.
+layout->setColumnMinimumWidth(1, 380);
+
+Column 1 should be at least 380 pixels wide.
+
+setColumnStretch() specifies how additional available space is distributed.
+layout->setColumnStretch(1, 1);
+
+Column 1 receives a share of additional space according to its stretch factor.
+
+Example:
+layout->setColumnStretch(0, 0);
+layout->setColumnStretch(1, 1);
+layout->setColumnStretch(2, 0);
+
+This allows the middle column to expand when extra space is available.
+
+Follow-up: Does stretch factor zero guarantee a fixed column width?
+
+No.
+
+A stretch factor of zero does not make the column fixed. Widget size hints, minimum sizes, maximum sizes, and other layout constraints still matter.
+Q23. What is the purpose of Qt::AlignLeft, Qt::AlignTop, and Qt::AlignCenter?
+Answer
+Qt alignment flags control how widgets are positioned within the space allocated to them.
+
+Example:
+layout->addWidget(
+    btnBrowseGroup1,
+    1,
+    2,
+    Qt::AlignVCenter | Qt::AlignLeft
+);
+
+This aligns the Browse button vertically in the center and horizontally to the left.
+
+Other examples:
+Qt::AlignLeft
+Qt::AlignRight
+Qt::AlignTop
+Qt::AlignBottom
+Qt::AlignCenter
+
+You can combine compatible flags using the bitwise OR operator:
+Qt::AlignTop | Qt::AlignLeft
+
+Part 5: C++ Memory Management and Linux Questions
+Q24. Does Qt automatically prevent every memory leak?
+Answer
+No.
+
+Qt automatically manages the lifetime of child QObject instances through parent-child ownership.
+
+However, memory leaks can still occur when:
+- Dynamically allocated objects have no owner.
+- Resources are allocated outside Qt's ownership system.
+- Objects are never deleted.
+- Custom classes retain unmanaged resources.
+- Ownership is unclear.
+For example:
+QWidget *widget = new QWidget();
+
+If this object has no parent and is never deleted, it may leak.
+
+But:
+QWidget *widget = new QWidget(this);
+
+makes this its parent, so the widget is deleted when its parent is destroyed.
+
+Follow-up: Who owns a QLayout?
+
+A layout installed on a widget is normally managed by that widget. Qt also manages child layout items according to its layout ownership rules.
+Q25. What is the purpose of the destructor in your code?
+Your code
+ERealTimeDialog::~ERealTimeDialog()
+{
+    if(access(WATCH_LIST_TEMP, F_OK) == 0)
+    {
+        unlink(WATCH_LIST_TEMP);
+    }
+}
+
+Answer
+The destructor performs cleanup when the Real Time Monitor dialog is destroyed.
+
+It checks whether the temporary watch-list file exists:
+access(WATCH_LIST_TEMP, F_OK)
+
+If it exists, the code removes it:
+unlink(WATCH_LIST_TEMP);
+
+Follow-up: What is the difference between access() and unlink()?
+Function	Purpose
+access()	Checks accessibility of a pathname
+unlink()	Removes a directory entry
+remove()	C library function for removing files or directories
+
+
+Follow-up: Is this code ideal?
+It works for the intended basic cleanup, but the existence check is unnecessary.
+
+A simpler version is:
+ERealTimeDialog::~ERealTimeDialog()
+{
+    if(unlink(WATCH_LIST_TEMP) == -1)
+    {
+        if(errno != ENOENT)
+        {
+            perror("unlink WATCH_LIST_TEMP");
+        }
+    }
+}
+
+This avoids a separate check before deletion.
+
+The required headers include:
+#include <unistd.h>
+#include <cerrno>
+#include <cstdio>
+
+There is also a potential time-of-check/time-of-use race in the original approach.
+Q26. What is the difference between new, delete, and Qt parent ownership?
+Answer
+In standard C++:
+int *ptr = new int(100);
+
+delete ptr;
+
+The programmer manages the dynamically allocated object's lifetime.
+
+In Qt:
+QPushButton *button = new QPushButton("Save", this);
+
+The button is dynamically allocated, but its parent owns it.
+
+When the parent is destroyed, the button is destroyed automatically.
+
+Interview follow-up: What happens if you manually delete a Qt child widget?
+
+Qt removes the deleted object from its parent's child list, so the parent will not delete it again.
+
+However, other raw pointers referring to the deleted object become dangling pointers.
+Q27. What is the difference between X11 and Wayland?
+Answer
+X11 and Wayland are technologies used to support graphical applications on Linux.
+Feature	X11	Wayland
+Architecture	X server-based	Compositor-centered
+Protocol design	Older	Newer
+Application isolation	Generally weaker	Generally stronger
+Legacy compatibility	Broad	May require XWayland
+Screen capture	Traditionally less restricted	Typically compositor-mediated
+
+
+Interview question
+Why might a Qt GUI behave differently on Ubuntu and RHEL?
+
+Answer:
+
+Differences may arise from the display server, Qt platform plugin, desktop environment, fonts, DPI scaling, or Qt style.
+
+For example, a Qt application might use the xcb platform plugin under X11 or the Wayland platform plugin under Wayland.
+
+However, I would not assume Wayland caused the issue without testing. In my Real Time Monitor case, the visible problem pointed primarily toward layout constraints and widget positioning.
+Q28. How do you identify which Qt platform plugin is being used?
+Answer
+You can enable Qt plugin debugging:
+QT_DEBUG_PLUGINS=1 ./escangui
+
+This can help identify platform plugin loading problems.
+
+For Qt versions supporting the relevant platform plugins, you can test X11 explicitly:
+QT_QPA_PLATFORM=xcb ./escangui
+
+For a compatible Wayland-enabled Qt build:
+QT_QPA_PLATFORM=wayland ./escangui
+
+Important: Your source uses Qt 4-style APIs. Qt 4 generally uses the older QPA-independent platform architecture, so these commands are not universally applicable to a Qt 4 build.
+
+First verify which Qt version your executable actually uses.
+
+For example:
+ldd /opt/MicroWorld/bin/escangui | grep -i qt
+
+The actual binary path may differ in your installation.
+Q29. How would you test the GUI fix across different Linux distributions?
+Answer
+I would perform functional and visual regression testing.
+Test	Ubuntu 24.04	RHEL 9.6
+Dialog opens	Verify	Verify
+Window size	Verify	Verify
+Enable/Disable visible	Verify	Verify
+Browse button visible	Verify	Verify
+Directory list aligned	Verify	Verify
+Add/Exclude buttons visible	Verify	Verify
+Remove/ClearAll visible	Verify	Verify
+Directory addition works	Verify	Verify
+Directory removal works	Verify	Verify
+Save settings works	Verify	Verify
+Quarantine tab works	Verify	Verify
+Advanced settings works	Verify	Verify
+
+
+I would also test different display scaling and font configurations.
+
+For the visual comparison, I would capture screenshots at the same resolution and scaling settings.
+Q30. How would you improve the Real Time Monitor GUI architecture?
+Answer
+I would separate GUI construction, layout management, and business logic into smaller functions.
+
+Currently, the constructor performs many responsibilities:
+ERealTimeDialog Constructor
+          |
+          ├── Creates widgets
+          ├── Sets stylesheets
+          ├── Creates layouts
+          ├── Reads configuration
+          ├── Initializes quarantine controls
+          ├── Connects signals and slots
+          └── Initializes application state
+
+A more maintainable design would be:
+class ERealTimeDialog : public RoundDialog
+{
+public:
+    ERealTimeDialog(QWidget *parent, Qt::WFlags fl);
+
+    ~ERealTimeDialog();
+
+private:
+    void createWidgets();
+    void setupMonitorLayout();
+    void setupAdvancedSettings();
+    void setupQuarantine();
+    void loadConfiguration();
+    void connectSignals();
+};
+
+The constructor could then become:
+ERealTimeDialog::ERealTimeDialog(
+    QWidget *parent,
+    Qt::WFlags fl
+)
+: RoundDialog(parent, fl, WIN_WIDTH, WIN_HEIGHT)
+{
+    createWidgets();
+
+    setupMonitorLayout();
+
+    setupAdvancedSettings();
+
+    setupQuarantine();
+
+    loadConfiguration();
+
+    connectSignals();
+}
+
+This is an architectural illustration, not a drop-in replacement for your current class.
+Why is this better?
+It improves:
+- Code readability
+- Maintainability
+- Debugging
+- Unit testing
+- Separation of responsibilities
+- Reusability
+For a large antivirus GUI project, this makes it easier to investigate and fix platform-specific issues.
+Part 6: Most Important Interview Scenario
+Interviewer: You have 4–5 years of C++ Linux experience. Explain your Qt GUI issue from beginning to end.
+Recommended 2-minute answer
+Answer:
+
+"In my project, I worked on a Linux endpoint security application developed using C++ and Qt.
+
+One of the modules was the Real Time Monitor, which allows users to enable or disable real-time scanning, configure monitored directories, and manage quarantine settings.
+
+The GUI was displaying correctly on Ubuntu 24.04 LTS, but on RHEL 9.6, I encountered a layout issue.
+
+The directory input field and directory list were shifted horizontally, and buttons such as Browse, Add, Exclude, Remove, and ClearAll were partially hidden.
+
+I investigated the Qt widget hierarchy and found that the directory section was implemented using QGridLayout with large QSpacerItem objects.
+
+The layout depended on widget size hints, font metrics, and available space, which could vary between Linux environments.
+
+To address this, I modified the layout by removing unnecessary large spacers and configuring controlled column widths, widget sizes, margins, and spacing.
+
+I also adjusted the parent QVBoxLayout to maintain consistent positioning of the Monitor status and directory configuration groups.
+
+The changes were limited to the GUI layout, so the existing scanning logic, configuration handling, and Qt signal-slot connections were preserved.
+
+The main learning from this issue was that cross-platform Qt applications should not depend on hardcoded spacer values without considering the available layout geometry and platform-specific widget dimensions."
+
+After testing successfully, you can add:
+
+"I rebuilt the application and verified the layout and button functionality on both Ubuntu 24.04 and RHEL 9.6."
+Top 10 Questions to Prepare First
+For an experienced C++ Linux interview, prioritize these:
+Priority	Interview question	Topic
+1	Why did the Qt GUI differ between Ubuntu and RHEL?	Linux + Qt
+2	How does QGridLayout calculate widget positions?	Qt Layout
+3	Explain QSizePolicy and widget size hints.	Qt Layout
+4	What is Qt's parent-child memory management?	C++ Memory
+5	Explain signals and slots internally.	Qt Architecture
+6	What is the difference between direct and queued connections?	Qt Multithreading
+7	How do you debug overlapping widgets?	Debugging
+8	Explain X11 vs Wayland and Qt platform plugins.	Linux GUI
+9	How do you prevent GUI freezing during long operations?	C++ Threads
+10	How would you redesign a large Qt constructor?	C++ OOP / Design
+
+
+One additional question worth preparing: What happens if a real-time antivirus scanner performs a long-running scan directly in the Qt GUI thread?
+
+The answer is that the GUI event loop can become blocked, making the interface unresponsive. A better design is to perform scanning in a worker thread or separate daemon process and communicate results to the GUI through appropriate asynchronous mechanisms.
+
+This connects your Qt GUI experience with C++ multithreading, Linux processes, and antivirus architecture—areas that are particularly relevant to your C++ Linux developer interviews.

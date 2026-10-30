@@ -10,4 +10,6 @@
 	
 	rm /opt/MicroWorld/.netfilter_kmodule entire dir
 
+	also change passPrompt.sh escanusb.sh xhost-manager.sh put in escangui.
+
 2]

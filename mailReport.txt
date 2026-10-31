@@ -10940,3 +10940,60 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+31/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] EDR – escangui Verification
+
+    Demonstrated the updated EDR escangui to Vaibhav.
+
+    Reviewed the updated Qt GUI layout, widget alignment, and functionality with him.
+
+    Completed the GUI verification with Vaibhav.
+
+2] EDR RPM – Build Preparation
+
+    Started preparing the new eScan EDR RPM build.
+
+    Integrated the required updated binaries, libraries, and installation scripts into the RPM build structure.
+
+    Updated the necessary files and directories for RPM packaging.
+
+    Worked on the build configuration and required dependencies.
+
+3] EDR RPM – Installation and Testing
+
+    Started testing the updated eScan EDR RPM build on the 1.231 RHEL 9.6 laptop.
+
+    Checked the installation process and functionality of the integrated components.
+
+    Investigated the build behavior and compatibility with the RHEL 9.6 environment.
+
+4] EDR – Component Verification
+
+    Completed testing and verification of the following components:
+
+        appblocker
+
+        rtscanner
+
+        authenticator
+
+    Checked their functionality and integration with the updated EDR build.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

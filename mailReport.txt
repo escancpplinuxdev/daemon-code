@@ -10997,3 +10997,252 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+31/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] eScan EDR – RPM Build Development
+
+    Continued development of the eScan EDR RPM build.
+
+    Worked on integrating the required binaries, libraries, scripts, and configuration files into the RPM build structure.
+
+    Checked the build configuration and dependencies.
+
+2] EDR – Component and Functionality Testing
+Performed testing of the following EDR components and functionalities:
+
+    Web Filter: Checked website-blocking functionality.
+
+    EPSDaemon: Verified policy application and daemon functionality.
+
+    updatenow_avs: Tested antivirus update functionality through the command line.
+
+    updatenow: Checked update execution using command-line options.
+
+    RTScanner: Created an EICAR test file and verified real-time scanning and detection.
+
+    escangui Scan: Tested the antivirus scanning functionality through the GUI.
+
+    Created a process-flow chart to document the execution and interaction of the tested components.
+
+3] escangui – updatenow GUI Issue Investigation
+
+    Started testing the updatenow functionality through escangui.
+
+    Encountered an error during GUI-based update execution.
+
+    Started debugging the issue and analyzing the interaction between escangui and the updatenow process.
+
+    Worked on identifying the root cause and finding a suitable solution.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com 
+
+
+
+31/10/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] escangui – eupdatesettingdialog.cpp Error Investigation
+
+    Investigated the error occurring in eupdatesettingdialog.cpp, which was triggered from emainwidget.cpp.
+
+    Analyzed the function call flow between both source files to identify the cause of the issue.
+
+    Checked the related code execution and error-handling logic.
+
+2] GDB and Valgrind Debugging
+
+    Performed debugging using GDB to trace the execution flow and identify the source of the error.
+
+    Used Valgrind to analyze memory-related issues and check for memory leaks or invalid memory access.
+
+    Added and used debugging statements to investigate the issue further.
+
+3] X11 and XCB Library Dependencies
+
+    Reviewed the dependencies required for the updated escangui build.
+
+    Checked and installed the required X11 and XCB libraries using dnf install.
+
+    Verified the availability of the required libraries in the RHEL environment.
+
+4] OpenSSL Library Updates
+
+    Worked on updating the following OpenSSL libraries:
+
+        libssl.so.3
+
+        libcrypto.so.3
+
+    Checked the library dependencies and compatibility with the escangui application.
+
+5] escangui – Final Testing and Issue Resolution
+
+    Integrated the required library updates and dependency changes.
+
+    Rebuilt and tested escangui after applying the changes.
+
+    Rechecked the update settings functionality and worked on resolving issue.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com 
+
+04/11/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] EDR/XDR escangui – Update Schedule Issue
+
+    Worked on the EDR/XDR escangui and resolved the Aborted (core dumped) issue related to /opt/MicroWorld/etc/escan/updateschedule.conf.
+
+    Tested the fix in both RPM and Debian builds.
+
+2] MWEncr – PD Encryption Testing
+
+    Checked mwencr in the RPM build.
+
+    Discussed and tested the PD encryption process with Omkar and Shrikrishna, including encryption during formatting and copying other files.
+
+3] Testing on 1.231 Laptop
+
+    Tested the above functionality on the 1.231 laptop using both PDs.
+
+4] updatenow_avs
+
+    Updated updatenow_avs to support the required changes and functionality of mwencr.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] EDR/DLP – MWEncr Updates
+
+    Updated the new escangui, mwencer, mwencer.conf and mwencer.service components in both EDR and DLP builds.
+
+2] Script Updates and Testing
+
+    Updated, tested and replaced the following scripts:
+
+        escangui.sh
+
+        escanguiScan.sh
+
+        viruspopup.sh
+
+        escanWeb.sh
+
+        autoscanpopup.sh
+
+        passPromptDLP.sh
+
+        escanWebUser.sh
+
+        xhost-manager.sh
+
+        passPrompt.sh
+
+        escanusb.sh
+
+3] updatenow_avs – ContentScanner Testing
+
+    Received the new updatenow_avs build for testing Ask User DLP and ContentScanner functionality.
+
+    Started testing with Valgrind; testing is currently in progress.
+
+4] ContentScanner – Event Investigation
+
+    Started investigating the events generated by ContentScanner.	
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+07/11/2026
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] ContentScanner – Ask User, Monitor and Block
+
+    Checked and tested the Ask User, Monitor and Block functionalities of ContentScanner.
+
+2] Ask User – Display Handling
+
+    Modified the escanWebUser.sh script to ensure that the Ask User prompt is displayed on the specific required display.
+
+3] ContentScanner – Qt Return Value Handling
+
+    Updated the escanWebDlp GUI (Qt/C++) return-value handling in the qt_Exit(returnResult); section:
+
+        On clicking OK: return value 255.
+
+        When no response is received: return value 0.
+
+4] Web Filter – Category Blocking Page
+
+    Modified libnfdaemon and nfedlp to support the new web category blocking page.
+
+5] DLP Key – Content Testing
+
+    Applied the DLP key on the 1.223 server and tested the DLP content functionality.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

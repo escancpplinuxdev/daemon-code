@@ -892,7 +892,10 @@ Operator	Name		Execution	Depends on previous?	Stops early?		Use case
 67] 
 	#define DBG_PRINT  std::cout << "Line = " << __LINE__ << " Func = " << __func__<< " File = " << __FILE__ << " Time = " << __TIME__ << "\n"				
 	
-	DBG_PRINT;	
+	DBG_PRINT;
+
+	//macro
+	std::cout << "Line = " << __LINE__ << " Func = " << __func__<< " File = " << __FILE__ <<"\n"; //macro
 
 
 68]  	Silence all output stderr + stdout  ; show exit code
@@ -1035,9 +1038,20 @@ while true; do      echo "=== $(date) ===";      ps -eo pid,pcpu,pmem,comm,args 
 
 	while true; do ps -C updatenow_avs -o %cpu --no-headers; sleep 2; done	
 
-76]	git -> 192.168.2.111 -> root123 -> /home/git/SOURCE_2026/source_2.216_debian_64_2026 
+76]
+	take access form 2.138 ya 2.216 not form 2.58 ssh key error.
+
+	git clone 192.168.2.111:/home/git/macOS_Samar_Projects_Codes-Docs_02_11_2026
+	Cloning into 'macOS_Samar_Projects_Codes-Docs_02_11_2026'...
+	root@192.168.2.111's password:  -> root123
+	
+
+	git -> 192.168.2.111 -> root123 -> /home/git/SOURCE_2026/source_2.216_debian_64_2026 
 	
 	ssh -oKexAlgorithms=+diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1,diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-dss root@192.168.2.111
+
+	
+	samar code -> cd   /home/git/macOS_Samar_Projects_Codes-Docs_02_11_2026
 
 77]	valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --log-file=valgrind_mwfirewalld.log /tmpdata/mwfirewalld
 

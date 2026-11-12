@@ -11246,3 +11246,55 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] escangui – RTM Save Button Functionality
+
+    Modified the RTM GUI behavior on clicking the Save button:
+
+        The Save button becomes greyed out (disabled).
+
+        The Cancel button changes to a Close button.
+
+2] New Blocking Page – Functionality Testing
+
+    Checked the following components with the new blocking page layout:
+
+        appblocker
+
+        epsdaemon
+
+        Website Filter
+
+3] epsdaemon – Ask Password and PD Mounting
+
+    Investigated the issue where the passPrompt.sh script was not working for PD (Pen Drive) password authentication in Ask Password mode.
+
+    Modified the script to use a dynamic display number.
+
+    Updated passPrompt to return exit status 177 when the password matches, allowing the PD mounting process to continue.
+
+    Verified the return status using echo $?.
+
+4] updatenow – Alternative AV Update Download Mechanism
+
+    Started working on modifying the updatenow binary to remove its dependency on the wget command for downloading AV updates.
+
+    The objective is to implement an alternative download mechanism that works even when wget is not preinstalled on the machine.	 
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

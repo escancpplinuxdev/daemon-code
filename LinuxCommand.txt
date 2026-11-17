@@ -722,7 +722,8 @@ z: Toggle Color on/off to highlight running processes.
 	smbclient //192.168.0.8/external -U raja
 Password for [WORKGROUP\raja]:raja
 For  Download : 								For Upload : 
-smb: \> cd /temp/Vaibhav/
+smb: \> cd \temp\Vaibhav   [press Enter]
+smb: \temp\Vaibhav\> 
 	get DLP_BUG.txt								put DLP_BUG.txt
 	ctrl + C 
 
@@ -1220,4 +1221,69 @@ sudo iptables -F
 
 	-F ->  Flush : equivalent to deleting all the rules one by one.
 
-91]  
+91] 
+
+#define LOG_HERE(level) logUpdate( (level), std::string("[") + __FILE__ + " : " + std::string(__func__) + " : " + std::to_string(__LINE__) + "] " )
+
+
+int main()
+{
+
+	LOG_HERE(1); //debug log
+
+	logUpdate(1, std::to_string(__LINE__)); //debug
+} 
+
+92]
+
+	To find out if curl_easy_perform is actually present inside those .so
+
+1] nm 
+
+nm -D /opt/MicroWorld/lib/libcurl.so.3 | grep curl_easy_perform
+nm -D /opt/MicroWorld/lib/libcurl.so.4 | grep curl_easy_perform	
+
+2] strings
+
+strings /opt/MicroWorld/lib/libcurl.so.4 | grep curl_easy_perform
+
+3] objdump
+
+objdump -T /opt/MicroWorld/lib/libcurl.so.4 | grep curl_easy_perform
+
+
+93]
+
+The : was only necessary because you explicitly wanted to keep the else structure with a commented-out body.
+
+
+                       : #: was only necessary because you explicitly wanted to keep the if structure with a commented-out body.
+
+#!/bin/bash
+
+
+function kernel_test()
+{
+ECHO=`which echo`
+
+        if [ -f /usr/bin/rpm ] ||[ -f /bin/rpm ]; then
+                #$ECHO "rpm present"
+                :
+        else
+                $ECHO "rpm not present"
+        fi
+}
+
+
+kernel_test
+
+94] 
+
+break rpm build 
+
+rpm -qpi escan-xdr.x86_64.rpm
+
+95]
+
+
+

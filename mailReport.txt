@@ -11298,3 +11298,141 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	 
+1] updatenow – Alternative AV Update Download Mechanism
+
+    Started modifying the updatenow functionality in escangui to eliminate the dependency on the wget command for downloading AV updates.
+
+    The objective is to implement an alternative download mechanism that works without requiring wget to be preinstalled.
+
+2] libupdate – Curl Integration Testing
+
+    Integrated the new curl logic in libupdate and started testing it on the 1.223 server.
+
+3] Plugin Download Verification
+
+    Verified that updatenow successfully downloads all plugins from the server.
+
+4] escangui – Core Dump Debugging
+
+    Encountered an Aborted (core dumped) issue in escangui during testing.
+
+    Started debugging the issue using a debugger to identify the cause of the crash.
+
+5] Issue Investigation
+
+    Continued testing and investigating the core dump to identify the root cause and work towards resolving the issue.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com  
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+ 
+
+Work Completed – All RPM Builds error
+
+
+1] escangui – Administrator Launch
+
+    Fixed the issue where escangui was not launching through the Activity tab.
+
+
+2] updatenow_avs – Debug Output
+
+    Removed unwanted printf debug statements from updatenow_avs.
+
+3] AV Signatures
+
+    Updated the AV signatures to the latest available version.
+
+4] Update Log – Server URL
+
+    Investigated and corrected the server URL discrepancy in update.log to reflect the correct AV update server URL.
+
+5] EDR Incident Report – Pending
+
+    Incident report generation when a virus file is downloaded through a browser is still pending.
+
+6] Web Protection
+
+    Fixed the issue where Web Protection was not working after applying the policy.
+
+7] Password Prompt – Product Name
+
+    Corrected the product name displayed in the password prompt from "eScan Ultra Security for Enterprise" to "eScan EDR".
+
+8] Whitelisted USB – Read-Only Policy
+
+    Fixed the issue where whitelisted USB devices were restricted from copying files through the GUI when the Read-Only USB policy was enabled.
+
+9] escangui – Web Protection Dependencies
+
+    Fixed the issue where escangui unnecessarily requested GCC and kernel headers for Web Protection.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] Point 13 – Installation printf Output
+
+    Checked and fixed the unwanted printf output appearing during RPM installation.
+
+2] Point 14 – Library Dependencies
+
+    Checked and resolved the library dependency issues in the RPM build.
+
+3] Point 15 – Log Rotation Files
+
+    Updated the log rotation files in the RPM builds.
+
+4] Point 17 – Disable pscanner
+
+    Disabled pscanner in the EDR builds.
+
+Working on
+
+5] Point 20 – Customize Package Creation
+
+    Investigating the issue where the Customize package cannot be created using the RPM build.
+
+    Working on identifying and resolving the root cause.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

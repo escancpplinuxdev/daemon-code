@@ -11436,3 +11436,156 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] RPM – Customize Package Creation
+
+    Started working on a new logic to create Customize packages using the RPM build.
+
+2] SPEC File Combination Testing
+
+    Tested different combinations of SPEC file configurations to identify the correct approach for Customize package creation.
+
+3] Old vs. Current SPEC File Analysis
+
+    Extracted the SPEC file from the older build.
+
+    Compared the old SPEC file with our current SPEC file using diff to identify the differences and understand the previous implementation.
+
+4] Debian Customize Setup – Logic Analysis
+
+    Investigated how the Customize Setup package is generated in the Debian build to understand its implementation and identify an equivalent approach for RPM.
+
+5] install.sh – Server IP Extraction Logic
+
+    Studied the extraction logic in install.sh to understand how the server IP address is retrieved and added to serverinfo.conf.
+
+6] Implementation in Current RPM Build
+
+    Started investigating how to integrate the same server IP extraction logic into our current RPM build.
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+	
+
+1] Customize Setup – Server IP Configuration
+
+    Added serverinfo.conf handling in install.sh and both SPEC files.
+
+    Configured the file to be placed under /etc to retrieve the server IP during Customize Setup package creation.
+
+2] EDR Build – NSS Integration
+
+    Integrated Shrikrishna's new NSS build logic into the escan-edr build.
+
+3] EDR RPM – Version Update and Customize Setup
+
+    Updated the EDR package name and version.
+
+    Generated a new EDR RPM build and created its corresponding Customize Setup package.
+
+4] EDR RPM – Build and DLP Key Testing
+
+    Created and tested escan-edr-22.0.1400-2999.rpm.
+
+    Tested the updated updatenow_avs functionality for applying and removing the DLP key.
+
+5] Build Delivery
+
+    Placed the final RPM build at the following location and shared the build details with Vaibhav.
+
+RPM Machine: 192.168.1.251
+
+Build Path:
+/home/workspace/escan_soho_corp_src/escan-antivirus-checkin/escan-EDR/escan-edr-22.0.1400-2999.rpm
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] New RPM Builds – Version 2999
+
+    Created new RPM builds for all four products:
+
+        escan-dlp-22.0.1400-2999.x86_64.rpm
+
+        escan-edr-22.0.1400-2999.rpm
+
+        escan-ultra-22.0.1400-2999.rpm
+
+        escan-xdr-22.0.1400-2999.rpm
+
+    Updated the product names and package version as follows:
+
+Product	Updated Product Name
+XDR	eScan Vision Core XDR
+EDR	eScan Enterprise EDR
+Ultra	eScan Ultra Security for Enterprise
+DLP	eScan Enterprise DLP
+
+    Updated the build version to 2999.
+
+2] add shrikrishana NSS Logic and Configuration Integration
+
+    Integrated the new NSS logic into all four RPM builds.
+
+    Added serverinfo.conf to all builds.
+
+3] RPM Installation Testing
+
+    Started testing the new RPM builds by installing each product individually.
+
+    Performing installation and functionality checks for each build.
+
+4] updatenow – Update Error Debugging
+
+    Added debugging in the updateCallBack() function to investigate the malware database update failure.
+
+    Observed the following error during testing:
+
+[20-Nov-2026@19:52:17] Server : https://192.168.1.223:2443/MAC/AVX
+[20-Nov-2026@19:52:17] Failed to update malware database : Error 404 received
+File not found on server.
+
+    Investigating the HTTP 404 response to identify why the malware database file is not being found on the update server.	
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com

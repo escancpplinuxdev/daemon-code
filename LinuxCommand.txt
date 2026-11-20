@@ -325,6 +325,9 @@ dpkg-deb -Zgzip --build buildroot/ escan-dlp.amd64.deb
 	# Extract entire RPM contents
 	rpm2cpio escan-2fa-22.0.1400-2990.x86_64.rpm | cpio -idmv
 
+	# Extract entire debian package contents
+	dpkg-deb -R mypackage_1.0_amd64.deb /tmp/mydeb/
+
 	rm -rf /opt/MicroWorld/ /var/MicroWorld/ /etc/escandet.dat /etc/microworld.keys /etc/.p*.e*
 
 	rm /opt/MicroWorld/var/backavsupd/dirlist.txt /opt/MicroWorld/var/avsupd/dirlist.txt /var/MicroWorld/var/updinfo/*
@@ -1074,8 +1077,30 @@ while true; do      echo "=== $(date) ===";      ps -eo pid,pcpu,pmem,comm,args 
 
 for f in *; do ldd "$f" 2>/dev/null | grep -q "not found" && echo "BROKEN: $f"; done
 
+o/p -> 
 	BROKEN: clipboardWatcher
 	BROKEN: epsdaemon
+
+	ldd recursively
+
+find /opt/MicroWorld/ -type f  | while read -r f; do
+    out=$(ldd "$f" 2>/dev/null | grep -i 'not found')
+    [ -n "$out" ] && printf '%s\n%s\n\n' "$f" "$out"
+done
+
+o/p -> 
+
+/opt/MicroWorld/ra/lib/libQt5Core.so.5
+	libicui18n.so.50 => not found
+	libicuuc.so.50 => not found
+	libicudata.so.50 => not found
+
+/opt/MicroWorld/ra/lib/libQt5Gui.so.5
+	libpng15.so.15 => not found
+
+/opt/MicroWorld/ra/lib/libQt5Network.so.5
+	libssl.so.10 => not found
+	libcrypto.so.10 => not found
 
 80] 	{ and pushes the brace to a new line 
 
@@ -1187,7 +1212,7 @@ for f in $(file * | grep ELF | awk -F: '{print $1}'); do     ldd "$f" 2>/dev/nul
 88] ssh root@192.168.2.54
 ->  dev@123
 
-89] rpm decode installation / uninstallation
+89] rpm decode installation / uninstallation  -> debug install rpm 
 
 rpm -ivh -vvv escan-dlp-22.0.1400-2990.x86_64.rpm 2>&1 | tee installEscan_dlp_rpm_ivh_vvv_escan-dlp
 
@@ -1283,7 +1308,50 @@ break rpm build
 
 rpm -qpi escan-xdr.x86_64.rpm
 
+rpm2cpio escan-2fa-22.0.1400-2990.x86_64.rpm | cpio -idmv
+
+break debian build 
+
+dpkg-deb -R mypackage_1.0_amd64.deb /tmp/mydeb/
+
 95]
 
+Step # 1: Mount an ISO file
+
+Type the following command (replace iso file name with the actual iso file):
+# yum install createrepo
+# mkdir -p /mnt/iso/{1,2,3}
+# mount -o loop /path/to/centos1.iso /mnt/iso/1
+Step # 2: Create a repository
+
+Use createrepo to generate the necessary XML metadata. Type the 
+following commands:
+# cd /mnt/iso
+# createrepo .
+Clean repo, enter:
+# yum clean all
+Step # 3: Create config file
+
+You need to create a repo config file in /etc/yum.repos.d/ directory.
+# vi /etc/yum.repos.d/iso.repo
+Append following text:
+
+[My-ISO-Repository]
+
+name=ISO
+baseurl=file:///mnt/iso
+enabled=1
+Save and close the changes.
+
+Now use yum command to install packages from ISO images:
+# yum install package-name
+
+96]
+
+highest priority operators 
+
+The order is as follows : (*) > (+) > (|) > (||)
+
+97] 
 
 

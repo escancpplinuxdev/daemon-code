@@ -1354,4 +1354,10 @@ The order is as follows : (*) > (+) > (|) > (||)
 
 97] 
 
+Firefox pdf open path 
+
+file:///home/omkar/Downloads/Gate2027Timetable.pdf
+
+98]
+
 

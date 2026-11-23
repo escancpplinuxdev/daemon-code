@@ -1360,4 +1360,15 @@ file:///home/omkar/Downloads/Gate2027Timetable.pdf
 
 98]
 
+	Terminator keyboard shortcuts -> terminator keyboard shortcuts
+
+    Split horizontally: Ctrl + Shift + O
+    Split vertically: Ctrl + Shift + E
+
+Move between split terminals: Alt + Arrow Keys (Up, Down, Left, Right)
+
+99]
+
+
+
 

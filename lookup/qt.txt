@@ -43,3 +43,6 @@ Handles		Q_OBJECT, signals, slots	#define, #include, #ifdef
 26] graph -> mcx
 27] system design c++ parking plot
 28] diff between race condition vs race data
+29] creational design pattern -> prototype, singleton ,factory.
+30] dsa Leetcode -> 2 sum
+31]

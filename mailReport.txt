@@ -11588,4 +11588,106 @@ Thanks Regards,
 Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
+rushikeshgajmal333@gmail.com 
+
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+	
+
+1] 1.223 Server – Disk Space Management
+
+    Freed up disk space on the 1.223 server to enable policy creation and testing.
+
+2] RPM Builds – Remaining File Integration
+
+    Added the remaining required files to all four RPM builds:
+
+        DLP
+
+        EDR
+
+        Ultra
+
+        XDR
+
+    Updated both SPEC files and install.sh for all four builds.
+
+3] Installation and Uninstallation Testing
+
+    Installed all four RPM builds individually.
+
+    Checked the installation and uninstallation processes to verify package behavior.
+
+4] DLP Policy – Functionality Testing
+
+    Applied policies and checked their functionality across all four builds.
+
+    Tested the following components in each build:
+
+        nfedlp
+
+        epsdaemon
+
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] escangui – Testing Across All Builds
+
+    Started checking escangui functionality across all four builds (DLP, EDR, Ultra and XDR) based on the points mentioned in Vaibhav's email.
+
+2] escangui – Required Changes
+
+    Modified escangui to address the required changes and issues mentioned in Vaibhav's email.
+
+3] Other Reported Issues
+
+    Continued working on the remaining points mentioned in Vaibhav's email and started implementing the required changes.
+
+4] nfedlp – Website Blocking Testing
+
+    Received the updated nfedlp binary from Shrikrishna.
+
+    Integrated and tested the updated binary to verify website-blocking functionality.
+
+5] nfedlp – Integration Across All Builds
+
+    Added the newly updated nfedlp binary to all four builds:
+
+        DLP
+
+        EDR
+
+        Ultra
+
+        XDR
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
 rushikeshgajmal333@gmail.com

@@ -3348,4 +3348,22 @@ Core Logic: It picks a single element called a pivot. It rearranges the array so
 Core Logic: Instead of comparing numbers directly, it groups them into 10 buckets (0 to 9) based on their digits, starting from the Least Significant Digit (ones place) up to the Most Significant Digit (tens place).
 
 22 $] 	
-		
+	Time/ space complexity in asending order
+
+
+
+| Complexity 	| Name 			| Example Algorithm 			| Growth Behavior (n = 10) 	|
+| :--- 		| :--- 			| :--- 					| :--- 				|
+| O(1) 		| Constant 		| Array index lookup 			| 1 operation (flat line) 	|
+| O(√n) 	| Sublinear / Radical 	| Trial division primality check 	| ≈ 3.2 operations 		|
+| O(log n) 	| Logarithmic 		| Binary search 			| ≈ 3.3 operations 		|
+| O(n) 		| Linear 		| Linear search 			| 10 operations 		|
+| O(n log n) 	| Linearithmic 		| Merge sort, Heapsort 			| ≈ 33 operations 		|
+| O(n²) 	| Quadratic 		| Bubble sort, nested loops 		| 100 operations 		|
+| O(n³) 	| Cubic 		| Naive matrix multiplication 		| 1,000 operations 		|
+| O(2ⁿ) 	| Exponential 		| Recursive Fibonacci 			| 1,024 operations 		|
+| O(n!) 	| Factorial 		| Brute-force Traveling Salesman 	| 3,628,800 operations 		|
+
+23 $]
+
+

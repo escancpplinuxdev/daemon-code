@@ -1,0 +1,457 @@
+give me gate2027 cs paper topic
+GATE 2027 Computer Science (CS) – Complete Topic List
+
+The GATE CS paper has 10 main subject areas, including General Aptitude. Below is the topic-wise checklist to prepare for your examination.
+1. Engineering Mathematics
+
+A. Discrete Mathematics
+
+    Propositional logic and first-order logic
+    Sets, relations and functions
+    Partial orders and lattices
+    Monoids and groups
+    Graph theory: connectivity, matching and colouring
+    Combinatorics: counting, recurrence relations and generating functions
+
+B. Linear Algebra
+
+    Matrices and determinants
+    Systems of linear equations
+    Eigenvalues and eigenvectors
+    LU decomposition
+
+C. Calculus
+
+    Limits, continuity and differentiability
+    Maxima and minima
+    Mean Value Theorem
+    Integration
+
+D. Probability and Statistics
+
+    Random variables
+    Uniform, normal, exponential, Poisson and binomial distributions
+    Mean, median, mode and standard deviation
+    Conditional probability
+    Bayes' theorem
+
+2. Digital Logic
+
+    Boolean algebra
+    Boolean function minimisation
+    Algebraic techniques
+    Karnaugh maps (K-map)
+    Tabular method
+    Combinational circuits
+    Sequential circuits
+    Number representation
+    Fixed-point and floating-point arithmetic
+
+3. Computer Organization and Architecture (COA)
+
+    Instruction sets
+    Addressing modes
+    Arithmetic Logic Unit (ALU) design
+    Control unit design
+        Hardwired control
+        Microprogrammed control
+    Memory interfacing
+    Memory hierarchy and performance
+    Cache memory mapping
+    I/O interface
+    Interrupts and DMA
+    Instruction pipelining
+    Pipeline hazards
+
+4. Programming and Data Structures
+
+    C programming
+    Recursion
+    Arrays
+    Stacks
+    Queues
+    Linked lists
+    Trees
+    Binary Search Trees (BST)
+    Binary heaps
+    Graphs
+
+5. Algorithms
+
+    Searching
+    Sorting
+    Hashing
+    Asymptotic time and space complexity
+    Greedy algorithms
+    Dynamic programming
+    Divide and conquer
+    Graph traversal
+    Minimum Spanning Tree (MST)
+    Shortest-path algorithms
+
+6. Theory of Computation (TOC)
+
+    Regular expressions
+    Finite automata
+    Context-Free Grammars (CFG)
+    Pushdown Automata (PDA)
+    Regular languages
+    Context-free languages
+    Pumping lemma
+    Turing machines
+    Undecidability
+
+7. Compiler Design
+
+    Lexical analysis
+    Parsing
+    Syntax-directed translation
+    Runtime environments
+    Intermediate code generation
+    Local optimisation
+    Data-flow analysis
+        Constant propagation
+        Liveness analysis
+        Common subexpression elimination
+
+8. Operating Systems (OS)
+
+    System calls
+    Processes and threads
+    Inter-process communication (IPC)
+    Concurrency and synchronization
+    Deadlocks
+    CPU scheduling
+    I/O scheduling
+    Memory management
+    Virtual memory
+    File systems
+
+9. Databases (DBMS)
+
+    ER model
+    Relational model
+    Relational algebra
+    Tuple calculus
+    SQL
+    Integrity constraints
+    Normalisation
+    File organisation
+    Indexing
+    Transactions
+    Concurrency control
+
+10. Computer Networks (CN)
+
+    Layering and network architecture
+    Switching
+    Network performance
+    Data-link layer
+    Routing
+    IPv4 addressing
+    TCP
+    Application layer
+
+11. General Aptitude (GA)
+
+This section is common to GATE papers and carries 15 marks.
+
+A. Verbal Aptitude
+
+    English grammar
+    Vocabulary
+    Reading comprehension
+    Sentence completion
+    Verbal reasoning
+
+B. Quantitative Aptitude
+
+    Numerical computation
+    Numerical estimation
+    Numerical reasoning
+    Data interpretation
+
+C. Analytical Aptitude
+
+    Logic
+    Deduction and induction
+    Analogy
+    Numerical relations and reasoning
+
+D. Spatial Aptitude
+
+    Shape transformations
+    Rotation and mirroring
+    Assembling and grouping
+    Paper folding and cutting
+    2D and 3D patterns
+
+The subject topics above follow the GATE 2027 syllabus published by IIT Madras.
+12. GATE CS 2027 exam pattern
+Section	Marks
+General Aptitude	15
+Engineering Mathematics + Core CS subjects	85
+Total	100
+
+    Duration: 3 hours
+    Total questions: 65
+    Question types: MCQ, MSQ and NAT
+    MCQs have negative marking; MSQ and NAT do not. 
+
+Official syllabus: GATE 2027 – CS and DA syllabus
+My suggested priority for your preparation
+
+Since you work in C++ and Linux, I suggest starting with:
+
+    Programming and Data Structures
+    Algorithms
+    Operating Systems
+    DBMS
+    Computer Networks
+    Engineering Mathematics
+    COA
+    Digital Logic
+    TOC
+    Compiler Design
+    General Aptitude (practise throughout)
+
+Important: Don't skip any official topic just because it is not in this priority order. This is a suggested learning sequence, not an official weightage ranking.
+
+
+
+GATE 2027 Data Science and Artificial Intelligence (DA) – Complete Topic List
+
+The GATE DA paper covers 7 main subject areas, including General Aptitude. Below is the topic-wise checklist based on the official GATE 2027 syllabus.
+1. Probability and Statistics
+
+    Counting: Permutations and combinations
+    Probability axioms
+    Sample space and events
+    Independent and mutually exclusive events
+    Marginal, conditional and joint probability
+    Bayes' theorem
+    Conditional expectation and variance
+    Mean, median and mode
+    Standard deviation
+    Correlation and covariance
+    Random variables
+    Discrete random variables and Probability Mass Function (PMF)
+    Continuous random variables and Probability Density Function (PDF)
+    Uniform distribution
+    Bernoulli distribution
+    Binomial distribution
+    Poisson distribution
+    Exponential distribution
+    Normal and standard normal distributions
+    t-distribution
+    Chi-squared distribution
+    Cumulative Distribution Function (CDF)
+    Conditional PDF
+    Central Limit Theorem (CLT)
+    Confidence intervals
+    z-test, t-test and chi-squared test
+
+2. Linear Algebra
+
+    Vector spaces and subspaces
+    Linear dependence and independence
+    Matrices
+    Projection matrices
+    Orthogonal matrices
+    Idempotent matrices
+    Partition matrices and their properties
+    Quadratic forms
+    Systems of linear equations
+    Gaussian elimination
+    Eigenvalues and eigenvectors
+    Determinants
+    Rank and nullity
+    Projections
+    LU decomposition
+    Singular Value Decomposition (SVD)
+
+3. Calculus and Optimization
+
+    Functions of a single variable
+    Limits
+    Continuity
+    Differentiability
+    Taylor series
+    Maxima and minima
+    Optimization involving a single variable
+
+4. Programming, Data Structures and Algorithms
+
+A. Python Programming
+
+    Variables and data types
+    Operators and expressions
+    Conditional statements
+    Loops
+    Functions
+    Lists, tuples and dictionaries
+
+B. Data Structures
+
+    Stacks
+    Queues
+    Linked lists
+    Trees
+    Hash tables
+
+C. Searching and Sorting
+
+    Linear search
+    Binary search
+    Selection sort
+    Bubble sort
+    Insertion sort
+    Merge sort
+    Quick sort
+
+D. Graph Theory and Algorithms
+
+    Introduction to graph theory
+    Graph traversal
+    Shortest-path algorithms
+    Divide and conquer
+
+5. Database Management and Warehousing
+
+A. DBMS
+
+    Entity Relationship (ER) model
+    Relational model
+    Relational algebra
+    Tuple calculus
+    SQL
+    Integrity constraints
+    Normal forms
+    File organisation
+    Indexing
+    Data types
+
+B. Data Warehousing
+
+    Data transformation
+    Normalisation
+    Discretisation
+    Sampling
+    Compression
+    Data warehouse modelling
+    Schema for multidimensional data models
+    Concept hierarchies
+    Measures: categorisation and computations
+
+6. Machine Learning
+
+A. Supervised Learning
+
+    Regression and classification problems
+    Simple linear regression
+    Multiple linear regression
+    Ridge regression
+    Logistic regression
+    K-Nearest Neighbour (KNN)
+    Naive Bayes classifier
+    Linear Discriminant Analysis (LDA)
+    Support Vector Machine (SVM)
+    Decision trees
+    Bias-variance trade-off
+    Leave-One-Out (LOO) cross-validation
+    K-fold cross-validation
+    Multilayer Perceptron (MLP)
+    Feed-forward neural networks
+
+B. Unsupervised Learning
+
+    Clustering algorithms
+    K-means clustering
+    K-medoid clustering
+    Hierarchical clustering
+    Top-down clustering
+    Bottom-up clustering
+    Single-linkage clustering
+    Multiple-linkage clustering
+    Dimensionality reduction
+    Principal Component Analysis (PCA)
+
+7. Artificial Intelligence
+
+A. Search Algorithms
+
+    Uninformed search
+    Informed search
+    Adversarial search
+
+B. Logic
+
+    Propositional logic
+    Predicate logic
+
+C. Reasoning Under Uncertainty
+
+    Conditional independence representation
+    Exact inference through variable elimination
+    Approximate inference through sampling
+
+8. General Aptitude (15 Marks)
+
+This section is common to both your CS and DA papers.
+
+A. Verbal Aptitude
+
+    English grammar
+    Vocabulary
+    Reading comprehension
+    Sentence completion
+
+B. Quantitative Aptitude
+
+    Numerical computation
+    Numerical estimation
+    Numerical reasoning
+    Data interpretation
+
+C. Analytical Aptitude
+
+    Logic
+    Deduction and induction
+    Numerical relations
+    Reasoning
+
+D. Spatial Aptitude
+
+    Shape transformations
+    Rotation and mirroring
+    Assembling and grouping
+    Paper folding and cutting
+    2D and 3D patterns
+
+9. GATE DA 2027 exam pattern
+Particular	Details
+Paper code	DA
+Total marks	100
+General Aptitude	15 marks
+Technical subjects	85 marks
+Total questions	65
+Duration	3 hours
+Question types	MCQ, MSQ, NAT
+10. Suggested preparation priority
+
+For your preparation alongside C++/Linux work, I suggest:
+Priority	Subject
+1	Probability and Statistics
+2	Linear Algebra
+3	Programming, Data Structures and Algorithms
+4	Machine Learning
+5	Calculus and Optimization
+6	DBMS and Data Warehousing
+7	Artificial Intelligence
+8	General Aptitude – practise regularly
+
+This is a suggested study order, not official marks weightage.
+
+Official syllabus: GATE 2027 DA syllabus – IIT Madras
+
+My suggestion: Since you have registered for both CS and DA, study Mathematics, Programming, Algorithms and DBMS as common preparation areas, then separately practise the CS-specific and DA-specific topics.

@@ -62,6 +62,7 @@ cpp
 std::list<int> l = {1, 2, 3, 4, 5};
 // std::binary_search still WORKS (it only needs ForwardIterator), but internally
 // every mid-computation costs O(n) — never do this in real code.
+
 Q3. Iterative vs recursive binary search — what's the actual trade-off?
 
 Answer:

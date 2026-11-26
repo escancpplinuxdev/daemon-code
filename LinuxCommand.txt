@@ -17,7 +17,7 @@ http://192.168.0.19/EasyPAY/view/mdimain.aspx?1=1&key=MWSSPL&mod=ess&code=MWSSPL
 
 0]	To:     divesh@escanav.com
 Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
-To: 	omkarg@escanav.com, rushikeshg@escanav.com, shrikrishna@escanav.com, abhishekr@escanav.com
+To: 	omkarg@escanav.com, rushikeshg@escanav.com, shrikrishna@escanav.com, abhishekr@escanav.com , ravindra@escanav.com
 
 
 	192.168.2.58 :		root passwd --> su 	--> ketan$321
@@ -1275,6 +1275,11 @@ strings /opt/MicroWorld/lib/libcurl.so.4 | grep curl_easy_perform
 3] objdump
 
 objdump -T /opt/MicroWorld/lib/libcurl.so.4 | grep curl_easy_perform
+
+4] readelf
+
+ readelf -V /opt/MicroWorld/lib/libssl.so.6 | grep OPENSSL
+->       0x001c: Rev: 1  Flags: none  Index: 2  Cnt: 1  Name: OPENSSL_3.0.0
 
 
 93]

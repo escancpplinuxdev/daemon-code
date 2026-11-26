@@ -11691,3 +11691,174 @@ Rushikesh Sunil Gajmal
 Programming Dept.
 9702808352
 rushikeshgajmal333@gmail.com
+
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+	1] Installation and passPrompt Verification
+
+    Installed all four builds individually:
+
+        DLP
+
+        EDR
+
+        Ultra
+
+        XDR
+
+    Checked the passPrompt window to verify that the product name and version are displayed correctly as specified in the email requirements.
+
+2] Website Blocker – Cross-Browser Testing
+
+    Tested website-blocking functionality across all four builds.
+
+    Verified blocking of shopping websites using:
+
+        Firefox
+
+        Google Chrome
+
+        Chromium
+
+    Checked website-blocking behavior across different shopping websites in all browsers.
+
+3] Customize Build – Server 1.223
+
+    Made the required changes in all four builds to support Customize Setup package creation on the 1.223 server.
+
+4] ask DLP Key for Testing .
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com 
+
+
+need addon key of dlp for server 1.223 where i gonna check     EDR         Ultra          XDR build dlp section 
+
+XDR     eScan Vision Core XDR
+EDR     eScan Enterprise EDR
+Ultra   eScan Ultra Security for Enterprise
+
+
+ravindra@escanav.com
+
+Subject: Request for DLP Add-on License Key – Server 192.168.1.223
+
+Dear sir,
+
+I am writing to request the (DLP) add-on license key for Server 192.168.1.223.
+I need this key to verify and test the DLP module across the following eScan product builds:
+
+    XDR: eScan Vision Core XDR
+    EDR: eScan Enterprise EDR
+    Ultra: eScan Ultra Security for Enterprise
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
+
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+
+1] DLP Key – XDR, EDR and Ultra
+
+    Collected the DLP key from Ravindra Sir.
+
+    Started implementing and testing the DLP functionality for the following products through updatenow_avs:
+
+        XDR: eScan Vision Core XDR
+
+        EDR: eScan Enterprise EDR
+
+        Ultra: eScan Ultra Security for Enterprise
+
+2] Debian Ultra – C++ ABI Compatibility Issue
+
+    Investigated the C++ ABI (Application Binary Interface) compatibility issue related to libmwshare.so in the Debian Ultra build.
+
+    Started working on resolving the issue in escangui.
+
+    Added the following compiler flag to the Makefile for testing:
+
+g++ -D_GLIBCXX_USE_CXX11_ABI=0
+
+3] Server 1.223 – Disk Space Investigation
+
+    Started investigating how to free up disk space on the 1.223 Windows Server machine to support further custmize build and testing activities.
+ 
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com  
+
+From:   "Rushikesh Gajmal (PT Team)" <rushikeshg@mwti.net>
+Subject:        Report of 05/03/2026
+Date:   Thu, 05 Mar 2026 20:45:08 +0530
+To:     divesh@escanav.com
+Cc:     raja@escanav.com, Vaibhav Bhosale <vaibhavb@escanav.com>
+Bcc:    rushikeshg@escanav.com, rushikershoffice@gmail.com , rushikeshg@escanav.com, escancpplinuxdev@gmail.com, rushikershoffice@gmail.com
+
+Dear sir,
+
+1] updatenow – Plugin Download Testing on Server 1.223
+
+    Started testing plugin downloads using updatenow with the 1.223 server.
+
+    Tested the following server configurations separately and performed debugging for each:
+
+    Server 1 – AVXMIR
+
+    ServerListWMC = "https://192.168.1.223:2443/AVXMIR/av64bit"
+
+    Server 2 – MAC/AVX
+
+    ServerListWMCP = "https://192.168.1.223:2443/MAC/AVX"
+
+    Added a new function in the bd-updater log to investigate the update process.
+
+    Modified the logging duration and flow to trace the updateBsdk() and updateCallback() execution.
+
+2] Windows Server 1.223 – Plugin Directory Investigation
+
+    Manually searched the Windows 1.223 server to locate the plugins directory.
+
+    Investigated the directory structure and differences between the available plugin locations.
+
+3] updatenow – Plugin Download Combination Testing
+
+    Tested different combinations of server configurations to identify which configuration allows updatenow to download all plugins successfully.
+
+    Continued debugging the plugin download process and verifying the results.
+
+
+Thanks Regards,
+Rushikesh Sunil Gajmal
+Programming Dept.
+9702808352
+rushikeshgajmal333@gmail.com
